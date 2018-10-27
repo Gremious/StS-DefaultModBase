@@ -14,7 +14,7 @@ If you're new to modding, I highly recommend going though the BaseMod wiki for w
 
 https://github.com/daviscook477/BaseMod/wiki
 
-This base itself isn't going to help you code or anything!! While I have been put comments notating what does what, this is s just a nice starting point if You need a place to start learning from that's not an absolute empty canvas or an overly-complicated, difficult to understand mod; If you don't wanna create mods from scratch all the time and would rather just rename a few things; 
+This base itself isn't going to help you code or anything!! While I have been put comments notating what does what, this is just a nice starting point if You need a place to start learning from that's not an absolute empty canvas, or an overly-complicated, difficult to understand mod. But you still need to learn how the in-game code works and how to piece things together on your own. (i.e. this base will show you where to put the code for double-tap, but not what it is/how to write it/how it works. Look up the actual cards and backward-engeneer them for that.)
 
 Feel free to use this in any way you like, of course. 
 
