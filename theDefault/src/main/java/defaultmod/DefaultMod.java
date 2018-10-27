@@ -178,9 +178,6 @@ public class DefaultMod implements EditCardsSubscriber, EditRelicsSubscriber, Ed
 		settingsPanel.addUIElement(new ModLabel("DefaultMod doesn't have any settings!", 400.0f, 700.0f, settingsPanel, (me) -> {}));
 		BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
-		Settings.isDailyRun = false;
-		Settings.isTrial = false;
-		Settings.isDemo = false;
 		logger.info("Done loading badge Image and mod options");
 
 	}
@@ -245,16 +242,16 @@ public class DefaultMod implements EditCardsSubscriber, EditRelicsSubscriber, Ed
 		logger.info("begin editting strings");
 
 		// CardStrings
-		String cardStrings = Gdx.files.internal("defaultModResources/localization/DefaultMod-Card-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
-		BaseMod.loadCustomStrings(CardStrings.class, cardStrings);
+		BaseMod.loadCustomStringsFile(CardStrings.class,
+				"defaultModResources/localization/DefaultMod-Card-Strings.json");
 
 		// PowerStrings
-		String powerStrings = Gdx.files.internal("defaultModResources/localization/DefaultMod-Power-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
-		BaseMod.loadCustomStrings(PowerStrings.class, powerStrings);
+		BaseMod.loadCustomStringsFile(PowerStrings.class,
+				"defaultModResources/localization/DefaultMod-Power-Strings.json");
 
 		// RelicStrings
-		String relicStrings = Gdx.files.internal("defaultModResources/localization/DefaultMod-Relic-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
-		BaseMod.loadCustomStrings(RelicStrings.class, relicStrings);
+		BaseMod.loadCustomStringsFile(RelicStrings.class,
+				"defaultModResources/localization/DefaultMod-Relic-Strings.json");
 
 		logger.info("done editting strings");
 	}
