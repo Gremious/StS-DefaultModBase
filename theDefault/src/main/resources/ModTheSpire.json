@@ -5,5 +5,6 @@
   "description": "A base for Slay the Spire to start your own mod from.",
   "version": "1.0",
   "sts_version": "10-25-2018",
-  "mts_version": "3.5.0"
+  "mts_version": "3.5.0",
+  dependencies": ["basemod"],
 }
