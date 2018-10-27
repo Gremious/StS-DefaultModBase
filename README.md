@@ -2,7 +2,7 @@
 
 Welcome to this mildly over-commented Slay the Spire modding base. 
 
-This is a minimal, clean, commented "default clean slate" for creating Slay the spire mods. 
+This is a minimal "default clean slate" for creating Slay the spire mods. 
 
 Use it to make your own mod of any type - If you want to add any standard in-game content (Character, cards, relics), this is a good starting point.
 
