@@ -12,9 +12,9 @@ It features 1 character with a minimal set of things: 1 card of each type, 1 deb
 
 If you're new to modding, I highly recommend going though the BaseMod wiki for whatever you wish to add and work your way thought your made with this base. Another very important thing is to look at other mods as well as the bsae-game code and see how they do things. Again, refer to the basemod wiki for that.
 
-This base itself isn't going to help you code or anything, it's just a nice starting point if you don't wanna create mods from scratch all the time and would rather just rename a few things.
-
 https://github.com/daviscook477/BaseMod/wiki
+
+This base itself isn't going to help you code or anything!! While I have been put comments notating what does what, this is s just a nice starting point if You need a place to start learning from that's not an absolute empty canvas or an overly-complicated, difficult to understand mod; If you don't wanna create mods from scratch all the time and would rather just rename a few things; 
 
 Feel free to use this in any way you like, of course. 
 
