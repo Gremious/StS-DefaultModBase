@@ -6,7 +6,7 @@ This is a minimal "default clean slate" for creating Slay the spire mods.
 
 Use it to make your own mod of any type - If you want to add any standard in-game content (Character, cards, relics), this is a good starting point.
 
-It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, 1 relic, etc.
+It features 1 character (the Default) with a minimal set of things: 1 card of each type, 1 debuff, 1 relic, etc.
 
 (Currently, there are still some stuff missing (such as game patching examples and potions) which I plan to add later but I have other mods I wanna work on more.
 
