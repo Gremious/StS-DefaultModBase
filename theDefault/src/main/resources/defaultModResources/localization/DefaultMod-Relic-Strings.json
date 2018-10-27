@@ -1,0 +1,7 @@
+{
+"theDefault: PlaceholderRelic": {
+        "NAME": "Placeholder Relic",
+	    "FLAVOR": "The snake is a friend.",
+        "DESCRIPTIONS": ["Gain +1 [R] ."]
+	}
+}
