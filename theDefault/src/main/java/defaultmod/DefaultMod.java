@@ -91,6 +91,7 @@ public class DefaultMod implements EditCardsSubscriber, EditRelicsSubscriber, Ed
     // Relic images  
     public static final String PLACEHOLDER_RELIC = "relics/placeholder_relic.png";
     public static final String PLACEHOLDER_RELIC_OUTLINE = "relics/outline/placeholder_relic.png";
+	
     // Character assets
     private static final String THE_DEFAULT_BUTTON = "charSelect/DefaultCharacterButton.png";
     private static final String THE_DEFAULT_PORTRAIT = "charSelect/DeafultCharacterPortraitBG.png";
@@ -278,8 +279,3 @@ public class DefaultMod implements EditCardsSubscriber, EditRelicsSubscriber, Ed
 	}
 
 }
-
-/*
- * Done!
- * Also, the character body used for this mod is the Cultist mods, i.e. the cultist bird-person from the original game.
- */
