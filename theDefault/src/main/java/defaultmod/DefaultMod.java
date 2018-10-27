@@ -253,7 +253,7 @@ public class DefaultMod implements EditCardsSubscriber, EditRelicsSubscriber, Ed
 		BaseMod.loadCustomStringsFile(RelicStrings.class,
 				"defaultModResources/localization/DefaultMod-Relic-Strings.json");
 
-		logger.info("done editting strings");
+		logger.info("done edittting strings");
 	}
 	
 	// ================ /LOAD THE TEXT/ ===================
