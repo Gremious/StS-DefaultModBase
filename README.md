@@ -22,3 +22,21 @@ If you have any issues with the code/bugs etc. feel free to add an issue.
 If you want to recommend and/or add something to the mod that you feel would be helpful, feel free to put up a request or a branch!
 
 Happy modding!
+
+***
+
+Things I should add/do next:
+
+* Non-character specific relic
+
+* Custom potions
+
+* Dynamic Variables
+
+* CustomBottleRelic
+
+* CustomSavable (?)
+
+* Change all the tabs into spaces so that formatting is ok across all platforms
+
+* Other things I don't know about yet
