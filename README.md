@@ -8,7 +8,7 @@ Use it to make your own mod of any type - If you want to add any standard in-gam
 
 It features 1 character (the Default) with a minimal set of things: 1 card of each type, 1 debuff, 1 relic, etc.
 
-(Currently, there are still some stuff missing (such as game patching examples and potions) which I plan to add later but I have other mods I wanna work on more.)
+(Currently, there are still some stuff missing (such as game patching examples) which I plan to add later but I have other mods I wanna work on more.)
 
 If you're new to modding, I highly recommend going though the BaseMod wiki for whatever you wish to add and work your way thought your made with this base. Another very important thing is to look at other mods as well as the base-game code and see how they do things. Again, refer to the basemod wiki for that.
 
@@ -27,16 +27,16 @@ Happy modding!
 
 Things I should add/do next:
 
-* Non-character specific relic
+* ~~Non-character specific relic~~
 
-* Custom potions
+* ~~Custom potions~~
 
-* Dynamic Variables
+* ~~Dynamic Variables~~
 
 * CustomBottleRelic
 
 * CustomSavable (?)
 
-* Change all the tabs into spaces so that formatting is ok across all platforms
+* ~~Change all the tabs into spaces so that formatting is ok across all platforms~~
 
 * Other things I don't know about yet
