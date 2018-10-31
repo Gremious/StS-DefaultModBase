@@ -1,7 +1,16 @@
 {
-"theDefault: PlaceholderRelic": {
-        "NAME": "Placeholder Relic",
-	    "FLAVOR": "The snake is a friend.",
-        "DESCRIPTIONS": ["Gain +1 [R] ."]
+	"theDefault: PlaceholderRelic": {
+		"NAME": "Placeholder Relic",
+		"FLAVOR": "The snake is a friend.",
+		"DESCRIPTIONS": [
+			"Gain +1 [R] ."
+		]
+	},
+	"theDefault: PlaceholderRelic2": {
+		"NAME": "Placeholder Relic 2",
+		"FLAVOR": "You feel stronger.",
+		"DESCRIPTIONS": [
+			"At the start of each combat, gain +1 Strenght."
+		]
 	}
 }

@@ -1,57 +1,45 @@
 {
-    "theDefault: DefaultCommonAttack": {
-        "NAME": "Strike",
-        "DESCRIPTION": "Deal !D! damage.",
-        "UPGRADE_DESCRIPTION": "Deal !D! damage."
-
+	"theDefault: DefaultCommonAttack": {
+		"NAME": "Strike",
+		"DESCRIPTION": "Deal !D! damage."
 	},
-
+	"theDefault: DefaultAttackWithVariable": {
+		"NAME": "Special Strike",
+		"DESCRIPTION": "Deal !D! damage [R] times. NL (Deal !ENERGY_DAMAGE! damage total.)"
+	},
 	"theDefault: DefaultCommonSkill": {
-        "NAME": "Defend",
-        "DESCRIPTION": "Gain !B! block.",
-        "UPGRADE_DESCRIPTION": "Gain !B! block."
+		"NAME": "Defend",
+		"DESCRIPTION": "Gain !B! block."
 	},
-	
 	"theDefault: DefaultCommonPower": {
-        "NAME": "Hold Place",
-        "DESCRIPTION": "Gain !M! keyword.",
-        "UPGRADE_DESCRIPTION": "Gain !M! keywords."
+		"NAME": "Hold Place",
+		"DESCRIPTION": "Gain !M! keyword.",
+		"UPGRADE_DESCRIPTION": "Gain !M! keywords."
 	},
-	
 	"theDefault: DefaultUncommonAttack": {
-        "NAME": "Big slap",
-        "DESCRIPTION": "Deal !D! damage.",
-        "UPGRADE_DESCRIPTION": "Deal !D! damage."
-
+		"NAME": "Big slap",
+		"DESCRIPTION": "Deal !D! damage."
 	},
-	
 	"theDefault: DefaultUncommonSkill": {
-        "NAME": "A better defend",
-        "DESCRIPTION": "Gain !B! Plated Armor. Affected by Dexterity.",
-        "UPGRADE_DESCRIPTION": "Gain !B! Plated Armor. Affected by Dexterity."
-
+		"NAME": "A better defend",
+		"DESCRIPTION": "Gain !B! Plated Armor. Affected by Dexterity."
 	},
-	
 	"theDefault: DefaultUncommonPower": {
-        "NAME": "Weirdness",
-        "DESCRIPTION": "Gain X keywords.",
-        "UPGRADE_DESCRIPTION": "Gain X +1 keywords."
-
+		"NAME": "Weirdness",
+		"DESCRIPTION": "Gain X keywords.",
+		"UPGRADE_DESCRIPTION": "Gain X +1 keywords."
 	},
-	
 	"theDefault: DefaultRareAttack": {
-        "NAME": "TOUCH",
-        "DESCRIPTION": "Deal !D! damage."
-        	},
-	
+		"NAME": "TOUCH",
+		"DESCRIPTION": "Deal !D! damage."
+	},
 	"theDefault: DefaultRareSkill": {
-        "NAME": "for each loop x2",
-        "DESCRIPTION": "Apply 1 vulnerable to all enemies, 2 times.",
-        "UPGRADE_DESCRIPTION": "Apply 1 vulnerable to all enemies, 3 times."
-    },
-	
+		"NAME": "for each loop x2",
+		"DESCRIPTION": "Apply !M! vulnerable to all enemies, 2 times.",
+		"UPGRADE_DESCRIPTION": "Apply !M! vulnerable to all enemies, 3 times."
+	},
 	"theDefault: DefaultRarePower": {
-        "NAME": "In-Progress Form",
-        "DESCRIPTION": "At the start of your turn, play a TOUCH."
+		"NAME": "In-Progress Form",
+		"DESCRIPTION": "At the start of your turn, play a TOUCH."
 	}
 }
