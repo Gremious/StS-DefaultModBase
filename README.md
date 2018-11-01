@@ -54,13 +54,13 @@ This set up should be IDE agnostic (i.e. you can use whatever IDE you like). Her
 
 **IntelliJ**
 
-*File -> Project from Existing Sources -> Select ExampleMod folder or your own mod that follows the structure of the ExampleMod -> Select Maven -> Press next until your project is built*.
+*File -> Project from Existing Sources -> Select theDefault folder or your own mod that follows the structure of the theDefault -> Select Maven -> Press next until your project is built*.
 
 Click on the Maven Projects tab on the right of the editor and click the refresh icon to load your dependencies from the pom.xml into your project. (If no Maven projects tab on the right *View -> Tool Windows -> Maven Projects*)
 
 **Eclipse**
 
-*File -> Import -> Maven -> Existing Maven Projects -> Browse and select ExampleMod folder or your own mod that follows the structure of the ExampleMod*.
+*File -> Import -> Maven -> Existing Maven Projects -> Browse and select theDefault folder or your own mod that follows the structure of the ExampleMod*.
 
 You may need to right-click your project *Maven -> Update Project -> Select your current project -> Click OK*.
 
