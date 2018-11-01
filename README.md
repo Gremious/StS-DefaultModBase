@@ -24,7 +24,7 @@ If you want to recommend and/or add something to the mod that you feel would be 
 Happy modding!
 
 ***
-Great big thanks to [Kobting](https://github.com/Kobting) for the following guide:
+Great big thank you to [Kobting](https://github.com/Kobting) for the following guide:
 
 ## Setting Up Your Development Environment
 
