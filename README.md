@@ -28,11 +28,6 @@ Great big thanks to [Kobting](https://github.com/Kobting) for the following guid
 
 ## Setting Up Your Development Environment
 
-### Setting Up an IDE (IntelliJ/Eclipse)
-Use the BaseMod wiki for setting up the program you're going to be coding in (your Integrated Development Environment):
-- [IntelliJ-Environment-Setup](https://github.com/daviscook477/BaseMod/wiki/IntelliJ-Environment-Setup)
-- [Eclipse-Environment-Setup](https://github.com/daviscook477/BaseMod/wiki/Eclipse-Environment-Setup)
-
 ### Install Maven
 Maven is used for dependency management and packaging any mods you create. Download it [here](https://maven.apache.org/download.cgi) and install it.
 
