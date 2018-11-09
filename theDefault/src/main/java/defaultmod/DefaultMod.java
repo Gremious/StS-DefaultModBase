@@ -61,7 +61,7 @@ public class DefaultMod
     private static final String AUTHOR = "Gremious";
     private static final String DESCRIPTION = "A base for Slay the Spire to start your own mod from, feat. the Default.";
 
-    // =============== IMPUT TEXTURE LOCATION =================
+    // =============== INPUT TEXTURE LOCATION =================
 
     // Colors (RGB)
         // Character Color
@@ -124,7 +124,7 @@ public class DefaultMod
     public static final String THE_DEFAULT_SKELETON_ATLAS = "char/defaultCharacter/skeleton.atlas";
     public static final String THE_DEFAULT_SKELETON_JSON = "char/defaultCharacter/skeleton.json";
 
-    // =============== /IMPUT TEXTURE LOCATION/ =================
+    // =============== /INPUT TEXTURE LOCATION/ =================
 
     /**
      * Makes a full path for a resource path
