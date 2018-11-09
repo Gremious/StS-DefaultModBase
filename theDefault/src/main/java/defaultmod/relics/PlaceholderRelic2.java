@@ -27,7 +27,7 @@ public class PlaceholderRelic2 extends CustomRelic {
     }
 
 
-    // Gain 1 energy on eqip.
+    // Gain 1 Strenght on on equip.
     @Override
     public void atBattleStart() {
         this.flash();
