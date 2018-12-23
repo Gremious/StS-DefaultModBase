@@ -313,7 +313,7 @@ public class DefaultMod
 
     @Override
     public void receiveEditKeywords() {
-        final String[] placeholder = { "keyword", "keywords" };
+        final String[] placeholder = { "keyword", "keywords", "Keyword", "Keywords" };
         BaseMod.addKeyword(placeholder, "Whenever you play a card, gain 1 dexterity this turn only.");
 
     }
