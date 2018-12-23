@@ -1,24 +1,24 @@
 {
 	"theDefault: DefaultCommonAttack": {
 		"NAME": "Strike",
-		"DESCRIPTION": "Deal !D! damage."
+		"DESCRIPTION": "Deal !D! Damage."
 	},
 	"theDefault: DefaultAttackWithVariable": {
 		"NAME": "Special Strike",
-		"DESCRIPTION": "Deal !D! damage [R] times. NL (Deal !ENERGY_DAMAGE! damage total.)"
+		"DESCRIPTION": "Deal !D! Damage [R] times. NL (Deal !ENERGY_DAMAGE! damage total.)"
 	},
 	"theDefault: DefaultCommonSkill": {
 		"NAME": "Defend",
-		"DESCRIPTION": "Gain !B! block."
+		"DESCRIPTION": "Gain !B! Block."
 	},
 	"theDefault: DefaultCommonPower": {
 		"NAME": "Hold Place",
-		"DESCRIPTION": "Gain !M! keyword.",
-		"UPGRADE_DESCRIPTION": "Gain !M! keywords."
+		"DESCRIPTION": "Gain !M! Keyword.",
+		"UPGRADE_DESCRIPTION": "Gain !M! Keywords."
 	},
 	"theDefault: DefaultUncommonAttack": {
 		"NAME": "Big slap",
-		"DESCRIPTION": "Deal !D! damage."
+		"DESCRIPTION": "Deal !D! Damage."
 	},
 	"theDefault: DefaultUncommonSkill": {
 		"NAME": "A better defend",
@@ -26,12 +26,12 @@
 	},
 	"theDefault: DefaultUncommonPower": {
 		"NAME": "Weirdness",
-		"DESCRIPTION": "Gain X keywords.",
-		"UPGRADE_DESCRIPTION": "Gain X +1 keywords."
+		"DESCRIPTION": "Gain X Keywords.",
+		"UPGRADE_DESCRIPTION": "Gain X +1 Keywords."
 	},
 	"theDefault: DefaultRareAttack": {
 		"NAME": "TOUCH",
-		"DESCRIPTION": "Deal !D! damage."
+		"DESCRIPTION": "Deal !D! Damage."
 	},
 	"theDefault: DefaultRareSkill": {
 		"NAME": "for each loop x2",
