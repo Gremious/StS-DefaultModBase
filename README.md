@@ -39,9 +39,10 @@ Download this repository as a zip. Unzip where you want to set up your dev envir
 ### Adding Dependencies
 The `lib` folder is where we will keep our dependencies. This is very useful if you want to have multiple STS modding projects.
 
-Download the latest release `.jar` for each project and place in the lib folder
-- [ModTheSpire](https://github.com/kiooeht/ModTheSpire/releases/latest)
-- [BaseMod](https://github.com/daviscook477/BaseMod/releases/latest)
+Download the latest release `.jar` for each project and place in the lib folder. If you're using workshop mods, their locations are as follows:
+
+- Mod the Spire: Steam\steamapps\workshop\content\646570\1605060445
+- BaseMod: Steam\steamapps\workshop\content\646570\1605833019
 
 The final dependency you will need is the actual game. There is a file called `desktop-1.0.jar` located where your game is installed. Copy `desktop-1.0.jar` into the `lib` folder.
 
