@@ -41,7 +41,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /*
- * IF YOU DON'T WANNA READ ANYTHING JUST READ THE LAST LINE!
+ * IF YOU DON'T WANNA READ ANYTHING JUST READ THIS:
+ * THE FIRST THING YOU SHOULD DO IS RENAME YOUR PACKAGE AND ID NAMES!!!
  *
  * Welcome to this mildly over-commented Slay the Spire modding base. 
  * Use it to make your own mod of any type. - If you want to add any standard in-game content (Character, 
@@ -51,7 +52,6 @@ import org.apache.logging.log4j.Logger;
  * https://github.com/daviscook477/BaseMod/wiki  and work your way thought your made with this base. 
  * Feel free to use this in any way you like, of course. Happy modding!
  *
- * THE FIRST THING YOU SHOULD DO IS RENAME YOUR PACKAGE AND ID NAMES!!!
  */
 
 @SpireInitializer
