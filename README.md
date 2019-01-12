@@ -10,7 +10,7 @@ It features 1 character (the Default) with a minimal set of things: 1 card of ea
 
 (Currently, there are still some stuff missing (such as game patching examples) which I plan to add later but I have other mods I wanna work on more.)
 
-If you're new to modding, I highly recommend going though the BaseMod wiki for whatever you wish to add and work your way thought your made with this base. Another very important thing is to look at other mods as well as the base-game code and see how they do things. Again, refer to the basemod wiki for that.
+If you're new to modding, you basically need the BaseMod wiki for whatever you wish to add, and you can work your way thought it with this base. Another very important thing is to look at other mods as well as the base-game code and see how they do things. Again, refer to the basemod wiki for that.
 
 https://github.com/daviscook477/BaseMod/wiki
 
