@@ -42,7 +42,7 @@ import org.apache.logging.log4j.Logger;
 
 //TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
 // Right click the package -> Refactor -> Rename, and name it whatever you wanna call your mod.
-// Sroll to the very botton of this file. Change the id string from "theDefault: " to "your mod name:" or whatever your heart desires.
+// Sroll to the very botton of this file. Change the id string from "theDefault:" to "your mod name:" or whatever your heart desires.
 
 /*
  * With that out of the way:
@@ -78,7 +78,10 @@ public class DefaultMod
         public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
         public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
         
-    // Image folder name
+    // Image folder name - This is where your image folder is.
+    // This is good practice in case you ever need to move/rename it without screwing up every single path.
+    // In this case, it's resources/defaultModResources/images (and then, say, /cards/Strike.png).
+
     private static final String DEFAULT_MOD_ASSETS_FOLDER = "defaultModResources/images";
 
     // Card backgrounds
@@ -133,7 +136,7 @@ public class DefaultMod
     // =============== /INPUT TEXTURE LOCATION/ =================
 
     /**
-     * Makes a full path for a resource path
+     * This is what you use to link
      * 
      * @param resource the resource, must *NOT* have a leading "/"
      * @return the full path
@@ -329,7 +332,7 @@ public class DefaultMod
     // this adds "ModName: " before the ID of any card/relic/power etc.
     // in order to avoid conflics if any other mod uses the same ID.
     public static String makeID(String idText) {
-        return "theDefault: " + idText;
+        return "theDefault:" + idText;
     }
 
 }
