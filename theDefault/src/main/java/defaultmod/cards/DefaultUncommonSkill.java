@@ -19,7 +19,7 @@ public class DefaultUncommonSkill extends CustomCard {
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
      * 
-     * A better defend Gain 1 plated armor. Affected by Dexterity.
+     * A Better Defend Gain 1 plated armor. Affected by Dexterity.
      */
 
     // TEXT DECLARATION 

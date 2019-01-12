@@ -1,22 +1,14 @@
 package defaultmod;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
-import com.megacrit.cardcrawl.shop.ShopScreen;
-import com.megacrit.cardcrawl.shop.StorePotion;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 
 import basemod.BaseMod;
 import basemod.ModLabel;
@@ -27,7 +19,6 @@ import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditKeywordsSubscriber;
 import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
-import basemod.interfaces.PostCreateShopPotionSubscriber;
 import basemod.interfaces.PostInitializeSubscriber;
 
 import defaultmod.potions.*;
@@ -48,7 +39,7 @@ import org.apache.logging.log4j.Logger;
  * cards, relics), this is a good starting point.
  * It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, 1 relic, etc.
  * If you're new to modding, I highly recommend going though the BaseMod wiki for whatever you wish to add 
- * https://github.com/daviscook477/BaseMod/wiki  and work your way thought your made with this base. 
+ * https://github.com/daviscook477/BaseMod/wiki and work your way through your made with this base.
  * Feel free to use this in any way you like, of course. Happy modding!
  *
  * THE FIRST THING YOU SHOULD DO IS RENAME YOUR PACKAGE AND ID NAMES!!!
@@ -60,7 +51,7 @@ public class DefaultMod
         EditCharactersSubscriber, PostInitializeSubscriber {
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
 
-    //This is for the in-game mod settings pannel.
+    //This is for the in-game mod settings panel.
     private static final String MODNAME = "Default Mod";
     private static final String AUTHOR = "Gremious";
     private static final String DESCRIPTION = "A base for Slay the Spire to start your own mod from, feat. the Default.";
@@ -72,7 +63,7 @@ public class DefaultMod
         public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
 
         // Potion Colors in RGB
-        public static final Color PLACEHOLDER_POTION_lIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red 
+        public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
         public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
         public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
         
@@ -80,16 +71,16 @@ public class DefaultMod
     private static final String DEFAULT_MOD_ASSETS_FOLDER = "defaultModResources/images";
 
     // Card backgrounds
-    private static final String ATTACK_DEAFULT_GRAY = "512/bg_attack_default_gray.png";
-    private static final String POWER_DEAFULT_GRAY = "512/bg_power_default_gray.png";
-    private static final String SKILL_DEAFULT_GRAY = "512/bg_skill_default_gray.png";
-    private static final String ENERGY_ORB_DEAFULT_GRAY = "512/card_default_gray_orb.png";
+    private static final String ATTACK_DEFAULT_GRAY = "512/bg_attack_default_gray.png";
+    private static final String POWER_DEFAULT_GRAY = "512/bg_power_default_gray.png";
+    private static final String SKILL_DEFAULT_GRAY = "512/bg_skill_default_gray.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY = "512/card_default_gray_orb.png";
     private static final String CARD_ENERGY_ORB = "512/card_small_orb.png";
 
-    private static final String ATTACK_DEAFULT_GRAY_PORTRAIT = "1024/bg_attack_default_gray.png";
-    private static final String POWER_DEAFULT_GRAY_PORTRAIT = "1024/bg_power_default_gray.png";
-    private static final String SKILL_DEAFULT_GRAY_PORTRAIT = "1024/bg_skill_default_gray.png";
-    private static final String ENERGY_ORB_DEAFULT_GRAY_PORTRAIT = "1024/card_default_gray_orb.png";
+    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "1024/bg_attack_default_gray.png";
+    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "1024/bg_power_default_gray.png";
+    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "1024/bg_skill_default_gray.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "1024/card_default_gray_orb.png";
 
     // Card images
     public static final String DEFAULT_COMMON_ATTACK = "cards/Attack.png";
@@ -116,7 +107,7 @@ public class DefaultMod
     
     // Character assets
     private static final String THE_DEFAULT_BUTTON = "charSelect/DefaultCharacterButton.png";
-    private static final String THE_DEFAULT_PORTRAIT = "charSelect/DeafultCharacterPortraitBG.png";
+    private static final String THE_DEFAULT_PORTRAIT = "charSelect/DefaultCharacterPortraitBG.png";
     public static final String THE_DEFAULT_SHOULDER_1 = "char/defaultCharacter/shoulder.png";
     public static final String THE_DEFAULT_SHOULDER_2 = "char/defaultCharacter/shoulder2.png";
     public static final String THE_DEFAULT_CORPSE = "char/defaultCharacter/corpse.png";
@@ -143,7 +134,7 @@ public class DefaultMod
     // =============== SUBSCRIBE, CREATE THE COLOR, INITIALIZE =================
 
     public DefaultMod() {
-        logger.info("Subscribe to basemod hooks");
+        logger.info("Subscribe to BaseMod hooks");
 
         BaseMod.subscribe(this);
 
@@ -152,13 +143,13 @@ public class DefaultMod
         logger.info("Creating the color " + AbstractCardEnum.DEFAULT_GRAY.toString());
 
         BaseMod.addColor(AbstractCardEnum.DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY,
-                DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, makePath(ATTACK_DEAFULT_GRAY),
-                makePath(SKILL_DEAFULT_GRAY), makePath(POWER_DEAFULT_GRAY),
-                makePath(ENERGY_ORB_DEAFULT_GRAY), makePath(ATTACK_DEAFULT_GRAY_PORTRAIT),
-                makePath(SKILL_DEAFULT_GRAY_PORTRAIT), makePath(POWER_DEAFULT_GRAY_PORTRAIT),
-                makePath(ENERGY_ORB_DEAFULT_GRAY_PORTRAIT), makePath(CARD_ENERGY_ORB));
+                DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, DEFAULT_GRAY, makePath(ATTACK_DEFAULT_GRAY),
+                makePath(SKILL_DEFAULT_GRAY), makePath(POWER_DEFAULT_GRAY),
+                makePath(ENERGY_ORB_DEFAULT_GRAY), makePath(ATTACK_DEFAULT_GRAY_PORTRAIT),
+                makePath(SKILL_DEFAULT_GRAY_PORTRAIT), makePath(POWER_DEFAULT_GRAY_PORTRAIT),
+                makePath(ENERGY_ORB_DEFAULT_GRAY_PORTRAIT), makePath(CARD_ENERGY_ORB));
 
-        logger.info("Done Creating the color");
+        logger.info("Done creating the color");
     }
 
     @SuppressWarnings("unused")
@@ -175,13 +166,13 @@ public class DefaultMod
 
     @Override
     public void receiveEditCharacters() {
-        logger.info("begin editing characters. " + "Add " + TheDefaultEnum.THE_DEFAULT.toString());
+        logger.info("Beginning to edit characters. " + "Add " + TheDefaultEnum.THE_DEFAULT.toString());
 
         BaseMod.addCharacter(new TheDefault("the Default", TheDefaultEnum.THE_DEFAULT),
                 makePath(THE_DEFAULT_BUTTON), makePath(THE_DEFAULT_PORTRAIT), TheDefaultEnum.THE_DEFAULT);
         
         receiveEditPotions();
-        logger.info("done editing characters");
+        logger.info("Done editing characters");
     }
 
     // =============== /LOAD THE CHARACTER/ =================
@@ -193,7 +184,7 @@ public class DefaultMod
     @Override
     public void receivePostInitialize() {
 
-        logger.info("Load Badge Image and mod options");
+        logger.info("Loading badge image and mod options");
         // Load the Mod Badge
         Texture badgeTexture = new Texture(makePath(BADGE_IMAGE));
         
@@ -215,12 +206,12 @@ public class DefaultMod
 
        
     public void receiveEditPotions() {
-        logger.info("begin editing potions");
+        logger.info("Beginning to edit potions");
        
-        // Class Specific Potion If you want your potion to not be class-specific, just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT")
-        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_lIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheDefaultEnum.THE_DEFAULT);
+        // Class Specific Potion. If you want your potion to not be class-specific, just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT")
+        BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheDefaultEnum.THE_DEFAULT);
       
-        logger.info("end editing potions");
+        logger.info("Done editing potions");
     }
     
     // ================ /ADD POTIONS/ ===================
@@ -230,7 +221,7 @@ public class DefaultMod
 
     @Override
     public void receiveEditRelics() {
-        logger.info("Add relics");
+        logger.info("Adding relics");
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
         BaseMod.addRelicToCustomPool(new PlaceholderRelic(), AbstractCardEnum.DEFAULT_GRAY);
@@ -249,11 +240,11 @@ public class DefaultMod
 
     @Override
     public void receiveEditCards() {
-        logger.info("Add Variables");
+        logger.info("Adding Variables");
         // Add the Custom Dynamic Variables
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         
-        logger.info("Add Cards");
+        logger.info("Adding Cards");
         // Add the cards
         BaseMod.addCard(new DefaultCommonAttack());
         BaseMod.addCard(new DefaultAttackWithVariable());
@@ -290,7 +281,7 @@ public class DefaultMod
 
     @Override
     public void receiveEditStrings() {
-        logger.info("Begin editting strings");
+        logger.info("Begin editing strings");
 
         // CardStrings
         BaseMod.loadCustomStringsFile(CardStrings.class,
@@ -308,7 +299,7 @@ public class DefaultMod
         BaseMod.loadCustomStringsFile(PotionStrings.class,
                 "defaultModResources/localization/DefaultMod-Potion-Strings.json");
 
-        logger.info("Done edittting strings");
+        logger.info("Done editing strings");
     }
 
     // ================ /LOAD THE TEXT/ ===================
@@ -324,10 +315,10 @@ public class DefaultMod
 
     // ================ /LOAD THE KEYWORDS/ ===================    
 
-    // this adds "ModName: " before the ID of any card/relic/power etc.
-    // in order to avoid conflics if any other mod uses the same ID.
+    // this adds "ModName:" before the ID of any card/relic/power etc.
+    // in order to avoid conflicts if any other mod uses the same ID.
     public static String makeID(String idText) {
-        return "theDefault: " + idText;
+        return "theDefault:" + idText;
     }
 
 }

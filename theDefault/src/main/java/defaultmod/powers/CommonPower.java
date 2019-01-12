@@ -36,7 +36,7 @@ public class CommonPower extends AbstractPower {
 
     }
 
-    // On use card, apply (amount) of dexterity. (Go to the actual power card for the ammount.)
+    // On use card, apply (amount) of Dexterity. (Go to the actual power card for the amount.)
     @Override
     public void onUseCard(final AbstractCard card, final UseCardAction action) {
 
@@ -44,7 +44,7 @@ public class CommonPower extends AbstractPower {
                 new DexterityPower(this.owner, this.amount), this.amount));
     }
 
-    // At the end of the turn, Remove gained dexterity.
+    // At the end of the turn, remove gained Dexterity.
     @Override
     public void atEndOfTurn(final boolean isPlayer) {
         int count = 0;

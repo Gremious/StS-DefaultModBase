@@ -19,7 +19,7 @@ public class DefaultRareSkill extends CustomCard {
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
      * 
-     * for each loop x2" "Apply 1 Vulnerable to all enemies, 2(3) times.
+     * For Each Loop x2" "Apply 1 Vulnerable to all enemies, 2(3) times.
      */
 
     // TEXT DECLARATION 
