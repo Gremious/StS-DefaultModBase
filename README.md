@@ -48,7 +48,7 @@ The final dependency you will need is the actual game. There is a file called `d
 > When Slay The Spire updates, you will need to replace `desktop-1.0.jar` with the latest version.
 
 ### Import Project Into an IDE
-This set up should be IDE agnostic (i.e. you can use whatever IDE you like). Here are steps for importing your project into two of the more popular IDEs
+This set up should be IDE agnostic (i.e. you can use whatever IDE you like). Here are steps for importing your project into the more popular IDE
 
 **IntelliJ**
 
