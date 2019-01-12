@@ -40,8 +40,9 @@ import defaultmod.characters.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-//TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE! RENAME YOUR ID NAMES FIRST-THING ONCE YOU START MAKING THINGS (CARDS/RELICS/ETC.)!!!
+//TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
 // Right click the package -> Refactor -> Rename, and name it whatever you wanna call your mod.
+// Sroll to the very botton of this file. Change the id string from "theDefault: " to "your mod name:" or whatever your heart desires.
 
 /*
  * With that out of the way:
