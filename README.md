@@ -28,9 +28,6 @@ Great big thank you to [Kobting](https://github.com/Kobting) for the following g
 
 ## Setting Up Your Development Environment
 
-### Install Maven
-Maven is used for dependency management and packaging any mods you create. Download it [here](https://maven.apache.org/download.cgi) and install it.
-
 ### Download the Default Mod Repository
 Download this repository as a zip. Unzip where you want to set up your dev environment.
 
@@ -58,12 +55,6 @@ This set up should be IDE agnostic (i.e. you can use whatever IDE you like). Her
 *File -> Project from Existing Sources -> Select theDefault folder or your own mod that follows the structure of the theDefault -> Select Maven -> Press next until your project is built*.
 
 Click on the Maven Projects tab on the right of the editor and click the refresh icon to load your dependencies from the pom.xml into your project. (If no Maven projects tab on the right *View -> Tool Windows -> Maven Projects*)
-
-**Eclipse**
-
-*File -> Import -> Maven -> Existing Maven Projects -> Browse and select theDefault folder or your own mod that follows the structure of the ExampleMod*.
-
-You may need to right-click your project *Maven -> Update Project -> Select your current project -> Click OK*.
 
 ## Setting up Slay The Spire for Mods
 If you have played Slay the Spire with mods or have set up ModTheSpire, you can skip this step. In this tutorial, the directory that Slay the Spire is installed in will be refered to as the Slay the Spire directory.
