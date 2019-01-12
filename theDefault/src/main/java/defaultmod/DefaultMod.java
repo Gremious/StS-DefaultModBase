@@ -41,9 +41,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /*
- * IF YOU DON'T WANNA READ ANYTHING JUST READ THIS:
- * THE FIRST THING YOU SHOULD DO IS RENAME YOUR PACKAGE AND ID NAMES!!!
+ * FIRST THINGS FIRST: RENAME YOUR PACKAGE! RENAME YOUR ID NAMES FIRST-THING ONCE YOU START MAKING THINGS (CARDS/RELICS/ETC.)!!!
+ * Right click the package -> Refactor -> Rename, and name it whatever you wanna call your mod.
  *
+ * With that out of the way:
  * Welcome to this mildly over-commented Slay the Spire modding base. 
  * Use it to make your own mod of any type. - If you want to add any standard in-game content (Character, 
  * cards, relics), this is a good starting point.
