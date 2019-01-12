@@ -18,7 +18,9 @@ public class DefaultCommonAttack extends CustomCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     * 
+     *
+     * In order to understand how image paths work, go to defaultmod/DefaultMod.java, Line ~140 (Image path section).
+     *
      * Strike Deal 7(9) damage.
      */
 
@@ -26,6 +28,12 @@ public class DefaultCommonAttack extends CustomCard {
 
     public static final String ID = defaultmod.DefaultMod.makeID("DefaultCommonAttack");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+
+    // Yes, you totally can use "defaultModResources/images/cards/Attack.png" instead and that would work.
+    // It might be easier to use that while testing.
+    // Using makePath is good practice once you get the hand of things, as it prevents you from
+    // having to change *every single card/file/path* if the image path changes due to updates or your personal preference.
+
     public static final String IMG = DefaultMod.makePath(DefaultMod.DEFAULT_COMMON_ATTACK);
 
     public static final String NAME = cardStrings.NAME;

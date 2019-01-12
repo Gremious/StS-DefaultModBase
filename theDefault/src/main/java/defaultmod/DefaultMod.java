@@ -42,7 +42,11 @@ import org.apache.logging.log4j.Logger;
 
 //TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
 // Right click the package -> Refactor -> Rename, and name it whatever you wanna call your mod.
-// Sroll to the very botton of this file. Change the id string from "theDefault:" to "your mod name:" or whatever your heart desires.
+// Sroll to the very bottom of this file. Change the id string from "theDefault:" to "yourModName:"
+// or whatever your heart desires (don't use spaces).
+
+//TODO: To understand how image paths work, check the image path section at line ~140, as they are a bit special.
+// Start with DefaultCommonAttack - it is the most commented card right now.
 
 /*
  * With that out of the way:
@@ -53,9 +57,9 @@ import org.apache.logging.log4j.Logger;
  * If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add
  * https://github.com/daviscook477/BaseMod/wiki - work your way thought with this base.
  * Feel free to use this in any way you like, of course. Happy modding!
- *
  */
 
+//NOTE: ASD
 @SpireInitializer
 public class DefaultMod
         implements EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber,
@@ -135,15 +139,22 @@ public class DefaultMod
 
     // =============== /INPUT TEXTURE LOCATION/ =================
 
+    // =============== IMAGE PATHS =================
+
+    // This is the command that will link up your core assets folder (line 89) ("defaultModResources/images")
+    // together with the card image (everything above) ("cards/Attack.png") and it puts a "/" between them.
+    // When adding a card image, you can, in fact, just do "defaultModResources/images/cards/Attack.png" in the actual card file.
+    // This however, is good practice in case you want to change your "/images" folder at any point in time.
+
     /**
-     * This is what you use to link
-     * 
      * @param resource the resource, must *NOT* have a leading "/"
      * @return the full path
      */
     public static final String makePath(String resource) {
         return DEFAULT_MOD_ASSETS_FOLDER + "/" + resource;
     }
+
+    // =============== /IMAGE PATHS/ =================
 
     // =============== SUBSCRIBE, CREATE THE COLOR, INITIALIZE =================
 
