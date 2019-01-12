@@ -28,9 +28,6 @@ Great big thank you to [Kobting](https://github.com/Kobting) for the following g
 
 ## Setting Up Your Development Environment
 
-### Install Maven
-Maven is used for dependency management and packaging any mods you create. Download it [here](https://maven.apache.org/download.cgi) and install it.
-
 ### Download the Default Mod Repository
 Download this repository as a zip. Unzip where you want to set up your dev environment.
 
@@ -39,9 +36,10 @@ Download this repository as a zip. Unzip where you want to set up your dev envir
 ### Adding Dependencies
 The `lib` folder is where we will keep our dependencies. This is very useful if you want to have multiple STS modding projects.
 
-Download the latest release `.jar` for each project and place in the lib folder
-- [ModTheSpire](https://github.com/kiooeht/ModTheSpire/releases/latest)
-- [BaseMod](https://github.com/daviscook477/BaseMod/releases/latest)
+Download the latest release `.jar` for each project and place in the lib folder. If you're using workshop mods, their locations are as follows:
+
+- Mod the Spire: `Steam\steamapps\workshop\content\646570\1605060445`
+- BaseMod: `Steam\steamapps\workshop\content\646570\1605833019`
 
 The final dependency you will need is the actual game. There is a file called `desktop-1.0.jar` located where your game is installed. Copy `desktop-1.0.jar` into the `lib` folder.
 
@@ -50,19 +48,13 @@ The final dependency you will need is the actual game. There is a file called `d
 > When Slay The Spire updates, you will need to replace `desktop-1.0.jar` with the latest version.
 
 ### Import Project Into an IDE
-This set up should be IDE agnostic (i.e. you can use whatever IDE you like). Here are steps for importing your project into two of the more popular IDEs
+This set up should be IDE agnostic (i.e. you can use whatever IDE you like). Here are steps for importing your project into the more popular IDE
 
 **IntelliJ**
 
 *File -> Project from Existing Sources -> Select theDefault folder or your own mod that follows the structure of the theDefault -> Select Maven -> Press next until your project is built*.
 
 Click on the Maven Projects tab on the right of the editor and click the refresh icon to load your dependencies from the pom.xml into your project. (If no Maven projects tab on the right *View -> Tool Windows -> Maven Projects*)
-
-**Eclipse**
-
-*File -> Import -> Maven -> Existing Maven Projects -> Browse and select theDefault folder or your own mod that follows the structure of the ExampleMod*.
-
-You may need to right-click your project *Maven -> Update Project -> Select your current project -> Click OK*.
 
 ## Setting up Slay The Spire for Mods
 If you have played Slay the Spire with mods or have set up ModTheSpire, you can skip this step. In this tutorial, the directory that Slay the Spire is installed in will be refered to as the Slay the Spire directory.

@@ -18,7 +18,9 @@ public class DefaultCommonPower extends CustomCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     * 
+     *
+     * In order to understand how image paths work, go to defaultmod/DefaultMod.java, Line ~140 (Image path section).
+     *
      * Hold Place Gain 1(2) Keywords(s).
      */
 
@@ -27,7 +29,7 @@ public class DefaultCommonPower extends CustomCard {
 
     public static final String ID = defaultmod.DefaultMod.makeID("DefaultCommonPower");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = DefaultMod.makePath(DefaultMod.DEFAULT_COMMON_POWER);
+    public static final String IMG = DefaultMod.makePath(DefaultMod.DEFAULT_UNCOMMON_POWER);
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;

@@ -31,20 +31,26 @@ import defaultmod.characters.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+//TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
+// Right click the package -> Refactor -> Rename, and name it whatever you wanna call your mod.
+// Sroll to the very bottom of this file. Change the id string from "theDefault:" to "yourModName:"
+// or whatever your heart desires (don't use spaces).
+
+//TODO: To understand how image paths work, check the image path section at line ~140, as they are a bit special.
+// Start with DefaultCommonAttack - it is the most commented card right now.
+
 /*
- * IF YOU DON'T WANNA READ ANYTHING JUST READ THE LAST LINE!
- *
+ * With that out of the way:
  * Welcome to this mildly over-commented Slay the Spire modding base. 
  * Use it to make your own mod of any type. - If you want to add any standard in-game content (Character, 
  * cards, relics), this is a good starting point.
- * It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, 1 relic, etc.
- * If you're new to modding, I highly recommend going though the BaseMod wiki for whatever you wish to add 
- * https://github.com/daviscook477/BaseMod/wiki and work your way through your made with this base.
+ * It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, 1 relic, etc
+ * If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add
+ * https://github.com/daviscook477/BaseMod/wiki - work your way through with this base.
  * Feel free to use this in any way you like, of course. Happy modding!
- *
- * THE FIRST THING YOU SHOULD DO IS RENAME YOUR PACKAGE AND ID NAMES!!!
  */
 
+//NOTE: ASD
 @SpireInitializer
 public class DefaultMod
         implements EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber,
@@ -67,7 +73,10 @@ public class DefaultMod
         public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
         public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
         
-    // Image folder name
+    // Image folder name - This is where your image folder is.
+    // This is good practice in case you ever need to move/rename it without screwing up every single path.
+    // In this case, it's resources/defaultModResources/images (and then, say, /cards/Strike.png).
+
     private static final String DEFAULT_MOD_ASSETS_FOLDER = "defaultModResources/images";
 
     // Card backgrounds
@@ -121,15 +130,22 @@ public class DefaultMod
 
     // =============== /INPUT TEXTURE LOCATION/ =================
 
+    // =============== IMAGE PATHS =================
+
+    // This is the command that will link up your core assets folder (line 89) ("defaultModResources/images")
+    // together with the card image (everything above) ("cards/Attack.png") and it puts a "/" between them.
+    // When adding a card image, you can, in fact, just do "defaultModResources/images/cards/Attack.png" in the actual card file.
+    // This however, is good practice in case you want to change your "/images" folder at any point in time.
+
     /**
-     * Makes a full path for a resource path
-     * 
      * @param resource the resource, must *NOT* have a leading "/"
      * @return the full path
      */
     public static final String makePath(String resource) {
         return DEFAULT_MOD_ASSETS_FOLDER + "/" + resource;
     }
+
+    // =============== /IMAGE PATHS/ =================
 
     // =============== SUBSCRIBE, CREATE THE COLOR, INITIALIZE =================
 

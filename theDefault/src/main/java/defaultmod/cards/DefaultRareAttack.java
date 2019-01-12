@@ -20,7 +20,9 @@ public class DefaultRareAttack extends CustomCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     * 
+     *
+     * In order to understand how image paths work, go to defaultmod/DefaultMod.java, Line ~140 (Image path section).
+     *
      * TOUCH Deal 30(35) damage.
      */
 
