@@ -31,9 +31,9 @@ import defaultmod.characters.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-//TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
+//TODO: FIRST THING'S FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
 // Right click the package -> Refactor -> Rename, and name it whatever you wanna call your mod.
-// Sroll to the very bottom of this file. Change the id string from "theDefault:" to "yourModName:"
+// Scroll to the very bottom of this file. Change the id string from "theDefault:" to "yourModName:"
 // or whatever your heart desires (don't use spaces).
 
 //TODO: To understand how image paths work, check the image path section at line ~140, as they are a bit special.
@@ -256,11 +256,11 @@ public class DefaultMod
 
     @Override
     public void receiveEditCards() {
-        logger.info("Adding Variables");
+        logger.info("Adding variables");
         // Add the Custom Dynamic Variables
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         
-        logger.info("Adding Cards");
+        logger.info("Adding cards");
         // Add the cards
         BaseMod.addCard(new DefaultCommonAttack());
         BaseMod.addCard(new DefaultAttackWithVariable());
@@ -286,7 +286,7 @@ public class DefaultMod
         UnlockTracker.unlockCard(DefaultRareSkill.ID);
         UnlockTracker.unlockCard(DefaultRarePower.ID);
 
-        logger.info("Cards - added!");
+        logger.info("Done adding cards!");
     }
 
     // ================ /ADD CARDS/ ===================
@@ -297,7 +297,7 @@ public class DefaultMod
 
     @Override
     public void receiveEditStrings() {
-        logger.info("Begin editing strings");
+        logger.info("Beginning to edit strings");
 
         // CardStrings
         BaseMod.loadCustomStringsFile(CardStrings.class,
