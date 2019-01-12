@@ -40,17 +40,17 @@ import defaultmod.characters.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+//TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE! RENAME YOUR ID NAMES FIRST-THING ONCE YOU START MAKING THINGS (CARDS/RELICS/ETC.)!!!
+// Right click the package -> Refactor -> Rename, and name it whatever you wanna call your mod.
+
 /*
- * FIRST THINGS FIRST: RENAME YOUR PACKAGE! RENAME YOUR ID NAMES FIRST-THING ONCE YOU START MAKING THINGS (CARDS/RELICS/ETC.)!!!
- * Right click the package -> Refactor -> Rename, and name it whatever you wanna call your mod.
- *
  * With that out of the way:
  * Welcome to this mildly over-commented Slay the Spire modding base. 
  * Use it to make your own mod of any type. - If you want to add any standard in-game content (Character, 
  * cards, relics), this is a good starting point.
  * It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, 1 relic, etc.
- * If you're new to modding, I highly recommend going though the BaseMod wiki for whatever you wish to add 
- * https://github.com/daviscook477/BaseMod/wiki  and work your way thought your made with this base. 
+ * If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add
+ * https://github.com/daviscook477/BaseMod/wiki - work your way thought with this base.
  * Feel free to use this in any way you like, of course. Happy modding!
  *
  */
