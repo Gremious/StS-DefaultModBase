@@ -5,6 +5,6 @@
 },
 "theDefault:RarePower": {
         "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["At the start of your turn TOUCH ", " enemy." , " enemies."]
+        "DESCRIPTIONS": ["At the start of your turn, TOUCH ", " enemy." , " enemies."]
 }
 }
