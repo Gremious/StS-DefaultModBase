@@ -93,7 +93,7 @@ IntelliJ comes with it's own internal decompiler. Once you set your lib folder c
 
 ![](https://i.imgur.com/OausOaf.png)
 
-Finally, you can also find the original declaration of something already in the cdeo by right clicking on it and selecting `Go to -> Declaration`. 
+Finally, you can also find the original declaration of something already in the code by right clicking on it and selecting `Go to -> Declaration`. 
 
 If you do not wish to use the built-in decompiler, follow [this guide](https://github.com/daviscook477/BaseMod/wiki/Decompiling-Your-Game) instead.
 
