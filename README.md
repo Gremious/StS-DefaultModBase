@@ -68,7 +68,11 @@ Copy `BaseMod.jar` from your `lib` folder into your `mods` folder in your Slay t
 ### Package the Default Mod
 If you have followed the steps so far, you should be able to package this mod that you downloaded from this repo.
 
-Open a terminal in the `theDefault` directory and run `mvn package`. This should package DefaultMod into `DefaultMod.jar`. You can find it in `[Whatever folder you extracted the zip into]/mods/DefaultMod.jar`. If not, just go 2 directories back from `theDefault` folder (the one with pom.xml in it) and there should be a mods folder there.
+In IntelliJ, open the Maven project tab and select the "Execute maven goal" button.
+<img src=" https://i.imgur.com/SdqNuKs.png">
+In the command line field, type `package`.
+
+You can now find your mod in `[Whatever folder you extracted the zip into]/mods/DefaultMod.jar`. If not, just go 2 directories back from `theDefault` folder (the one with pom.xml in it) and there should be a mods folder there. If you still can't find it, check at the bottom of your pom.xml.
 
 Copy `DefaultMod.jar` into the `mods` folder in your Slay the Spire directory.
 
