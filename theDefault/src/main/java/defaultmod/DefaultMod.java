@@ -7,10 +7,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.localization.PotionStrings;
-import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.shop.ShopScreen;
 import com.megacrit.cardcrawl.shop.StorePotion;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
@@ -323,6 +320,10 @@ public class DefaultMod
         // PotionStrings
         BaseMod.loadCustomStringsFile(PotionStrings.class,
                 "defaultModResources/localization/DefaultMod-Potion-Strings.json");
+
+        // CharacterStrings
+        BaseMod.loadCustomStringsFile(CharacterStrings.class,
+                "defaultModResources/localization/DefaultMod-Character-Strings.json");
 
         logger.info("Done edittting strings");
     }

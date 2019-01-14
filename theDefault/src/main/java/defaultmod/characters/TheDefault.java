@@ -1,10 +1,7 @@
 package defaultmod.characters;
 
-import java.util.ArrayList;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
+import basemod.abstracts.CustomPlayer;
+import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -17,20 +14,20 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
+import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-
-import basemod.abstracts.CustomPlayer;
-import basemod.animations.SpriterAnimation;
 import defaultmod.DefaultMod;
 import defaultmod.cards.*;
-import defaultmod.patches.*;
+import defaultmod.patches.AbstractCardEnum;
 import defaultmod.relics.PlaceholderRelic;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import basemod.animations.AbstractAnimation;
-import basemod.animations.SpriterAnimation;
+import java.util.ArrayList;
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
+//All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-Character-Strings.json in the resources
 
 public class TheDefault extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
@@ -46,7 +43,17 @@ public class TheDefault extends CustomPlayer {
 
     // =============== /BASE STATS/ =================
 
-    
+
+    // =============== STRINGS =================
+
+    private static final String ID = "theDefault:DefaultCharacter";
+    private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
+    private static final String[] NAMES = characterStrings.NAMES;
+    private static final String[] TEXT = characterStrings.TEXT;
+
+    // =============== /STRINGS/ =================
+
+
     // =============== TEXTURES OF BIG ENERGY ORB ===============
 
     public static final String[] orbTextures = {
@@ -60,11 +67,11 @@ public class TheDefault extends CustomPlayer {
             "defaultModResources/images/char/defaultCharacter/orb/layer2d.png",
             "defaultModResources/images/char/defaultCharacter/orb/layer3d.png",
             "defaultModResources/images/char/defaultCharacter/orb/layer4d.png",
-            "defaultModResources/images/char/defaultCharacter/orb/layer5d.png", };
-    
+            "defaultModResources/images/char/defaultCharacter/orb/layer5d.png",};
+
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
 
-    
+
     // =============== CHARACTER CLASS START =================
 
     public TheDefault(String name, PlayerClass setClass) {
@@ -73,7 +80,7 @@ public class TheDefault extends CustomPlayer {
                 new SpriterAnimation(
                         "defaultModResources/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
 
-        
+
         // =============== TEXTURES, ENERGY, LOADOUT =================  
 
         initializeClass(null, // required call to load textures and setup energy/loadout
@@ -84,7 +91,7 @@ public class TheDefault extends CustomPlayer {
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
 
-        
+
         // =============== ANIMATIONS =================  
 
         this.loadAnimation(
@@ -96,7 +103,7 @@ public class TheDefault extends CustomPlayer {
 
         // =============== /ANIMATIONS/ =================
 
-        
+
         // =============== TEXT BUBBLE LOCATION =================
 
         this.dialogX = (this.drawX + 0.0F * Settings.scale); // set location for text bubbles
@@ -108,12 +115,10 @@ public class TheDefault extends CustomPlayer {
 
     // =============== /CHARACTER CLASS END/ =================
 
-    
-    // Starting description and loadout
+
     @Override
     public CharSelectInfo getLoadout() {
-        return new CharSelectInfo("The Default",
-                "Placeholder description text. NL " + "Second line of description text. ",
+        return new CharSelectInfo(NAMES[0], TEXT[0],
                 STARTING_HP, MAX_HP, ORB_SLOTS, STARTING_GOLD, CARD_DRAW, this, getStartingRelics(),
                 getStartingDeck(), false);
     }
@@ -136,7 +141,7 @@ public class TheDefault extends CustomPlayer {
         retVal.add(DefaultCommonPower.ID);
         retVal.add(DefaultUncommonPower.ID);
         retVal.add(DefaultRarePower.ID);
-        
+
         retVal.add(DefaultAttackWithVariable.ID);
 
         return retVal;
@@ -224,19 +229,19 @@ public class TheDefault extends CustomPlayer {
     }
 
     // Should return a Color object to be used as screen tint effect when your
-    // character attacks the heart.
+    // character attacks the heart. You can also use Color.RED or so.
     @Override
-    public Color getSlashAttackColor() {
-        return defaultmod.DefaultMod.DEFAULT_GRAY;
-    }
+    public Color getSlashAttackColor() { return defaultmod.DefaultMod.DEFAULT_GRAY; }
 
     // Should return an AttackEffect array of any size greater than 0. These effects
     // will be played in sequence as your character's finishing combo on the heart.
     // Attack effects are the same as used in damage action and the like.
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
-        return new AbstractGameAction.AttackEffect[] {
-                AbstractGameAction.AttackEffect.BLUNT_HEAVY };
+        return new AbstractGameAction.AttackEffect[]{
+                AbstractGameAction.AttackEffect.BLUNT_HEAVY,
+                AbstractGameAction.AttackEffect.BLUNT_HEAVY,
+                AbstractGameAction.AttackEffect.BLUNT_HEAVY};
     }
 
     // Should return a string containing what text is shown when your character is
@@ -244,7 +249,7 @@ public class TheDefault extends CustomPlayer {
     // core to its maximum..."
     @Override
     public String getSpireHeartText() {
-        return "You touch the heart.";
+        return TEXT[1];
     }
 
     // The vampire events refer to the base game characters as "brother", "sister",
@@ -252,7 +257,7 @@ public class TheDefault extends CustomPlayer {
     // the full text that will be displayed as the first screen of the vampires event.
     @Override
     public String getVampireText() {
-        return "Navigating an unlit street, you come across several hooded figures in the midst of some dark ritual. As you approach, they turn to you in eerie unison. The tallest among them bares fanged teeth and extends a long, pale hand towards you. NL ~\"Join~ ~us~ ~basic~ ~one,~ ~and~ ~feel~ ~the~ ~warmth~ ~of~ ~the~ ~Spire.\"~";
+        return TEXT[2];
     }
 
 }
