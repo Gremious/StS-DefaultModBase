@@ -83,11 +83,19 @@ You should be able to run Slay the Spire by running `MTS.cmd` (`MTS.sh` on a mac
 
 ### What Other Listeners Exist
 
-Mods can be do w ahole lot of things. A full list of listeners can be found in `src/main/java/basemod/interfaces` in BaseMod.
+Mods do a whole lot of things. A full list of listeners can be found in `src/main/java/basemod/interfaces` in BaseMod.
 
 ### Looking at the Game's Source Code
 
-What else can I do with `AbstractCard` or `AbstractDungeon`? How does the Silent's `Choke` really work? How does Slay the Spire work under the hood. A lot of these questions can be answered by looking at the game's source code. You can do this by decompiling the game. Follow [this guide](https://github.com/daviscook477/BaseMod/wiki/Decompiling-Your-Game) to do that.
+What else can I do with `AbstractCard` or `AbstractDungeon`? How does the Silent's `Choke` really work? How does Slay the Spire work under the hood. A lot of these questions can be answered by looking at the game's source code. You can do this by decompiling the game. 
+
+IntelliJ comes with it's own internal decompiler. Once you set your lib folder correctly and start up the mod, you will see the `External Libraries` folder on the left-hand side. Basemod and the Slay the Spire's `Desktop-1-0.jar` we put into our lib folder are both there, and can simply be oppened and explored. Alternatively, you can always search up the card/class you are looking for in intelliJ's class search (`ctrl+shift+A` and switch to the class tab with `tab` or `shift+tab`). 
+
+![](https://i.imgur.com/OausOaf.png)
+
+Finally, you can also find the original declaration of something already in the cdeo by right clicking on it and selecting `Go to -> Declaration`. 
+
+If you do not wish to use the built-in decompiler, follow [this guide](https://github.com/daviscook477/BaseMod/wiki/Decompiling-Your-Game) instead.
 
 ### Can I Make My Own Listener
 
