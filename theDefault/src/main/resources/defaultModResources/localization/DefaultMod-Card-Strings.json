@@ -17,11 +17,11 @@
 		"UPGRADE_DESCRIPTION": "Gain !M! Keywords."
 	},
 	"theDefault:DefaultUncommonAttack": {
-		"NAME": "Big slap",
+		"NAME": "Big Slap",
 		"DESCRIPTION": "Deal !D! Damage."
 	},
 	"theDefault:DefaultUncommonSkill": {
-		"NAME": "A better defend",
+		"NAME": "A Better Defend",
 		"DESCRIPTION": "Gain !B! Plated Armor. Affected by Dexterity."
 	},
 	"theDefault:DefaultUncommonPower": {
@@ -34,7 +34,7 @@
 		"DESCRIPTION": "Deal !D! Damage."
 	},
 	"theDefault:DefaultRareSkill": {
-		"NAME": "for each loop x2",
+		"NAME": "For Each Loop x2",
 		"DESCRIPTION": "Apply !M! vulnerable to all enemies, 2 times.",
 		"UPGRADE_DESCRIPTION": "Apply !M! vulnerable to all enemies, 3 times."
 	},

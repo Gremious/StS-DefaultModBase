@@ -30,7 +30,7 @@ public class PlaceholderRelic extends CustomRelic {
         flash();
     }
 
-    // Gain 1 energy on eqip.
+    // Gain 1 energy on equip.
     @Override
     public void onEquip() {
         AbstractDungeon.player.energy.energyMaster += 1;

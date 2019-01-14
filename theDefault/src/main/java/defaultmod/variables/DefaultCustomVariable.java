@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public class DefaultCustomVariable extends DynamicVariable
 {   // Custom Dynamic Variables are what you do if you need your card text to display a cool, changing number that the base game doesn't provide.
-    // If the !D! and !B! and etc. are not enough for you, this is how you make your own one. It Changes In Real Time! 
+    // If the !D! and !B! (for Damage and Block) etc. are not enough for you, this is how you make your own one. It Changes In Real Time!
   
     
     // This is what you type in your card string to make the variable show up. Remember to encase it in "!"'s in the json!
