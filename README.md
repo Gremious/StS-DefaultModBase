@@ -69,7 +69,8 @@ Copy `BaseMod.jar` from your `lib` folder into your `mods` folder in your Slay t
 If you have followed the steps so far, you should be able to package this mod that you downloaded from this repo.
 
 In IntelliJ, open the Maven project tab and select the "Execute maven goal" button.
-![](https://i.imgur.com/SdqNuKs.png)
+![](https://i.imgur.com/Axy3tr0.png)
+
 In the command line field, type `package`.
 
 You can now find your mod in `[Whatever folder you extracted the zip into]/mods/DefaultMod.jar`. If not, just go 2 directories back from `theDefault` folder (the one with pom.xml in it) and there should be a mods folder there. If you still can't find it, check at the bottom of your pom.xml.
