@@ -315,7 +315,7 @@ public class DefaultMod
         BaseMod.loadCustomStringsFile(PotionStrings.class,
                 "defaultModResources/localization/DefaultMod-Potion-Strings.json");
 
-        logger.info("Done editing strings");
+        logger.info("Done edittting strings");
     }
 
     // ================ /LOAD THE TEXT/ ===================
