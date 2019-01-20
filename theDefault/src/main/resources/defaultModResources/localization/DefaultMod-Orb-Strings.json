@@ -1,0 +1,10 @@
+{
+  "theDefault:DefaultOrb": {
+    "NAME": "Default Orb",
+    "DESCRIPTION": [
+      "#yPassive: At the start of your turn, deal ",
+      " damage to all enemies. NL #yEvoke: Draw #b",
+      " cards. NL Default Orb is unaffected by #yFocus."
+    ]
+  }
+}

@@ -1,11 +1,15 @@
 {
 	"theDefault:DefaultCommonAttack": {
 		"NAME": "Strike",
-		"DESCRIPTION": "Deal !D! Damage."
+		"DESCRIPTION": "Deal !D! Damage. NL #yThis [#ff0000]Is[] [#ffff00]How[] [#88888]color[] [#88888]works.[]"
 	},
 	"theDefault:DefaultAttackWithVariable": {
 		"NAME": "Special Strike",
-		"DESCRIPTION": "Deal !D! Damage [R] times. NL (Deal !ENERGY_DAMAGE! damage total.)"
+		"DESCRIPTION": "Deal !D! Damage [R] times. NL (Deal !theDefault:ENERGY_DAMAGE! damage total.)"
+	},
+	"theDefault:OrbSkill": {
+		"NAME": "Get Orb",
+		"DESCRIPTION": "Channel 1 Default Orb."
 	},
 	"theDefault:DefaultCommonSkill": {
 		"NAME": "Defend",

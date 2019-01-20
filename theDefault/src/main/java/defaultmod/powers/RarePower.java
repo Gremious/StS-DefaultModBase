@@ -39,8 +39,12 @@ public class RarePower extends AbstractPower {
         AbstractMonster targetMonster = AbstractDungeon.getRandomMonster(); // Declare Target - Random Monster
 
         playCard.freeToPlayOnce = true; //Self Explanatory
-        if (playCard.type != AbstractCard.CardType.POWER)
-            playCard.purgeOnUse = true; // Remove completely on use (Not exhaust)
+
+        if (playCard.type != AbstractCard.CardType.POWER) {
+            playCard.purgeOnUse = true;
+        }
+            // Remove completely on use (Not Exhaust). A note - you don't need the '{}'
+            // in this if statement, as it's just 1 line directly under. You can remove them, if you want.
 
         AbstractDungeon.actionManager.addToBottom(new QueueCardAction(playCard, targetMonster)); // Play the card on the target.
     }

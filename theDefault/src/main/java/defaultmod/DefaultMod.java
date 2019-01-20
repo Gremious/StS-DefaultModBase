@@ -1,49 +1,36 @@
 package defaultmod;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.helpers.CardHelper;
-import com.megacrit.cardcrawl.localization.*;
-import com.megacrit.cardcrawl.shop.ShopScreen;
-import com.megacrit.cardcrawl.shop.StorePotion;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
-
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-
 import basemod.BaseMod;
 import basemod.ModLabel;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
-import basemod.interfaces.EditCardsSubscriber;
-import basemod.interfaces.EditCharactersSubscriber;
-import basemod.interfaces.EditKeywordsSubscriber;
-import basemod.interfaces.EditRelicsSubscriber;
-import basemod.interfaces.EditStringsSubscriber;
-import basemod.interfaces.PostCreateShopPotionSubscriber;
-import basemod.interfaces.PostInitializeSubscriber;
-
-import defaultmod.potions.*;
-import defaultmod.patches.*;
-import defaultmod.relics.*;
-import defaultmod.variables.*;
+import basemod.interfaces.*;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import defaultmod.cards.*;
-import defaultmod.characters.*;
-
+import defaultmod.characters.TheDefault;
+import defaultmod.patches.AbstractCardEnum;
+import defaultmod.patches.TheDefaultEnum;
+import defaultmod.potions.PlaceholderPotion;
+import defaultmod.relics.PlaceholderRelic;
+import defaultmod.relics.PlaceholderRelic2;
+import defaultmod.variables.DefaultCustomVariable;
+import defaultmod.variables.SecondMagicNumber;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 //TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
-// Right click the package -> Refactor -> Rename, and name it whatever you wanna call your mod.
+// Right click the package (folder with black dot on it. the name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
 // Sroll to the very bottom of this file. Change the id string from "theDefault:" to "yourModName:"
 // or whatever your heart desires (don't use spaces).
 
 //TODO: To understand how image paths work, check the image path section at line ~140, as they are a bit special.
 // Start with DefaultCommonAttack - it is the most commented card right now.
+
 
 /*
  * With that out of the way:
@@ -56,11 +43,13 @@ import org.apache.logging.log4j.Logger;
  * Feel free to use this in any way you like, of course. Happy modding!
  */
 
-//NOTE: ASD
+
 @SpireInitializer
 public class DefaultMod
         implements EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber,
         EditCharactersSubscriber, PostInitializeSubscriber {
+    // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
+    // Making relics? EditRelicsSubscriber. Etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
 
     //This is for the in-game mod settings pannel.
@@ -80,12 +69,13 @@ public class DefaultMod
         public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
         
     // Image folder name - This is where your image folder is.
-    // This is good practice in case you ever need to move/rename it without screwing up every single path.
-    // In this case, it's resources/defaultModResources/images (and then, say, /cards/Strike.png).
+    // Setting it here is good practice in case you ever need to move/rename it without screwing up every single path.
+    // In this case, the image folder is resources/defaultModResources/images
+    // (and then a specific card would continue to, say, /cards/Strike.png).
 
     private static final String DEFAULT_MOD_ASSETS_FOLDER = "defaultModResources/images";
 
-    // Card backgrounds
+    // Card backgrounds - The actual rectangular card.
     private static final String ATTACK_DEAFULT_GRAY = "512/bg_attack_default_gray.png";
     private static final String POWER_DEAFULT_GRAY = "512/bg_power_default_gray.png";
     private static final String SKILL_DEAFULT_GRAY = "512/bg_skill_default_gray.png";
@@ -127,10 +117,10 @@ public class DefaultMod
     public static final String THE_DEFAULT_SHOULDER_2 = "char/defaultCharacter/shoulder2.png";
     public static final String THE_DEFAULT_CORPSE = "char/defaultCharacter/corpse.png";
 
-    //Mod Badge
+    //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "Badge.png";
 
-    // Animations atlas and JSON files
+    // Atlas and JSON files for the Animations
     public static final String THE_DEFAULT_SKELETON_ATLAS = "char/defaultCharacter/skeleton.atlas";
     public static final String THE_DEFAULT_SKELETON_JSON = "char/defaultCharacter/skeleton.json";
 
@@ -178,7 +168,7 @@ public class DefaultMod
     public static void initialize() {
         logger.info("========================= Initializing Default Mod. Hi. =========================");
         DefaultMod defaultmod = new DefaultMod();
-        logger.info("========================= /Default Mod Initialized/ =========================");
+        logger.info("========================= /Hello World./ =========================");
     }
 
     // ============== /SUBSCRIBE, CREATE THE COLOR, INITIALIZE/ =================
@@ -188,13 +178,13 @@ public class DefaultMod
 
     @Override
     public void receiveEditCharacters() {
-        logger.info("begin editing characters. " + "Add " + TheDefaultEnum.THE_DEFAULT.toString());
+        logger.info("begin adding characters. " + "Add " + TheDefaultEnum.THE_DEFAULT.toString());
 
         BaseMod.addCharacter(new TheDefault("the Default", TheDefaultEnum.THE_DEFAULT),
                 makePath(THE_DEFAULT_BUTTON), makePath(THE_DEFAULT_PORTRAIT), TheDefaultEnum.THE_DEFAULT);
         
         receiveEditPotions();
-        logger.info("done editing characters");
+        logger.info("Added " + TheDefaultEnum.THE_DEFAULT.toString());
     }
 
     // =============== /LOAD THE CHARACTER/ =================
@@ -212,7 +202,7 @@ public class DefaultMod
         
         // Create the Mod Menu
         ModPanel settingsPanel = new ModPanel();
-        settingsPanel.addUIElement(new ModLabel("DefaultMod doesn't have any settings!", 400.0f, 700.0f,
+        settingsPanel.addUIElement(new ModLabel("DefaultMod doesn't have any settings! An example of those may come later.", 400.0f, 700.0f,
                 settingsPanel, (me) -> {
                 }));
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
@@ -230,7 +220,9 @@ public class DefaultMod
     public void receiveEditPotions() {
         logger.info("begin editing potions");
        
-        // Class Specific Potion If you want your potion to not be class-specific, just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT")
+        // Class Specific Potion. If you want your potion to not be class-specific,
+        // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
+        // Remember, you can press ctrl+P inside parentheses like addPotions)
         BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_lIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheDefaultEnum.THE_DEFAULT);
       
         logger.info("end editing potions");
@@ -262,10 +254,11 @@ public class DefaultMod
 
     @Override
     public void receiveEditCards() {
-        logger.info("Add Variables");
-        // Add the Custom Dynamic Variables
+        logger.info("Add variabls");
+        // Add the Custom Dynamic variabls
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
-        
+        BaseMod.addDynamicVariable(new SecondMagicNumber());
+
         logger.info("Add Cards");
         // Add the cards
         BaseMod.addCard(new DefaultCommonAttack());
@@ -325,6 +318,10 @@ public class DefaultMod
         BaseMod.loadCustomStringsFile(CharacterStrings.class,
                 "defaultModResources/localization/DefaultMod-Character-Strings.json");
 
+        // OrbStrings
+        BaseMod.loadCustomStringsFile(OrbStrings.class,
+                "defaultModResources/localization/DefaultMod-Orb-Strings.json");
+
         logger.info("Done edittting strings");
     }
 
@@ -347,4 +344,5 @@ public class DefaultMod
         return "theDefault:" + idText;
     }
 
+//TODO: (this is my own personal one shh) Make the psd files recolor a colorless card rather than a yellow one, so it's cleaner.
 }

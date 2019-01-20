@@ -49,6 +49,11 @@ public class DefaultCommonPower extends CustomCard {
     private static final int MAGIC = 1;
     private static final int UPGRADE_MAGIC = 1;
 
+    // Hey want a second magic/damage/block/unique number??? Great!
+    // Go check out DefaultAttackWithVariable and defaultmod.variable.DefaultCustomVariable
+    // that's how you get your own custom variable that you can use for anything you like.
+    // Feel free to explore other mods to see what variabls they personally have and create your own ones.
+
     // /STAT DECLARATION/
 
 

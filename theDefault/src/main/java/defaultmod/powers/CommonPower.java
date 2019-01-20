@@ -36,6 +36,12 @@ public class CommonPower extends AbstractPower {
 
     }
 
+    // Wanna find out when else powers can trigger aside from onUseCard or atEndOfTurn?]
+    // Ctrl+click on AbstractPower at the top, and use the built-in intelliJ decompiler to have a read through!
+    // (This is the equivalent of doing Right Click -> Go to -> Declaration, or, if you're full keyboard - Ctrl + B)
+    // This applies to absolutely anything from AbstractDungeon to Relics!
+    // StSlib also has additional power hooks like OnCardDraw or OnMyBlockBroken, so check it out if the default ones aren't enough
+
     // On use card, apply (amount) of dexterity. (Go to the actual power card for the ammount.)
     @Override
     public void onUseCard(final AbstractCard card, final UseCardAction action) {
@@ -49,7 +55,11 @@ public class CommonPower extends AbstractPower {
     public void atEndOfTurn(final boolean isPlayer) {
         int count = 0;
         for (final AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
-            ++count;
+            // This is how you iterate through arrays (like the one above) and card groups like
+            // "AbstractDungeon.player.masterDeck.getAttacks().group" - every attack in your actual master deck.
+            // Read up on java's enhanced for-each loops if you want to know more on how these work.
+
+            ++count; // At the end of your turn, increase the count by 1 for each card played this turn.
         }
 
         if (count > 0) {
@@ -57,6 +67,7 @@ public class CommonPower extends AbstractPower {
             for (int i = 0; i < count; ++i) {
                 AbstractDungeon.actionManager.addToBottom(
                         new ReducePowerAction(this.owner, this.owner, "Dexterity", this.amount));
+                // Reduce the power by 1 for each count - i.e. for each card played this turn.
             }
         }
 
