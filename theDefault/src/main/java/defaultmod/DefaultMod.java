@@ -19,7 +19,7 @@ import defaultmod.potions.PlaceholderPotion;
 import defaultmod.relics.PlaceholderRelic;
 import defaultmod.relics.PlaceholderRelic2;
 import defaultmod.variables.DefaultCustomVariable;
-import defaultmod.variables.SecondMagicNumber;
+import defaultmod.variables.DefaultSecondMagicNumber;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -67,7 +67,8 @@ public class DefaultMod
         public static final Color PLACEHOLDER_POTION_lIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red 
         public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
         public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
-        
+
+
     // Image folder name - This is where your image folder is.
     // Setting it here is good practice in case you ever need to move/rename it without screwing up every single path.
     // In this case, the image folder is resources/defaultModResources/images
@@ -109,7 +110,10 @@ public class DefaultMod
 
     public static final String PLACEHOLDER_RELIC_2 = "relics/placeholder_relic2.png";
     public static final String PLACEHOLDER_RELIC_OUTLINE_2 = "relics/outline/placeholder_relic2.png";
-    
+
+    // Orb images
+    public static final String DEFAULT_ORB = "orbs/default_orb.png";
+
     // Character assets
     private static final String THE_DEFAULT_BUTTON = "charSelect/DefaultCharacterButton.png";
     private static final String THE_DEFAULT_PORTRAIT = "charSelect/DeafultCharacterPortraitBG.png";
@@ -257,10 +261,12 @@ public class DefaultMod
         logger.info("Add variabls");
         // Add the Custom Dynamic variabls
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
-        BaseMod.addDynamicVariable(new SecondMagicNumber());
+        BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
 
         logger.info("Add Cards");
         // Add the cards
+        BaseMod.addCard(new OrbSkill());
+        BaseMod.addCard(new DefaultSecondMagicNumberSkill());
         BaseMod.addCard(new DefaultCommonAttack());
         BaseMod.addCard(new DefaultAttackWithVariable());
         BaseMod.addCard(new DefaultCommonSkill());
@@ -274,6 +280,8 @@ public class DefaultMod
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
+        UnlockTracker.unlockCard(OrbSkill.ID);
+        UnlockTracker.unlockCard(DefaultSecondMagicNumberSkill.ID);
         UnlockTracker.unlockCard(DefaultCommonAttack.ID);
         UnlockTracker.unlockCard(DefaultAttackWithVariable.ID);
         UnlockTracker.unlockCard(DefaultCommonSkill.ID);
@@ -287,6 +295,10 @@ public class DefaultMod
 
         logger.info("Cards - added!");
     }
+
+    // There are better ways to do this than listing every single individual card, but I do not want to complicate things
+    // in a "tutorial" mod. This will do and it's completely ok to use. If you ever want to clean up and
+    // shorten all the imports, go look take a look at other mods, such Conspire or Hubris.
 
     // ================ /ADD CARDS/ ===================
 

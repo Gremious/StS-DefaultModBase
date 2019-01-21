@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import defaultmod.cards.AbstractDefaultCard;
 
-public class SecondMagicNumber extends DynamicVariable {
+public class DefaultSecondMagicNumber extends DynamicVariable {
 
     //For in-depth comments, check the other variable(DefaultCustomVariable). It's nearly identical.
 

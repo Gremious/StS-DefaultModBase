@@ -2,6 +2,8 @@ package defaultmod.cards;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.defect.ChannelAction;
+import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -10,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import defaultmod.DefaultMod;
+import defaultmod.orbs.DefaultOrb;
 import defaultmod.patches.AbstractCardEnum;
 
 public class OrbSkill extends CustomCard {
@@ -17,7 +20,7 @@ public class OrbSkill extends CustomCard {
     /*
      * Orb time.
      *
-     * Channel 1 Default Orb. Channel 1 Random Orb. Evoke your next orb.
+     * Channel 1 Default Orb.
      */
 
     // TEXT DECLARATION
@@ -45,7 +48,7 @@ public class OrbSkill extends CustomCard {
     private static final int UPGRADE_PLUS_DMG = 2;
 
     // Hey want a second damage/magic/block/unique number??? Great!
-    // Go check out SecondMagicNumber DefaultAttackWithVariable and defaultmod.variable.DefaultCustomVariable
+    // Go check out DefaultSecondMagicNumber DefaultAttackWithVariable and defaultmod.variable.DefaultCustomVariable
     // that's how you get your own custom variable that you can use for anything you like.
     // Feel free to explore other mods to see what variables they personally have and create your own ones.
 
@@ -54,15 +57,16 @@ public class OrbSkill extends CustomCard {
     public OrbSkill() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         this.baseDamage = DAMAGE;
+
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager
-                .addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
-                        new DamageInfo(p, this.damage, this.damageTypeForTurn),
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+
+        AbstractDungeon.actionManager.addToBottom(new ChannelAction(new DefaultOrb()));
+
+     //   AbstractDungeon.actionManager.addToBottom(new EvokeOrbAction(this.magicNumber));
     }
 
     // Which card to return when making a copy of this card.
