@@ -1,5 +1,6 @@
 package defaultmod.characters;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
 import com.badlogic.gdx.graphics.Color;
@@ -20,7 +21,9 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import defaultmod.DefaultMod;
 import defaultmod.cards.*;
 import defaultmod.patches.AbstractCardEnum;
+import defaultmod.relics.DefaultClickableRelic;
 import defaultmod.relics.PlaceholderRelic;
+import defaultmod.relics.PlaceholderRelic2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -143,7 +146,8 @@ public class TheDefault extends CustomPlayer {
         retVal.add(DefaultRarePower.ID);
 
         retVal.add(DefaultAttackWithVariable.ID);
-
+        retVal.add(DefaultSecondMagicNumberSkill.ID);
+        retVal.add(OrbSkill.ID);
         return retVal;
     }
 
@@ -152,8 +156,12 @@ public class TheDefault extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
 
         retVal.add(PlaceholderRelic.ID);
+        retVal.add(PlaceholderRelic2.ID);
+        retVal.add(DefaultClickableRelic.ID);
 
         UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
+        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
+        UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
 
         return retVal;
     }
