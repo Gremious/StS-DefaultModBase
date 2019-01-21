@@ -27,8 +27,8 @@ public class DefaultClickableRelic extends CustomRelic implements ClickableRelic
 
     // ID, images, text.
     public static final String ID = DefaultMod.makeID("DefaultClickableRelic");
-    public static final String IMG = DefaultMod.makePath(DefaultMod.PLACEHOLDER_RELIC_2);
-    public static final String OUTLINE = DefaultMod.makePath(DefaultMod.PLACEHOLDER_RELIC_OUTLINE_2);
+    public static final String IMG = DefaultMod.makePath(DefaultMod.DEFAULT_CLICKABLE_RELIC);
+    public static final String OUTLINE = DefaultMod.makePath(DefaultMod.DEFAULT_CLICKABLE_RELIC_OUTLINE);
 
     private boolean usedThisTurn = false;
 

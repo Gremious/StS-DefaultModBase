@@ -112,6 +112,8 @@ public class DefaultMod
     public static final String PLACEHOLDER_RELIC_2 = "relics/placeholder_relic2.png";
     public static final String PLACEHOLDER_RELIC_OUTLINE_2 = "relics/outline/placeholder_relic2.png";
 
+    public static final String DEFAULT_CLICKABLE_RELIC = "relics/default_clickable_relic.png";
+    public static final String DEFAULT_CLICKABLE_RELIC_OUTLINE = "relics/outline/default_clickable_relic.png";
     // Orb images
     public static final String DEFAULT_ORB = "orbs/default_orb.png";
 
