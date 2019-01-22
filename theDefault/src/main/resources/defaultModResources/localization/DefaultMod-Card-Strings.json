@@ -1,11 +1,11 @@
 {
 	"theDefault:DefaultCommonAttack": {
 		"NAME": "Strike",
-		"DESCRIPTION": "Deal !D! Damage."
+		"DESCRIPTION": "Deal !D! damage."
 	},
 	"theDefault:DefaultAttackWithVariable": {
 		"NAME": "Special Strike",
-		"DESCRIPTION": "Deal !D! Damage [R] times. NL (Deal !ENERGY_DAMAGE! damage total.)"
+		"DESCRIPTION": "Deal !D! damage [E] times. NL (Deal !ENERGY_DAMAGE! damage total.)"
 	},
 	"theDefault:DefaultCommonSkill": {
 		"NAME": "Defend",
@@ -18,7 +18,7 @@
 	},
 	"theDefault:DefaultUncommonAttack": {
 		"NAME": "Big Slap",
-		"DESCRIPTION": "Deal !D! Damage."
+		"DESCRIPTION": "Deal !D! damage."
 	},
 	"theDefault:DefaultUncommonSkill": {
 		"NAME": "A Better Defend",
@@ -31,7 +31,7 @@
 	},
 	"theDefault:DefaultRareAttack": {
 		"NAME": "TOUCH",
-		"DESCRIPTION": "Deal !D! Damage."
+		"DESCRIPTION": "Deal !D! damage."
 	},
 	"theDefault:DefaultRareSkill": {
 		"NAME": "For Each Loop x2",
