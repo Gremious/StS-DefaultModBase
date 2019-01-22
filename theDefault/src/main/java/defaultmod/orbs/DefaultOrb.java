@@ -37,8 +37,8 @@ public class DefaultOrb extends AbstractOrb {
         this.img = ImageMaster.loadImage(DefaultMod.makePath(DefaultMod.DEFAULT_ORB));
 
 
-        this.evokeAmount = this.baseEvokeAmount = 2;
-        this.passiveAmount = this.basePassiveAmount = 1;
+        this.evokeAmount = this.baseEvokeAmount = 1;
+        this.passiveAmount = this.basePassiveAmount = 3;
 
         this.updateDescription();
 
@@ -90,6 +90,7 @@ public class DefaultOrb extends AbstractOrb {
         }
     }
 
+    // Render the orb.
     @Override
     public void render(SpriteBatch sb) {
         sb.setColor(new Color(1.0f, 1.0f, 1.0f, this.c.a / 2.0f));
@@ -105,7 +106,7 @@ public class DefaultOrb extends AbstractOrb {
 
     @Override
     public void triggerEvokeAnimation() {
-        CardCrawlGame.sound.play("CARD_BURN", 0.1f);
+        CardCrawlGame.sound.play("TINGSHA", 0.1f);
         AbstractDungeon.effectsQueue.add(new DarkOrbActivateEffect(this.cX, this.cY));
     }
 

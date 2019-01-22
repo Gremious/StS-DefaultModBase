@@ -51,8 +51,6 @@ public class DefaultClickableRelic extends CustomRelic implements ClickableRelic
             this.flash();
             stopPulse();
 
-            AbstractDungeon.actionManager.addToBottom(new SFXAction("TINGSHA"));
-
             AbstractDungeon.actionManager.addToBottom(new TalkAction(true, DESCRIPTIONS[1], 4.0f, 2.0f));
             AbstractDungeon.actionManager.addToBottom(new SFXAction("MONSTER_COLLECTOR_DEBUFF"));
             AbstractDungeon.actionManager.addToBottom(new VFXAction(new CollectorCurseEffect(AbstractDungeon.getRandomMonster().hb.cX, AbstractDungeon.getRandomMonster().hb.cY), 2.0F));
