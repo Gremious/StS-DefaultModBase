@@ -77,6 +77,3 @@ $RECYCLE.BIN/
 
 # Spriter files
 *.autosave.scml
-
-# remove this
-pom.xml
