@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.*;
 import com.megacrit.cardcrawl.monsters.*;
 import com.megacrit.cardcrawl.cards.*;
+import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.*;
 import com.megacrit.cardcrawl.dungeons.*;
 import com.megacrit.cardcrawl.core.*;
@@ -40,9 +41,9 @@ public class UncommonPowerAction extends AbstractGameAction {
         if (energyOnUse != -1) {
             effect = energyOnUse;
         }
-        if (p.hasRelic("Chemical X")) {
+        if (p.hasRelic(ChemicalX.ID)) {
             effect += 2;
-            p.getRelic("Chemical X").flash();
+            p.getRelic(ChemicalX.ID).flash();
         }
         if (upgraded) {
             ++effect;

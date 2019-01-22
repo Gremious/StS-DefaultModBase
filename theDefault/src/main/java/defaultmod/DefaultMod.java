@@ -316,27 +316,27 @@ public class DefaultMod
 
         // CardStrings
         BaseMod.loadCustomStringsFile(CardStrings.class,
-                "defaultModResources/localization/DefaultMod-Card-Strings.json");
+                "defaultModResources/localization/eng/DefaultMod-Card-Strings.json");
 
         // PowerStrings
         BaseMod.loadCustomStringsFile(PowerStrings.class,
-                "defaultModResources/localization/DefaultMod-Power-Strings.json");
+                "defaultModResources/localization/eng/DefaultMod-Power-Strings.json");
 
         // RelicStrings
         BaseMod.loadCustomStringsFile(RelicStrings.class,
-                "defaultModResources/localization/DefaultMod-Relic-Strings.json");
+                "defaultModResources/localization/eng/DefaultMod-Relic-Strings.json");
 
         // PotionStrings
         BaseMod.loadCustomStringsFile(PotionStrings.class,
-                "defaultModResources/localization/DefaultMod-Potion-Strings.json");
+                "defaultModResources/localization/eng/DefaultMod-Potion-Strings.json");
 
         // CharacterStrings
         BaseMod.loadCustomStringsFile(CharacterStrings.class,
-                "defaultModResources/localization/DefaultMod-Character-Strings.json");
+                "defaultModResources/localization/eng/DefaultMod-Character-Strings.json");
 
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,
-                "defaultModResources/localization/DefaultMod-Orb-Strings.json");
+                "defaultModResources/localization/eng/DefaultMod-Orb-Strings.json");
 
         logger.info("Done edittting strings");
     }
