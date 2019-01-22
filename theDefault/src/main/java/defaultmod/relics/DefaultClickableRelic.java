@@ -48,7 +48,7 @@ public class DefaultClickableRelic extends CustomRelic implements ClickableRelic
         }
         if (AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) { // Only if you're in combat
             usedThisTurn = true; // Set relic as "Used this turn"
-            this.flash(); // Flash
+            flash(); // Flash
             stopPulse(); // And stop the pulsing animation (which is started in atPreBattle() below)
 
             AbstractDungeon.actionManager.addToBottom(new TalkAction(true, DESCRIPTIONS[1], 4.0f, 2.0f)); // Player speech bubble saying "YOU ARE MINE!" (See relic strings)

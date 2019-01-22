@@ -16,6 +16,7 @@ import defaultmod.characters.TheDefault;
 import defaultmod.patches.AbstractCardEnum;
 import defaultmod.patches.TheDefaultEnum;
 import defaultmod.potions.PlaceholderPotion;
+import defaultmod.relics.DefaultClickableRelic;
 import defaultmod.relics.PlaceholderRelic;
 import defaultmod.relics.PlaceholderRelic2;
 import defaultmod.variables.DefaultCustomVariable;
@@ -243,6 +244,7 @@ public class DefaultMod
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
         BaseMod.addRelicToCustomPool(new PlaceholderRelic(), AbstractCardEnum.DEFAULT_GRAY);
+        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), AbstractCardEnum.DEFAULT_GRAY);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
