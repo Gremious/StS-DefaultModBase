@@ -56,7 +56,7 @@ public class DefaultRareAttack extends CustomCard {
     
     public DefaultRareAttack() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        this.baseDamage = DAMAGE;
+        baseDamage = DAMAGE;
     }
 
     
@@ -69,7 +69,7 @@ public class DefaultRareAttack extends CustomCard {
         }
         AbstractDungeon.actionManager
         .addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
-                new DamageInfo(p, this.damage, this.damageTypeForTurn),
+                new DamageInfo(p, damage, damageTypeForTurn),
                 AbstractGameAction.AttackEffect.NONE));
 
     }
@@ -83,9 +83,9 @@ public class DefaultRareAttack extends CustomCard {
     //Upgraded stats.
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
-            this.upgradeDamage(UPGRADE_PLUS_DMG);
+        if (!upgraded) {
+            upgradeName();
+            upgradeDamage(UPGRADE_PLUS_DMG);
         }
     }
 }

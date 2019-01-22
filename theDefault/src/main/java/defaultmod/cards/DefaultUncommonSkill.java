@@ -53,14 +53,14 @@ public class DefaultUncommonSkill extends CustomCard {
     
     public DefaultUncommonSkill() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        this.baseBlock = BLOCK;
+        baseBlock = BLOCK;
     }
     
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(p, p, new PlatedArmorPower(p, this.block), this.block));
+                new ApplyPowerAction(p, p, new PlatedArmorPower(p, block), block));
     }
 
     // Which card to return when making a copy of this card.
@@ -72,11 +72,11 @@ public class DefaultUncommonSkill extends CustomCard {
     // Upgraded stats.
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
-            this.upgradeBlock(UPGRADE_PLUS_BLOCK);
-            this.upgradeBaseCost(UPGRADE_REDUCED_COST);
-            this.initializeDescription();
+        if (!upgraded) {
+            upgradeName();
+            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            upgradeBaseCost(UPGRADE_REDUCED_COST);
+            initializeDescription();
         }
     }
 }

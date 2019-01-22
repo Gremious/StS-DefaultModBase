@@ -54,14 +54,14 @@ public class DefaultRarePower extends CustomCard {
     public DefaultRarePower() {
 
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber = this.baseMagicNumber = MAGIC;
+        magicNumber = baseMagicNumber = MAGIC;
     }
     
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
-                new RarePower(p, p, this.magicNumber), this.magicNumber));
+                new RarePower(p, p, magicNumber), magicNumber));
     }
 
     // Which card to return when making a copy of this card.
@@ -73,10 +73,10 @@ public class DefaultRarePower extends CustomCard {
     //Upgraded stats.
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
-            this.upgradeBaseCost(UPGRADE_COST);
-            this.initializeDescription();
+        if (!upgraded) {
+            upgradeName();
+            upgradeBaseCost(UPGRADE_COST);
+            initializeDescription();
         }
     }
 }

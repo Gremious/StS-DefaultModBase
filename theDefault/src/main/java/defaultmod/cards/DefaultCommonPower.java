@@ -54,7 +54,7 @@ public class DefaultCommonPower extends CustomCard {
 
     public DefaultCommonPower() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber = this.baseMagicNumber = MAGIC;
+        magicNumber = baseMagicNumber = MAGIC;
     }
 
 
@@ -62,7 +62,7 @@ public class DefaultCommonPower extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
-                new CommonPower(p, p, this.magicNumber), this.magicNumber));
+                new CommonPower(p, p, magicNumber), magicNumber));
     }
 
 
@@ -75,11 +75,11 @@ public class DefaultCommonPower extends CustomCard {
     //Upgraded stats.
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
-            this.upgradeMagicNumber(UPGRADE_MAGIC);
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+        if (!upgraded) {
+            upgradeName();
+            upgradeMagicNumber(UPGRADE_MAGIC);
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 }
