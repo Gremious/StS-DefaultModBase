@@ -131,7 +131,7 @@ public class TheDefault extends CustomPlayer {
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        logger.info("Begind loading started Deck strings");
+        logger.info("Begin loading starter Deck Strings");
 
         retVal.add(DefaultCommonAttack.ID);
         retVal.add(DefaultUncommonAttack.ID);
@@ -166,7 +166,7 @@ public class TheDefault extends CustomPlayer {
         return retVal;
     }
 
-    // Character select screen effect
+    // Character Select screen effect
     @Override
     public void doCharSelectScreenSelectEffect() {
         CardCrawlGame.sound.playA("ATTACK_DAGGER_1", 1.25f); // Sound Effect
@@ -174,14 +174,14 @@ public class TheDefault extends CustomPlayer {
                 false); // Screen Effect
     }
 
-    // Character select on-button-press sound effect
+    // Character Select on-button-press sound effect
     @Override
     public String getCustomModeCharacterButtonSoundKey() {
         return "ATTACK_DAGGER_1";
     }
 
     // Should return how much HP your maximum HP reduces by when starting a run at
-    // ascension 14 or higher. (ironclad loses 5, defect and silent lose 4 hp respectively)
+    // Ascension 14 or higher. (ironclad loses 5, defect and silent lose 4 hp respectively)
     @Override
     public int getAscensionMaxHPLoss() {
         return 0;
@@ -212,13 +212,13 @@ public class TheDefault extends CustomPlayer {
         return "The Default";
     }
 
-    //Which starting card should specific events give you?
+    //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
         return new DefaultCommonAttack();
     }
 
-    // The class name as it appears next to your player name in game	
+    // The class name as it appears next to your player name in-game
     @Override
     public String getTitle(AbstractPlayer.PlayerClass playerClass) {
         return "the Default";
@@ -237,13 +237,13 @@ public class TheDefault extends CustomPlayer {
     }
 
     // Should return a Color object to be used as screen tint effect when your
-    // character attacks the heart. You can also use Color.RED or so.
+    // character attacks the heart.
     @Override
     public Color getSlashAttackColor() { return defaultmod.DefaultMod.DEFAULT_GRAY; }
 
     // Should return an AttackEffect array of any size greater than 0. These effects
     // will be played in sequence as your character's finishing combo on the heart.
-    // Attack effects are the same as used in damage action and the like.
+    // Attack effects are the same as used in DamageAction and the like.
     @Override
     public AbstractGameAction.AttackEffect[] getSpireHeartSlashEffect() {
         return new AbstractGameAction.AttackEffect[]{

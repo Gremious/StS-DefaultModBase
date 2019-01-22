@@ -10,7 +10,7 @@ It features 1 character (the Default) with a minimal set of things: 1 card of ea
 
 (Currently, there are still some stuff missing (such as game patching examples) which I plan to add later but I have other mods I wanna work on more.)
 
-If you're new to modding, I highly recommend going though the BaseMod wiki for whatever you wish to add and work your way thought your made with this base. Another very important thing is to look at other mods as well as the base-game code and see how they do things. Again, refer to the basemod wiki for that.
+If you're new to modding, you basically need the BaseMod wiki for whatever you wish to add, and you can work your way thought it with this base. Another very important thing is to look at other mods as well as the base-game code and see how they do things. Again, refer to the basemod wiki for that.
 
 https://github.com/daviscook477/BaseMod/wiki
 
@@ -68,7 +68,13 @@ Copy `BaseMod.jar` from your `lib` folder into your `mods` folder in your Slay t
 ### Package the Default Mod
 If you have followed the steps so far, you should be able to package this mod that you downloaded from this repo.
 
-Open a terminal in the `theDefault` directory and run `mvn package`. This should package DefaultMod into `DefaultMod.jar`. You can find it in `[Whatever folder you extracted the zip into]/mods/DefaultMod.jar`. If not, just go 2 directories back from `theDefault` folder (the one with pom.xml in it) and there should be a mods folder there.
+In IntelliJ, open the Maven project tab and select the "Execute maven goal" button.
+
+![](https://i.imgur.com/Axy3tr0.png)
+
+In the command line field, type `package`.
+
+You can now find your mod in `[Whatever folder you extracted the zip into]/mods/DefaultMod.jar`. If not, just go 2 directories back from `theDefault` folder (the one with pom.xml in it) and there should be a mods folder there. If you still can't find it, check at the bottom of your pom.xml.
 
 Copy `DefaultMod.jar` into the `mods` folder in your Slay the Spire directory.
 
@@ -78,11 +84,19 @@ You should be able to run Slay the Spire by running `MTS.cmd` (`MTS.sh` on a mac
 
 ### What Other Listeners Exist
 
-Mods can be do w ahole lot of things. A full list of listeners can be found in `src/main/java/basemod/interfaces` in BaseMod.
+Mods do a whole lot of things. A full list of listeners can be found in `src/main/java/basemod/interfaces` in BaseMod.
 
 ### Looking at the Game's Source Code
 
-What else can I do with `AbstractCard` or `AbstractDungeon`? How does the Silent's `Choke` really work? How does Slay the Spire work under the hood. A lot of these questions can be answered by looking at the game's source code. You can do this by decompiling the game. Follow [this guide](https://github.com/daviscook477/BaseMod/wiki/Decompiling-Your-Game) to do that.
+What else can I do with `AbstractCard` or `AbstractDungeon`? How does the Silent's `Choke` really work? How does Slay the Spire work under the hood. A lot of these questions can be answered by looking at the game's source code. You can do this by decompiling the game. 
+
+IntelliJ comes with it's own internal decompiler. Once you set your lib folder correctly and start up the mod, you will see the `External Libraries` folder on the left-hand side. Basemod and the Slay the Spire's `Desktop-1-0.jar` we put into our lib folder are both there, and can simply be oppened and explored. Alternatively, you can always search up the card/class you are looking for in intelliJ's class search (`ctrl+shift+A` and switch to the class tab with `tab` or `shift+tab`). 
+
+![](https://i.imgur.com/OausOaf.png)
+
+Finally, you can also find the original declaration of something already in the code by right clicking on it and selecting `Go to -> Declaration`, or, even faster, ctrl+left clicking on it.
+
+If you do not wish to use the built-in decompiler, follow [this guide](https://github.com/daviscook477/BaseMod/wiki/Decompiling-Your-Game) instead.
 
 ### Can I Make My Own Listener
 

@@ -21,7 +21,7 @@ public class DefaultRareSkill extends CustomCard {
      *
      * In order to understand how image paths work, go to defaultmod/DefaultMod.java, Line ~140 (Image path section).
      *
-     * for each loop x2" "Apply 1 Vulnerable to all enemies, 2(3) times.
+     * For Each Loop x2" "Apply 1 Vulnerable to all enemies, 2(3) times.
      */
 
     // TEXT DECLARATION 

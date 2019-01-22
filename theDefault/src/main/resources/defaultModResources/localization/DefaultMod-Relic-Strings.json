@@ -10,7 +10,7 @@
 		"NAME": "Placeholder Relic 2",
 		"FLAVOR": "You feel stronger.",
 		"DESCRIPTIONS": [
-			"At the start of each combat, gain +1 Strenght."
+			"At the start of each combat, gain +1 Strength."
 		]
 	},
 	"theDefault:DefaultClickableRelic": {

@@ -14,7 +14,7 @@ public class PlaceholderRelic2 extends CustomRelic {
     /*
      * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
      * 
-     * At the start of each combat, gain 1 strenght (i.e. Varja)
+     * At the start of each combat, gain 1 Strength (i.e. Vajra)
      */
     
     // ID, images, text.
@@ -27,7 +27,7 @@ public class PlaceholderRelic2 extends CustomRelic {
     }
 
 
-    // Gain 1 Strenght on on equip.
+    // Gain 1 Strength on on equip.
     @Override
     public void atBattleStart() {
         this.flash();

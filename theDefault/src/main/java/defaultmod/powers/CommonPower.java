@@ -42,7 +42,8 @@ public class CommonPower extends AbstractPower {
     // This applies to absolutely anything from AbstractDungeon to Relics!
     // StSlib also has additional power hooks like OnCardDraw or OnMyBlockBroken, so check it out if the default ones aren't enough
 
-    // On use card, apply (amount) of dexterity. (Go to the actual power card for the ammount.)
+
+    // On use card, apply (amount) of Dexterity. (Go to the actual power card for the amount.)
     @Override
     public void onUseCard(final AbstractCard card, final UseCardAction action) {
 
@@ -50,7 +51,7 @@ public class CommonPower extends AbstractPower {
                 new DexterityPower(this.owner, this.amount), this.amount));
     }
 
-    // At the end of the turn, Remove gained dexterity.
+    // At the end of the turn, remove gained Dexterity.
     @Override
     public void atEndOfTurn(final boolean isPlayer) {
         int count = 0;
