@@ -21,7 +21,7 @@ public class DefaultUncommonSkill extends CustomCard {
      *
      * In order to understand how image paths work, go to defaultmod/DefaultMod.java, Line ~140 (Image path section).
      *
-     * A Better Defend Gain 1 plated armor. Affected by Dexterity.
+     * A Better Defend Gain 1 Plated Armor. Affected by Dexterity.
      */
 
     // TEXT DECLARATION 
