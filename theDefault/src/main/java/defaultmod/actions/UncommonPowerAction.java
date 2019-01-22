@@ -31,7 +31,6 @@ public class UncommonPowerAction extends AbstractGameAction {
         this.freeToPlayOnce = freeToPlayOnce;
         this.duration = Settings.ACTION_DUR_XFAST;
         this.actionType = ActionType.SPECIAL;
-        this.energyOnUse = energyOnUse;
         this.upgraded = upgraded;
     }
 
