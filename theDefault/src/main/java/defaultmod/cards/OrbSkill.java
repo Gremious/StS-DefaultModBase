@@ -51,7 +51,7 @@ public class OrbSkill extends CustomCard {
 
     public OrbSkill() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        this.baseDamage = DAMAGE;
+        baseDamage = DAMAGE;
 
     }
 
