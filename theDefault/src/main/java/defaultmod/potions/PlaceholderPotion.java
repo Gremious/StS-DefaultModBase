@@ -25,16 +25,16 @@ public class PlaceholderPotion extends AbstractPotion {
         super(NAME, POTION_ID, PotionRarity.COMMON, PotionSize.M, PotionColor.SMOKE);
         
         // Potency is the damage/magic number equivalent of potions.
-        this.potency = this.getPotency();
+        potency = getPotency();
         
         // Initialize the Description
-        this.description = DESCRIPTIONS[0] + this.potency + DESCRIPTIONS[2] + DESCRIPTIONS[1] + this.potency + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + potency + DESCRIPTIONS[2] + DESCRIPTIONS[1] + potency + DESCRIPTIONS[2];
         
        // Do you throw this potion at an enemy or do you just consume it.
-        this.isThrown = false;
+        isThrown = false;
         
         // Initialize the on-hover name + description
-        this.tips.add(new PowerTip(this.name, this.description));
+        tips.add(new PowerTip(name, description));
         
     }
 
@@ -43,8 +43,8 @@ public class PlaceholderPotion extends AbstractPotion {
         target = AbstractDungeon.player;
         // If you are in combat, gain strength and the "lose strength at the end of your turn" power, equal to the potency of this potion.
         if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, AbstractDungeon.player, new StrengthPower(target, this.potency), this.potency));
-            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, AbstractDungeon.player, new LoseStrengthPower(target, this.potency), this.potency));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, AbstractDungeon.player, new StrengthPower(target, potency), potency));
+            AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(target, AbstractDungeon.player, new LoseStrengthPower(target, potency), potency));
         }
     }
     
@@ -61,8 +61,8 @@ public class PlaceholderPotion extends AbstractPotion {
     
     public void upgradePotion()
     {
-      this.potency += 1;
-      this.tips.clear();
-      this.tips.add(new PowerTip(this.name, this.description));
+      potency += 1;
+      tips.clear();
+      tips.add(new PowerTip(name, description));
     }
 }

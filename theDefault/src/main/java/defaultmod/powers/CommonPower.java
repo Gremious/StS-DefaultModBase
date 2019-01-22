@@ -24,31 +24,24 @@ public class CommonPower extends AbstractPower {
     public static final String IMG = DefaultMod.makePath(DefaultMod.COMMON_POWER);
 
     public CommonPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
-        this.name = NAME;
-        this.ID = POWER_ID;
+        name = NAME;
+        ID = POWER_ID;
         this.owner = owner;
         this.amount = amount;
-        this.updateDescription();
-        this.type = PowerType.BUFF;
-        this.isTurnBased = false;
-        this.img = new Texture(IMG);
+        updateDescription();
+        type = PowerType.BUFF;
+        isTurnBased = false;
+        img = new Texture(IMG);
         this.source = source;
 
     }
-
-    // Wanna find out when else powers can trigger aside from onUseCard or atEndOfTurn?]
-    // Ctrl+click on AbstractPower at the top, and use the built-in intelliJ decompiler to have a read through!
-    // (This is the equivalent of doing Right Click -> Go to -> Declaration, or, if you're full keyboard - Ctrl + B)
-    // This applies to absolutely anything from AbstractDungeon to Relics!
-    // StSlib also has additional power hooks like OnCardDraw or OnMyBlockBroken, so check it out if the default ones aren't enough
-
 
     // On use card, apply (amount) of Dexterity. (Go to the actual power card for the amount.)
     @Override
     public void onUseCard(final AbstractCard card, final UseCardAction action) {
 
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner,
-                new DexterityPower(this.owner, this.amount), this.amount));
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner,
+                new DexterityPower(owner, amount), amount));
     }
 
     // At the end of the turn, remove gained Dexterity.
@@ -64,10 +57,10 @@ public class CommonPower extends AbstractPower {
         }
 
         if (count > 0) {
-            this.flash(); // Makes the power icon flash.
+            flash(); // Makes the power icon flash.
             for (int i = 0; i < count; ++i) {
                 AbstractDungeon.actionManager.addToBottom(
-                        new ReducePowerAction(this.owner, this.owner, "Dexterity", this.amount));
+                        new ReducePowerAction(owner, owner, "Dexterity", amount));
                 // Reduce the power by 1 for each count - i.e. for each card played this turn.
             }
         }
@@ -77,12 +70,12 @@ public class CommonPower extends AbstractPower {
     // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))
     @Override
     public void updateDescription() {
-        if (this.amount == 1) {
-            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        if (amount == 1) {
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
         }
 
-        else if (this.amount > 1) {
-            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2];
+        else if (amount > 1) {
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
         }
     }
 

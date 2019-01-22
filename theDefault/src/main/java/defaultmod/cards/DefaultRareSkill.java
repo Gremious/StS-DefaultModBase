@@ -56,7 +56,7 @@ public class DefaultRareSkill extends CustomCard {
     
     public DefaultRareSkill() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        this.baseMagicNumber = this.magicNumber = AMOUNT;
+        baseMagicNumber = magicNumber = AMOUNT;
     }
 
     // Actions the card should do.
@@ -65,7 +65,7 @@ public class DefaultRareSkill extends CustomCard {
         for (int i = 0; i < TIMES; i++) {
             for (final AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, p,
-                        new VulnerablePower(mo, this.magicNumber, false), this.magicNumber));
+                        new VulnerablePower(mo, magicNumber, false), magicNumber));
             }
         }
 
@@ -80,11 +80,11 @@ public class DefaultRareSkill extends CustomCard {
     //Upgraded stats.
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.TIMES = this.UPGRADE_TIMES;
-            this.initializeDescription();
+        if (!upgraded) {
+            upgradeName();
+            rawDescription = UPGRADE_DESCRIPTION;
+            TIMES = UPGRADE_TIMES;
+            initializeDescription();
         }
     }
 }
