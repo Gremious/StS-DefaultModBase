@@ -47,11 +47,6 @@ public class OrbSkill extends CustomCard {
     private static final int DAMAGE = 7;
     private static final int UPGRADE_PLUS_DMG = 2;
 
-    // Hey want a second damage/magic/block/unique number??? Great!
-    // Go check out DefaultSecondMagicNumber DefaultAttackWithVariable and defaultmod.variable.DefaultCustomVariable
-    // that's how you get your own custom variable that you can use for anything you like.
-    // Feel free to explore other mods to see what variables they personally have and create your own ones.
-
     // /STAT DECLARATION/
 
     public OrbSkill() {
@@ -64,9 +59,8 @@ public class OrbSkill extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
 
-        AbstractDungeon.actionManager.addToBottom(new ChannelAction(new DefaultOrb()));
+        AbstractDungeon.actionManager.addToBottom(new ChannelAction(new DefaultOrb())); // Channel a Default Orb.
 
-     //   AbstractDungeon.actionManager.addToBottom(new EvokeOrbAction(this.magicNumber));
     }
 
     // Which card to return when making a copy of this card.
