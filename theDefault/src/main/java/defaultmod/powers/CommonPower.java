@@ -26,13 +26,13 @@ public class CommonPower extends AbstractPower {
     public CommonPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
         ID = POWER_ID;
-        owner = owner;
-        amount = amount;
+        this.owner = owner;
+        this.amount = amount;
         updateDescription();
         type = PowerType.BUFF;
         isTurnBased = false;
         img = new Texture(IMG);
-        source = source;
+        this.source = source;
 
     }
 

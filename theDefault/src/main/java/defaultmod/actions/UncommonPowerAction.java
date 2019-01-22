@@ -24,15 +24,14 @@ public class UncommonPowerAction extends AbstractGameAction {
             final int energyOnUse)
 
     {
-        freeToPlayOnce = false;
-        energyOnUse = -1;
-        p = p;
-        magicNumber = magicNumber;
-        freeToPlayOnce = freeToPlayOnce;
+        this.freeToPlayOnce = false;
+        this.p = p;
+        this.magicNumber = magicNumber;
+        this.freeToPlayOnce = freeToPlayOnce;
         duration = Settings.ACTION_DUR_XFAST;
         actionType = ActionType.SPECIAL;
-        energyOnUse = energyOnUse;
-        upgraded = upgraded;
+        this.energyOnUse = energyOnUse;
+        this.upgraded = upgraded;
     }
 
     @Override

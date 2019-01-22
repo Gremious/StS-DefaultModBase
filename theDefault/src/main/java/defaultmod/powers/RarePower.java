@@ -24,13 +24,13 @@ public class RarePower extends AbstractPower {
     public RarePower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
         ID = POWER_ID;
-        owner = owner;
-        amount = amount;
+        this.owner = owner;
+        this.amount = amount;
         updateDescription();
         type = PowerType.DEBUFF;
         isTurnBased = false;
         img = new Texture(IMG);
-        source = source;
+        this.source = source;
     }
 
     @Override
