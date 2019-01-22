@@ -52,7 +52,7 @@ public class DefaultUncommonAttack extends CustomCard {
     
     public DefaultUncommonAttack() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        this.baseDamage = DAMAGE;
+        baseDamage = DAMAGE;
     }
     
     // Actions the card should do.
@@ -60,7 +60,7 @@ public class DefaultUncommonAttack extends CustomCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager
         .addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
-                new DamageInfo(p, this.damage, this.damageTypeForTurn),
+                new DamageInfo(p, damage, damageTypeForTurn),
                 AbstractGameAction.AttackEffect.BLUNT_LIGHT));
 
     }
@@ -74,10 +74,10 @@ public class DefaultUncommonAttack extends CustomCard {
     //Upgraded stats.
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
-            this.upgradeDamage(UPGRADE_PLUS_DMG);
-            this.initializeDescription();
+        if (!upgraded) {
+            upgradeName();
+            upgradeDamage(UPGRADE_PLUS_DMG);
+            initializeDescription();
         }
     }
 }

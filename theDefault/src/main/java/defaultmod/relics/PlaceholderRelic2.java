@@ -30,7 +30,7 @@ public class PlaceholderRelic2 extends CustomRelic {
     // Gain 1 Strength on on equip.
     @Override
     public void atBattleStart() {
-        this.flash();
+        flash();
         AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, 1), 1));
         AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }

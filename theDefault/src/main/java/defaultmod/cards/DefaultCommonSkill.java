@@ -52,14 +52,14 @@ public class DefaultCommonSkill extends CustomCard {
 
     public DefaultCommonSkill() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        this.baseBlock = BLOCK;
+        baseBlock = BLOCK;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
-                new com.megacrit.cardcrawl.actions.common.GainBlockAction(p, p, this.block));
+                new com.megacrit.cardcrawl.actions.common.GainBlockAction(p, p, block));
     }
 
     // Which card to return when making a copy of this card.
@@ -71,10 +71,10 @@ public class DefaultCommonSkill extends CustomCard {
     //Upgraded stats.
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
-            this.upgradeBlock(UPGRADE_PLUS_BLOCK);
-            this.initializeDescription();
+        if (!upgraded) {
+            upgradeName();
+            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            initializeDescription();
         }
     }
 }

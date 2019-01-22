@@ -16,21 +16,21 @@
             <artifactId>slaythespire</artifactId>
             <version>016</version>
             <scope>system</scope>
-            <systemPath>${basedir}/../lib/desktop-1.0.jar</systemPath>
+            <systemPath>${basedir}/../../lib/desktop-1.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
             <artifactId>ModTheSpire</artifactId>
             <version>3.5.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/../lib/ModTheSpire.jar</systemPath>
+            <systemPath>${basedir}/../../lib/ModTheSpire.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
             <artifactId>BaseMod</artifactId>
             <version>5.0.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/../lib/BaseMod.jar</systemPath>
+            <systemPath>${basedir}/../../lib/BaseMod.jar</systemPath>
         </dependency>
 
     </dependencies>

@@ -24,42 +24,42 @@ public class UncommonPowerAction extends AbstractGameAction {
             final int energyOnUse)
 
     {
-        this.freeToPlayOnce = false;
-        this.energyOnUse = -1;
-        this.p = p;
-        this.magicNumber = magicNumber;
-        this.freeToPlayOnce = freeToPlayOnce;
-        this.duration = Settings.ACTION_DUR_XFAST;
-        this.actionType = ActionType.SPECIAL;
-        this.energyOnUse = energyOnUse;
-        this.upgraded = upgraded;
+        freeToPlayOnce = false;
+        energyOnUse = -1;
+        p = p;
+        magicNumber = magicNumber;
+        freeToPlayOnce = freeToPlayOnce;
+        duration = Settings.ACTION_DUR_XFAST;
+        actionType = ActionType.SPECIAL;
+        energyOnUse = energyOnUse;
+        upgraded = upgraded;
     }
 
     @Override
     public void update() {
         int effect = EnergyPanel.totalCount;
-        if (this.energyOnUse != -1) {
-            effect = this.energyOnUse;
+        if (energyOnUse != -1) {
+            effect = energyOnUse;
         }
-        if (this.p.hasRelic("Chemical X")) {
+        if (p.hasRelic("Chemical X")) {
             effect += 2;
-            this.p.getRelic("Chemical X").flash();
+            p.getRelic("Chemical X").flash();
         }
-        if (this.upgraded) {
+        if (upgraded) {
             ++effect;
         }
         if (effect > 0) {
             for (int i = 0; i < effect; ++i) {
 
-                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.p, this.p,
-                        new CommonPower(this.p, this.p, this.magicNumber), this.magicNumber,
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
+                        new CommonPower(p, p, magicNumber), magicNumber,
                         AttackEffect.BLUNT_LIGHT));
 
             }
-            if (!this.freeToPlayOnce) {
-                this.p.energy.use(EnergyPanel.totalCount);
+            if (!freeToPlayOnce) {
+                p.energy.use(EnergyPanel.totalCount);
             }
         }
-        this.isDone = true;
+        isDone = true;
     }
 }

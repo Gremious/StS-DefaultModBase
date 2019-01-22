@@ -51,18 +51,18 @@ public class DefaultUncommonPower extends CustomCard {
     public DefaultUncommonPower() {
 
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        this.magicNumber = this.baseMagicNumber = MAGIC;
+        magicNumber = baseMagicNumber = MAGIC;
 
     }
     
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        if (this.energyOnUse < EnergyPanel.totalCount) {
-            this.energyOnUse = EnergyPanel.totalCount;
+        if (energyOnUse < EnergyPanel.totalCount) {
+            energyOnUse = EnergyPanel.totalCount;
         }
-        AbstractDungeon.actionManager.addToBottom(new UncommonPowerAction(p, m, this.magicNumber,
-                this.upgraded, this.damageTypeForTurn, this.freeToPlayOnce, this.energyOnUse));
+        AbstractDungeon.actionManager.addToBottom(new UncommonPowerAction(p, m, magicNumber,
+                upgraded, damageTypeForTurn, freeToPlayOnce, energyOnUse));
     }
 
     // Which card to return when making a copy of this card.
@@ -74,10 +74,10 @@ public class DefaultUncommonPower extends CustomCard {
     //Upgraded stats.
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
-            this.rawDescription = UPGRADE_DESCRIPTION;
-            this.initializeDescription();
+        if (!upgraded) {
+            upgradeName();
+            rawDescription = UPGRADE_DESCRIPTION;
+            initializeDescription();
         }
     }
 }

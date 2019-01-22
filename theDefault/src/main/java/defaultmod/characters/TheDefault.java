@@ -87,11 +87,11 @@ public class TheDefault extends CustomPlayer {
         
         // =============== ANIMATIONS =================  
 
-        this.loadAnimation(
+        loadAnimation(
                 defaultmod.DefaultMod.makePath(defaultmod.DefaultMod.THE_DEFAULT_SKELETON_ATLAS),
                 defaultmod.DefaultMod.makePath(defaultmod.DefaultMod.THE_DEFAULT_SKELETON_JSON),
                 1.0f);
-        AnimationState.TrackEntry e = this.state.setAnimation(0, "animation", true);
+        AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
         e.setTime(e.getEndTime() * MathUtils.random());
 
         // =============== /ANIMATIONS/ =================
@@ -99,8 +99,8 @@ public class TheDefault extends CustomPlayer {
         
         // =============== TEXT BUBBLE LOCATION =================
 
-        this.dialogX = (this.drawX + 0.0F * Settings.scale); // set location for text bubbles
-        this.dialogY = (this.drawY + 220.0F * Settings.scale); // you can just copy these values
+        dialogX = (drawX + 0.0F * Settings.scale); // set location for text bubbles
+        dialogY = (drawY + 220.0F * Settings.scale); // you can just copy these values
 
         // =============== /TEXT BUBBLE LOCATION/ =================
 
@@ -211,10 +211,10 @@ public class TheDefault extends CustomPlayer {
         return "the Default";
     }
 
-    // Should return a new instance of your character, sending this.name as its name parameter.
+    // Should return a new instance of your character, sending name as its name parameter.
     @Override
     public AbstractPlayer newInstance() {
-        return new TheDefault(this.name, this.chosenClass);
+        return new TheDefault(name, chosenClass);
     }
 
     // Should return a Color object to be used to color the miniature card images in run history.

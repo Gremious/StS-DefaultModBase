@@ -22,15 +22,15 @@ public class RarePower extends AbstractPower {
     public static final String IMG = DefaultMod.makePath(DefaultMod.RARE_POWER);
 
     public RarePower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
-        this.name = NAME;
-        this.ID = POWER_ID;
-        this.owner = owner;
-        this.amount = amount;
-        this.updateDescription();
-        this.type = PowerType.DEBUFF;
-        this.isTurnBased = false;
-        this.img = new Texture(IMG);
-        this.source = source;
+        name = NAME;
+        ID = POWER_ID;
+        owner = owner;
+        amount = amount;
+        updateDescription();
+        type = PowerType.DEBUFF;
+        isTurnBased = false;
+        img = new Texture(IMG);
+        source = source;
     }
 
     @Override
@@ -47,12 +47,12 @@ public class RarePower extends AbstractPower {
 
     @Override
     public void updateDescription() {
-        if (this.amount == 1) {
-            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        if (amount == 1) {
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
         }
 
-        else if (this.amount > 1) {
-            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2];
+        else if (amount > 1) {
+            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
         }
     }
 
