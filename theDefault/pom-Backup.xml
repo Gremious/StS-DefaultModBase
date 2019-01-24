@@ -19,32 +19,28 @@
             <artifactId>slaythespire</artifactId>
             <version>${SlayTheSpire.version}</version>
             <scope>system</scope>
-            <systemPath>C:/My Stuff/Games/Steam/steamapps/common/SlayTheSpire/desktop-1.0.jar</systemPath>
-            <!--<systemPath>${basedir}/../lib/desktop-1.0.jar</systemPath>-->
+            <systemPath>${basedir}/../lib/desktop-1.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
             <artifactId>modthespire</artifactId>
             <version>${ModTheSpire.version}</version>
             <scope>system</scope>
-            <systemPath>C:/My Stuff/Games/Steam/steamapps/workshop/content/646570/1605060445/ModTheSpire.jar</systemPath>
-            <!--<systemPath>${basedir}/../lib/ModTheSpire.jar</systemPath>-->
+            <systemPath>${basedir}/../lib/ModTheSpire.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>basemod</groupId>
             <artifactId>basemod</artifactId>
             <version>5.0.0</version>
             <scope>system</scope>
-            <systemPath>C:/My Stuff/Games/Steam/steamapps/workshop/content/646570/1605833019/BaseMod.jar</systemPath>
-            <!--<systemPath>${basedir}/../lib/BaseMod.jar</systemPath>-->
+            <systemPath>${basedir}/../lib/BaseMod.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl.mod</groupId>
             <artifactId>StSLib</artifactId>
             <version>1.3.2</version>
             <scope>system</scope>
-            <systemPath>C:/My Stuff/Games/Steam/steamapps/workshop/content/646570/1609158507/StSLib.jar</systemPath>
-            <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
+             <systemPath>${basedir}/../lib/StSLib.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -64,8 +60,7 @@
                         <configuration>
                             <target>
                                 <!-- Change to match your mods name. This moves your mod into a common folder where all mods you make can go. -->
-                                <copy file="target/DefaultMod.jar" tofile="C:/My Stuff/Games/Steam/steamapps/common/SlayTheSpire/mods/DefaultMod.jar"/>
-                                <!--<copy file="target/DefaultMod.jar" tofile="../mods/DefaultMod.jar"/>-->
+                                <copy file="target/DefaultMod.jar" tofile="../mods/DefaultMod.jar"/>
                             </target>
                         </configuration>
                         <goals>

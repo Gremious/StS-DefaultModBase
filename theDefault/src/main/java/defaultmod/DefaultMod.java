@@ -257,7 +257,7 @@ public class DefaultMod implements
 
     // There are better ways to do this than listing every single individual card, but I do not want to complicate things
     // in a "tutorial" mod. This will do and it's completely ok to use. If you ever want to clean up and
-    // shorten all the imports, go look take a look at other mods, such Conspire or Hubris.
+    // shorten all the imports, go look take a look at other mods, such conspire or Hubris.
 
     // ================ /ADD CARDS/ ===================
 
