@@ -71,13 +71,6 @@ public class DefaultCommonPower extends CustomCard {
                 new CommonPower(p, p, magicNumber), magicNumber));
     }
 
-
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new DefaultCommonPower();
-    }
-
     //Upgraded stats.
     @Override
     public void upgrade() {

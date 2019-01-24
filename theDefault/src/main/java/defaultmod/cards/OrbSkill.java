@@ -60,12 +60,6 @@ public class OrbSkill extends CustomCard {
 
     }
 
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new OrbSkill();
-    }
-
     // Upgraded stats.
     @Override
     public void upgrade() {

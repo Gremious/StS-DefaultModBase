@@ -66,12 +66,6 @@ public class DefaultUncommonAttack extends CustomCard {
 
     }
 
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new DefaultUncommonAttack();
-    }
-
     //Upgraded stats.
     @Override
     public void upgrade() {

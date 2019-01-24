@@ -3,8 +3,8 @@
   "name": "Default Mod",
   "author_list": ["Gremious"],
   "description": "A base for Slay the Spire to start your own mod from.",
-  "version": "${project.version}",
-  "sts_version": "${SlayTheSpire.version}",
-  "mts_version": "${ModTheSpire.version}",
+  "version": "1.0.0",
+  "sts_version": "01-23-2019",
+  "mts_version": "3.8.1",
   "dependencies": ["basemod", "stslib"]
 }

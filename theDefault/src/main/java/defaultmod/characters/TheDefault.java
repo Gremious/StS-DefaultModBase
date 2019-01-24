@@ -29,7 +29,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
-import static defaultmod.DefaultMod.makeID;
+import static defaultmod.DefaultMod.*;
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 //All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-Character-Strings.json in the resources
@@ -88,10 +88,11 @@ public class TheDefault extends CustomPlayer {
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
 
-        initializeClass(null, // required call to load textures and setup energy/loadout
-                defaultmod.DefaultMod.makePath(defaultmod.DefaultMod.THE_DEFAULT_SHOULDER_1), // campfire pose
-                defaultmod.DefaultMod.makePath(defaultmod.DefaultMod.THE_DEFAULT_SHOULDER_2), // another campfire pose
-                defaultmod.DefaultMod.makePath(defaultmod.DefaultMod.THE_DEFAULT_CORPSE), // dead corpse
+        initializeClass(null, // required call to load textures and setup energy/loadout.
+                // I left these in DefaultMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
+                THE_DEFAULT_SHOULDER_1, // campfire pose
+                THE_DEFAULT_SHOULDER_2, // another campfire pose
+                THE_DEFAULT_CORPSE, // dead corpse
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
@@ -100,8 +101,8 @@ public class TheDefault extends CustomPlayer {
         // =============== ANIMATIONS =================  
 
         loadAnimation(
-                defaultmod.DefaultMod.makePath(defaultmod.DefaultMod.THE_DEFAULT_SKELETON_ATLAS),
-                defaultmod.DefaultMod.makePath(defaultmod.DefaultMod.THE_DEFAULT_SKELETON_JSON),
+                THE_DEFAULT_SKELETON_ATLAS,
+                THE_DEFAULT_SKELETON_JSON,
                 1.0f);
         AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
         e.setTime(e.getEndTime() * MathUtils.random());

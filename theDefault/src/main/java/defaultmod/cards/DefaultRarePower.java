@@ -64,12 +64,6 @@ public class DefaultRarePower extends CustomCard {
                 new RarePower(p, p, magicNumber), magicNumber));
     }
 
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new DefaultRarePower();
-    }
-
     //Upgraded stats.
     @Override
     public void upgrade() {

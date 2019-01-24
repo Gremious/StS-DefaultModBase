@@ -63,12 +63,6 @@ public class DefaultCommonSkill extends CustomCard {
                 new com.megacrit.cardcrawl.actions.common.GainBlockAction(p, p, block));
     }
 
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new DefaultCommonSkill();
-    }
-
     //Upgraded stats.
     @Override
     public void upgrade() {

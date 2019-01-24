@@ -87,37 +87,10 @@ public class DefaultMod implements
     private static final String POWER_DEFAULT_GRAY_PORTRAIT = "defaultModResources/images/1024/bg_power_default_gray.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "defaultModResources/images/1024/card_default_gray_orb.png";
 
-    // Card images
-    public static final String DEFAULT_COMMON_ATTACK = "defaultModResources/images/cards/Attack.png";
-    public static final String DEFAULT_COMMON_SKILL = "defaultModResources/images/cards/Skill.png";
-    public static final String DEFAULT_COMMON_POWER = "defaultModResources/images/cards/Power.png";
-    public static final String DEFAULT_UNCOMMON_ATTACK = "defaultModResources/images/cards/Attack.png";
-    public static final String DEFAULT_UNCOMMON_SKILL = "defaultModResources/images/cards/Skill.png";
-    public static final String DEFAULT_UNCOMMON_POWER = "defaultModResources/images/cards/Power.png";
-    public static final String DEFAULT_RARE_ATTACK = "defaultModResources/images/cards/Attack.png";
-    public static final String DEFAULT_RARE_SKILL = "defaultModResources/images/cards/Skill.png";
-    public static final String DEFAULT_RARE_POWER = "defaultModResources/images/cards/Power.png";
-
-    // Power images
-    public static final String COMMON_POWER = "defaultModResources/images/powers/placeholder_power.png";
-    public static final String UNCOMMON_POWER = "defaultModResources/images/powers/placeholder_power.png";
-    public static final String RARE_POWER = "defaultModResources/images/powers/placeholder_power.png";
-
-    // Relic images  
-    public static final String PLACEHOLDER_RELIC = "defaultModResources/images/relics/placeholder_relic.png";
-    public static final String PLACEHOLDER_RELIC_OUTLINE = "defaultModResources/images/relics/outline/placeholder_relic.png";
-
-    public static final String PLACEHOLDER_RELIC_2 = "defaultModResources/images/relics/placeholder_relic2.png";
-    public static final String PLACEHOLDER_RELIC_OUTLINE_2 = "defaultModResources/images/relics/outline/placeholder_relic2.png";
-
-    public static final String DEFAULT_CLICKABLE_RELIC = "defaultModResources/images/relics/default_clickable_relic.png";
-    public static final String DEFAULT_CLICKABLE_RELIC_OUTLINE = "defaultModResources/images/relics/outline/default_clickable_relic.png";
-    // Orb images
-    public static final String DEFAULT_ORB = "defaultModResources/images/orbs/default_orb.png";
-
     // Character assets
     private static final String THE_DEFAULT_BUTTON = "defaultModResources/images/charSelect/DefaultCharacterButton.png";
     private static final String THE_DEFAULT_PORTRAIT = "defaultModResources/images/charSelect/DefaultCharacterPortraitBG.png";
+
     public static final String THE_DEFAULT_SHOULDER_1 = "defaultModResources/images/char/defaultCharacter/shoulder.png";
     public static final String THE_DEFAULT_SHOULDER_2 = "defaultModResources/images/char/defaultCharacter/shoulder2.png";
     public static final String THE_DEFAULT_CORPSE = "defaultModResources/images/char/defaultCharacter/corpse.png";

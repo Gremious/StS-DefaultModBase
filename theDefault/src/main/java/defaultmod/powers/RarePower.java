@@ -20,7 +20,7 @@ public class RarePower extends AbstractPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final String IMG = DefaultMod.makePath(DefaultMod.RARE_POWER);
+    public static final String IMG = "defaultModResources/images/powers/placeholder_power.png";
 
     public RarePower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;

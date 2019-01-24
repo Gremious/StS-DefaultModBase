@@ -74,12 +74,6 @@ public class DefaultRareAttack extends CustomCard {
 
     }
 
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new DefaultRareAttack();
-    }
-
     //Upgraded stats.
     @Override
     public void upgrade() {

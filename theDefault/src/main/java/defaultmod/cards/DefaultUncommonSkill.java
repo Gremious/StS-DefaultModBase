@@ -64,12 +64,6 @@ public class DefaultUncommonSkill extends CustomCard {
                 new ApplyPowerAction(p, p, new PlatedArmorPower(p, block), block));
     }
 
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new DefaultUncommonSkill();
-    }
-
     // Upgraded stats.
     @Override
     public void upgrade() {
