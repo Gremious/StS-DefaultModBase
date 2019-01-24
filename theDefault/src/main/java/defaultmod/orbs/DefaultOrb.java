@@ -37,7 +37,7 @@ public class DefaultOrb extends AbstractOrb {
 
         this.ID = ORB_ID;
         this.name = orbString.NAME;
-        this.img = ImageMaster.loadImage(DefaultMod.makePath(DefaultMod.DEFAULT_ORB));
+        this.img = ImageMaster.loadImage("defaultModResources/images/orbs/default_orb.png");
 
         this.evokeAmount = this.baseEvokeAmount = 1;
         this.passiveAmount = this.basePassiveAmount = 3;

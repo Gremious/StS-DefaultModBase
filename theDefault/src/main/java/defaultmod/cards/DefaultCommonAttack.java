@@ -29,12 +29,7 @@ public class DefaultCommonAttack extends CustomCard {
     public static final String ID = defaultmod.DefaultMod.makeID("DefaultCommonAttack");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    // Yes, you totally can use "defaultModResources/images/cards/Attack.png" instead and that would work.
-    // It might be easier to use that while testing.
-    // Using makePath is good practice once you get the hand of things, as it prevents you from
-    // having to change *every single card/file/path* if the image path changes due to updates or your personal preference.
-
-    public static final String IMG = DefaultMod.makePath(DefaultMod.DEFAULT_COMMON_ATTACK);
+    public static final String IMG = "defaultModResources/images/cards/Attack.png";
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -44,7 +39,7 @@ public class DefaultCommonAttack extends CustomCard {
     
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = AbstractCardEnum.DEFAULT_GRAY;
@@ -76,12 +71,6 @@ public class DefaultCommonAttack extends CustomCard {
                 .addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
                         new DamageInfo(p, damage, damageTypeForTurn),
                         AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-    }
-
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new DefaultCommonAttack();
     }
 
     // Upgraded stats.

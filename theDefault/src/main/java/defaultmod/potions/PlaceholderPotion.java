@@ -58,7 +58,7 @@ public class PlaceholderPotion extends AbstractPotion {
     public int getPotency(final int potency) {
         return 2;
     }
-    
+
     public void upgradePotion()
     {
       potency += 1;

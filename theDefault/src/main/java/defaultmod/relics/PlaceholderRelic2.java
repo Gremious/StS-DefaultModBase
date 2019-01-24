@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
@@ -19,11 +20,11 @@ public class PlaceholderRelic2 extends CustomRelic {
     
     // ID, images, text.
     public static final String ID = defaultmod.DefaultMod.makeID("PlaceholderRelic2");
-    public static final String IMG = DefaultMod.makePath(DefaultMod.PLACEHOLDER_RELIC_2);
-    public static final String OUTLINE = DefaultMod.makePath(DefaultMod.PLACEHOLDER_RELIC_OUTLINE_2);
+    public static final String IMG = "defaultModResources/images/relics/placeholder_relic2.png";
+    public static final String OUTLINE = "defaultModResources/images/relics/outline/placeholder_relic2.png";
 
     public PlaceholderRelic2() {
-        super(ID, new Texture(IMG), new Texture(OUTLINE), RelicTier.COMMON, LandingSound.MAGICAL);
+        super(ID, ImageMaster.loadImage(IMG), new Texture(OUTLINE), RelicTier.COMMON, LandingSound.MAGICAL);
     }
 
 

@@ -33,7 +33,7 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
     public static final String ID = DefaultMod.makeID("DefaultSecondMagicNumberSkill");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public static final String IMG = DefaultMod.makePath(DefaultMod.DEFAULT_COMMON_ATTACK);
+    public static final String IMG = "defaultModResources/images/cards/Skill.png";
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -61,8 +61,8 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
     public DefaultSecondMagicNumberSkill() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = VULNERABLE;
-        this.defaultSecondMagicNumber = this.defaultBaseSecondMagicNumber = POISON;
+        magicNumber = baseMagicNumber = VULNERABLE;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = POISON;
 
     }
 
@@ -70,17 +70,11 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
+                new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), this.magicNumber));
 
         AbstractDungeon.actionManager.addToBottom(
                 new ApplyPowerAction(m, p, new PoisonPower(m, p, this.defaultSecondMagicNumber), this.defaultSecondMagicNumber));
 
-    }
-
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new DefaultSecondMagicNumberSkill();
     }
 
     // Upgraded stats.

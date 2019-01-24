@@ -28,7 +28,8 @@ public class DefaultRareSkill extends CustomCard {
 
     public static final String ID = defaultmod.DefaultMod.makeID("DefaultRareSkill");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = DefaultMod.makePath(DefaultMod.DEFAULT_RARE_SKILL);
+
+    public static final String IMG = "defaultModResources/images/cards/Skill.png";
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -69,12 +70,6 @@ public class DefaultRareSkill extends CustomCard {
             }
         }
 
-    }
-
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new DefaultRareSkill();
     }
 
     //Upgraded stats.

@@ -27,7 +27,8 @@ public class DefaultCommonSkill extends CustomCard {
 
     public static final String ID = defaultmod.DefaultMod.makeID("DefaultCommonSkill");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = DefaultMod.makePath(DefaultMod.DEFAULT_COMMON_SKILL);
+
+    public static final String IMG = "defaultModResources/images/cards/Skill.png";
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -37,7 +38,7 @@ public class DefaultCommonSkill extends CustomCard {
 
     // STAT DECLARATION 	
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = AbstractCardEnum.DEFAULT_GRAY;
@@ -60,12 +61,6 @@ public class DefaultCommonSkill extends CustomCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
                 new com.megacrit.cardcrawl.actions.common.GainBlockAction(p, p, block));
-    }
-
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new DefaultCommonSkill();
     }
 
     //Upgraded stats.

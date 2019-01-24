@@ -31,7 +31,7 @@ public class DefaultRareAttack extends CustomCard {
 
     public static final String ID = defaultmod.DefaultMod.makeID("DefaultRareAttack");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = DefaultMod.makePath(DefaultMod.DEFAULT_RARE_ATTACK);
+    public static final String IMG = "defaultModResources/images/cards/Attack.png";
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -72,12 +72,6 @@ public class DefaultRareAttack extends CustomCard {
                 new DamageInfo(p, damage, damageTypeForTurn),
                 AbstractGameAction.AttackEffect.NONE));
 
-    }
-
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new DefaultRareAttack();
     }
 
     //Upgraded stats.

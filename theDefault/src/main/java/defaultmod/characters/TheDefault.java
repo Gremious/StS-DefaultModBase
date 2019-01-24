@@ -28,6 +28,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+
+import static defaultmod.DefaultMod.*;
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
 //All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-Character-Strings.json in the resources
@@ -49,7 +51,7 @@ public class TheDefault extends CustomPlayer {
 
     // =============== STRINGS =================
 
-    private static final String ID = "theDefault:DefaultCharacter";
+    private static final String ID = makeID("DefaultCharacter");
     private static final CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString(ID);
     private static final String[] NAMES = characterStrings.NAMES;
     private static final String[] TEXT = characterStrings.TEXT;
@@ -86,10 +88,11 @@ public class TheDefault extends CustomPlayer {
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
 
-        initializeClass(null, // required call to load textures and setup energy/loadout
-                defaultmod.DefaultMod.makePath(defaultmod.DefaultMod.THE_DEFAULT_SHOULDER_1), // campfire pose
-                defaultmod.DefaultMod.makePath(defaultmod.DefaultMod.THE_DEFAULT_SHOULDER_2), // another campfire pose
-                defaultmod.DefaultMod.makePath(defaultmod.DefaultMod.THE_DEFAULT_CORPSE), // dead corpse
+        initializeClass(null, // required call to load textures and setup energy/loadout.
+                // I left these in DefaultMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
+                THE_DEFAULT_SHOULDER_1, // campfire pose
+                THE_DEFAULT_SHOULDER_2, // another campfire pose
+                THE_DEFAULT_CORPSE, // dead corpse
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================
@@ -98,8 +101,8 @@ public class TheDefault extends CustomPlayer {
         // =============== ANIMATIONS =================  
 
         loadAnimation(
-                defaultmod.DefaultMod.makePath(defaultmod.DefaultMod.THE_DEFAULT_SKELETON_ATLAS),
-                defaultmod.DefaultMod.makePath(defaultmod.DefaultMod.THE_DEFAULT_SKELETON_JSON),
+                THE_DEFAULT_SKELETON_ATLAS,
+                THE_DEFAULT_SKELETON_JSON,
                 1.0f);
         AnimationState.TrackEntry e = state.setAnimation(0, "animation", true);
         e.setTime(e.getEndTime() * MathUtils.random());
@@ -209,9 +212,8 @@ public class TheDefault extends CustomPlayer {
     // Should return class name as it appears in run history screen.
     @Override
     public String getLocalizedCharacterName() {
-        return "The Default";
+        return NAMES[0];
     }
-
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
@@ -221,7 +223,7 @@ public class TheDefault extends CustomPlayer {
     // The class name as it appears next to your player name in-game
     @Override
     public String getTitle(AbstractPlayer.PlayerClass playerClass) {
-        return "the Default";
+        return NAMES[1];
     }
 
     // Should return a new instance of your character, sending name as its name parameter.

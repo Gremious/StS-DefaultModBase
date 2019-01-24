@@ -29,7 +29,8 @@ public class DefaultCommonPower extends CustomCard {
 
     public static final String ID = defaultmod.DefaultMod.makeID("DefaultCommonPower");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = DefaultMod.makePath(DefaultMod.DEFAULT_UNCOMMON_POWER);
+
+    public static final String IMG = "defaultModResources/images/cards/Power.png";
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -68,13 +69,6 @@ public class DefaultCommonPower extends CustomCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
                 new CommonPower(p, p, magicNumber), magicNumber));
-    }
-
-
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new DefaultCommonPower();
     }
 
     //Upgraded stats.

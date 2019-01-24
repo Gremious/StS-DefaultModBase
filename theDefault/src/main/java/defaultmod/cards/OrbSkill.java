@@ -28,7 +28,7 @@ public class OrbSkill extends CustomCard {
     public static final String ID = DefaultMod.makeID("OrbSkill");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public static final String IMG = DefaultMod.makePath(DefaultMod.DEFAULT_UNCOMMON_SKILL);
+    public static final String IMG = "defaultModResources/images/cards/Skill.png";
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -44,14 +44,11 @@ public class OrbSkill extends CustomCard {
     public static final CardColor COLOR = AbstractCardEnum.DEFAULT_GRAY;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 7;
-    private static final int UPGRADE_PLUS_DMG = 2;
 
     // /STAT DECLARATION/
 
     public OrbSkill() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        baseDamage = DAMAGE;
 
     }
 
@@ -63,18 +60,11 @@ public class OrbSkill extends CustomCard {
 
     }
 
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new OrbSkill();
-    }
-
     // Upgraded stats.
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeDamage(UPGRADE_PLUS_DMG);
             this.initializeDescription();
         }
     }

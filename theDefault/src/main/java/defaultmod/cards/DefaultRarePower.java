@@ -28,7 +28,7 @@ public class DefaultRarePower extends CustomCard {
 
     public static final String ID = defaultmod.DefaultMod.makeID("DefaultRarePower");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = DefaultMod.makePath(DefaultMod.DEFAULT_RARE_POWER);
+    public static final String IMG = "defaultModResources/images/cards/Power.png";
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -62,12 +62,6 @@ public class DefaultRarePower extends CustomCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
                 new RarePower(p, p, magicNumber), magicNumber));
-    }
-
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new DefaultRarePower();
     }
 
     //Upgraded stats.

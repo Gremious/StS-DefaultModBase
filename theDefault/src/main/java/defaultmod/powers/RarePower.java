@@ -1,5 +1,6 @@
 package defaultmod.powers;
 
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.badlogic.gdx.graphics.Texture;
@@ -19,7 +20,7 @@ public class RarePower extends AbstractPower {
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final String IMG = DefaultMod.makePath(DefaultMod.RARE_POWER);
+    public static final String IMG = "defaultModResources/images/powers/placeholder_power.png";
 
     public RarePower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
@@ -29,7 +30,7 @@ public class RarePower extends AbstractPower {
         updateDescription();
         type = PowerType.DEBUFF;
         isTurnBased = false;
-        img = new Texture(IMG);
+        img = ImageMaster.loadImage(IMG);
         this.source = source;
     }
 
