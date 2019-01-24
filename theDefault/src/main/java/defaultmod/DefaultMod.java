@@ -5,8 +5,10 @@ import basemod.ModLabel;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.helpers.CardHelper;
@@ -24,6 +26,8 @@ import defaultmod.variables.DefaultCustomVariable;
 import defaultmod.variables.DefaultSecondMagicNumber;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.nio.charset.StandardCharsets;
 
 //TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
 // Right click the package (folder with black dot on it. the name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
@@ -349,29 +353,18 @@ public class DefaultMod implements
     // ================ LOAD THE KEYWORDS ===================
 
     @Override
-    public void receiveEditKeywords() {
-        final String[] placeholder = {"keyword", "keywords", "Keyword", "Keywords"};
-        BaseMod.addKeyword(placeholder, "Whenever you play a card, gain 1 dexterity this turn only.");
-
-    }
-    /*
-    @Override
-    public void receiveEditKeywords() {
-        logger.debug("receiveEditKeywords started.");
+    public void receiveEditKeywords()
+    {
         Gson gson = new Gson();
-        String loc = getLocCode();
-
-        String json = GetLocString(loc, "Gatherer-KeywordStrings");
-        Keyword[] keywords = gson.fromJson(json, Keyword[].class);
+        String json = Gdx.files.internal("defaultModResources/localization/eng/DefaultMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
 
         if (keywords != null) {
             for (Keyword keyword : keywords) {
-                BaseMod.addKeyword(keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
+                BaseMod.addKeyword(keyword.NAMES, keyword.DESCRIPTION);
             }
         }
-        logger.debug("receiveEditKeywords finished.");
     }
-    */
 
     // ================ /LOAD THE KEYWORDS/ ===================    
 

@@ -1,8 +1,7 @@
 package defaultmod.cards;
 
-import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -12,27 +11,32 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import defaultmod.DefaultMod;
 import defaultmod.patches.AbstractCardEnum;
 
-public class cardTemplate extends CustomCard {
+// public class ${NAME} extends AbstractDefaultCard
+public class cardTemplate extends AbstractDefaultCard {
 
     /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
+     * "Hey I wanna make a new card now." - You, probably.
+     * ok cool my dude no problem here's the most convenient way to do it:
      *
-     * In order to understand how image paths work, go to defaultmod/DefaultMod.java, Line ~140 (Image path section).
+     * Copy all of the code here (Ctrl+A > Ctrl+C)
+     * Ctrl+Shift+A and search up "file and code template"
+     * Press the + button at the top and name your template whatever it is for - "AttackCard" or "PowerCard" or something up to you.
+     * Read up on the instructions at the bottom. Basically replace anywhere you'd put your cards name with ${NAME}
+     * And then you can do custom ones like ${DAMAGE} and ${TARGET} if you want.
+     * I'll leave some comments on things you might consider replacing with what.
      *
-     * Strike Deal 7(9) damage.
+     * Of course, delete all the comments and add anything you want (For example, if you're making a skill card template you'll
+     * likely want to replace that new DamageAction with a gain Block one, and add baseBlock instead, or maybe you want a
+     * universal template where you delete everything unnecessary - up to you)
      */
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID("DefaultCommonAttack");
+    public static final String ID = DefaultMod.makeID("DefaultCommonAttack"); // DefaultMod.makeID("${NAME}");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    // Yes, you totally can use "defaultModResources/images/cards/Attack.png" instead and that would work.
-    // It might be easier to use that while testing.
-    // Using makePath is good practice once you get the hand of things, as it prevents you from
-    // having to change *every single card/file/path* if the image path changes due to updates or your personal preference.
-
-    public static final String IMG = DefaultMod.makePath(DefaultMod.DEFAULT_COMMON_ATTACK);
+    public static final String IMG = "defaultModResources/images/cards/Attack.png"; // "defaultModResources/images/cards/${NAME}.png"
+    // This does mean that you will need to have an image with the same name as the card in your image folder for it to run correctly.
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -42,45 +46,33 @@ public class cardTemplate extends CustomCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
-    private static final CardType TYPE = CardType.ATTACK;
+    private static final CardRarity RARITY = CardRarity.COMMON; //  Up to you, I like auto-complete on these
+    private static final CardTarget TARGET = CardTarget.ENEMY;  //   since they don't change much.
+    private static final CardType TYPE = CardType.ATTACK;       //
     public static final CardColor COLOR = AbstractCardEnum.DEFAULT_GRAY;
 
-    private static final int COST = 1;
-    private static final int DAMAGE = 7;
-    private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int COST = 1;  // COST = ${COST}
+    private static final int UPGRADED_COST = 0; // UPGRADED_COST = ${UPGRADED_COST}
 
-    // Hey want a second damage/magic/block/unique number??? Great!
-    // Go check out DefaultAttackWithVariable and defaultmod.variable.DefaultCustomVariable
-    // that's how you get your own custom variable that you can use for anything you like.
-    // Feel free to explore other mods to see what variabls they personally have and create your own ones.
+    private static final int DAMAGE = 7;    // DAMAGE = ${DAMAGE}
+    private static final int UPGRADE_PLUS_DMG = 2;  // UPGRADE_PLUS_DMG = ${UPGRADED_DAMAGE_INCREASE}
 
     // /STAT DECLARATION/
 
-    public cardTemplate() {
+
+    public cardTemplate() { // public ${NAME}() - This one and the one right under the imports are the most important ones, don't forget them
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-
-        // Aside from baseDamage/MagicNumber/Block there's also a few more.
-        // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard
-
         baseDamage = DAMAGE;
     }
+
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager
-                .addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
-                        new DamageInfo(p, damage, damageTypeForTurn),
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+        AbstractDungeon.actionManager.addToBottom(
+                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 
-    // Which card to return when making a copy of this card.
-    @Override
-    public AbstractCard makeCopy() {
-        return new cardTemplate();
-    }
 
     // Upgraded stats.
     @Override
@@ -88,6 +80,7 @@ public class cardTemplate extends CustomCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeBaseCost(UPGRADED_COST);
             initializeDescription();
         }
     }
