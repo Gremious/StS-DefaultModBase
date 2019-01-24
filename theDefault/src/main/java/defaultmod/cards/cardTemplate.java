@@ -1,5 +1,6 @@
 package defaultmod.cards;
 
+import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -8,13 +9,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import basemod.abstracts.CustomCard;
-
 import defaultmod.DefaultMod;
 import defaultmod.patches.AbstractCardEnum;
 
-public class DefaultCommonAttack extends CustomCard {
+public class cardTemplate extends CustomCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -26,7 +24,7 @@ public class DefaultCommonAttack extends CustomCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = defaultmod.DefaultMod.makeID("DefaultCommonAttack");
+    public static final String ID = DefaultMod.makeID("DefaultCommonAttack");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     // Yes, you totally can use "defaultModResources/images/cards/Attack.png" instead and that would work.
@@ -41,10 +39,10 @@ public class DefaultCommonAttack extends CustomCard {
 
     // /TEXT DECLARATION/
 
-    
+
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.BASIC;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = AbstractCardEnum.DEFAULT_GRAY;
@@ -60,7 +58,7 @@ public class DefaultCommonAttack extends CustomCard {
 
     // /STAT DECLARATION/
 
-    public DefaultCommonAttack() {
+    public cardTemplate() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
@@ -81,7 +79,7 @@ public class DefaultCommonAttack extends CustomCard {
     // Which card to return when making a copy of this card.
     @Override
     public AbstractCard makeCopy() {
-        return new DefaultCommonAttack();
+        return new cardTemplate();
     }
 
     // Upgraded stats.

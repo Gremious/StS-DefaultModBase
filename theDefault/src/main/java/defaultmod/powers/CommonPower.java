@@ -1,5 +1,6 @@
 package defaultmod.powers;
 
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -31,7 +32,7 @@ public class CommonPower extends AbstractPower {
         updateDescription();
         type = PowerType.BUFF;
         isTurnBased = false;
-        img = new Texture(IMG);
+        img = ImageMaster.loadImage(IMG);
         this.source = source;
 
     }

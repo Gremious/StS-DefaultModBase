@@ -8,6 +8,7 @@ import basemod.interfaces.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.google.gson.Gson;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
@@ -34,8 +35,8 @@ import org.apache.logging.log4j.Logger;
 
 /*
  * With that out of the way:
- * Welcome to this mildly over-commented Slay the Spire modding base. 
- * Use it to make your own mod of any type. - If you want to add any standard in-game content (Character, 
+ * Welcome to this mildly over-commented Slay the Spire modding base.
+ * Use it to make your own mod of any type. - If you want to add any standard in-game content (Character,
  * cards, relics), this is a good starting point.
  * It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, 1 relic, etc.
  * If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add
@@ -45,9 +46,13 @@ import org.apache.logging.log4j.Logger;
 
 //NOTE: ASD
 @SpireInitializer
-public class DefaultMod
-        implements EditCardsSubscriber, EditRelicsSubscriber, EditStringsSubscriber, EditKeywordsSubscriber,
-        EditCharactersSubscriber, PostInitializeSubscriber {
+public class DefaultMod implements
+        EditCardsSubscriber,
+        EditRelicsSubscriber,
+        EditStringsSubscriber,
+        EditKeywordsSubscriber,
+        EditCharactersSubscriber,
+        PostInitializeSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. Etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
@@ -60,14 +65,14 @@ public class DefaultMod
     // =============== INPUT TEXTURE LOCATION =================
 
     // Colors (RGB)
-        // Character Color
-        public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
+    // Character Color
+    public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
 
-        // Potion Colors in RGB
-        public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
-        public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
-        public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
-        
+    // Potion Colors in RGB
+    public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f); // Orange-ish Red
+    public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
+    public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
+
     // Image folder name - This is where your image folder is.
     // Setting it here is good practice in case you ever need to move/rename it without screwing up every single path.
     // In this case, the image folder is resources/defaultModResources/images
@@ -178,7 +183,7 @@ public class DefaultMod
 
     // ============== /SUBSCRIBE, CREATE THE COLOR, INITIALIZE/ =================
 
-    
+
     // =============== LOAD THE CHARACTER =================
 
     @Override
@@ -187,44 +192,44 @@ public class DefaultMod
 
         BaseMod.addCharacter(new TheDefault("the Default", TheDefaultEnum.THE_DEFAULT),
                 makePath(THE_DEFAULT_BUTTON), makePath(THE_DEFAULT_PORTRAIT), TheDefaultEnum.THE_DEFAULT);
-        
+
         receiveEditPotions();
         logger.info("Added " + TheDefaultEnum.THE_DEFAULT.toString());
     }
 
     // =============== /LOAD THE CHARACTER/ =================
 
-    
+
     // =============== POST-INITIALIZE =================
 
-    
+
     @Override
     public void receivePostInitialize() {
 
         logger.info("Loading badge image and mod options");
         // Load the Mod Badge
         Texture badgeTexture = new Texture(makePath(BADGE_IMAGE));
-        
+
         // Create the Mod Menu
         ModPanel settingsPanel = new ModPanel();
         settingsPanel.addUIElement(new ModLabel("DefaultMod doesn't have any settings! An example of those may come later.", 400.0f, 700.0f,
                 settingsPanel, (me) -> {
-                }));
+        }));
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
         logger.info("Done loading badge Image and mod options");
 
-       }
+    }
 
     // =============== / POST-INITIALIZE/ =================
 
-    
+
     // ================ ADD POTIONS ===================
 
-       
+
     public void receiveEditPotions() {
         logger.info("Beginning to edit potions");
-       
+
         // Class Specific Potion. If you want your potion to not be class-specific,
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
@@ -232,10 +237,10 @@ public class DefaultMod
 
         logger.info("Done editing potions");
     }
-    
+
     // ================ /ADD POTIONS/ ===================
 
-    
+
     // ================ ADD RELICS ===================
 
     @Override
@@ -254,8 +259,7 @@ public class DefaultMod
 
     // ================ /ADD RELICS/ ===================
 
-    
-    
+
     // ================ ADD CARDS ===================
 
     @Override
@@ -306,8 +310,7 @@ public class DefaultMod
 
     // ================ /ADD CARDS/ ===================
 
-    
-    
+
     // ================ LOAD THE TEXT ===================
 
     @Override
@@ -347,10 +350,28 @@ public class DefaultMod
 
     @Override
     public void receiveEditKeywords() {
-        final String[] placeholder = { "keyword", "keywords", "Keyword", "Keywords" };
+        final String[] placeholder = {"keyword", "keywords", "Keyword", "Keywords"};
         BaseMod.addKeyword(placeholder, "Whenever you play a card, gain 1 dexterity this turn only.");
 
     }
+    /*
+    @Override
+    public void receiveEditKeywords() {
+        logger.debug("receiveEditKeywords started.");
+        Gson gson = new Gson();
+        String loc = getLocCode();
+
+        String json = GetLocString(loc, "Gatherer-KeywordStrings");
+        Keyword[] keywords = gson.fromJson(json, Keyword[].class);
+
+        if (keywords != null) {
+            for (Keyword keyword : keywords) {
+                BaseMod.addKeyword(keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
+            }
+        }
+        logger.debug("receiveEditKeywords finished.");
+    }
+    */
 
     // ================ /LOAD THE KEYWORDS/ ===================    
 

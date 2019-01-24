@@ -61,8 +61,8 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
     public DefaultSecondMagicNumberSkill() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
 
-        this.magicNumber = this.baseMagicNumber = VULNERABLE;
-        this.defaultSecondMagicNumber = this.defaultBaseSecondMagicNumber = POISON;
+        magicNumber = baseMagicNumber = VULNERABLE;
+        defaultSecondMagicNumber = defaultBaseSecondMagicNumber = POISON;
 
     }
 
@@ -70,7 +70,7 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m, p, new VulnerablePower(m, this.magicNumber, false), this.magicNumber));
+                new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false), this.magicNumber));
 
         AbstractDungeon.actionManager.addToBottom(
                 new ApplyPowerAction(m, p, new PoisonPower(m, p, this.defaultSecondMagicNumber), this.defaultSecondMagicNumber));
