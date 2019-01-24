@@ -15,7 +15,7 @@ import defaultmod.patches.AbstractCardEnum;
 public class cardTemplate extends AbstractDefaultCard {
 
     /*
-     * "Hey I wanna make a new card now." - You, probably.
+     * "Hey, I wanna make a bunch of cards now." - You, probably.
      * ok cool my dude no problem here's the most convenient way to do it:
      *
      * Copy all of the code here (Ctrl+A > Ctrl+C)
