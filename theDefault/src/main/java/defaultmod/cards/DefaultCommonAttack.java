@@ -62,6 +62,8 @@ public class DefaultCommonAttack extends CustomCard {
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard
 
         baseDamage = DAMAGE;
+        
+        this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form cards so that they work correctly.
     }
 
     // Actions the card should do.
