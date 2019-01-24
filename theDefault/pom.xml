@@ -1,23 +1,16 @@
-<?xml version="1.0"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>defaultmod</groupId>
     <artifactId>DefaultMod</artifactId>
-    <version>1.0.0</version>
-    <packaging>jar</packaging>
-
+    <!--<version>1.2.0</version>-->
+    <version>0.0.1</version>
     <name>DefaultMod</name>
-    <description>A base for Slay the Spire to start your own mod from.</description>
 
-    <!-- This is here for convenience, you can just update your version numbers here and inside ModTheSpire.json-->
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <SlayTheSpire.version>01-23-2019</SlayTheSpire.version>
-        <ModTheSpire.version>3.8.1</ModTheSpire.version>
-        <StSlib.version>1.13.1</StSlib.version>
-        <BaseMod.version>5.8.0</BaseMod.version>
+        <SlayTheSpire.version>01-03-2019</SlayTheSpire.version>
+        <ModTheSpire.version>3.6.3</ModTheSpire.version>
     </properties>
 
     <dependencies>
@@ -27,28 +20,31 @@
             <version>${SlayTheSpire.version}</version>
             <scope>system</scope>
             <systemPath>C:/My Stuff/Games/Steam/steamapps/common/SlayTheSpire/desktop-1.0.jar</systemPath>
+            <!--<systemPath>${basedir}/../lib/desktop-1.0.jar</systemPath>-->
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl</groupId>
-            <artifactId>ModTheSpire</artifactId>
+            <artifactId>modthespire</artifactId>
             <version>${ModTheSpire.version}</version>
             <scope>system</scope>
-            <systemPath>C:/My Stuff/Games/Steam/steamapps/workshop/content/646570/1605060445/ModTheSpire.jar
-            </systemPath>
+            <systemPath>C:/My Stuff/Games/Steam/steamapps/workshop/content/646570/1605060445/ModTheSpire.jar</systemPath>
+            <!--<systemPath>${basedir}/../lib/ModTheSpire.jar</systemPath>-->
         </dependency>
         <dependency>
-            <groupId>com.evacipated.cardcrawl</groupId>
-            <artifactId>BaseMod</artifactId>
-            <version>${BaseMod.version}</version>
+            <groupId>basemod</groupId>
+            <artifactId>basemod</artifactId>
+            <version>5.0.0</version>
             <scope>system</scope>
             <systemPath>C:/My Stuff/Games/Steam/steamapps/workshop/content/646570/1605833019/BaseMod.jar</systemPath>
+            <!--<systemPath>${basedir}/../lib/BaseMod.jar</systemPath>-->
         </dependency>
         <dependency>
             <groupId>com.evacipated.cardcrawl.mod</groupId>
-            <artifactId>stslib</artifactId>
-            <version>${StSlib.version}</version>
+            <artifactId>StSLib</artifactId>
+            <version>1.3.2</version>
             <scope>system</scope>
             <systemPath>C:/My Stuff/Games/Steam/steamapps/workshop/content/646570/1609158507/StSLib.jar</systemPath>
+            <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
         </dependency>
     </dependencies>
 
@@ -60,30 +56,6 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.4.2</version>
-                <executions>
-                    <execution>
-                        <!-- Change this to match your mods artifactId -->
-                        <id>DefaultMod</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <filters>
-                                <filter>
-                                    <!-- Change this to match your mods groupId:artifactId -->
-                                    <artifact>defaultmod:DefaultMod</artifact>
-                                </filter>
-                            </filters>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>1.8</version>
                 <executions>
@@ -91,10 +63,9 @@
                         <phase>package</phase>
                         <configuration>
                             <target>
-                                <!-- Change to match your mods name.
-                                     This moves your mod into a common folder where all mods you make can go. -->
-                                <copy file="target/DefaultMod.jar"
-                                      tofile="C:/My Stuff/Games/Steam/steamapps/common/SlayTheSpire/mods/DefaultMod.jar"/>
+                                <!-- Change to match your mods name. This moves your mod into a common folder where all mods you make can go. -->
+                                <copy file="target/DefaultMod.jar" tofile="C:/My Stuff/Games/Steam/steamapps/common/SlayTheSpire/mods/DefaultMod.jar"/>
+                                <!--<copy file="target/DefaultMod.jar" tofile="../mods/DefaultMod.jar"/>-->
                             </target>
                         </configuration>
                         <goals>
@@ -104,6 +75,28 @@
                 </executions>
             </plugin>
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>ModTheSpire.json</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>ModTheSpire.json</include>
+                </includes>
+            </resource>
+        </resources>
+
     </build>
 
+    <description>A default base to start your own mod from.</description>
 </project>

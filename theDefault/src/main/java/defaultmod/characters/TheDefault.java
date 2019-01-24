@@ -212,9 +212,8 @@ public class TheDefault extends CustomPlayer {
     // Should return class name as it appears in run history screen.
     @Override
     public String getLocalizedCharacterName() {
-        return "The Default";
+        return NAMES[0];
     }
-
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
@@ -224,7 +223,7 @@ public class TheDefault extends CustomPlayer {
     // The class name as it appears next to your player name in-game
     @Override
     public String getTitle(AbstractPlayer.PlayerClass playerClass) {
-        return "the Default";
+        return NAMES[1];
     }
 
     // Should return a new instance of your character, sending name as its name parameter.
