@@ -54,6 +54,8 @@ public class DefaultCommonSkill extends CustomCard {
     public DefaultCommonSkill() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
+        
+        this.tags.add(BaseModCardTags.BASIC_DEFEND); //Tag your strike, defend and form cards so that they work correctly.
     }
 
     // Actions the card should do.
