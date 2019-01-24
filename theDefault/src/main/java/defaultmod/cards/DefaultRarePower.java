@@ -55,6 +55,9 @@ public class DefaultRarePower extends CustomCard {
 
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
+        
+        this.tags.add(BaseModCardTags.FORM); //Tag your strike, defend and form cards so that they work correctly.
+   
     }
     
     // Actions the card should do.
