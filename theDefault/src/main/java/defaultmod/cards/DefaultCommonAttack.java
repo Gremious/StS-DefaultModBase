@@ -64,7 +64,8 @@ public class DefaultCommonAttack extends CustomCard {
 
         baseDamage = DAMAGE;
         
-        this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form cards so that they work correctly.
+        this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Shadow form, demon form, echo form, etc.) cards so that they work correctly.
+        this.tags.add(CardTags.STRIKE);
     }
 
     // Actions the card should do.
