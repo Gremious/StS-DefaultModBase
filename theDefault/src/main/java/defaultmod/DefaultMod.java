@@ -301,6 +301,8 @@ public class DefaultMod implements
 
     @Override
     public void receiveEditKeywords() {
+    // multiword keywords are done with_underscores
+    // so if you do lesser_potion in keyword.NAMES and Lesser_Potion on a card basemod will auto-resolve it, showing it as Lesser Potion
         Gson gson = new Gson();
         String json = Gdx.files.internal("defaultModResources/localization/eng/DefaultMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
         com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
@@ -311,7 +313,7 @@ public class DefaultMod implements
             }
         }
     }
-
+        
     // ================ /LOAD THE KEYWORDS/ ===================    
 
     // this adds "ModName:" before the ID of any card/relic/power etc.
