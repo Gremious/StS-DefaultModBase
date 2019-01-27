@@ -9,8 +9,10 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <SlayTheSpire.version>01-03-2019</SlayTheSpire.version>
-        <ModTheSpire.version>3.6.3</ModTheSpire.version>
+        <SlayTheSpire.version>01-23-2019</SlayTheSpire.version>
+        <ModTheSpire.version>3.8.0</ModTheSpire.version>
+        <!--CHANGE THIS TO YOUR STEAM INSTALLATION-->
+        <Steam.path>C:/My Stuff/Games/Steam/steamapps</Steam.path>
     </properties>
 
     <dependencies>
@@ -19,7 +21,7 @@
             <artifactId>slaythespire</artifactId>
             <version>${SlayTheSpire.version}</version>
             <scope>system</scope>
-            <systemPath>C:/My Stuff/Games/Steam/steamapps/common/SlayTheSpire/desktop-1.0.jar</systemPath>
+            <systemPath>${Steam.path}/common/SlayTheSpire/desktop-1.0.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/desktop-1.0.jar</systemPath>-->
         </dependency>
         <dependency>
@@ -27,7 +29,7 @@
             <artifactId>modthespire</artifactId>
             <version>${ModTheSpire.version}</version>
             <scope>system</scope>
-            <systemPath>C:/My Stuff/Games/Steam/steamapps/workshop/content/646570/1605060445/ModTheSpire.jar</systemPath>
+            <systemPath>${Steam.path}/workshop/content/646570/1605060445/ModTheSpire.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/ModTheSpire.jar</systemPath>-->
         </dependency>
         <dependency>
@@ -35,7 +37,7 @@
             <artifactId>basemod</artifactId>
             <version>5.0.0</version>
             <scope>system</scope>
-            <systemPath>C:/My Stuff/Games/Steam/steamapps/workshop/content/646570/1605833019/BaseMod.jar</systemPath>
+            <systemPath>${Steam.path}/workshop/content/646570/1605833019/BaseMod.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/BaseMod.jar</systemPath>-->
         </dependency>
         <dependency>
@@ -43,7 +45,7 @@
             <artifactId>StSLib</artifactId>
             <version>1.3.2</version>
             <scope>system</scope>
-            <systemPath>C:/My Stuff/Games/Steam/steamapps/workshop/content/646570/1609158507/StSLib.jar</systemPath>
+            <systemPath>${Steam.path}/workshop/content/646570/1609158507/StSLib.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
         </dependency>
     </dependencies>
