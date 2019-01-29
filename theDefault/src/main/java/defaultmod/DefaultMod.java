@@ -301,15 +301,20 @@ public class DefaultMod implements
 
     @Override
     public void receiveEditKeywords() {
-    // multiword keywords are done with_underscores
-    // so if you do lesser_potion in keyword.NAMES and Lesser_Potion on a card basemod will auto-resolve it, showing it as Lesser Potion
+        // keywords on cards are supposed to be Capitalized, while in Keyword-String.json they're lowercase
+
+        // multiword keywords are done with_underscores
+        // if you're using multiword keyword, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME
+        // that is, in Card-Strings.json you would have a_long_keyword
+        // and in Keyword-Strings.json you would have PROPER_NAME as A Long Keyword, and the first element in NAMES be A Long Keyword, and the second element be a_long_keyword
+
         Gson gson = new Gson();
         String json = Gdx.files.internal("defaultModResources/localization/eng/DefaultMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
         com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
 
         if (keywords != null) {
             for (Keyword keyword : keywords) {
-                BaseMod.addKeyword(keyword.NAMES, keyword.DESCRIPTION);
+                BaseMod.addKeyword(keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
             }
         }
     }
