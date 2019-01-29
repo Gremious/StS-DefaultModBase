@@ -257,7 +257,7 @@ public class DefaultMod implements
 
     // There are better ways to do this than listing every single individual card, but I do not want to complicate things
     // in a "tutorial" mod. This will do and it's completely ok to use. If you ever want to clean up and
-    // shorten all the imports, go look take a look at other mods, such Conspire or Hubris.
+    // shorten all the imports, go look take a look at other mods, such conspire or Hubris.
 
     // ================ /ADD CARDS/ ===================
 
@@ -307,6 +307,7 @@ public class DefaultMod implements
         // if you're using multiword keyword, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME
         // that is, in Card-Strings.json you would have a_long_keyword
         // and in Keyword-Strings.json you would have PROPER_NAME as A Long Keyword, and the first element in NAMES be A Long Keyword, and the second element be a_long_keyword
+
         Gson gson = new Gson();
         String json = Gdx.files.internal("defaultModResources/localization/eng/DefaultMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
         com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
@@ -317,7 +318,7 @@ public class DefaultMod implements
             }
         }
     }
-
+        
     // ================ /LOAD THE KEYWORDS/ ===================    
 
     // this adds "ModName:" before the ID of any card/relic/power etc.

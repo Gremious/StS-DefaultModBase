@@ -40,6 +40,7 @@ Download the latest release `.jar` for each project and place in the lib folder.
 
 - Mod the Spire: `Steam\steamapps\workshop\content\646570\1605060445`
 - BaseMod: `Steam\steamapps\workshop\content\646570\1605833019`
+- StSlib: `Steam\steamapps\workshop\content\646570\1609158507`
 
 The final dependency you will need is the actual game. There is a file called `desktop-1.0.jar` located where your game is installed. Copy `desktop-1.0.jar` into the `lib` folder.
 
