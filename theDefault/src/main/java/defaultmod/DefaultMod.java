@@ -22,6 +22,7 @@ import defaultmod.potions.PlaceholderPotion;
 import defaultmod.relics.DefaultClickableRelic;
 import defaultmod.relics.PlaceholderRelic;
 import defaultmod.relics.PlaceholderRelic2;
+import defaultmod.util.TextureLoader;
 import defaultmod.variables.DefaultCustomVariable;
 import defaultmod.variables.DefaultSecondMagicNumber;
 import org.apache.logging.log4j.LogManager;
@@ -30,9 +31,10 @@ import org.apache.logging.log4j.Logger;
 import java.nio.charset.StandardCharsets;
 
 //TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
-// Right click the package (folder with black dot on it. the name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
+// Right click the package (Open the project pane on the left. Folder with black dot on it. The name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
 // Scroll to the very bottom of this file. Change the id string from "theDefault:" to "yourModName:" or whatever your heart desires (don't use spaces).
-// Start with DefaultCommonAttack - it is the most commented card right now.
+// In the JSON strings (resources>localization>eng>[all them files] make sure they all go "yourModName:" rather than "theDefault". You can ctrl+R to replace in 1 file, or ctrl+shift+r to mass replace in specific files/directories (Be careful.).
+// Start with the DefaultCommon cards - they are the most commented cards since I don't feel it's necessary to put identical comments on every card.
 // After you sorta get the hang of how to make cards, check out the card template which will make your life easier
 
 /*
@@ -46,7 +48,6 @@ import java.nio.charset.StandardCharsets;
  * Feel free to use this in any way you like, of course. Happy modding!
  */
 
-//NOTE: ASD
 @SpireInitializer
 public class DefaultMod implements
         EditCardsSubscriber,
@@ -159,7 +160,7 @@ public class DefaultMod implements
 
         logger.info("Loading badge image and mod options");
         // Load the Mod Badge
-        Texture badgeTexture = new Texture(BADGE_IMAGE);
+        Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
 
         // Create the Mod Menu
         ModPanel settingsPanel = new ModPanel();
@@ -239,6 +240,8 @@ public class DefaultMod implements
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
+        // This is so that they are all "seen" in the library, for people who like to look at the card list
+        // before playing your mod.
         UnlockTracker.unlockCard(OrbSkill.ID);
         UnlockTracker.unlockCard(DefaultSecondMagicNumberSkill.ID);
         UnlockTracker.unlockCard(DefaultCommonAttack.ID);
@@ -318,7 +321,7 @@ public class DefaultMod implements
             }
         }
     }
-        
+
     // ================ /LOAD THE KEYWORDS/ ===================    
 
     // this adds "ModName:" before the ID of any card/relic/power etc.
