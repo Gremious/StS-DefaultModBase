@@ -84,7 +84,7 @@ public class DefaultOrb extends AbstractOrb {
 
     @Override
     public void updateAnimation() {// You can totally leave this as is.
-        // If you want to create a whole new orb effect - take a look at Conspire's Water Obr. It includes a custom sound, too!
+        // If you want to create a whole new orb effect - take a look at conspire's Water Orb. It includes a custom sound, too!
         super.updateAnimation();
         this.angle += Gdx.graphics.getDeltaTime() * 45.0f;
         this.vfxTimer -= Gdx.graphics.getDeltaTime();

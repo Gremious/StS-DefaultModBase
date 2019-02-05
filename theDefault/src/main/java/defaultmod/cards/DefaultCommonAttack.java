@@ -1,5 +1,6 @@
 package defaultmod.cards;
 
+import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -62,6 +63,9 @@ public class DefaultCommonAttack extends CustomCard {
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard
 
         baseDamage = DAMAGE;
+        
+        this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Shadow form, demon form, echo form, etc.) cards so that they work correctly.
+        this.tags.add(CardTags.STRIKE);
     }
 
     // Actions the card should do.

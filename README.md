@@ -14,7 +14,7 @@ If you're new to modding, you basically need the BaseMod wiki for whatever you w
 
 https://github.com/daviscook477/BaseMod/wiki
 
-This base itself isn't going to help you code or anything!! While I have been put comments noting what does what, this is just a nice starting point if you need a place to start learning from that's not an absolute empty canvas, or an overly-complicated, difficult to understand mod. But you still need to learn how the in-game code works and how to piece things together on your own. (i.e. this base will show you where to put the code for double-tap, but not what it is/how to write it/how it works. Look up the actual cards and backward-engineer them for that.)
+This base itself isn't going to help you code or anything!! While I have been putting comments noting what does what, this is just a nice starting point if you need a place to start learning from that's not an absolute empty canvas, or an overly-complicated, difficult to understand mod. But you still need to learn how the in-game code works and how to piece things together on your own. (i.e. this base will show you where to put the code for double-tap, but not what it is/how to write it/how it works. Look up the actual cards and backward-engineer them for that.)
 
 Feel free to use this in any way you like, of course. 
 
@@ -40,6 +40,7 @@ Download the latest release `.jar` for each project and place in the lib folder.
 
 - Mod the Spire: `Steam\steamapps\workshop\content\646570\1605060445`
 - BaseMod: `Steam\steamapps\workshop\content\646570\1605833019`
+- StSlib: `Steam\steamapps\workshop\content\646570\1609158507`
 
 The final dependency you will need is the actual game. There is a file called `desktop-1.0.jar` located where your game is installed. Copy `desktop-1.0.jar` into the `lib` folder.
 
