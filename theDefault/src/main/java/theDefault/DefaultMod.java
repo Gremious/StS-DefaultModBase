@@ -340,12 +340,13 @@ public class DefaultMod implements
 
     @Override
     public void receiveEditKeywords() {
-        // keywords on cards are supposed to be Capitalized, while in Keyword-String.json they're lowercase
-
-        // multiword keywords are done with_underscores
-        // if you're using multiword keyword, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME
-        // that is, in Card-Strings.json you would have a_long_keyword
-        // and in Keyword-Strings.json you would have PROPER_NAME as A Long Keyword, and the first element in NAMES be A Long Keyword, and the second element be a_long_keyword
+    // Keywords on cards are supposed to be Capitalized, while in Keyword-String.json they're lowercase
+    //
+    // Multiword keywords on cards are done With_Underscores
+    //
+    // If you're using multiword keywords, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME.
+    // That is, in Card-Strings.json you would have #yA_Long_Keyword (#y highlights the keyword in yellow).
+    // In Keyword-Strings.json you would have PROPER_NAME as A Long Keyword and the first element in NAMES be a long keyword, and the second element be a_long_keyword
 
         Gson gson = new Gson();
         String json = Gdx.files.internal("theDefaultResources/localization/eng/DefaultMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));

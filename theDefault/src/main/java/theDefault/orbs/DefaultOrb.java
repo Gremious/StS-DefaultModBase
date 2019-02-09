@@ -22,7 +22,7 @@ import theDefault.DefaultMod;
 
 public class DefaultOrb extends AbstractOrb {
 
-    // Standard ID/Descritpion
+    // Standard ID/Description
     public static final String ORB_ID = DefaultMod.makeID("DefaultOrb");
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
     public static final String[] DESC = orbString.DESCRIPTION;
