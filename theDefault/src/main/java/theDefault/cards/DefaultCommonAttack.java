@@ -24,7 +24,7 @@ public class DefaultCommonAttack extends CustomCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = theDefault.DefaultMod.makeID("DefaultCommonAttack");
+    public static final String ID = "DefaultCommonAttack";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = "theDefaultResources/images/cards/Attack.png";
@@ -54,7 +54,12 @@ public class DefaultCommonAttack extends CustomCard {
     // /STAT DECLARATION/
 
     public DefaultCommonAttack() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(theDefault.DefaultMod.makeID(ID), NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        // We use makeID here so that the ID 'DefaultCommonAttack' becomes 'theDefault:DefaultCommonAttack'
+        // This way, if any other mod uses the name 'DefaultCommonAttack' there won't be conflicts.
+        // Once you get how it all works, you could also totally move 'theDefault.DefaultMod.makeID(ID)' to the super Constructor
+        // of Abstract Default Card - that way it'll automatically do that for every card, and your code will look a little cleaner.
+
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard
