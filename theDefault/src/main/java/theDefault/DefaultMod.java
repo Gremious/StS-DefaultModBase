@@ -114,7 +114,7 @@ public class DefaultMod implements
         logger.info("Subscribe to BaseMod hooks");
 
         BaseMod.subscribe(this);
-        setModID("theDefault");
+        setModID("theDefaultDev");
 
         logger.info("Done subscribing");
 
@@ -129,12 +129,15 @@ public class DefaultMod implements
         logger.info("Done creating the color");
     }
 
-    // DON'T TOUCH THIS STUFF. IT IS HERE FOR STANDARIZATION BETWEEN MODS AND TO ENSURE GOOD CODE PRACTICES.
+    // ====== NO EDIT AREA ======
+    // DON'T TOUCH THIS STUFF. IT IS HERE FOR STANDARDIZATION BETWEEN MODS AND TO ENSURE GOOD CODE PRACTICES.
     // IF YOU MODIFY THIS I WILL HUNT YOU DOWN AND DOWNVOTE YOUR MOD ON WORKSHOP
 
     public static void setModID(String ID) {
         if (ID.equals("theDefault")) {
             throw new RuntimeException("Go to your constructor in your class with SpireInitializer and change your mod ID from \"theDefault\"");
+        } else if (ID.equals("theDefaultDev")) {
+            modID = "theDefault";
         } else {
             modID = ID;
         }
@@ -147,19 +150,36 @@ public class DefaultMod implements
     private static void pathCheck() {
         String packageName = DefaultMod.class.getPackage().getName();
         FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources");
-        if (!packageName.equals(getModID())) {
-            throw new RuntimeException("Rename your theDefault folder to match your mod ID! " + getModID());
-        }
-        if (!resourcePathExists.exists()) {
-            throw new RuntimeException("Rename your theDefaultResources folder to match your mod ID! " + getModID() + "Resources");
+        if (!modID.equals("theDefaultDev")) {
+            if (!packageName.equals(getModID())) {
+                throw new RuntimeException("Rename your theDefault folder to match your mod ID! " + getModID());
+            }
+            if (!resourcePathExists.exists()) {
+                throw new RuntimeException("Rename your theDefaultResources folder to match your mod ID! " + getModID() + "Resources");
+            }
         }
     }
+    // ====== YOU CAN EDIT AGAIN ======
 
-    public static String makePath(String resourcePath) {
+    public static String makeCardPath(String resourcePath) {
         return getModID() + "Resources/images/cards/" + resourcePath;
     }
 
-    // ====== YOU CAN EDIT AGAIN ======
+    public static String makeRelicPath(String resourcePath) {
+        return getModID() + "Resources/images/relics/" + resourcePath;
+    }
+
+    public static String makeRelicOutlinePath(String resourcePath) {
+        return getModID() + "Resources/images/relics/outline/" + resourcePath;
+    }
+
+    public static String makeOrbPath(String resourcePath) {
+        return getModID() + "Resources/orbs/" + resourcePath;
+    }
+
+    public static String makePowerPath(String resourcePath) {
+        return getModID() + "Resources/images/powers/" + resourcePath;
+    }
 
     @SuppressWarnings("unused")
     public static void initialize() {
@@ -345,10 +365,8 @@ public class DefaultMod implements
         // Multiword keywords on cards are done With_Underscores
         //
         // If you're using multiword keywords, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME.
+        // That is, in Card-Strings.json you would have #yA_Long_Keyword (#y highlights the keyword in yellow).
         // In Keyword-Strings.json you would have PROPER_NAME as A Long Keyword and the first element in NAMES be a long keyword, and the second element be a_long_keyword
-        //
-        // In your Card Strings (.json) you would have A_Long_Keyword. In your Relic Strings, you need #yA_Long_Keyword in order to correctly highlight it in yellow.
-        // The #y isn't necessary for regular 1-word keywords or in cards.
 
         Gson gson = new Gson();
         String json = Gdx.files.internal("theDefaultResources/localization/eng/DefaultMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));

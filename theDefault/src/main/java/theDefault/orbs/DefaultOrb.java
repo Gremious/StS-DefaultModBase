@@ -16,9 +16,12 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
-import com.megacrit.cardcrawl.vfx.combat.*;
-
+import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
+import com.megacrit.cardcrawl.vfx.combat.DarkOrbPassiveEffect;
+import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 import theDefault.DefaultMod;
+
+import static theDefault.DefaultMod.makeOrbPath;
 
 public class DefaultOrb extends AbstractOrb {
 
@@ -26,7 +29,7 @@ public class DefaultOrb extends AbstractOrb {
     public static final String ORB_ID = DefaultMod.makeID("DefaultOrb");
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
     public static final String[] DESC = orbString.DESCRIPTION;
-
+    public static final String IMG = makeOrbPath("default_orb.png");
     // Animation Rendering Numbers - You can leave these at default, or play around with them and see what they change.
     private float vfxTimer = 1.0f;
     private float vfxIntervalMin = 0.1f;
@@ -38,7 +41,7 @@ public class DefaultOrb extends AbstractOrb {
 
         this.ID = ORB_ID;
         this.name = orbString.NAME;
-        this.img = ImageMaster.loadImage("theDefaultResources/images/orbs/default_orb.png");
+        this.img = ImageMaster.loadImage(IMG);
 
         this.evokeAmount = this.baseEvokeAmount = 1;
         this.passiveAmount = this.basePassiveAmount = 3;
@@ -66,7 +69,7 @@ public class DefaultOrb extends AbstractOrb {
 
         AbstractDungeon.actionManager.addToBottom( // 2.Damage all enemies
                 new DamageAllEnemiesAction(AbstractDungeon.player, DamageInfo.createDamageMatrix(this.evokeAmount, true, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
-       // The damage matrix is how orb damage all enemies actions have to be assigned. For regular cards that do damage to everyone, check out cleave or whirlwind - they are a bit simpler.
+        // The damage matrix is how orb damage all enemies actions have to be assigned. For regular cards that do damage to everyone, check out cleave or whirlwind - they are a bit simpler.
 
 
         AbstractDungeon.actionManager.addToBottom(new SFXAction("TINGSHA")); // 3.And play a Jingle Sound.
@@ -111,7 +114,7 @@ public class DefaultOrb extends AbstractOrb {
 
     @Override
     public void triggerEvokeAnimation() { // The evoke animation of this orb is the dark-orb activation effect.
-               AbstractDungeon.effectsQueue.add(new DarkOrbActivateEffect(this.cX, this.cY));
+        AbstractDungeon.effectsQueue.add(new DarkOrbActivateEffect(this.cX, this.cY));
     }
 
     @Override

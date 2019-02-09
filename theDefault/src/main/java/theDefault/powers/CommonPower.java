@@ -10,11 +10,11 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
-
 import theDefault.util.TextureLoader;
+
+import static theDefault.DefaultMod.makePowerPath;
 
 //Gain 1 dex for the turn for each card played.
 
@@ -28,8 +28,8 @@ public class CommonPower extends AbstractPower {
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
-    Texture tex84 = TextureLoader.getTexture("theDefaultResources/images/powers/placeholder_power84.png");
-    Texture tex32 = TextureLoader.getTexture("theDefaultResources/images/powers/placeholder_power32.png");
+    Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
+    Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
     public CommonPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
