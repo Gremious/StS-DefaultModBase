@@ -5,6 +5,18 @@ import basemod.ModLabel;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.google.gson.Gson;
+import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import theDefault.cards.*;
 import theDefault.characters.TheDefault;
 import theDefault.patches.AbstractCardEnum;
@@ -17,22 +29,6 @@ import theDefault.util.TextureLoader;
 import theDefault.variables.DefaultCustomVariable;
 import theDefault.variables.DefaultSecondMagicNumber;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.evacipated.cardcrawl.mod.stslib.Keyword;
-import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
-import com.google.gson.Gson;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.CardHelper;
-import com.megacrit.cardcrawl.localization.*;
-import com.megacrit.cardcrawl.unlock.UnlockTracker;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
-import java.io.File;
 import java.nio.charset.StandardCharsets;
 
 //TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
@@ -132,35 +128,39 @@ public class DefaultMod implements
 
         logger.info("Done creating the color");
     }
-    
+
     // DON'T TOUCH THIS STUFF. IT IS HERE FOR STANDARIZATION BETWEEN MODS AND TO ENSURE GOOD CODE PRACTICES.
     // IF YOU MODIFY THIS I WILL HUNT YOU DOWN AND DOWNVOTE YOUR MOD ON WORKSHOP
-    
+
     public static void setModID(String ID) {
         if (ID.equals("theDefault")) {
             throw new RuntimeException("Go to your constructor in your class with SpireInitializer and change your mod ID from \"theDefault\"");
         } else {
             modID = ID;
-       }
+        }
     }
 
     public static String getModID() {
         return modID;
     }
-    
+
     private static void pathCheck() {
-    	String packageName = DefaultMod.class.getPackage().getName();
-    	FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources");
-    	if (!packageName.equals(getModID())) {
-    		throw new RuntimeException("Rename your theDefault folder to match your mod ID! " + getModID());
-    	}
-    	if (!resourcePathExists.exists()) {
-    		throw new RuntimeException("Rename your theDefaultResources folder to match your mod ID! " + getModID() + "Resources");
-    	}
+        String packageName = DefaultMod.class.getPackage().getName();
+        FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources");
+        if (!packageName.equals(getModID())) {
+            throw new RuntimeException("Rename your theDefault folder to match your mod ID! " + getModID());
+        }
+        if (!resourcePathExists.exists()) {
+            throw new RuntimeException("Rename your theDefaultResources folder to match your mod ID! " + getModID() + "Resources");
+        }
     }
-    
+
+    public static String makePath(String resourcePath) {
+        return getModID() + "Resources/images/cards/" + resourcePath;
+    }
+
     // ====== YOU CAN EDIT AGAIN ======
-    
+
     @SuppressWarnings("unused")
     public static void initialize() {
         logger.info("========================= Initializing Default Mod. Hi. =========================");
@@ -192,7 +192,7 @@ public class DefaultMod implements
 
     @Override
     public void receivePostInitialize() {
-         logger.info("Loading badge image and mod options");
+        logger.info("Loading badge image and mod options");
         // Load the Mod Badge
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
 
@@ -252,7 +252,7 @@ public class DefaultMod implements
     public void receiveEditCards() {
         logger.info("Adding variables");
         //Ignore this
-       	pathCheck();
+        pathCheck();
         // Add the Custom Dynamic Variables
         logger.info("Add variabls");
         // Add the Custom Dynamic variabls
@@ -340,13 +340,15 @@ public class DefaultMod implements
 
     @Override
     public void receiveEditKeywords() {
-    // Keywords on cards are supposed to be Capitalized, while in Keyword-String.json they're lowercase
-    //
-    // Multiword keywords on cards are done With_Underscores
-    //
-    // If you're using multiword keywords, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME.
-    // That is, in Card-Strings.json you would have #yA_Long_Keyword (#y highlights the keyword in yellow).
-    // In Keyword-Strings.json you would have PROPER_NAME as A Long Keyword and the first element in NAMES be a long keyword, and the second element be a_long_keyword
+        // Keywords on cards are supposed to be Capitalized, while in Keyword-String.json they're lowercase
+        //
+        // Multiword keywords on cards are done With_Underscores
+        //
+        // If you're using multiword keywords, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME.
+        // In Keyword-Strings.json you would have PROPER_NAME as A Long Keyword and the first element in NAMES be a long keyword, and the second element be a_long_keyword
+        //
+        // In your Card Strings (.json) you would have A_Long_Keyword. In your Relic Strings, you need #yA_Long_Keyword in order to correctly highlight it in yellow.
+        // The #y isn't necessary for regular 1-word keywords or in cards.
 
         Gson gson = new Gson();
         String json = Gdx.files.internal("theDefaultResources/localization/eng/DefaultMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));

@@ -1,7 +1,8 @@
 package theDefault.cards;
 
+import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -9,9 +10,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-
-import basemod.abstracts.CustomCard;
-import theDefault.DefaultMod;
 import theDefault.patches.AbstractCardEnum;
 
 public class DefaultAttackWithVariable extends CustomCard {
@@ -37,7 +35,7 @@ public class DefaultAttackWithVariable extends CustomCard {
 
     // /TEXT DECLARATION/
 
-    
+
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.COMMON;
@@ -48,7 +46,7 @@ public class DefaultAttackWithVariable extends CustomCard {
     private static final int COST = 1;
     private static final int DAMAGE = 7;
     private static final int UPGRADE_PLUS_DMG = 1;
-    
+
     public int specialDamage;
 
     // /STAT DECLARATION/
@@ -56,7 +54,7 @@ public class DefaultAttackWithVariable extends CustomCard {
     public DefaultAttackWithVariable() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        
+
         isMultiDamage = true;
     }
 
@@ -68,9 +66,9 @@ public class DefaultAttackWithVariable extends CustomCard {
 
         // For each energy, create 1 damage action.
         for (int i = 0; i < effect; i++) {
-            AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
-                new DamageInfo(p, damage, damageTypeForTurn),
-                AbstractGameAction.AttackEffect.FIRE));
+            AbstractDungeon.actionManager.addToBottom(
+                    new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
+                            AbstractGameAction.AttackEffect.FIRE));
         }
     }
 
