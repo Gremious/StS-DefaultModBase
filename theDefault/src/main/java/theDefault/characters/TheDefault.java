@@ -6,6 +6,7 @@ import basemod.animations.SpriterAnimation;
 import theDefault.DefaultMod;
 import theDefault.cards.*;
 import theDefault.patches.AbstractCardEnum;
+import theDefault.relics.BottledPlaceholderRelic;
 import theDefault.relics.DefaultClickableRelic;
 import theDefault.relics.PlaceholderRelic;
 import theDefault.relics.PlaceholderRelic2;
@@ -162,10 +163,12 @@ public class TheDefault extends CustomPlayer {
         retVal.add(PlaceholderRelic.ID);
         retVal.add(PlaceholderRelic2.ID);
         retVal.add(DefaultClickableRelic.ID);
+        retVal.add(BottledPlaceholderRelic.ID);
 
         UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
         UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
         UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
+        UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
 
         return retVal;
     }
