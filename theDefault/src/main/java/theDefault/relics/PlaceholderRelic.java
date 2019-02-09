@@ -53,9 +53,4 @@ public class PlaceholderRelic extends CustomRelic {
         return DESCRIPTIONS[0];
     }
 
-    // Which relic to return on making a copy of this relic.
-    @Override
-    public AbstractRelic makeCopy() {
-        return new PlaceholderRelic();
-    }
 }

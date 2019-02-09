@@ -23,9 +23,12 @@
   },
   "theDefault:BottledPlaceholderRelic": {
     "NAME": "Bottled Placeholder",
-    "FLAVOR": "What is in this?",
+    "FLAVOR": "What is this?",
     "DESCRIPTIONS": [
-      "Gain +1 [R] ."
+      "Choose a card. Whenever you take play any card, draw the chosen card.",
+      "Whenever you play a card, draw ",
+      ".",
+      "Select a card to bottle for "
     ]
   }
 }

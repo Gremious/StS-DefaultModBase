@@ -84,9 +84,4 @@ public class DefaultClickableRelic extends CustomRelic implements ClickableRelic
         return DESCRIPTIONS[0];
     }
 
-    // Which relic to return on making a copy of this relic.
-    @Override
-    public AbstractRelic makeCopy() {
-        return new DefaultClickableRelic();
-    }
 }
