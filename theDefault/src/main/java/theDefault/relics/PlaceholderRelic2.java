@@ -20,8 +20,8 @@ public class PlaceholderRelic2 extends CustomRelic {
     
     // ID, images, text.
     public static final String ID = theDefault.DefaultMod.makeID("PlaceholderRelic2");
-    public static final String IMG = "defaultModResources/images/relics/placeholder_relic2.png";
-    public static final String OUTLINE = "defaultModResources/images/relics/outline/placeholder_relic2.png";
+    public static final String IMG = "theDefault/images/relics/placeholder_relic2.png";
+    public static final String OUTLINE = "theDefault/images/relics/outline/placeholder_relic2.png";
 
     public PlaceholderRelic2() {
         super(ID, ImageMaster.loadImage(IMG), new Texture(OUTLINE), RelicTier.COMMON, LandingSound.MAGICAL);

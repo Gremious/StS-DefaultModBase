@@ -28,8 +28,8 @@ public class CommonPower extends AbstractPower {
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
-    Texture tex84 = TextureLoader.getTexture("defaultModResources/images/powers/placeholder_power84.png");
-    Texture tex32 = TextureLoader.getTexture("defaultModResources/images/powers/placeholder_power32.png");
+    Texture tex84 = TextureLoader.getTexture("theDefault/images/powers/placeholder_power84.png");
+    Texture tex32 = TextureLoader.getTexture("theDefault/images/powers/placeholder_power32.png");
 
     public CommonPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;

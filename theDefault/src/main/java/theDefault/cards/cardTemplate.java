@@ -36,7 +36,7 @@ public class cardTemplate extends AbstractDefaultCard {
     public static final String ID = DefaultMod.makeID("DefaultCommonAttack"); // DefaultMod.makeID("${NAME}");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public static final String IMG = "defaultModResources/images/cards/Attack.png"; // "defaultModResources/images/cards/${NAME}.png"
+    public static final String IMG = "theDefault/images/cards/Attack.png"; // "theDefault/images/cards/${NAME}.png"
     // This does mean that you will need to have an image with the same name as the card in your image folder for it to run correctly.
 
     public static final String NAME = cardStrings.NAME;

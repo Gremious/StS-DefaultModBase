@@ -29,7 +29,7 @@ public class DefaultRarePower extends CustomCard {
 
     public static final String ID = theDefault.DefaultMod.makeID("DefaultRarePower");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    public static final String IMG = "defaultModResources/images/cards/Power.png";
+    public static final String IMG = "theDefault/images/cards/Power.png";
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;

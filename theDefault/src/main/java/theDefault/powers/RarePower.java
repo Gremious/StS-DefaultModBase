@@ -25,8 +25,8 @@ public class RarePower extends AbstractPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
-    Texture tex84 = TextureLoader.getTexture("defaultModResources/images/powers/placeholder_power84.png");
-    Texture tex32 = TextureLoader.getTexture("defaultModResources/images/powers/placeholder_power32.png");
+    Texture tex84 = TextureLoader.getTexture("theDefault/images/powers/placeholder_power84.png");
+    Texture tex32 = TextureLoader.getTexture("theDefault/images/powers/placeholder_power32.png");
 
     public RarePower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
