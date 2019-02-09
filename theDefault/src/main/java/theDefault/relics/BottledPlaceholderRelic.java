@@ -32,7 +32,8 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
     // or a card's misc value, you use a custom savable to save and load it between runs."
 
     private static AbstractCard card;  // The field value you wish to save.
-    private boolean cardSelected = true;
+    private boolean cardSelected = true; // A boolean to indicate whether or not we selected a card for bottling.
+    // (It's set to false on Equip)
 
 
     // ID, images, text.
@@ -48,6 +49,7 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
 
     // Now, for making Bottled cards we need a small patch - our own custom SpireField
     // I've included that already in patches.relics.BottledPlaceholderField
+    // The basemod wiki I linked above has comments about onSave and onLoad
 
     @Override
     public Predicate<AbstractCard> isOnCard() {
@@ -80,39 +82,42 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
 
     @Override
     public void onEquip() { // 1. When we acquire the relic
-        cardSelected = false;
-        if (AbstractDungeon.isScreenUp) { // 2. If the map is open - hide it.
+        cardSelected = false; // 2. Tell the relic that we haven't bottled the card yet
+        if (AbstractDungeon.isScreenUp) { // 3. If the map is open - hide it.
             AbstractDungeon.dynamicBanner.hide();
             AbstractDungeon.overlayMenu.cancelButton.hide();
             AbstractDungeon.previousScreen = AbstractDungeon.screen;
         }
-        AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.INCOMPLETE; // 3. Set the room to INCOMPLETE - don't allow us to use the map, etc.
-        CardGroup group = CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck); // 4. Get a card group of all currently unbottled cards
+        AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.INCOMPLETE; // 4. Set the room to INCOMPLETE - don't allow us to use the map, etc.
+        CardGroup group = CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck); // 5. Get a card group of all currently unbottled cards
         AbstractDungeon.gridSelectScreen.open(group, 1, DESCRIPTIONS[3] + name + DESCRIPTIONS[2], false, false, false, false);
-        // 5. Open the grid selection screen with the cards from the CardGroup we specified above. The description reads "Select a card to bottle for" + (relic name) + "."
+        // 6. Open the grid selection screen with the cards from the CardGroup we specified above. The description reads "Select a card to bottle for" + (relic name) + "."
     }
 
 
     @Override
-    public void onUnequip() {
-        if (card != null) {
-            AbstractCard cardInDeck = AbstractDungeon.player.masterDeck.getSpecificCard(card);
+    public void onUnequip() { // 1. On unequip
+        if (card != null) { // If the bottled card exists (prevents the game from crashing if we removed the bottled card from our deck for example.)
+            AbstractCard cardInDeck = AbstractDungeon.player.masterDeck.getSpecificCard(card); // 2. Get the card
             if (cardInDeck != null) {
-                BottledPlaceholderField.inBottledPlaceholderField.set(cardInDeck, false);
+                BottledPlaceholderField.inBottledPlaceholderField.set(cardInDeck, false); // In our SpireField - set the card to no longer be bottled. (Unbottle it)
             }
         }
     }
 
     @Override
     public void update() {
-        super.update();
-        if (!this.cardSelected && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-            this.cardSelected = true;
-            card = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
-            BottledPlaceholderField.inBottledPlaceholderField.set(card, true);
-            AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE;
-            AbstractDungeon.gridSelectScreen.selectedCards.clear();
-            this.setDescriptionAfterLoading();
+        super.update(); //Do all of the original update() method in AbstractRelic
+
+        if (!cardSelected && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
+            // If the card hasn't been bottled yet and we have cards selected in the gridSelectScreen (from onEquip)
+            cardSelected = true; //Set the cardSelected boolean to be false - we're about to bottle the card.
+            card = AbstractDungeon.gridSelectScreen.selectedCards.get(0); // The custom Savable "card" is going to euqal
+            // The card from the selection screen (it's only 1, so it's at index 0)
+            BottledPlaceholderField.inBottledPlaceholderField.set(card, true); // Use our custom spire field to set that card to be bottled.
+            AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.COMPLETE; // The room phase can now be set to complete (From INCOMPLETE in onEquip)
+            AbstractDungeon.gridSelectScreen.selectedCards.clear(); // Always clear your grid screen after using it.
+            setDescriptionAfterLoading(); // Set the description to reflect the bottled card (the method is at the bottom of this file)
         }
     }
 

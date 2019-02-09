@@ -18,12 +18,13 @@ public class BottledPlaceholderField {
 
     @SpirePatch(clz = AbstractCard.class, method = "makeStatEquivalentCopy")
     public static class MakeStatEquivalentCopy {
-        public static AbstractCard Postfix(AbstractCard result, AbstractCard self) { // This is a postfix patch, meaning
-            // it'll be inserted at the very end of makeStatEquivalentCopy()
+        public static AbstractCard Postfix(AbstractCard result, AbstractCard self) {
+            // This is a postfix patch, meaning it'll be inserted at the very end of makeStatEquivalentCopy()
 
-            inBottledPlaceholderField.set(result, inBottledPlaceholderField.get(self));
+            inBottledPlaceholderField.set(result, inBottledPlaceholderField.get(self)); // Read:
+            // set inBottledPlaceholderField to have the card and true/false depending on whether it's bottled or not.
 
-            return result;
+            return result; // Return the bottled card.
         }
     }
 
