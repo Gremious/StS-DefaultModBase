@@ -1,15 +1,12 @@
 package theDefault.cards;
 
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-
-import basemod.abstracts.CustomCard;
-import theDefault.DefaultMod;
 import theDefault.actions.UncommonPowerAction;
 import theDefault.patches.AbstractCardEnum;
 

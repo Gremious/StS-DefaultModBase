@@ -1,15 +1,12 @@
 package theDefault.relics;
 
+import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-
-import basemod.abstracts.CustomRelic;
-import theDefault.DefaultMod;
 import theDefault.util.TextureLoader;
 
-import static theDefault.DefaultMod.*;
+import static theDefault.DefaultMod.makeRelicOutlinePath;
+import static theDefault.DefaultMod.makeRelicPath;
 
 public class PlaceholderRelic extends CustomRelic {
 

@@ -1,17 +1,14 @@
 package theDefault.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.characters.*;
-import com.megacrit.cardcrawl.monsters.*;
-import com.megacrit.cardcrawl.cards.*;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.ChemicalX;
-import com.megacrit.cardcrawl.ui.panels.*;
-
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import theDefault.powers.CommonPower;
-
-import com.megacrit.cardcrawl.dungeons.*;
-import com.megacrit.cardcrawl.core.*;
-import com.megacrit.cardcrawl.actions.common.*;
 
 public class UncommonPowerAction extends AbstractGameAction {
     private boolean freeToPlayOnce;

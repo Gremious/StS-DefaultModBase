@@ -26,7 +26,7 @@ import static theDefault.DefaultMod.makeRelicOutlinePath;
 import static theDefault.DefaultMod.makeRelicPath;
 
 public class BottledPlaceholderRelic extends CustomRelic implements CustomBottleRelic, CustomSavable<Integer> {
-    // This file will show you how to use 2 things - The Custom Bottle Relic and the Custom Savable - they go hand in hand.
+    // This file will show you how to use 2 things - (Mostly) The Custom Bottle Relic and the Custom Savable - they go hand in hand.
 
     /*
      * https://github.com/daviscook477/BaseMod/wiki/Custom-Savable
@@ -37,7 +37,7 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
     // BasemodWiki Says: "When you need to store a value on a card or relic between runs that isn't a relic's counter value
     // or a card's misc value, you use a custom savable to save and load it between runs."
 
-    private static AbstractCard card;  // The field value you wish to save.
+    private static AbstractCard card;  // The field value we wish to save in this case is the card that's going to be in our bottle.
     private boolean cardSelected = true; // A boolean to indicate whether or not we selected a card for bottling.
     // (It's set to false on Equip)
 

@@ -1,12 +1,10 @@
 package theDefault.variables;
 
 import basemod.abstracts.DynamicVariable;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import theDefault.cards.AbstractDefaultCard;
 
 import static theDefault.DefaultMod.makeID;
-
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public class DefaultSecondMagicNumber extends DynamicVariable {
 

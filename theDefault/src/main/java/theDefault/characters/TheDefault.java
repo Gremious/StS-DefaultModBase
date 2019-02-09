@@ -1,16 +1,7 @@
 package theDefault.characters;
 
-import basemod.BaseMod;
 import basemod.abstracts.CustomPlayer;
 import basemod.animations.SpriterAnimation;
-import theDefault.DefaultMod;
-import theDefault.cards.*;
-import theDefault.patches.AbstractCardEnum;
-import theDefault.relics.BottledPlaceholderRelic;
-import theDefault.relics.DefaultClickableRelic;
-import theDefault.relics.PlaceholderRelic;
-import theDefault.relics.PlaceholderRelic2;
-
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
@@ -26,9 +17,16 @@ import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import theDefault.DefaultMod;
+import theDefault.cards.*;
+import theDefault.patches.AbstractCardEnum;
+import theDefault.relics.DefaultClickableRelic;
+import theDefault.relics.PlaceholderRelic;
+import theDefault.relics.PlaceholderRelic2;
+
+import java.util.ArrayList;
 
 import static theDefault.DefaultMod.*;
 
