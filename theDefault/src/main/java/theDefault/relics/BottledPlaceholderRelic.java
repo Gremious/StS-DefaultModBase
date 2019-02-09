@@ -1,19 +1,25 @@
 package theDefault.relics;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomBottleRelic;
 import basemod.abstracts.CustomRelic;
 import basemod.abstracts.CustomSavable;
 import com.badlogic.gdx.graphics.Texture;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.AutoplayCardAction;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.AutoplayField;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import theDefault.DefaultMod;
 import theDefault.patches.relics.BottledPlaceholderField;
 import theDefault.util.TextureLoader;
 
+import java.util.Iterator;
 import java.util.function.Predicate;
 
 import static theDefault.DefaultMod.makeRelicOutlinePath;
@@ -122,6 +128,42 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
     }
 
 
+    // And finally after all that we can code in the actual relic mechanic
+    public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) { // Whenever we use any card
+        boolean fullHandDialog = false; // Create a boolean (to prevent multiple "My hand is full!" dialogues if we have multiple cards bottled)
+
+        for (Iterator<AbstractCard> it = AbstractDungeon.player.drawPile.group.iterator(); it.hasNext(); ) {
+            // Create a new Iterator called iter that checks for all AbstractCards in our draw pile. For each card:
+            AbstractCard card = it.next(); // create a new AbstractCard named "card" which is equal to the current card in the for each loop
+            if (BottledPlaceholderField.inBottledPlaceholderField.get(card)) { // Check if our SpireField matches said card
+                // Essentially, we end up with: Check if the draw pile has a card that is bottled with this bottle
+
+                // So, once we find a card that is bottled:
+
+                this.flash(); // The relic flashes
+                it.remove(); // Remove that card from the iterator (to prevent infinite loops)
+
+                if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) { // If your hand isn't full
+                    if (AutoplayField.autoplay.get(card)) { // If the card auto-plays - auto play it
+                        AbstractDungeon.actionManager.addToBottom(new AutoplayCardAction(card, AbstractDungeon.player.hand));
+                    }
+                    card.triggerWhenDrawn(); // If the card triggers an effect on being drawn - trigger it
+                    AbstractDungeon.player.drawPile.moveToHand(card, AbstractDungeon.player.drawPile); // Move the card to your hand from your draw pile
+
+                    for (AbstractRelic r : AbstractDungeon.player.relics) { // And if you have any relics that trigger on card draw - trigger them
+                        r.onCardDraw(card);
+                    }
+                } else { // If your hand IS full - create a single "My hand is full!" dialogue and move the card to the discard pile instead
+                    if (!fullHandDialog) {
+                        AbstractDungeon.player.createHandIsFullDialog();
+                        fullHandDialog = true;
+                    }
+                    AbstractDungeon.player.drawPile.moveToDiscardPile(card);
+                }
+
+            }
+        }
+    }
 
     // Change description after relic is already loaded to reflect the bottled card.
     public void setDescriptionAfterLoading() {
