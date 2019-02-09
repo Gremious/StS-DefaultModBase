@@ -13,7 +13,7 @@
         <ModTheSpire.version>3.8.0</ModTheSpire.version>
         <!--CHANGE THIS TO YOUR STEAM INSTALLATION-->
         <!--Also change the path at the very bottom of the file.-->
-        <Steam.path>C:/My Stuff/Games/Steam/steamapps</Steam.path>
+        <Steam.path>/home/reina/.local/share/Steam/steamapps</Steam.path>
     </properties>
 
     <dependencies>
@@ -67,7 +67,7 @@
                         <configuration>
                             <target>
                                 <!-- Change to match your mods name. This moves your mod into a common folder where all mods you make can go. -->
-                                <copy file="target/DefaultMod.jar" tofile="C:/My Stuff/Games/Steam/steamapps/common/SlayTheSpire/mods/DefaultMod.jar"/>
+                                <copy file="target/DefaultMod.jar" tofile="/home/reina/.local/share/Steam/steamapps/common/SlayTheSpire/mods/DefaultMod.jar"/>
                                 <!--<copy file="target/DefaultMod.jar" tofile="../mods/DefaultMod.jar"/>-->
                             </target>
                         </configuration>
