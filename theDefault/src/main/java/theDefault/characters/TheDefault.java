@@ -61,17 +61,17 @@ public class TheDefault extends CustomPlayer {
     // =============== TEXTURES OF BIG ENERGY ORB ===============
 
     public static final String[] orbTextures = {
-            "theDefault/images/char/defaultCharacter/orb/layer1.png",
-            "theDefault/images/char/defaultCharacter/orb/layer2.png",
-            "theDefault/images/char/defaultCharacter/orb/layer3.png",
-            "theDefault/images/char/defaultCharacter/orb/layer4.png",
-            "theDefault/images/char/defaultCharacter/orb/layer5.png",
-            "theDefault/images/char/defaultCharacter/orb/layer6.png",
-            "theDefault/images/char/defaultCharacter/orb/layer1d.png",
-            "theDefault/images/char/defaultCharacter/orb/layer2d.png",
-            "theDefault/images/char/defaultCharacter/orb/layer3d.png",
-            "theDefault/images/char/defaultCharacter/orb/layer4d.png",
-            "theDefault/images/char/defaultCharacter/orb/layer5d.png",};
+            "defaultModResources/images/char/defaultCharacter/orb/layer1.png",
+            "defaultModResources/images/char/defaultCharacter/orb/layer2.png",
+            "defaultModResources/images/char/defaultCharacter/orb/layer3.png",
+            "defaultModResources/images/char/defaultCharacter/orb/layer4.png",
+            "defaultModResources/images/char/defaultCharacter/orb/layer5.png",
+            "defaultModResources/images/char/defaultCharacter/orb/layer6.png",
+            "defaultModResources/images/char/defaultCharacter/orb/layer1d.png",
+            "defaultModResources/images/char/defaultCharacter/orb/layer2d.png",
+            "defaultModResources/images/char/defaultCharacter/orb/layer3d.png",
+            "defaultModResources/images/char/defaultCharacter/orb/layer4d.png",
+            "defaultModResources/images/char/defaultCharacter/orb/layer5d.png",};
 
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
 
@@ -80,9 +80,9 @@ public class TheDefault extends CustomPlayer {
 
     public TheDefault(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
-                "theDefault/images/char/defaultCharacter/orb/vfx.png", null,
+                "defaultModResources/images/char/defaultCharacter/orb/vfx.png", null,
                 new SpriterAnimation(
-                        "theDefault/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
+                        "defaultModResources/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
