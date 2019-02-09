@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
+import theDefault.DefaultMod;
 import theDefault.util.TextureLoader;
 
 import static theDefault.DefaultMod.makePowerPath;
@@ -21,7 +22,7 @@ import static theDefault.DefaultMod.makePowerPath;
 public class CommonPower extends AbstractPower {
     public AbstractCreature source;
 
-    public static final String POWER_ID = theDefault.DefaultMod.makeID("CommonPower");
+    public static final String POWER_ID = DefaultMod.makeID("CommonPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

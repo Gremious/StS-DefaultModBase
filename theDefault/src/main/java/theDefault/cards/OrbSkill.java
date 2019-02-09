@@ -8,8 +8,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDefault.DefaultMod;
+import theDefault.characters.TheDefault;
 import theDefault.orbs.DefaultOrb;
-import theDefault.patches.AbstractCardEnum;
 
 import static theDefault.DefaultMod.makeCardPath;
 
@@ -39,7 +39,7 @@ public class OrbSkill extends CustomCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = AbstractCardEnum.DEFAULT_GRAY;
+    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
 

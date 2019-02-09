@@ -7,8 +7,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import theDefault.DefaultMod;
 import theDefault.actions.UncommonPowerAction;
-import theDefault.patches.AbstractCardEnum;
+import theDefault.characters.TheDefault;
 
 import static theDefault.DefaultMod.makeCardPath;
 
@@ -22,7 +23,7 @@ public class DefaultUncommonPower extends CustomCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = theDefault.DefaultMod.makeID("DefaultUncommonPower");
+    public static final String ID = DefaultMod.makeID("DefaultUncommonPower");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Power.png");
 
@@ -37,7 +38,7 @@ public class DefaultUncommonPower extends CustomCard {
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.POWER;
-    public static final CardColor COLOR = AbstractCardEnum.DEFAULT_GRAY;
+    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
 
     private static final int COST = -1;
     private static final int MAGIC = 1;

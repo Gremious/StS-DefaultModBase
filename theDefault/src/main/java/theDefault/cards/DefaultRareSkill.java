@@ -8,7 +8,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import theDefault.patches.AbstractCardEnum;
+import theDefault.DefaultMod;
+import theDefault.characters.TheDefault;
 
 import static theDefault.DefaultMod.makeCardPath;
 
@@ -22,7 +23,7 @@ public class DefaultRareSkill extends CustomCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = theDefault.DefaultMod.makeID("DefaultRareSkill");
+    public static final String ID = DefaultMod.makeID("DefaultRareSkill");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Skill.png");
 
@@ -38,7 +39,7 @@ public class DefaultRareSkill extends CustomCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = AbstractCardEnum.DEFAULT_GRAY;
+    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
 

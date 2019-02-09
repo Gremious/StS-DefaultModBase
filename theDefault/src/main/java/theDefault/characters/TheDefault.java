@@ -6,12 +6,14 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.MathUtils;
 import com.esotericsoftware.spine.AnimationState;
+import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
@@ -21,7 +23,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theDefault.DefaultMod;
 import theDefault.cards.*;
-import theDefault.patches.AbstractCardEnum;
 import theDefault.relics.DefaultClickableRelic;
 import theDefault.relics.PlaceholderRelic;
 import theDefault.relics.PlaceholderRelic2;
@@ -29,6 +30,7 @@ import theDefault.relics.PlaceholderRelic2;
 import java.util.ArrayList;
 
 import static theDefault.DefaultMod.*;
+import static theDefault.characters.TheDefault.Enums.*;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
@@ -36,6 +38,25 @@ import static theDefault.DefaultMod.*;
 
 public class TheDefault extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
+
+    // =============== CHARACTER ENUMERATORS =================
+    // These are enums for your Characters color (both general color and for the card library) as well as
+    // an enum for the name of the player class - IRONCLAD, THE_SILENT, DEFECT, YOUR_CLASS ...
+    // These are all necessary for creating a character. If you want to find out where and how exactly they are used
+    // in the basegame (for fun and education) Ctrl+click on the PlayerClass, CardColor and/or LibraryType below and go down the
+    // Ctrl+click rabbit hole
+
+    public static class Enums {
+        @SpireEnum
+        public static AbstractPlayer.PlayerClass THE_DEFAULT;
+        @SpireEnum(name = "DEFAULT_GRAY_COLOR") // These two HAVE to have the same absolutely identical name.
+        public static AbstractCard.CardColor COLOR_GRAY;
+        @SpireEnum(name = "DEFAULT_GRAY_COLOR") @SuppressWarnings("unused")
+        public static CardLibrary.LibraryType LIBRARY_COLOR;
+    }
+
+    // =============== CHARACTER ENUMERATORS  =================
+
 
     // =============== BASE STATS =================
 
@@ -75,7 +96,6 @@ public class TheDefault extends CustomPlayer {
             "theDefaultResources/images/char/defaultCharacter/orb/layer5d.png",};
 
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
-
 
     // =============== CHARACTER CLASS START =================
 
@@ -193,7 +213,7 @@ public class TheDefault extends CustomPlayer {
     // Should return the card color enum to be associated with your character.
     @Override
     public AbstractCard.CardColor getCardColor() {
-        return AbstractCardEnum.DEFAULT_GRAY;
+        return COLOR_GRAY;
     }
 
     // Should return a color object to be used to color the trail of moving cards
@@ -214,6 +234,7 @@ public class TheDefault extends CustomPlayer {
     public String getLocalizedCharacterName() {
         return NAMES[0];
     }
+
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
@@ -241,7 +262,9 @@ public class TheDefault extends CustomPlayer {
     // Should return a Color object to be used as screen tint effect when your
     // character attacks the heart.
     @Override
-    public Color getSlashAttackColor() { return theDefault.DefaultMod.DEFAULT_GRAY; }
+    public Color getSlashAttackColor() {
+        return theDefault.DefaultMod.DEFAULT_GRAY;
+    }
 
     // Should return an AttackEffect array of any size greater than 0. These effects
     // will be played in sequence as your character's finishing combo on the heart.

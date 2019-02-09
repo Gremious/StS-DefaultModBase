@@ -1,0 +1,76 @@
+{
+  "theThief:LouseAbuseEvent": {
+    "NAME": "Strike for Hire.",
+    "DESCRIPTIONS": [
+      "While you're passing through the ~Spire~ , random stranger stops you. He is @shaking@ and asks if you'd be agree to be #ghired to get rid of a #r\"problem\". NL \"I just... @I@ @can't@ @deal@ @with@ @those@ @things@ @man...@ \" NL It seems he is talking about louses.",
+      "You are a little uncertain at first, but the more he talks, the more you understand. NL You're doing the world (or, at least, this man) a favor, and a bit of extra coin never hurts.",
+      "His talking about @louses@ stirred up something you ~didn't~ ~quite~ ~know~ ~you~ ~had~ ~in~ ~you.~ In the heat of the moment you lose control and @#rpunch@ the creature in the face. NL It retaliates, @#rpunching@ @#ryou@ @#rback.@ NL @\"Y-YOU@ @MANIAC!@ @They'll@ @get@ @you!@ @Just@ @you@ @wait!...\"@"
+    ],
+    "OPTIONS": [
+      "[Agree] I feel you.",
+      "[Agree] Yeah man I totally get it.",
+      "[Agree] Screw those things!",
+      "[Denial] Punch him in the face. #rLose #r3 #rHP.",
+      "[Continue] #gGain #ga #gLouse #gBounty #grelic.",
+      "[Walk Away]"
+    ]
+  },
+  "theThief:BlackMarketTraderEvent": {
+    "NAME": "Dark Market Trader",
+    "DESCRIPTIONS": [
+      "\"@Psst.@ @Hey,@ @you.@\" NL You see a hooded figure, masked in the shadows of an alleyway beckons you. NL #p\"You #plook #plike #pa #pflla' #pthat'd #pbe #pinterested #pin #pmy #rgoods... #p@yeah...@ \"",
+      "Yesss, yesss, @thank@ @youuuu.@ @.@ @.@",
+      "You don't trust this shady figure, so you decide to leave."
+    ],
+    "OPTIONS": [
+      "[Prescription Substances] #rLose #r",
+      " #rMax #rHP. #gAcquire #gJ.A.X.",
+      "[Weapons] #rLose #r",
+      " #rMax #rHP. #gAcquire #ga #grandom #gUpgraded #gUncommon #gcard.",
+      "[Organs] #rLose #r",
+      " #rMax #rHP. #gAcquire #ga #gspecial @grelic.",
+      "[Not Interested] Walk away.",
+      "[Leave]"
+    ]
+  },
+  "theThief:MasqueradeEvent": {
+    "NAME": "Masquerade!",
+    "DESCRIPTIONS": [
+      "As you climb up a floor, you stumble upon what you instantly recognize as a...formal event? NL #y~The~ #y~floor~ #y~is~ #y~lit.~ NL #p~The~ #p~masks~ #p~are~ #p~on.~ NL #b~The~ #b~gremlin~ #b~band~ #b~is~ #b~playing.~ NL #gThis #gis #ga #gMasquarade #gBall! NL You decide to participate...but what do you do?",
+      "You get yourself a small glass of ~[#ff4999]juice[]~ and lean against the table, next to two gremlins that seem to be in a ~very~ ~interesting~ ~conversation.~ NL #b\"Can #byou #bbelieve #bit! #bAnd, #band, #babout #bthe #bband #bleader ...\" NL  You hear them out for a while, and notice a small spot where you can intervene...",
+      "They both gasp! NL @#rWhat@ @#ra@ @#rspicy@ @#rpiece@ @#rof@ @#rgossip!@ NL Those rumors will surely last! NL At least, as long as the ball does.",
+      "You keep listening in on their conversation and... NL Oh Neowl! Really?? NL @#bThe@ @#bMerchant!?@ NL #p~This~ #p~makes~ #p~you~ #p~question~ #p~everything...~",
+      "You lay your eyes on one of the taller creatures and decide try your ~[#ff4999]charm.[]~ NL The more you talk the more it seems that the ~[#ff4999]interest[]~ ~[#ff4999]is[]~ ~[#ff4999]mutual![]~",
+      "As you get to know each other, the coat it's wearing ~[#db235d]unbuttons[]~ on it's own a bit, and they instantly cover themselves up. NL ~[#db235d]How[]~ ~[#db235d]scandalous![]~",
+      "~#pYou~ ~#pand~ ~#pthe~ ~#pcreature~ ~#pmove~ ~#pto~ ~#pa~ ~#pdimply-lit,~ ~#pempty~ ~#proom...~",
+      "[#db235d]The[] [#db235d]coat[] [#db235d]comes[] [#db235d]off![] NL @It@ @was@ @3@ #r@gremlins@ @in@ @a@ #r@trenchcoat@ @all@ @along!@ NL They scram, giggling away. NL ~#rNow~ ~#reveryone~ ~#rat~ ~#rthe~ ~#rball~ ~#rknow~ ~#rwhat~ ~#rhappened.~",
+      "As you talk, you take a step back and remember why you were here in the first place. NL You decide that it's not in your best interest to indulge in such things. You have more important things to attend to.",
+      "You notice a creature in a #pblack #psuit, heavily engaged in conversation. NL He's absolutely not paying attention to his pockets, but taking something could still be ~risky.~",
+      "~You~ ~quietly~ ~move~ ~in,~ and attempt to sneakily pull anything out of his pocket... NL @Alas!@ There are #rguards paroling the ballroom! NL #rYou've #rbeen #rCaught!",
+      "He's ~really~ engaged in talking about money...this is a spire investor! NL After his friend goes away, you approach him and ask if he could help you get started. He's #r@extremely@ eager to help!",
+      "You decide to relax for a bit, and lean back against the table with the ~[#ff4999]juice[]~ ~[#ff4999]bowl.[]~",
+      "You had a good time."
+    ],
+    "OPTIONS": [
+      "[Gossip]",
+      "[Join In] Oh my dear, that is Nothing. You wanna know what I heard?...",
+      "[Continue] #gAdd #ga #gHot #gGossip! #gto #gyour #gdeck.",
+      "[Keep listening]",
+      "[Continue] #rAdd #ra #rDoubt #rto #ryour #rdeck.",
+      "[Flirt]",
+      "[Proceed] Offer to take them somewhere more private.",
+      "[Proceed]",
+      "[Continue] #rAdd #ra #rShame #rto #ryour #rdeck.",
+      "[Maybe not right now]",
+      "[Continue] #gAdd #ga #gDedication #gto #gyour #gdeck.",
+      "[Steal]",
+      "[Continue] #rAdd #ra #rNormality #rto #ryour #rdeck.",
+      "[Engage in conversation]",
+      "[Continue] #gGain #y75 #ygold.",
+      "[Drink Wine]",
+      "[Continue] #gHeal #g",
+      " #gmax #ghp. #rAdd #ra #rDrunk #rcurse #rto #ryour #rdeck.",
+      "[Continue]"
+    ]
+  }
+}

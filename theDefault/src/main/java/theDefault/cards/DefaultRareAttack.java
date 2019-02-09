@@ -10,7 +10,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.WeightyImpactEffect;
-import theDefault.patches.AbstractCardEnum;
+import theDefault.DefaultMod;
+import theDefault.characters.TheDefault;
 
 import static theDefault.DefaultMod.makeCardPath;
 
@@ -25,7 +26,7 @@ public class DefaultRareAttack extends CustomCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = theDefault.DefaultMod.makeID("DefaultRareAttack");
+    public static final String ID = DefaultMod.makeID("DefaultRareAttack");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Attack.png");
 
@@ -40,7 +41,7 @@ public class DefaultRareAttack extends CustomCard {
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
-    public static final CardColor COLOR = AbstractCardEnum.DEFAULT_GRAY;
+    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
 
     private static final int COST = 2;
 

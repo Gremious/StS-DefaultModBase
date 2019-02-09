@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theDefault.DefaultMod;
-import theDefault.patches.AbstractCardEnum;
+import theDefault.characters.TheDefault;
 
 import static theDefault.DefaultMod.makeCardPath;
 
@@ -47,7 +47,7 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.SKILL;
-    public static final CardColor COLOR = AbstractCardEnum.DEFAULT_GRAY;
+    public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
 
     private static final int COST = 1;
 
