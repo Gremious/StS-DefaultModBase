@@ -61,17 +61,17 @@ public class TheDefault extends CustomPlayer {
     // =============== TEXTURES OF BIG ENERGY ORB ===============
 
     public static final String[] orbTextures = {
-            "defaultModResources/images/char/defaultCharacter/orb/layer1.png",
-            "defaultModResources/images/char/defaultCharacter/orb/layer2.png",
-            "defaultModResources/images/char/defaultCharacter/orb/layer3.png",
-            "defaultModResources/images/char/defaultCharacter/orb/layer4.png",
-            "defaultModResources/images/char/defaultCharacter/orb/layer5.png",
-            "defaultModResources/images/char/defaultCharacter/orb/layer6.png",
-            "defaultModResources/images/char/defaultCharacter/orb/layer1d.png",
-            "defaultModResources/images/char/defaultCharacter/orb/layer2d.png",
-            "defaultModResources/images/char/defaultCharacter/orb/layer3d.png",
-            "defaultModResources/images/char/defaultCharacter/orb/layer4d.png",
-            "defaultModResources/images/char/defaultCharacter/orb/layer5d.png",};
+            "theDefaultResources/images/char/defaultCharacter/orb/layer1.png",
+            "theDefaultResources/images/char/defaultCharacter/orb/layer2.png",
+            "theDefaultResources/images/char/defaultCharacter/orb/layer3.png",
+            "theDefaultResources/images/char/defaultCharacter/orb/layer4.png",
+            "theDefaultResources/images/char/defaultCharacter/orb/layer5.png",
+            "theDefaultResources/images/char/defaultCharacter/orb/layer6.png",
+            "theDefaultResources/images/char/defaultCharacter/orb/layer1d.png",
+            "theDefaultResources/images/char/defaultCharacter/orb/layer2d.png",
+            "theDefaultResources/images/char/defaultCharacter/orb/layer3d.png",
+            "theDefaultResources/images/char/defaultCharacter/orb/layer4d.png",
+            "theDefaultResources/images/char/defaultCharacter/orb/layer5d.png",};
 
     // =============== /TEXTURES OF BIG ENERGY ORB/ ===============
 
@@ -80,9 +80,9 @@ public class TheDefault extends CustomPlayer {
 
     public TheDefault(String name, PlayerClass setClass) {
         super(name, setClass, orbTextures,
-                "defaultModResources/images/char/defaultCharacter/orb/vfx.png", null,
+                "theDefaultResources/images/char/defaultCharacter/orb/vfx.png", null,
                 new SpriterAnimation(
-                        "defaultModResources/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
+                        "theDefaultResources/images/char/defaultCharacter/Spriter/theDefaultAnimation.scml"));
 
 
         // =============== TEXTURES, ENERGY, LOADOUT =================  
