@@ -40,7 +40,7 @@ import java.nio.charset.StandardCharsets;
 /*
  * With that out of the way:
  * Welcome to this mildly over-commented Slay the Spire modding base.
- * Use it to make your own mod of any type. - If you want to add any standard in-game content (Character,
+ * Use it to make your own mod of any type. - If you want to add any standard in-game content (character,
  * cards, relics), this is a good starting point.
  * It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, 3 types of relics, etc.
  * If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add
@@ -68,7 +68,7 @@ public class DefaultMod implements
     // =============== INPUT TEXTURE LOCATION =================
 
     // Colors (RGB)
-    // Character Color
+    // character Color
     public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
 
     // Potion Colors in RGB
@@ -88,7 +88,7 @@ public class DefaultMod implements
     private static final String POWER_DEFAULT_GRAY_PORTRAIT = "defaultModResources/images/1024/bg_power_default_gray.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "defaultModResources/images/1024/card_default_gray_orb.png";
 
-    // Character assets
+    // character assets
     private static final String THE_DEFAULT_BUTTON = "defaultModResources/images/charSelect/DefaultCharacterButton.png";
     private static final String THE_DEFAULT_PORTRAIT = "defaultModResources/images/charSelect/DefaultCharacterPortraitBG.png";
 

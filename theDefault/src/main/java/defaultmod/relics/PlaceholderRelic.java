@@ -9,10 +9,10 @@ import basemod.abstracts.CustomRelic;
 import defaultmod.DefaultMod;
 
 public class PlaceholderRelic extends CustomRelic {
-    
+
     /*
      * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
-     * 
+     *
      * Gain 1 energy.
      */
 

@@ -32,7 +32,7 @@ import java.util.ArrayList;
 import static defaultmod.DefaultMod.*;
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
-//All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-Character-Strings.json in the resources
+//All text (starting description and loadout, anything labeled TEXT[]) can be found in DefaultMod-character-Strings.json in the resources
 
 public class TheDefault extends CustomPlayer {
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
@@ -169,7 +169,7 @@ public class TheDefault extends CustomPlayer {
         return retVal;
     }
 
-    // Character Select screen effect
+    // character Select screen effect
     @Override
     public void doCharSelectScreenSelectEffect() {
         CardCrawlGame.sound.playA("ATTACK_DAGGER_1", 1.25f); // Sound Effect
@@ -177,7 +177,7 @@ public class TheDefault extends CustomPlayer {
                 false); // Screen Effect
     }
 
-    // Character Select on-button-press sound effect
+    // character Select on-button-press sound effect
     @Override
     public String getCustomModeCharacterButtonSoundKey() {
         return "ATTACK_DAGGER_1";
