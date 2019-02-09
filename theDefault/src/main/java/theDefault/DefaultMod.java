@@ -18,6 +18,7 @@ import theDefault.variables.DefaultCustomVariable;
 import theDefault.variables.DefaultSecondMagicNumber;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
@@ -31,6 +32,7 @@ import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
 import java.nio.charset.StandardCharsets;
 
 //TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
@@ -81,31 +83,31 @@ public class DefaultMod implements
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
 
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = "defaultModResources/images/512/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY = "defaultModResources/images/512/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY = "defaultModResources/images/512/bg_power_default_gray.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY = "defaultModResources/images/512/card_default_gray_orb.png";
-    private static final String CARD_ENERGY_ORB = "defaultModResources/images/512/card_small_orb.png";
+    private static final String ATTACK_DEFAULT_GRAY = "theDefaultResources/images/512/bg_attack_default_gray.png";
+    private static final String SKILL_DEFAULT_GRAY = "theDefaultResources/images/512/bg_skill_default_gray.png";
+    private static final String POWER_DEFAULT_GRAY = "theDefaultResources/images/512/bg_power_default_gray.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY = "theDefaultResources/images/512/card_default_gray_orb.png";
+    private static final String CARD_ENERGY_ORB = "theDefaultResources/images/512/card_small_orb.png";
 
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "defaultModResources/images/1024/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "defaultModResources/images/1024/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "defaultModResources/images/1024/bg_power_default_gray.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "defaultModResources/images/1024/card_default_gray_orb.png";
+    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_attack_default_gray.png";
+    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_skill_default_gray.png";
+    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_power_default_gray.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/card_default_gray_orb.png";
 
     // Character assets
-    private static final String THE_DEFAULT_BUTTON = "defaultModResources/images/charSelect/DefaultCharacterButton.png";
-    private static final String THE_DEFAULT_PORTRAIT = "defaultModResources/images/charSelect/DefaultCharacterPortraitBG.png";
+    private static final String THE_DEFAULT_BUTTON = "theDefaultResources/images/charSelect/DefaultCharacterButton.png";
+    private static final String THE_DEFAULT_PORTRAIT = "theDefaultResources/images/charSelect/DefaultCharacterPortraitBG.png";
 
-    public static final String THE_DEFAULT_SHOULDER_1 = "defaultModResources/images/char/defaultCharacter/shoulder.png";
-    public static final String THE_DEFAULT_SHOULDER_2 = "defaultModResources/images/char/defaultCharacter/shoulder2.png";
-    public static final String THE_DEFAULT_CORPSE = "defaultModResources/images/char/defaultCharacter/corpse.png";
+    public static final String THE_DEFAULT_SHOULDER_1 = "theDefaultResources/images/char/defaultCharacter/shoulder.png";
+    public static final String THE_DEFAULT_SHOULDER_2 = "theDefaultResources/images/char/defaultCharacter/shoulder2.png";
+    public static final String THE_DEFAULT_CORPSE = "theDefaultResources/images/char/defaultCharacter/corpse.png";
 
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
-    public static final String BADGE_IMAGE = "defaultModResources/images/Badge.png";
+    public static final String BADGE_IMAGE = "theDefaultResources/images/Badge.png";
 
     // Atlas and JSON files for the Animations
-    public static final String THE_DEFAULT_SKELETON_ATLAS = "defaultModResources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_DEFAULT_SKELETON_JSON = "defaultModResources/images/char/defaultCharacter/skeleton.json";
+    public static final String THE_DEFAULT_SKELETON_ATLAS = "theDefaultResources/images/char/defaultCharacter/skeleton.atlas";
+    public static final String THE_DEFAULT_SKELETON_JSON = "theDefaultResources/images/char/defaultCharacter/skeleton.json";
 
     // =============== /INPUT TEXTURE LOCATION/ =================
 
@@ -138,12 +140,23 @@ public class DefaultMod implements
         if (ID.equals("theDefault")) {
             throw new RuntimeException("Go to your constructor in your class with SpireInitializer and change your mod ID from \"theDefault\"");
         } else {
-            modID = ID + ":";
-        }
+            modID = ID;
+       }
     }
 
     public static String getModID() {
         return modID;
+    }
+    
+    private static void pathCheck() {
+    	String packageName = DefaultMod.class.getPackage().getName();
+    	FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources");
+    	if (!packageName.equals(getModID())) {
+    		throw new RuntimeException("Rename your theDefault folder to match your mod ID! " + getModID());
+    	}
+    	if (!resourcePathExists.exists()) {
+    		throw new RuntimeException("Rename your theDefaultResources folder to match your mod ID! " + getModID() + "Resources");
+    	}
     }
     
     // ====== YOU CAN EDIT AGAIN ======
@@ -179,8 +192,7 @@ public class DefaultMod implements
 
     @Override
     public void receivePostInitialize() {
-
-        logger.info("Loading badge image and mod options");
+         logger.info("Loading badge image and mod options");
         // Load the Mod Badge
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
 
@@ -239,6 +251,8 @@ public class DefaultMod implements
     @Override
     public void receiveEditCards() {
         logger.info("Adding variables");
+        //Ignore this
+       	pathCheck();
         // Add the Custom Dynamic Variables
         logger.info("Add variabls");
         // Add the Custom Dynamic variabls
@@ -295,27 +309,27 @@ public class DefaultMod implements
 
         // CardStrings
         BaseMod.loadCustomStringsFile(CardStrings.class,
-                "defaultModResources/localization/eng/DefaultMod-Card-Strings.json");
+                "theDefaultResources/localization/eng/DefaultMod-Card-Strings.json");
 
         // PowerStrings
         BaseMod.loadCustomStringsFile(PowerStrings.class,
-                "defaultModResources/localization/eng/DefaultMod-Power-Strings.json");
+                "theDefaultResources/localization/eng/DefaultMod-Power-Strings.json");
 
         // RelicStrings
         BaseMod.loadCustomStringsFile(RelicStrings.class,
-                "defaultModResources/localization/eng/DefaultMod-Relic-Strings.json");
+                "theDefaultResources/localization/eng/DefaultMod-Relic-Strings.json");
 
         // PotionStrings
         BaseMod.loadCustomStringsFile(PotionStrings.class,
-                "defaultModResources/localization/eng/DefaultMod-Potion-Strings.json");
+                "theDefaultResources/localization/eng/DefaultMod-Potion-Strings.json");
 
         // CharacterStrings
         BaseMod.loadCustomStringsFile(CharacterStrings.class,
-                "defaultModResources/localization/eng/DefaultMod-Character-Strings.json");
+                "theDefaultResources/localization/eng/DefaultMod-Character-Strings.json");
 
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,
-                "defaultModResources/localization/eng/DefaultMod-Orb-Strings.json");
+                "theDefaultResources/localization/eng/DefaultMod-Orb-Strings.json");
 
         logger.info("Done edittting strings");
     }
@@ -334,7 +348,7 @@ public class DefaultMod implements
         // and in Keyword-Strings.json you would have PROPER_NAME as A Long Keyword, and the first element in NAMES be A Long Keyword, and the second element be a_long_keyword
 
         Gson gson = new Gson();
-        String json = Gdx.files.internal("defaultModResources/localization/eng/DefaultMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String json = Gdx.files.internal("theDefaultResources/localization/eng/DefaultMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
         com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
 
         if (keywords != null) {
@@ -349,7 +363,7 @@ public class DefaultMod implements
     // this adds "ModName:" before the ID of any card/relic/power etc.
     // in order to avoid conflicts if any other mod uses the same ID.
     public static String makeID(String idText) {
-        return getModID() + idText;
+        return getModID() + ":" + idText;
     }
 
 }
