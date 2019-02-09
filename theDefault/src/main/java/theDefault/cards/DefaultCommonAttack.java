@@ -31,6 +31,12 @@ public class DefaultCommonAttack extends CustomCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Attack.png");
+    // Setting the image as as easy as can possibly be now. You just need to provide the image name
+    // and make sure it's in the correct folder. That's all.
+    // There's makeCardPath, makeRelicPath, power, orb, event, etc..
+    // The list of all of them can be found in the main DefaultMod.java file in the
+    // ==INPUT TEXTURE LOCATION== section under ==MAKE IMAGE PATHS==
+
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
@@ -64,7 +70,7 @@ public class DefaultCommonAttack extends CustomCard {
 
         baseDamage = DAMAGE;
         
-        this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Shadow form, demon form, echo form, etc.) cards so that they work correctly.
+        this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Shadow form, demon form, echo form, etc.) cards so that they function correctly.
         this.tags.add(CardTags.STRIKE);
     }
 

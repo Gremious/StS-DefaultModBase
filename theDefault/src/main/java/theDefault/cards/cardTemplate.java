@@ -12,6 +12,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theDefault.DefaultMod;
 import theDefault.patches.AbstractCardEnum;
 
+import static theDefault.DefaultMod.makeCardPath;
+
 // public class ${NAME} extends AbstractDefaultCard
 public class cardTemplate extends AbstractDefaultCard {
 
@@ -29,6 +31,8 @@ public class cardTemplate extends AbstractDefaultCard {
      * Of course, delete all the comments and add anything you want (For example, if you're making a skill card template you'll
      * likely want to replace that new DamageAction with a gain Block one, and add baseBlock instead, or maybe you want a
      * universal template where you delete everything unnecessary - up to you)
+     *
+     * You can create templates for anything you ever want to. Cards, relics, powers, orbs, etc. etc. etc.
      */
 
     // TEXT DECLARATION
@@ -36,7 +40,7 @@ public class cardTemplate extends AbstractDefaultCard {
     public static final String ID = DefaultMod.makeID("DefaultCommonAttack"); // DefaultMod.makeID("${NAME}");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public static final String IMG = "theDefaultResources/images/cards/Attack.png"; // "theDefaultResources/images/cards/${NAME}.png"
+    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same name as the card in your image folder for it to run correctly.
 
     public static final String NAME = cardStrings.NAME;

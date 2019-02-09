@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import theDefault.DefaultMod;
 import theDefault.patches.AbstractCardEnum;
 
+import static theDefault.DefaultMod.makeCardPath;
+
 public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
 
     /*
@@ -34,7 +36,7 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
     public static final String ID = DefaultMod.makeID("DefaultSecondMagicNumberSkill");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
-    public static final String IMG = "theDefaultResources/images/cards/Skill.png";
+    public static final String IMG = makeCardPath("Skill.png");
 
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;

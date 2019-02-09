@@ -82,6 +82,7 @@ public class DefaultMod implements
     private static final String ATTACK_DEFAULT_GRAY = "theDefaultResources/images/512/bg_attack_default_gray.png";
     private static final String SKILL_DEFAULT_GRAY = "theDefaultResources/images/512/bg_skill_default_gray.png";
     private static final String POWER_DEFAULT_GRAY = "theDefaultResources/images/512/bg_power_default_gray.png";
+
     private static final String ENERGY_ORB_DEFAULT_GRAY = "theDefaultResources/images/512/card_default_gray_orb.png";
     private static final String CARD_ENERGY_ORB = "theDefaultResources/images/512/card_small_orb.png";
 
@@ -89,7 +90,6 @@ public class DefaultMod implements
     private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_skill_default_gray.png";
     private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_power_default_gray.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/card_default_gray_orb.png";
-
 
     // Character assets
     private static final String THE_DEFAULT_BUTTON = "theDefaultResources/images/charSelect/DefaultCharacterButton.png";
@@ -104,6 +104,30 @@ public class DefaultMod implements
     // Atlas and JSON files for the Animations
     public static final String THE_DEFAULT_SKELETON_ATLAS = "theDefaultResources/images/char/defaultCharacter/skeleton.atlas";
     public static final String THE_DEFAULT_SKELETON_JSON = "theDefaultResources/images/char/defaultCharacter/skeleton.json";
+
+        // =============== MAKE IMAGE PATHS =================
+
+    public static String makeCardPath(String resourcePath) {
+        return getModID() + "Resources/images/cards/" + resourcePath;
+    }
+
+    public static String makeRelicPath(String resourcePath) {
+        return getModID() + "Resources/images/relics/" + resourcePath;
+    }
+
+    public static String makeRelicOutlinePath(String resourcePath) {
+        return getModID() + "Resources/images/relics/outline/" + resourcePath;
+    }
+
+    public static String makeOrbPath(String resourcePath) {
+        return getModID() + "Resources/orbs/" + resourcePath;
+    }
+
+    public static String makePowerPath(String resourcePath) {
+        return getModID() + "Resources/images/powers/" + resourcePath;
+    }
+
+        // =============== /MAKE IMAGE PATHS/ =================
 
     // =============== /INPUT TEXTURE LOCATION/ =================
 
@@ -161,25 +185,7 @@ public class DefaultMod implements
     }
     // ====== YOU CAN EDIT AGAIN ======
 
-    public static String makeCardPath(String resourcePath) {
-        return getModID() + "Resources/images/cards/" + resourcePath;
-    }
 
-    public static String makeRelicPath(String resourcePath) {
-        return getModID() + "Resources/images/relics/" + resourcePath;
-    }
-
-    public static String makeRelicOutlinePath(String resourcePath) {
-        return getModID() + "Resources/images/relics/outline/" + resourcePath;
-    }
-
-    public static String makeOrbPath(String resourcePath) {
-        return getModID() + "Resources/orbs/" + resourcePath;
-    }
-
-    public static String makePowerPath(String resourcePath) {
-        return getModID() + "Resources/images/powers/" + resourcePath;
-    }
 
     @SuppressWarnings("unused")
     public static void initialize() {
