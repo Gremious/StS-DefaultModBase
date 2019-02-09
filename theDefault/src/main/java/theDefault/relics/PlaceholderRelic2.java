@@ -1,30 +1,32 @@
 package theDefault.relics;
 
+import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import theDefault.util.TextureLoader;
 
-import basemod.abstracts.CustomRelic;
-import theDefault.DefaultMod;
+import static theDefault.DefaultMod.makeRelicOutlinePath;
+import static theDefault.DefaultMod.makeRelicPath;
 
 public class PlaceholderRelic2 extends CustomRelic {
     /*
      * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
-     * 
+     *
      * At the start of each combat, gain 1 Strength (i.e. Vajra)
      */
-    
+
     // ID, images, text.
     public static final String ID = theDefault.DefaultMod.makeID("PlaceholderRelic2");
-    public static final String IMG = "theDefaultResources/images/relics/placeholder_relic2.png";
-    public static final String OUTLINE = "theDefaultResources/images/relics/outline/placeholder_relic2.png";
+
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic2.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic2.png"));
 
     public PlaceholderRelic2() {
-        super(ID, ImageMaster.loadImage(IMG), new Texture(OUTLINE), RelicTier.COMMON, LandingSound.MAGICAL);
+        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.FLAT);
     }
 
 
@@ -35,7 +37,7 @@ public class PlaceholderRelic2 extends CustomRelic {
         AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, 1), 1));
         AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
-    
+
 
     // Description
     @Override

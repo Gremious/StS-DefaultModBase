@@ -1,20 +1,17 @@
 package theDefault.powers;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.badlogic.gdx.graphics.Texture;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.*;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.powers.*;
-
-import theDefault.DefaultMod;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import theDefault.cards.DefaultRareAttack;
 import theDefault.util.TextureLoader;
-
-import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
 
 public class RarePower extends AbstractPower {
     public AbstractCreature source;
@@ -25,8 +22,8 @@ public class RarePower extends AbstractPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
-    Texture tex84 = TextureLoader.getTexture("theDefaultResources/images/powers/placeholder_power84.png");
-    Texture tex32 = TextureLoader.getTexture("theDefaultResources/images/powers/placeholder_power32.png");
+    private static final Texture tex84 = TextureLoader.getTexture("theDefaultResources/images/powers/placeholder_power84.png");
+    private static final Texture tex32 = TextureLoader.getTexture("theDefaultResources/images/powers/placeholder_power32.png");
 
     public RarePower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
@@ -56,8 +53,8 @@ public class RarePower extends AbstractPower {
         if (playCard.type != AbstractCard.CardType.POWER) {
             playCard.purgeOnUse = true;
         }
-            // Remove completely on use (Not Exhaust). A note - you don't need the '{}' in this if statement,
-            // as it's just 1 line directly under. You can remove them, if you want.
+        // Remove completely on use (Not Exhaust). A note - you don't need the '{}' in this if statement,
+        // as it's just 1 line directly under. You can remove them, if you want.
 
         AbstractDungeon.actionManager.addToBottom(new QueueCardAction(playCard, targetMonster)); // Play the card on the target.
     }
@@ -66,9 +63,7 @@ public class RarePower extends AbstractPower {
     public void updateDescription() {
         if (amount == 1) {
             description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
-        }
-
-        else if (amount > 1) {
+        } else if (amount > 1) {
             description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
         }
     }

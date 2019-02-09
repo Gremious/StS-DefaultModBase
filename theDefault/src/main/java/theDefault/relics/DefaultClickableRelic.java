@@ -8,13 +8,14 @@ import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.vfx.CollectorCurseEffect;
 import theDefault.DefaultMod;
+import theDefault.util.TextureLoader;
 
+import static theDefault.DefaultMod.makeRelicOutlinePath;
 import static theDefault.DefaultMod.makeRelicPath;
 
 public class DefaultClickableRelic extends CustomRelic implements ClickableRelic { // You must implement things you want to use from StSlib
@@ -28,13 +29,13 @@ public class DefaultClickableRelic extends CustomRelic implements ClickableRelic
     // ID, images, text.
     public static final String ID = DefaultMod.makeID("DefaultClickableRelic");
 
-    public static final String IMG = makeRelicPath("default_clickable_relic.png");
-    public static final String OUTLINE = makeRelicPath("default_clickable_relic.png");
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("default_clickable_relic.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("default_clickable_relic.png"));
 
     private boolean usedThisTurn = false; // You can also have a relic be only usable once per combat. Check out Hubris for more examples, including other StSlib things.
 
     public DefaultClickableRelic() {
-        super(ID, ImageMaster.loadImage(IMG), new Texture(OUTLINE), RelicTier.COMMON, LandingSound.MAGICAL);
+        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.CLINK);
 
         tips.clear();
         tips.add(new PowerTip(name, description));

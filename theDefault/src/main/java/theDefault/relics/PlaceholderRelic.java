@@ -7,6 +7,9 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import basemod.abstracts.CustomRelic;
 import theDefault.DefaultMod;
+import theDefault.util.TextureLoader;
+
+import static theDefault.DefaultMod.*;
 
 public class PlaceholderRelic extends CustomRelic {
 
@@ -18,11 +21,12 @@ public class PlaceholderRelic extends CustomRelic {
 
     // ID, images, text.
     public static final String ID = theDefault.DefaultMod.makeID("PlaceholderRelic");
-    public static final String IMG = "theDefaultResources/images/relics/placeholder_relic.png";
-    public static final String OUTLINE = "theDefaultResources/images/relics/outline/placeholder_relic.png";
+
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic.png"));
 
     public PlaceholderRelic() {
-        super(ID, ImageMaster.loadImage(IMG), new Texture(OUTLINE), RelicTier.STARTER, LandingSound.MAGICAL);
+        super(ID, IMG, OUTLINE, RelicTier.STARTER, LandingSound.MAGICAL);
     }
 
     // Flash at the start of Battle.

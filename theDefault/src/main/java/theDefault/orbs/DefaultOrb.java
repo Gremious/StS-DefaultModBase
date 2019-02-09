@@ -2,6 +2,7 @@ package theDefault.orbs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -20,6 +21,7 @@ import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 import theDefault.DefaultMod;
+import theDefault.util.TextureLoader;
 
 import static theDefault.DefaultMod.makeOrbPath;
 
@@ -29,7 +31,8 @@ public class DefaultOrb extends AbstractOrb {
     public static final String ORB_ID = DefaultMod.makeID("DefaultOrb");
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
     public static final String[] DESC = orbString.DESCRIPTION;
-    public static final String IMG = makeOrbPath("default_orb.png");
+
+    private static final Texture IMG = TextureLoader.getTexture(makeOrbPath("default_orb.png"));
     // Animation Rendering Numbers - You can leave these at default, or play around with them and see what they change.
     private float vfxTimer = 1.0f;
     private float vfxIntervalMin = 0.1f;
@@ -41,7 +44,7 @@ public class DefaultOrb extends AbstractOrb {
 
         this.ID = ORB_ID;
         this.name = orbString.NAME;
-        this.img = ImageMaster.loadImage(IMG);
+        this.img = IMG;
 
         this.evokeAmount = this.baseEvokeAmount = 1;
         this.passiveAmount = this.basePassiveAmount = 3;
