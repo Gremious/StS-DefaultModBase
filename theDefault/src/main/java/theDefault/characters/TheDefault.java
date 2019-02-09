@@ -163,12 +163,10 @@ public class TheDefault extends CustomPlayer {
         retVal.add(PlaceholderRelic.ID);
         retVal.add(PlaceholderRelic2.ID);
         retVal.add(DefaultClickableRelic.ID);
-        retVal.add(BottledPlaceholderRelic.ID);
 
         UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
         UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
         UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
-        UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
 
         return retVal;
     }
