@@ -6,10 +6,13 @@ import com.megacrit.cardcrawl.cards.colorless.Apotheosis;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.events.AbstractEvent;
 import com.megacrit.cardcrawl.events.AbstractImageEvent;
 import com.megacrit.cardcrawl.helpers.RelicLibrary;
+import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.EventStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import theDefault.DefaultMod;
 
@@ -62,15 +65,18 @@ public class IdentityCrisisEvent extends AbstractImageEvent {
                         // we'll still continue the switch (screenNum) statement. It'll find screen 1 and do it's actions
                         // (in our case, that's the final screen, but you can chain as many as you want like that)
 
-                        AbstractRelic relicToAdd = RelicLibrary.starterList.get(AbstractDungeon.cardRandomRng.random(RelicLibrary.starterList.size() - 1));
+                        AbstractRelic relicToAdd = RelicLibrary.starterList.get(AbstractDungeon.relicRng.random(RelicLibrary.starterList.size() - 1)).makeCopy();
                         // Get a random starting relic
 
-                        relicToAdd.instantObtain(AbstractDungeon.player, 0, false); // Obtain it
-                        relicToAdd.playLandingSFX(); // Play it's obtain sound effect
-                        relicToAdd.flash(); // and make it flash
+                        AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2), relicToAdd);
+
 
                         break; // Onto screen 1 we go.
                     case 1: // If you press button the second button (Button at index 1), in this case: Deinal
+
+                        CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.MED, false);
+                        // Shake the screen
+                        CardCrawlGame.sound.play("BLUNT_FAST");  // Play a hit sound
                         AbstractDungeon.player.decreaseMaxHealth(healthdamage); // Lose max HP
                         if (CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck.getPurgeableCards()).size() > 0) {
                             // If you have cards you can remove - remove a card
@@ -92,14 +98,14 @@ public class IdentityCrisisEvent extends AbstractImageEvent {
                         // (etc.)
                         // And that would also just set them into slot 0, 1, 2... in order, just like what we do in the very beginning
 
-                        break;
+                        break; // Onto screen 1 we go.
                     case 2: // If you press button the third button (Button at index 2), in this case: Acceptance
 
                         AbstractCard c = new Apotheosis().makeCopy();
                         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(c, (float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2)));
 
                         this.imageEventText.updateBodyText(DESCRIPTIONS[3]);
-                        this.imageEventText.updateDialogOption(0, OPTIONS[4]);
+                        this.imageEventText.updateDialogOption(0, OPTIONS[5]);
                         this.imageEventText.clearRemainingOptions();
                         screenNum = 1;
                         break;
@@ -107,7 +113,7 @@ public class IdentityCrisisEvent extends AbstractImageEvent {
                         imageEventText.loadImage("theDefaultResources/images/events/IdentityCrisisEvent2.png"); // Change the shown image
                         // Other than that, this option doesn't do anything special.
                         this.imageEventText.updateBodyText(DESCRIPTIONS[4]);
-                        this.imageEventText.updateDialogOption(0, OPTIONS[4]);
+                        this.imageEventText.updateDialogOption(0, OPTIONS[5]);
                         this.imageEventText.clearRemainingOptions();
                         screenNum = 1;
                         break;
@@ -122,4 +128,17 @@ public class IdentityCrisisEvent extends AbstractImageEvent {
                 break;
         }
     }
+
+    public void update() { // We need the update() when we use grid screens (such as, in this case, the screen for selecting a card to remove)
+        super.update(); // Do everything the original update()
+        if (!AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) { // Once the grid screen isn't empty (we selected a card for removal)
+            AbstractCard c = (AbstractCard)AbstractDungeon.gridSelectScreen.selectedCards.get(0); // Get the card
+            AbstractDungeon.topLevelEffects.add(new PurgeCardEffect(c, (float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2))); // Create the card removal effect
+            AbstractDungeon.player.masterDeck.removeCard(c); // Remove it from the deck
+            AbstractDungeon.gridSelectScreen.selectedCards.clear(); // Or you can .remove(c) instead of clear,
+            // if you want to continue using the other selected cards for something
+        }
+
+    }
+
 }

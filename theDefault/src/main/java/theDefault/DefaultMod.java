@@ -364,7 +364,7 @@ public class DefaultMod implements
 
         // Event Strings
         BaseMod.loadCustomStringsFile(EventStrings.class,
-                "thiefmodAssets/localization/eng/DefaultMod-Event-Strings.json");
+                "theDefaultResources/localization/eng/DefaultMod-Event-Strings.json");
 
         // PotionStrings
         BaseMod.loadCustomStringsFile(PotionStrings.class,
