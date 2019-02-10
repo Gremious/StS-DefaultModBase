@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
+import javafx.beans.binding.When;
 import theDefault.DefaultMod;
 import theDefault.util.TextureLoader;
 
@@ -56,6 +57,12 @@ public class CommonPower extends AbstractPower {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner,
                 new DexterityPower(owner, amount), amount));
     }
+
+    // Note: If you want to apply an effect when a power is being applied you have 3 options:
+    //onInitialApplication is "When THIS power is first applied for the very first time only."
+    //onApplyPower is "When the owner applies a power to something else (only used by Sadistic Nature)."
+    //onReceivePowerPower from StSlib is "When any (including this) power is applied to the owner."
+
 
     // At the end of the turn, remove gained Dexterity.
     @Override
