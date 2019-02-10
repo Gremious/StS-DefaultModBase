@@ -92,6 +92,9 @@ https://imgur.com/a/MO5oNuS
 
 ## Going Further
 
+You made a card/event/relic and wanna test it? Please remember that the console exists:
+https://github.com/daviscook477/BaseMod/wiki/Console
+
 ### What Other Listeners Exist
 
 Mods do a whole lot of things. A full list of listeners can be found in `src/main/java/basemod/interfaces` in BaseMod.
