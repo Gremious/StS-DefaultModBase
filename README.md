@@ -129,10 +129,12 @@ Things I should add/do next:
 
 * ~~Dynamic Variables~~
 
-* ~~CustomBottleRelic
+* ~~CustomBottleRelic~~
 
-* ~~CustomSavable (?)
+* ~~CustomSavable (?)~~
 
 * ~~Change all the tabs into spaces so that formatting is ok across all platforms~~
+
+* Patching Exmaples
 
 * Other things I don't know about yet
