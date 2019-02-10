@@ -144,7 +144,7 @@ public class DefaultMod implements
         logger.info("Subscribe to BaseMod hooks");
 
         BaseMod.subscribe(this);
-        setModID("theDefaultDev");
+        setModID("theDefault");
 
         logger.info("Done subscribing");
 
