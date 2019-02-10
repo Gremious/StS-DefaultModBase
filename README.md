@@ -68,13 +68,6 @@ Click the refresh icon to load your dependencies from the pom.xml into your proj
 
 (If it asks you, just enable auto-import)
 
-## Setting up Slay The Spire for Mods
-If you have played Slay the Spire with mods or have set up ModTheSpire, you can skip this step. In this tutorial, the directory that Slay the Spire is installed in will be refered to as the Slay the Spire directory.
-
-Follow the section titles **Playing Mods** on [ModTheSpire's Wiki](https://github.com/kiooeht/ModTheSpire/wiki#playing-mods).
-
-Copy `BaseMod.jar` from your `lib` folder into your `mods` folder in your Slay the Spire directory.
-
 ## Writing Your First Mod
 
 ### Package the Default Mod
