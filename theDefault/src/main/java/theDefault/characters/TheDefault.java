@@ -30,7 +30,7 @@ import theDefault.relics.PlaceholderRelic2;
 import java.util.ArrayList;
 
 import static theDefault.DefaultMod.*;
-import static theDefault.characters.TheDefault.Enums.*;
+import static theDefault.characters.TheDefault.Enums.COLOR_GRAY;
 
 //Wiki-page https://github.com/daviscook477/BaseMod/wiki/Custom-Characters
 //and https://github.com/daviscook477/BaseMod/wiki/Migrating-to-5.0
