@@ -1,6 +1,6 @@
 # StS-Default Mod Base
 
-Welcome to this mildly over-commented Slay the Spire modding base. 
+Welcome to this extremely over-commented Slay the Spire modding base. 
 
 This is a minimal "default clean slate" for creating Slay the spire mods. 
 
@@ -30,6 +30,8 @@ Great big thank you to [Kobting](https://github.com/Kobting) for the following g
 
 ### Download the Default Mod Repository
 Download this repository as a zip. Unzip where you want to set up your dev environment.
+
+![](https://i.imgur.com/WnDw5GY.png)
 
 *Do not clone or fork unless you really want to go through the hassle of changing git things later*
 
