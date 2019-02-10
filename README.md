@@ -91,9 +91,11 @@ You can also asign a shortcut to the both those commands by opening the Lifecycl
 
 You can now find your mod in `[slay the spire install folder]/mods/[name_of_mod].jar`. If you  can't find it, check at the bottom of your pom.xml for the location.
 
-Copy `DefaultMod.jar` into the `mods` folder in your Slay the Spire directory.
-
 You should be able to run Slay the Spire by running `MTS.cmd` (`MTS.sh` on a mac).
+BUT WAIT
+If you wanna run it with IntelliJ and get cool clickable line numbers when you get a crash-log that'll instantly direct you to where your error is:
+
+https://imgur.com/a/MO5oNuS
 
 ## Going Further
 
@@ -127,9 +129,9 @@ Things I should add/do next:
 
 * ~~Dynamic Variables~~
 
-* CustomBottleRelic
+* ~~CustomBottleRelic
 
-* CustomSavable (?)
+* ~~CustomSavable (?)
 
 * ~~Change all the tabs into spaces so that formatting is ok across all platforms~~
 
