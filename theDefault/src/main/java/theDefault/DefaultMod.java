@@ -352,31 +352,31 @@ public class DefaultMod implements
 
         // CardStrings
         BaseMod.loadCustomStringsFile(CardStrings.class,
-                "theDefaultResources/localization/eng/DefaultMod-Card-Strings.json");
+                getModID() + "Resources/localization/eng/DefaultMod-Card-Strings.json");
 
         // PowerStrings
         BaseMod.loadCustomStringsFile(PowerStrings.class,
-                "theDefaultResources/localization/eng/DefaultMod-Power-Strings.json");
+                getModID() + "Resources/localization/eng/DefaultMod-Power-Strings.json");
 
         // RelicStrings
         BaseMod.loadCustomStringsFile(RelicStrings.class,
-                "theDefaultResources/localization/eng/DefaultMod-Relic-Strings.json");
+                getModID() + "Resources/localization/eng/DefaultMod-Relic-Strings.json");
 
         // Event Strings
         BaseMod.loadCustomStringsFile(EventStrings.class,
-                "theDefaultResources/localization/eng/DefaultMod-Event-Strings.json");
+                getModID() + "Resources/localization/eng/DefaultMod-Event-Strings.json");
 
         // PotionStrings
         BaseMod.loadCustomStringsFile(PotionStrings.class,
-                "theDefaultResources/localization/eng/DefaultMod-Potion-Strings.json");
+                getModID() + "Resources/localization/eng/DefaultMod-Potion-Strings.json");
 
         // CharacterStrings
         BaseMod.loadCustomStringsFile(CharacterStrings.class,
-                "theDefaultResources/localization/eng/DefaultMod-Character-Strings.json");
+                getModID() + "Resources/localization/eng/DefaultMod-Character-Strings.json");
 
         // OrbStrings
         BaseMod.loadCustomStringsFile(OrbStrings.class,
-                "theDefaultResources/localization/eng/DefaultMod-Orb-Strings.json");
+                getModID() + "Resources/localization/eng/DefaultMod-Orb-Strings.json");
 
         logger.info("Done edittting strings");
     }
@@ -396,7 +396,7 @@ public class DefaultMod implements
         // In Keyword-Strings.json you would have PROPER_NAME as A Long Keyword and the first element in NAMES be a long keyword, and the second element be a_long_keyword
 
         Gson gson = new Gson();
-        String json = Gdx.files.internal("theDefaultResources/localization/eng/DefaultMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
+        String json = Gdx.files.internal(getModID() + "Resources/localization/eng/DefaultMod-Keyword-Strings.json").readString(String.valueOf(StandardCharsets.UTF_8));
         com.evacipated.cardcrawl.mod.stslib.Keyword[] keywords = gson.fromJson(json, com.evacipated.cardcrawl.mod.stslib.Keyword[].class);
 
         if (keywords != null) {
