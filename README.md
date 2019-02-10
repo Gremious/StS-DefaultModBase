@@ -82,11 +82,14 @@ If you have followed the steps so far, you should be able to package this mod th
 
 In IntelliJ, open the Maven project tab and select the "Execute maven goal" button.
 
-![](https://i.imgur.com/Axy3tr0.png)
+![](https://i.imgur.com/OPNhpDc.png)
 
 In the command line field, type `package`.
+(Good practice is to do `clean` followed by `package`, especially if you are replacing a file with another one and they have an identical name.)
 
-You can now find your mod in `[Whatever folder you extracted the zip into]/mods/DefaultMod.jar`. If not, just go 2 directories back from `theDefault` folder (the one with pom.xml in it) and there should be a mods folder there. If you still can't find it, check at the bottom of your pom.xml.
+You can also asign a shortcut to the both those commands by opening the Lifecycle drop-down folder (also in the image above) and right-click > Asign shortcut on them.
+
+You can now find your mod in `[slay the spire install folder]/mods/[name_of_mod].jar`. If you  can't find it, check at the bottom of your pom.xml for the location.
 
 Copy `DefaultMod.jar` into the `mods` folder in your Slay the Spire directory.
 
