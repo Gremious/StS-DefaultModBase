@@ -41,36 +41,36 @@ public class DefaultOrb extends AbstractOrb {
 
     public DefaultOrb() {
 
-        this.ID = ORB_ID;
-        this.name = orbString.NAME;
-        this.img = IMG;
+        ID = ORB_ID;
+        name = orbString.NAME;
+        img = IMG;
 
-        this.evokeAmount = this.baseEvokeAmount = 1;
-        this.passiveAmount = this.basePassiveAmount = 3;
+        evokeAmount = baseEvokeAmount = 1;
+        passiveAmount = basePassiveAmount = 3;
 
-        this.updateDescription();
+        updateDescription();
 
-        this.angle = MathUtils.random(360.0f); // More Animation-related Numbers
-        this.channelAnimTimer = 0.5f;
+        angle = MathUtils.random(360.0f); // More Animation-related Numbers
+        channelAnimTimer = 0.5f;
     }
 
     @Override
     public void updateDescription() { // Set the on-hover description of the orb
-        this.applyFocus(); // Apply Focus (Look at the next method)
-        this.description = DESC[0] + this.evokeAmount + DESC[1] + this.passiveAmount + DESC[2]; // Set the description
+        applyFocus(); // Apply Focus (Look at the next method)
+        description = DESC[0] + evokeAmount + DESC[1] + passiveAmount + DESC[2]; // Set the description
     }
 
     @Override
     public void applyFocus() {
-        this.passiveAmount = this.basePassiveAmount;
-        this.evokeAmount = this.baseEvokeAmount;
+        passiveAmount = basePassiveAmount;
+        evokeAmount = baseEvokeAmount;
     }
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
 
         AbstractDungeon.actionManager.addToBottom( // 2.Damage all enemies
-                new DamageAllEnemiesAction(AbstractDungeon.player, DamageInfo.createDamageMatrix(this.evokeAmount, true, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
+                new DamageAllEnemiesAction(AbstractDungeon.player, DamageInfo.createDamageMatrix(evokeAmount, true, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
         // The damage matrix is how orb damage all enemies actions have to be assigned. For regular cards that do damage to everyone, check out cleave or whirlwind - they are a bit simpler.
 
 
@@ -85,38 +85,38 @@ public class DefaultOrb extends AbstractOrb {
                 new VFXAction(new OrbFlareEffect(this, OrbFlareEffect.OrbFlareColor.FROST), 0.1f));
 
         AbstractDungeon.actionManager.addToBottom(// 3. And draw you cards.
-                new DrawCardAction(AbstractDungeon.player, this.passiveAmount));
+                new DrawCardAction(AbstractDungeon.player, passiveAmount));
     }
 
     @Override
     public void updateAnimation() {// You can totally leave this as is.
         // If you want to create a whole new orb effect - take a look at conspire's Water Orb. It includes a custom sound, too!
         super.updateAnimation();
-        this.angle += Gdx.graphics.getDeltaTime() * 45.0f;
-        this.vfxTimer -= Gdx.graphics.getDeltaTime();
-        if (this.vfxTimer < 0.0f) {
-            AbstractDungeon.effectList.add(new DarkOrbPassiveEffect(this.cX, this.cY)); // This is the purple-sparkles in the orb. You can change this to whatever fits your orb.
-            this.vfxTimer = MathUtils.random(this.vfxIntervalMin, this.vfxIntervalMax);
+        angle += Gdx.graphics.getDeltaTime() * 45.0f;
+        vfxTimer -= Gdx.graphics.getDeltaTime();
+        if (vfxTimer < 0.0f) {
+            AbstractDungeon.effectList.add(new DarkOrbPassiveEffect(cX, cY)); // This is the purple-sparkles in the orb. You can change this to whatever fits your orb.
+            vfxTimer = MathUtils.random(vfxIntervalMin, vfxIntervalMax);
         }
     }
 
     // Render the orb.
     @Override
     public void render(SpriteBatch sb) {
-        sb.setColor(new Color(1.0f, 1.0f, 1.0f, this.c.a / 2.0f));
-        sb.draw(this.img, this.cX - 48.0f, this.cY - 48.0f + this.bobEffect.y, 48.0f, 48.0f, 96.0f, 96.0f, this.scale + MathUtils.sin(this.angle / PI_4) * ORB_WAVY_DIST * Settings.scale, this.scale, this.angle, 0, 0, 96, 96, false, false);
+        sb.setColor(new Color(1.0f, 1.0f, 1.0f, c.a / 2.0f));
+        sb.draw(img, cX - 48.0f, cY - 48.0f + bobEffect.y, 48.0f, 48.0f, 96.0f, 96.0f, scale + MathUtils.sin(angle / PI_4) * ORB_WAVY_DIST * Settings.scale, scale, angle, 0, 0, 96, 96, false, false);
         sb.setColor(new Color(1.0f, 1.0f, 1.0f, this.c.a / 2.0f));
         sb.setBlendFunction(770, 1);
-        sb.draw(this.img, this.cX - 48.0f, this.cY - 48.0f + this.bobEffect.y, 48.0f, 48.0f, 96.0f, 96.0f, this.scale, this.scale + MathUtils.sin(this.angle / PI_4) * ORB_WAVY_DIST * Settings.scale, -this.angle, 0, 0, 96, 96, false, false);
+        sb.draw(img, cX - 48.0f, cY - 48.0f + bobEffect.y, 48.0f, 48.0f, 96.0f, 96.0f, scale, scale + MathUtils.sin(angle / PI_4) * ORB_WAVY_DIST * Settings.scale, -angle, 0, 0, 96, 96, false, false);
         sb.setBlendFunction(770, 771);
-        this.renderText(sb);
-        this.hb.render(sb);
+        renderText(sb);
+        hb.render(sb);
     }
 
 
     @Override
     public void triggerEvokeAnimation() { // The evoke animation of this orb is the dark-orb activation effect.
-        AbstractDungeon.effectsQueue.add(new DarkOrbActivateEffect(this.cX, this.cY));
+        AbstractDungeon.effectsQueue.add(new DarkOrbActivateEffect(cX, cY));
     }
 
     @Override
