@@ -4,22 +4,21 @@ Welcome to this extremely over-commented Slay the Spire modding base.
 
 This is a minimal "default clean slate" for creating Slay the spire mods. 
 
-Use it to make your own mod of any type - If you want to add any standard in-game content (Character, cards, relics), this is a good starting point.
+Use it to make your own mod of any type - If you want to add any standard in-game content (character, cards, relics, events, etc.), this is a good starting point.
 
 It features 1 character (the Default) with a minimal set of things: 1 card of each type, 1 debuff, 1 relic, etc.
 
 (Currently, there are still some stuff missing (such as game patching examples) which I plan to add later but I have other mods I wanna work on more.)
 
-If you're new to modding, you basically need the BaseMod wiki for whatever you wish to add, and you can work your way thought it with this base. Another very important thing is to look at other mods as well as the base-game code and see how they do things. Again, refer to the basemod wiki for that.
+If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add, and you can work your way thought it with this base. Another very important thing is to look at other mods (get them from their github!), as well as the base-game code, and see how they do things. 
 
 https://github.com/daviscook477/BaseMod/wiki
 
-This base itself isn't going to help you code or anything!! While I have been putting comments noting what does what, this is just a nice starting point if you need a place to start learning from that's not an absolute empty canvas, or an overly-complicated, difficult to understand mod. But you still need to learn how the in-game code works and how to piece things together on your own. (i.e. this base will show you where to put the code for double-tap, but not what it is/how to write it/how it works. Look up the actual cards and backward-engineer them for that.)
+This base itself isn't going to help you code or anything!! Nor does it provide basic Java learning! While I have been putting comments noting what does what, this is just a nice starting point if you need a place to start learning from that's not an absolute empty canvas, or an overly-complicated, difficult to understand mod. But you still need to learn how the in-game code works and how to piece things together on your own. (i.e. this base will show you where to put the code for double-tap, but not what it is/how to write it/how it works. Look up the actual cards and backward-engineer them for that.)
 
 Feel free to use this in any way you like, of course. 
 
-If you have any issues with the code/bugs etc. feel free to add an issue.
-If you want to recommend and/or add something to the mod that you feel would be helpful, feel free to put up a request or a branch!
+If you have any issues or you want to recommend and/or add something to the mod that you feel would be helpful, feel free to submit an issue or a PR!
 
 Happy modding!
 
@@ -60,6 +59,8 @@ This set up should be IDE agnostic (i.e. you can use whatever IDE you like). Her
 Click on the Maven Projects tab on the right of the editor (ignoring that this image shows it to the left)
 
 ![](https://i.imgur.com/rZfME3t.png)
+
+This should open your pom.xml (Look at the top and make sure that's the file opened)
 
 Name your mod a nice name change the steam path to correctly reflect your steamapps location.
 Check all the locations to make sure they point to existing files.
