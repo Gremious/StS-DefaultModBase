@@ -37,6 +37,19 @@ public class PlaceholderPotion extends AbstractPotion {
         tips.add(new PowerTip(name, description));
         
     }
+    // See that description? It has DESCRIPTIONS[1] instead of just hard-coding the "text " + potency + " more text" inside.
+    // DO NOT HARDCODE YOUR STRINGS ANYWHERE, it's really bad practice to have "Strings" in your code:
+
+    /*
+     * 1. It's bad for if somebody likes your mod enough (or if you decide) to translate it.
+     * Having only the JSON files for translation rather than 15 different instances of "Dexterity" in some random cards is A LOT easier.
+     *
+     * 2. You don't have a centralised file for all strings for easy proof-reading. If you ever want to change a string
+     * you don't have to go through all your files individually/pray that a mass-replace doesn't screw something up.
+     *
+     * 3. Without hardcoded strings, editing a string doesn't require a compile, saving you time (unless you clean+package).
+     *
+     */
 
     @Override
     public void use(AbstractCreature target) {

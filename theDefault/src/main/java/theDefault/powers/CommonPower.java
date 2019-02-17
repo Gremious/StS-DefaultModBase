@@ -79,8 +79,21 @@ public class CommonPower extends AbstractPower {
             flash(); // Makes the power icon flash.
             for (int i = 0; i < count; ++i) {
                 AbstractDungeon.actionManager.addToBottom(
-                        new ReducePowerAction(owner, owner, "Dexterity", amount));
+                        new ReducePowerAction(owner, owner, DexterityPower.POWER_ID, amount));
                 // Reduce the power by 1 for each count - i.e. for each card played this turn.
+                // DO NOT HARDCODE YOUR STRINGS ANYWHERE: i.e. don't write any Strings directly i.e. "Dexterity" for the power ID above.
+                // Use the power/card/relic etc. and fetch it's ID like shown above. It's really bad practice to have "Strings" in your code:
+
+                /*
+                 * 1. It's bad for if somebody likes your mod enough (or if you decide) to translate it.
+                 * Having only the JSON files for translation rather than 15 different instances of "Dexterity" in some random cards is A LOT easier.
+                 *
+                 * 2. You don't have a centralised file for all strings for easy proof-reading, and if you ever want to change a string
+                 * you now have to go through all your files individually.
+                 *
+                 * 3. Without hardcoded strings, editing a string doesn't require a compile, saving you time (unless you clean+package).
+                 *
+                 */
             }
         }
 
