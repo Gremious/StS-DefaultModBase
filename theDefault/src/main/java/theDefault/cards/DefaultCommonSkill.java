@@ -2,6 +2,7 @@ package theDefault.cards;
 
 import basemod.abstracts.CustomCard;
 import basemod.helpers.BaseModCardTags;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -52,15 +53,14 @@ public class DefaultCommonSkill extends CustomCard {
     public DefaultCommonSkill() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
-        
+
         this.tags.add(BaseModCardTags.BASIC_DEFEND); //Tag your strike, defend and form cards so that they work correctly.
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
-                new com.megacrit.cardcrawl.actions.common.GainBlockAction(p, p, block));
+        AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
     }
 
     //Upgraded stats.

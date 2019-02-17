@@ -2,6 +2,7 @@ package theDefault.cards;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -32,7 +33,7 @@ public class DefaultUncommonAttack extends CustomCard {
 
     // /TEXT DECLARATION/
 
-    
+
     // STAT DECLARATION 	
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
@@ -46,21 +47,20 @@ public class DefaultUncommonAttack extends CustomCard {
 
     // /STAT DECLARATION/
 
-    
+
     public DefaultUncommonAttack() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
     }
-    
+
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
 
 
-        AbstractDungeon.actionManager
-        .addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
-                new DamageInfo(p, damage, damageTypeForTurn),
-                AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+        AbstractDungeon.actionManager.addToBottom(
+                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
+                        AbstractGameAction.AttackEffect.BLUNT_LIGHT));
 
     }
 
