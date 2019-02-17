@@ -1,52 +1,53 @@
 # StS-Default Mod Base
 
-Welcome to this mildly over-commented Slay the Spire modding base. 
+Welcome to this extremely over-commented Slay the Spire modding base. 
 
 This is a minimal "default clean slate" for creating Slay the spire mods. 
 
-Use it to make your own mod of any type - If you want to add any standard in-game content (Character, cards, relics), this is a good starting point.
+Use it to make your own mod of any type - If you want to add any standard in-game content (character, cards, relics, events, etc.), this is a good starting point.
 
 It features 1 character (the Default) with a minimal set of things: 1 card of each type, 1 debuff, 1 relic, etc.
 
 (Currently, there are still some stuff missing (such as game patching examples) which I plan to add later but I have other mods I wanna work on more.)
 
-If you're new to modding, you basically need the BaseMod wiki for whatever you wish to add, and you can work your way thought it with this base. Another very important thing is to look at other mods as well as the base-game code and see how they do things. Again, refer to the basemod wiki for that.
+If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add, and you can work your way thought it with this base. Another very important thing is to look at other mods (get them from their github!), as well as the base-game code, and see how they do things. 
 
 https://github.com/daviscook477/BaseMod/wiki
 
-This base itself isn't going to help you code or anything!! While I have been putting comments noting what does what, this is just a nice starting point if you need a place to start learning from that's not an absolute empty canvas, or an overly-complicated, difficult to understand mod. But you still need to learn how the in-game code works and how to piece things together on your own. (i.e. this base will show you where to put the code for double-tap, but not what it is/how to write it/how it works. Look up the actual cards and backward-engineer them for that.)
+This base itself isn't going to help you code or anything!! Nor does it provide basic Java learning! While I have been putting comments noting what does what, this is just a nice starting point if you need a place to start learning from that's not an absolute empty canvas, or an overly-complicated, difficult to understand mod. But you still need to learn how the in-game code works and how to piece things together on your own. (i.e. this base will show you where to put the code for double-tap, but not what it is/how to write it/how it works. Look up the actual cards and backward-engineer them for that.)
 
 Feel free to use this in any way you like, of course. 
 
-If you have any issues with the code/bugs etc. feel free to add an issue.
-If you want to recommend and/or add something to the mod that you feel would be helpful, feel free to put up a request or a branch!
+If you have any issues or you want to recommend and/or add something to the mod that you feel would be helpful, feel free to submit an issue or a PR!
 
 Happy modding!
 
 ***
-Great big thank you to [Kobting](https://github.com/Kobting) for the following guide:
+Great big thank you to [Kobting](https://github.com/Kobting) for the original version of the following guide:
 
 ## Setting Up Your Development Environment
 
 ### Download the Default Mod Repository
 Download this repository as a zip. Unzip where you want to set up your dev environment.
 
+![](https://i.imgur.com/WnDw5GY.png)
+
 *Do not clone or fork unless you really want to go through the hassle of changing git things later*
 
 ### Adding Dependencies
-The `lib` folder is where we will keep our dependencies. This is very useful if you want to have multiple STS modding projects.
+You will need a 3 other mods in order to be able to build this/your mod:
+BaseMod, ModTheSpire, and (for this mod specifically but it's a great utility for everyone:)  StSlib
 
-Download the latest release `.jar` for each project and place in the lib folder. If you're using workshop mods, their locations are as follows:
+Download the latest release `.jar` for each project or subscribe to them on the Steam Workshop. If you're using workshop mods, the mod locations are as follows:
 
 - Mod the Spire: `Steam\steamapps\workshop\content\646570\1605060445`
 - BaseMod: `Steam\steamapps\workshop\content\646570\1605833019`
 - StSlib: `Steam\steamapps\workshop\content\646570\1609158507`
 
-The final dependency you will need is the actual game. There is a file called `desktop-1.0.jar` located where your game is installed. Copy `desktop-1.0.jar` into the `lib` folder.
+The final dependency you will need is the actual game. There is a file called `desktop-1.0.jar` located where your game is installed.
 
 > ModTheSpire and BaseMod only support the main branch of the game (i.e. not the beta branch).
 
-> When Slay The Spire updates, you will need to replace `desktop-1.0.jar` with the latest version.
 
 ### Import Project Into an IDE
 This set up should be IDE agnostic (i.e. you can use whatever IDE you like). Here are steps for importing your project into the more popular IDE
@@ -55,14 +56,18 @@ This set up should be IDE agnostic (i.e. you can use whatever IDE you like). Her
 
 *File -> Project from Existing Sources -> Select theDefault folder or your own mod that follows the structure of the theDefault -> Select Maven -> Press next until your project is built*.
 
-Click on the Maven Projects tab on the right of the editor and click the refresh icon to load your dependencies from the pom.xml into your project. (If no Maven projects tab on the right *View -> Tool Windows -> Maven Projects*)
+Click on the Maven Projects tab on the right of the editor (ignoring that this image shows it to the left)
 
-## Setting up Slay The Spire for Mods
-If you have played Slay the Spire with mods or have set up ModTheSpire, you can skip this step. In this tutorial, the directory that Slay the Spire is installed in will be refered to as the Slay the Spire directory.
+![](https://i.imgur.com/rZfME3t.png)
 
-Follow the section titles **Playing Mods** on [ModTheSpire's Wiki](https://github.com/kiooeht/ModTheSpire/wiki#playing-mods).
+This should open your pom.xml (Look at the top and make sure that's the file opened)
 
-Copy `BaseMod.jar` from your `lib` folder into your `mods` folder in your Slay the Spire directory.
+Name your mod a nice name change the steam path to correctly reflect your steamapps location.
+Check all the locations to make sure they point to existing files.
+
+Click the refresh icon to load your dependencies from the pom.xml into your project. (If no Maven projects tab on the right *View -> Tool Windows -> Maven Projects*)
+
+(If it asks you, just enable auto-import)
 
 ## Writing Your First Mod
 
@@ -71,17 +76,25 @@ If you have followed the steps so far, you should be able to package this mod th
 
 In IntelliJ, open the Maven project tab and select the "Execute maven goal" button.
 
-![](https://i.imgur.com/Axy3tr0.png)
+![](https://i.imgur.com/OPNhpDc.png)
 
 In the command line field, type `package`.
+(Good practice is to do `clean` followed by `package`, especially if you are replacing a file with another one and they have an identical name.)
 
-You can now find your mod in `[Whatever folder you extracted the zip into]/mods/DefaultMod.jar`. If not, just go 2 directories back from `theDefault` folder (the one with pom.xml in it) and there should be a mods folder there. If you still can't find it, check at the bottom of your pom.xml.
+You can also asign a shortcut to the both those commands by opening the Lifecycle drop-down folder (also in the image above) and right-click > Asign shortcut on them.
 
-Copy `DefaultMod.jar` into the `mods` folder in your Slay the Spire directory.
+You can now find your mod in `[slay the spire install folder]/mods/[name_of_mod].jar`. If you  can't find it, check at the bottom of your pom.xml for the location.
 
 You should be able to run Slay the Spire by running `MTS.cmd` (`MTS.sh` on a mac).
+BUT WAIT
+If you wanna run it with IntelliJ and get cool clickable line numbers when you get a crash-log that'll instantly direct you to where your error is:
+
+https://imgur.com/a/MO5oNuS
 
 ## Going Further
+
+You made a card/event/relic and wanna test it? Please remember that the console exists:
+https://github.com/daviscook477/BaseMod/wiki/Console
 
 ### What Other Listeners Exist
 
@@ -113,10 +126,12 @@ Things I should add/do next:
 
 * ~~Dynamic Variables~~
 
-* CustomBottleRelic
+* ~~CustomBottleRelic~~
 
-* CustomSavable (?)
+* ~~CustomSavable (?)~~
 
 * ~~Change all the tabs into spaces so that formatting is ok across all platforms~~
+
+* Patching Exmaples
 
 * Other things I don't know about yet
