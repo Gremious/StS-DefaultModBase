@@ -33,7 +33,7 @@ public class DefaultRarePower extends CustomCard {
 
     // /TEXT DECLARATION/
 
-    
+
     // STAT DECLARATION 	
 
     private static final CardRarity RARITY = CardRarity.RARE;
@@ -48,21 +48,21 @@ public class DefaultRarePower extends CustomCard {
 
     // /STAT DECLARATION/
 
-    
+
     public DefaultRarePower() {
 
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
-        
+
         this.tags.add(BaseModCardTags.FORM); //Tag your strike, defend and form cards so that they work correctly.
-   
+
     }
-    
+
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(p, p,
-                new RarePower(p, p, magicNumber), magicNumber));
+        AbstractDungeon.actionManager.addToBottom(
+                new ApplyPowerAction(p, p, new RarePower(p, p, magicNumber), magicNumber));
     }
 
     //Upgraded stats.

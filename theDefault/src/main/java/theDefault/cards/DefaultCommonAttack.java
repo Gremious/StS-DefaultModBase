@@ -3,6 +3,7 @@ package theDefault.cards;
 import basemod.abstracts.CustomCard;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -40,7 +41,7 @@ public class DefaultCommonAttack extends CustomCard {
 
     // /TEXT DECLARATION/
 
-    
+
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.BASIC;
@@ -66,7 +67,7 @@ public class DefaultCommonAttack extends CustomCard {
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard
 
         baseDamage = DAMAGE;
-        
+
         this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Shadow form, demon form, echo form, etc.) cards so that they function correctly.
         this.tags.add(CardTags.STRIKE);
     }
@@ -74,9 +75,8 @@ public class DefaultCommonAttack extends CustomCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager
-                .addToBottom(new com.megacrit.cardcrawl.actions.common.DamageAction(m,
-                        new DamageInfo(p, damage, damageTypeForTurn),
+        AbstractDungeon.actionManager.addToBottom(
+                new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
                         AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
 
