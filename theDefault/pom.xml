@@ -47,7 +47,7 @@
             <version>1.3.2</version>
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/1609158507/StSLib.jar</systemPath>
-            <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
+            <!--<systemPath>${basedir}/../lib/MakeSuperCopyAction.jar</systemPath>-->
         </dependency>
     </dependencies>
 
