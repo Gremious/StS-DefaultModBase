@@ -32,7 +32,7 @@ public abstract class AbstractDefaultCard extends CustomCard {
     }
 
     public void displayUpgrades() { // Display the upgrade - when you click a card to upgrade it
-
+        super.displayUpgrades();
         if (upgradedDefaultSecondMagicNumber) { // If we set upgradedDefaultSecondMagicNumber = true in our card.
             defaultSecondMagicNumber = defaultBaseSecondMagicNumber; // Show how the number changes, as out of combat, the base number of a card is shown.
             isDefaultSecondMagicNumberModified = true; // Modified = true, color it green to highlight that the number is being changed.
