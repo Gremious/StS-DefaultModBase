@@ -164,32 +164,32 @@ public class DefaultMod implements
     // DON'T TOUCH THIS STUFF. IT IS HERE FOR STANDARDIZATION BETWEEN MODS AND TO ENSURE GOOD CODE PRACTICES.
     // IF YOU MODIFY THIS I WILL HUNT YOU DOWN AND DOWNVOTE YOUR MOD ON WORKSHOP
 
-    public static void setModID(String ID) {
-        if (ID.equals("theDefault")) {
-            throw new RuntimeException("Go to your constructor in your class with SpireInitializer and change your mod ID from \"theDefault\"");
-        } else if (ID.equals("theDefaultDev")) {
-            modID = "theDefault";
-        } else {
-            modID = ID;
-        }
-    }
+    public static void setModID(String ID) { // DON'T EDIT
+        if (ID.equals("theDefault")) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
+            throw new RuntimeException("Go to your constructor in your class with SpireInitializer and change your mod ID from \"theDefault\""); // THIS ALSO DON'T EDIT
+        } else if (ID.equals("theDefaultDev")) { // NO
+            modID = "theDefault"; // DON'T
+        } else { // NO EDIT AREA
+            modID = ID; // DON'T WRITE OR CHANGE THINGS NOT EVEN A LITTLE
+        } // NO
+    } // NO
 
-    public static String getModID() {
-        return modID;
-    }
+    public static String getModID() { // NO
+        return modID; // DOUBLE NO
+    } // NU-UH
 
-    private static void pathCheck() {
-        String packageName = DefaultMod.class.getPackage().getName();
-        FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources");
-        if (!modID.equals("theDefaultDev")) {
-            if (!packageName.equals(getModID())) {
-                throw new RuntimeException("Rename your theDefault folder to match your mod ID! " + getModID());
-            }
-            if (!resourcePathExists.exists()) {
-                throw new RuntimeException("Rename your theDefaultResources folder to match your mod ID! " + getModID() + "Resources");
-            }
-        }
-    }
+    private static void pathCheck() { // ALSO NO
+        String packageName = DefaultMod.class.getPackage().getName(); // STILL NOT EDIT ZONE
+        FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources"); // PLEASE DON'T EDIT THINGS
+        if (!modID.equals("theDefaultDev")) { // LEAVE THIS EDIT-LESS
+            if (!packageName.equals(getModID())) { // NOT HERE ETHER
+                throw new RuntimeException("Rename your theDefault folder to match your mod ID! " + getModID()); // THIS IS A NO-NO
+            } // WHY WOULD U EDIT THIS
+            if (!resourcePathExists.exists()) { // DON'T CHANGE THIS
+                throw new RuntimeException("Rename your theDefaultResources folder to match your mod ID! " + getModID() + "Resources"); // NOT THIS
+            }// NO
+        }// NO
+    }// NO
     // ====== YOU CAN EDIT AGAIN ======
 
 
