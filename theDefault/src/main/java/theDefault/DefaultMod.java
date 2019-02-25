@@ -155,6 +155,11 @@ public class DefaultMod implements
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         setModID("theDefault");
+        // Now go to your resources folder in the project panel, and refactor> rename theDefaultResources to
+        // yourModIDResources.
+        // Also click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project)
+        // replace all instances of theDefault with yourModID.
+        // Because your mod ID isn't the default. Your cards
 
         logger.info("Done subscribing");
 
@@ -174,10 +179,10 @@ public class DefaultMod implements
     // IF YOU MODIFY THIS I WILL HUNT YOU DOWN AND DOWNVOTE YOUR MOD ON WORKSHOP
 
     public static void setModID(String ID) { // DON'T EDIT
-        Gson coolG = new Gson();
+        Gson coolG = new Gson(); // EY DON'T EDIT THIS
         //   String IDjson = Gdx.files.internal("IDCheckStrings.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i hate u Gdx.files
-        InputStream in = DefaultMod.class.getResourceAsStream("/IDCheckStrings.json");
-        IDCheckDontTouchPls IDs = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class);
+        InputStream in = DefaultMod.class.getResourceAsStream("/IDCheckStrings.json"); // DON'T EDIT THIS ETHER
+        IDCheckDontTouchPls IDs = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class); // OR THIS, DON'T EDIT IT
 
         if (ID.equals(IDs.DEFAULTID)) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
             throw new RuntimeException(IDs.EXCEPTION); // THIS ALSO DON'T EDIT
@@ -193,9 +198,15 @@ public class DefaultMod implements
     } // NU-UH
 
     private static void pathCheck() { // ALSO NO
+
+        Gson coolG = new Gson(); // NNOPE DON'T EDIT THIS
+        //   String IDjson = Gdx.files.internal("IDCheckStrings.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i still hate u Gdx.files btw
+        InputStream in = DefaultMod.class.getResourceAsStream("/IDCheckStrings.json"); // DON'T EDIT THISSSSS
+        IDCheckDontTouchPls IDs = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class); // NAH, NO EDIT
+
         String packageName = DefaultMod.class.getPackage().getName(); // STILL NOT EDIT ZONE
-        FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources"); // PLEASE DON'T EDIT THINGS
-        if (!modID.equals("theDefaultDev")) { // LEAVE THIS EDIT-LESS
+        FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources"); // PLEASE DON'T EDIT THINGS HERE, THANKS
+        if (!modID.equals(IDs.DEVID)) { // LEAVE THIS EDIT-LESS
             if (!packageName.equals(getModID())) { // NOT HERE ETHER
                 throw new RuntimeException("Rename your theDefault folder to match your mod ID! " + getModID()); // THIS IS A NO-NO
             } // WHY WOULD U EDIT THIS
