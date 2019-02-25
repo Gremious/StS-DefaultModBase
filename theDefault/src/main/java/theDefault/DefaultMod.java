@@ -182,12 +182,12 @@ public class DefaultMod implements
         Gson coolG = new Gson(); // EY DON'T EDIT THIS
         //   String IDjson = Gdx.files.internal("IDCheckStrings.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i hate u Gdx.files
         InputStream in = DefaultMod.class.getResourceAsStream("/IDCheckStrings.json"); // DON'T EDIT THIS ETHER
-        IDCheckDontTouchPls IDs = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class); // OR THIS, DON'T EDIT IT
+        IDCheckDontTouchPls EXCEPTION_STRINGS = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class); // OR THIS, DON'T EDIT IT
 
-        if (ID.equals(IDs.DEFAULTID)) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
-            throw new RuntimeException(IDs.EXCEPTION); // THIS ALSO DON'T EDIT
-        } else if (ID.equals(IDs.DEVID)) { // NO
-            modID = IDs.DEFAULTID; // DON'T
+        if (ID.equals(EXCEPTION_STRINGS.DEFAULTID)) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
+            throw new RuntimeException(EXCEPTION_STRINGS.EXCEPTION); // THIS ALSO DON'T EDIT
+        } else if (ID.equals(EXCEPTION_STRINGS.DEVID)) { // NO
+            modID = EXCEPTION_STRINGS.DEFAULTID; // DON'T
         } else { // NO EDIT AREA
             modID = ID; // DON'T WRITE OR CHANGE THINGS HERE NOT EVEN A LITTLE
         } // NO
@@ -198,20 +198,19 @@ public class DefaultMod implements
     } // NU-UH
 
     private static void pathCheck() { // ALSO NO
-
         Gson coolG = new Gson(); // NNOPE DON'T EDIT THIS
-        //   String IDjson = Gdx.files.internal("IDCheckStrings.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i still hate u Gdx.files btw
+        //   String IDjson = Gdx.files.internal("IDCheckStrings.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i still hate u btw Gdx.files
         InputStream in = DefaultMod.class.getResourceAsStream("/IDCheckStrings.json"); // DON'T EDIT THISSSSS
-        IDCheckDontTouchPls IDs = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class); // NAH, NO EDIT
+        IDCheckDontTouchPls EXCEPTION_STRINGS = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class); // NAH, NO EDIT
 
         String packageName = DefaultMod.class.getPackage().getName(); // STILL NOT EDIT ZONE
         FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources"); // PLEASE DON'T EDIT THINGS HERE, THANKS
-        if (!modID.equals(IDs.DEVID)) { // LEAVE THIS EDIT-LESS
+        if (!modID.equals(EXCEPTION_STRINGS.DEVID)) { // LEAVE THIS EDIT-LESS
             if (!packageName.equals(getModID())) { // NOT HERE ETHER
-                throw new RuntimeException("Rename your theDefault folder to match your mod ID! " + getModID()); // THIS IS A NO-NO
+                throw new RuntimeException(EXCEPTION_STRINGS.PACKAGE_EXCEPTION + getModID()); // THIS IS A NO-NO
             } // WHY WOULD U EDIT THIS
             if (!resourcePathExists.exists()) { // DON'T CHANGE THIS
-                throw new RuntimeException("Rename your theDefaultResources folder to match your mod ID! " + getModID() + "Resources"); // NOT THIS
+                throw new RuntimeException(EXCEPTION_STRINGS.RESOURCE_FOLDER_EXCEPTION + getModID() + "Resources"); // NOT THIS
             }// NO
         }// NO
     }// NO
