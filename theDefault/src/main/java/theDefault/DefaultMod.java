@@ -147,6 +147,7 @@ public class DefaultMod implements
         logger.info("Subscribe to BaseMod hooks");
 
         BaseMod.subscribe(this);
+
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -159,7 +160,7 @@ public class DefaultMod implements
         // yourModIDResources.
         // Also click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project)
         // replace all instances of theDefault with yourModID.
-        // Because your mod ID isn't the default. Your cards
+        // Because your mod ID isn't the default. Your cards (and everything else) should have Your mod id. Not mine.
 
         logger.info("Done subscribing");
 
