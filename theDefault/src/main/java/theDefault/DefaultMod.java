@@ -26,29 +26,32 @@ import theDefault.relics.BottledPlaceholderRelic;
 import theDefault.relics.DefaultClickableRelic;
 import theDefault.relics.PlaceholderRelic;
 import theDefault.relics.PlaceholderRelic2;
+import theDefault.util.IDCheckDontTouchPls;
 import theDefault.util.TextureLoader;
 import theDefault.variables.DefaultCustomVariable;
 import theDefault.variables.DefaultSecondMagicNumber;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 
 //TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
 // Right click the package (Open the project pane on the left. Folder with black dot on it. The name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
-// Scroll to the very bottom of this file. Change the id string from "theDefault:" to "yourModName:" or whatever your heart desires (don't use spaces).
+// Scroll down in this file. Change the ID from "theDefault:" to "yourModName:" or whatever your heart desires (don't use spaces). Dw, you'll see it.
 // In the JSON strings (resources>localization>eng>[all them files] make sure they all go "yourModName:" rather than "theDefault". You can ctrl+R to replace in 1 file, or ctrl+shift+r to mass replace in specific files/directories (Be careful.).
 // Start with the DefaultCommon cards - they are the most commented cards since I don't feel it's necessary to put identical comments on every card.
 // After you sorta get the hang of how to make cards, check out the card template which will make your life easier
 
 /*
  * With that out of the way:
- * Welcome to this mildly over-commented Slay the Spire modding base.
+ * Welcome to this super over-commented Slay the Spire modding base.
  * Use it to make your own mod of any type. - If you want to add any standard in-game content (character,
  * cards, relics), this is a good starting point.
- * It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, 3 types of relics, etc.
+ * It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, couple of relics, etc.
  * If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add
  * https://github.com/daviscook477/BaseMod/wiki - work your way through with this base.
- * Feel free to use this in any way you like, of course. Happy modding!
+ * Feel free to use this in any way you like, of course. MIT licence applies. Happy modding!
  */
 
 @SpireInitializer
@@ -145,6 +148,12 @@ public class DefaultMod implements
 
         BaseMod.subscribe(this);
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         setModID("theDefault");
 
         logger.info("Done subscribing");
@@ -165,12 +174,17 @@ public class DefaultMod implements
     // IF YOU MODIFY THIS I WILL HUNT YOU DOWN AND DOWNVOTE YOUR MOD ON WORKSHOP
 
     public static void setModID(String ID) { // DON'T EDIT
-        if (ID.equals("theDefault")) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
-            throw new RuntimeException("Go to your constructor in your class with SpireInitializer and change your mod ID from \"theDefault\""); // THIS ALSO DON'T EDIT
-        } else if (ID.equals("theDefaultDev")) { // NO
-            modID = "theDefault"; // DON'T
+        Gson coolG = new Gson();
+        //   String IDjson = Gdx.files.internal("IDCheckStrings.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i hate u Gdx.files
+        InputStream in = DefaultMod.class.getResourceAsStream("/IDCheckStrings.json");
+        IDCheckDontTouchPls IDs = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class);
+
+        if (ID.equals(IDs.DEFAULTID)) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
+            throw new RuntimeException(IDs.EXCEPTION); // THIS ALSO DON'T EDIT
+        } else if (ID.equals(IDs.DEVID)) { // NO
+            modID = IDs.DEFAULTID; // DON'T
         } else { // NO EDIT AREA
-            modID = ID; // DON'T WRITE OR CHANGE THINGS NOT EVEN A LITTLE
+            modID = ID; // DON'T WRITE OR CHANGE THINGS HERE NOT EVEN A LITTLE
         } // NO
     } // NO
 

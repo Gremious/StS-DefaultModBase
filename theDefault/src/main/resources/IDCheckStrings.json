@@ -1,0 +1,5 @@
+{
+  "DEFAULTID": "theDefault",
+  "DEVID": "theDefaultDev",
+  "EXCEPTION": "Go to your constructor in your class with SpireInitializer and change your mod ID from \"theDefault\""
+}

@@ -75,9 +75,18 @@ public class DefaultCommonAttack extends CustomCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom(
+        AbstractDungeon.actionManager.addToBottom( // The action managed queues all the actions a card should do.
+                // addToTop - first
+                // addToBottom - last
+                // 99.99% of the time you just want to addToBottom all of them.
+                // Please do that unless you need to add to top for some specific reason.
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
-                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                        // a list of existing actions can be found at com.megacrit.cardcrawl.actions but
+                        // Chances are you'd instead look at "hey my card is similar to this basegame card"
+                        // Let's find out what action *it* uses.
+                        // I.e. i want energy gain or card draw, lemme check out Adrenaline
+                        // P.s. if you want to damage ALL enemies OUTSIDE of a card, check out the custom orb.
+                        AbstractGameAction.AttackEffect.SLASH_HORIZONTAL)); // The animation the damage action uses to hit.
     }
 
     // Upgraded stats.
