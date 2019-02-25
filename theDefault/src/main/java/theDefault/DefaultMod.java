@@ -155,7 +155,7 @@ public class DefaultMod implements
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        setModID("theDefault");
+        setModID("theDefaultDev");
         // Now go to your resources folder in the project panel, and refactor> rename theDefaultResources to
         // yourModIDResources.
         // Also click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project)
@@ -430,7 +430,8 @@ public class DefaultMod implements
 
         if (keywords != null) {
             for (Keyword keyword : keywords) {
-                BaseMod.addKeyword(keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
+                BaseMod.addKeyword(getModID().toLowerCase(), keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
+                //  getModID().toLowerCase() makes your keyword mod specific (it won't show up in other cards that use that word)
             }
         }
     }
