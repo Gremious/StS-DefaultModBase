@@ -1,10 +1,10 @@
 {
 "theDefault:CommonPower": {
         "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["You applied ", " keyword.", " keywords."]
+        "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
 },
 "theDefault:RarePower": {
         "NAME": "Placeholder Power",
-        "DESCRIPTIONS": ["At the start of your turn, TOUCH ", " enemy." , " enemies."]
+        "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
 }
 }

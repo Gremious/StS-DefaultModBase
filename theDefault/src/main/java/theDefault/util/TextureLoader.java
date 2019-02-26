@@ -20,7 +20,7 @@ public class TextureLoader {
 
     /**
      * @param textureString - String path to the texture you want to load relative to resources,
-     *                      Example: "theDefaultResources/images/ui/missing_texture.png"
+     *                      Example: "archetypeAPIResources/images/ui/missing_texture.png"
      * @return <b>com.badlogic.gdx.graphics.Texture</b> - The texture from the path provided
      */
     public static Texture getTexture(final String textureString) {

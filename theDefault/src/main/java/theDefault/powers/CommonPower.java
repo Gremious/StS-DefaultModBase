@@ -1,5 +1,6 @@
 package theDefault.powers;
 
+import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -19,7 +20,7 @@ import static theDefault.DefaultMod.makePowerPath;
 
 //Gain 1 dex for the turn for each card played.
 
-public class CommonPower extends AbstractPower {
+public class CommonPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
     public static final String POWER_ID = DefaultMod.makeID("CommonPower");
@@ -109,4 +110,8 @@ public class CommonPower extends AbstractPower {
         }
     }
 
+    @Override
+    public AbstractPower makeCopy() {
+        return new CommonPower(owner, source, amount);
+    }
 }
