@@ -155,8 +155,8 @@ public class DefaultMod implements
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        setModID("theDefaultDev");
-        // Now go to your resources folder in the project panel, and refactor> rename archetypeAPIResources to
+        setModID("theDefault");
+        // Now go to your resources folder in the project panel, and refactor> rename theDefaultResources to
         // yourModIDResources.
         // Also click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project)
         // replace all instances of theDefault with yourModID.
