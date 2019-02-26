@@ -1,5 +1,6 @@
 package theDefault.powers;
 
+import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
@@ -14,7 +15,7 @@ import theDefault.DefaultMod;
 import theDefault.cards.DefaultRareAttack;
 import theDefault.util.TextureLoader;
 
-public class RarePower extends AbstractPower {
+public class RarePower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
     public static final String POWER_ID = DefaultMod.makeID("RarePower");
@@ -71,4 +72,8 @@ public class RarePower extends AbstractPower {
         }
     }
 
+    @Override
+    public AbstractPower makeCopy() {
+        return new RarePower(owner, source, amount);
+    }
 }
