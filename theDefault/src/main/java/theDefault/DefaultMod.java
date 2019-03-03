@@ -40,14 +40,14 @@ import java.nio.charset.StandardCharsets;
 // Right click the package (Open the project pane on the left. Folder with black dot on it. The name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
 // Scroll down in this file. Change the ID from "theDefault:" to "yourModName:" or whatever your heart desires (don't use spaces). Dw, you'll see it.
 // In the JSON strings (resources>localization>eng>[all them files] make sure they all go "yourModName:" rather than "theDefault". You can ctrl+R to replace in 1 file, or ctrl+shift+r to mass replace in specific files/directories (Be careful.).
-// Start with the DefaultCommon archetypes - they are the most commented archetypes since I don't feel it's necessary to put identical comments on every card.
-// After you sorta get the hang of how to make archetypes, check out the card template which will make your life easier
+// Start with the DefaultCommon cards - they are the most commented cards since I don't feel it's necessary to put identical comments on every card.
+// After you sorta get the hang of how to make cards, check out the card template which will make your life easier
 
 /*
  * With that out of the way:
  * Welcome to this super over-commented Slay the Spire modding base.
  * Use it to make your own mod of any type. - If you want to add any standard in-game content (character,
- * archetypes, relics), this is a good starting point.
+ * cards, relics), this is a good starting point.
  * It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, couple of relics, etc.
  * If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add
  * https://github.com/daviscook477/BaseMod/wiki - work your way through with this base.
@@ -62,7 +62,7 @@ public class DefaultMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber {
-    // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing archetypes? EditCardsSubscriber.
+    // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
     private static String modID;
@@ -113,7 +113,7 @@ public class DefaultMod implements
     // =============== MAKE IMAGE PATHS =================
 
     public static String makeCardPath(String resourcePath) {
-        return getModID() + "Resources/images/archetypes/" + resourcePath;
+        return getModID() + "Resources/images/cards/" + resourcePath;
     }
 
     public static String makeRelicPath(String resourcePath) {
@@ -160,7 +160,7 @@ public class DefaultMod implements
         // yourModIDResources.
         // Also click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project)
         // replace all instances of theDefault with yourModID.
-        // Because your mod ID isn't the default. Your archetypes (and everything else) should have Your mod id. Not mine.
+        // Because your mod ID isn't the default. Your cards (and everything else) should have Your mod id. Not mine.
 
         logger.info("Done subscribing");
 
@@ -328,9 +328,9 @@ public class DefaultMod implements
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
 
-        logger.info("Adding archetypes");
-        // Add the archetypes
-        // Don't comment out/delete these archetypes (yet). You need 1 of each type and rarity (technically) for your game not to crash
+        logger.info("Adding cards");
+        // Add the cards
+        // Don't comment out/delete these cards (yet). You need 1 of each type and rarity (technically) for your game not to crash
         // when generating card rewards/shop screen items.
 
         BaseMod.addCard(new OrbSkill());
@@ -346,8 +346,8 @@ public class DefaultMod implements
         BaseMod.addCard(new DefaultRareSkill());
         BaseMod.addCard(new DefaultRarePower());
 
-        logger.info("Making sure the archetypes are unlocked.");
-        // Unlock the archetypes
+        logger.info("Making sure the cards are unlocked.");
+        // Unlock the cards
         // This is so that they are all "seen" in the library, for people who like to look at the card list
         // before playing your mod.
         UnlockTracker.unlockCard(OrbSkill.ID);
@@ -363,7 +363,7 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(DefaultRareSkill.ID);
         UnlockTracker.unlockCard(DefaultRarePower.ID);
 
-        logger.info("Done adding archetypes!");
+        logger.info("Done adding cards!");
     }
 
     // There are better ways to do this than listing every single individual card, but I do not want to complicate things
@@ -416,9 +416,9 @@ public class DefaultMod implements
 
     @Override
     public void receiveEditKeywords() {
-        // Keywords on archetypes are supposed to be Capitalized, while in Keyword-String.json they're lowercase
+        // Keywords on cards are supposed to be Capitalized, while in Keyword-String.json they're lowercase
         //
-        // Multiword keywords on archetypes are done With_Underscores
+        // Multiword keywords on cards are done With_Underscores
         //
         // If you're using multiword keywords, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME.
         // That is, in Card-Strings.json you would have #yA_Long_Keyword (#y highlights the keyword in yellow).
@@ -431,7 +431,7 @@ public class DefaultMod implements
         if (keywords != null) {
             for (Keyword keyword : keywords) {
                 BaseMod.addKeyword(getModID().toLowerCase(), keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
-                //  getModID().toLowerCase() makes your keyword mod specific (it won't show up in other archetypes that use that word)
+                //  getModID().toLowerCase() makes your keyword mod specific (it won't show up in other cards that use that word)
             }
         }
     }
