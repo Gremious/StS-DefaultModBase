@@ -107,8 +107,8 @@ public class DefaultMod implements
     public static final String BADGE_IMAGE = getModID() + "Resources/images/Badge.png";
 
     // Atlas and JSON files for the Animations
-    public static final String THE_DEFAULT_SKELETON_ATLAS = getModID() + "Resources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_DEFAULT_SKELETON_JSON = getModID() + "Resources/images/char/defaultCharacter/skeleton.json";
+    public static final String THE_DEFAULT_SKELETON_ATLAS = "theDefaultResources/images/char/defaultCharacter/skeleton.atlas";
+    public static final String THE_DEFAULT_SKELETON_JSON = "theDefaultResources/images/char/defaultCharacter/skeleton.json";
 
     // =============== MAKE IMAGE PATHS =================
 
@@ -161,7 +161,8 @@ public class DefaultMod implements
         // Also click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project)
         // replace all instances of theDefault with yourModID.
         // Because your mod ID isn't the default. Your cards (and everything else) should have Your mod id. Not mine.
-
+        // FINALLY and most importnatly: Scroll up a bit. You may notice that THE_DEFAULT_SKELETON_ATLAS/JSON don't use getModID()
+        // Change their locations to reflect your actual ID rather than theDefault.
         logger.info("Done subscribing");
 
         logger.info("Creating the color " + TheDefault.Enums.COLOR_GRAY.toString());
