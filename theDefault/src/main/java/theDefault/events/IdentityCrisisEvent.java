@@ -61,7 +61,7 @@ public class IdentityCrisisEvent extends AbstractImageEvent {
                         this.imageEventText.updateDialogOption(0, OPTIONS[5]); // 1. Change the first button to the [Leave] button
                         this.imageEventText.clearRemainingOptions(); // 2. and remove all others
                         screenNum = 1; // Screen set the screen number to 1. Once we exit the switch (i) statement,
-                        // we'll still continue the switch (screenNum) statement. It'll find screen 1 and do it's actions
+                        // we'll still continue the switch (screenNum) statement. It'll find screen 1 and do it's archetypeAPI.actions
                         // (in our case, that's the final screen, but you can chain as many as you want like that)
 
                         AbstractRelic relicToAdd = RelicLibrary.starterList.get(AbstractDungeon.relicRng.random(RelicLibrary.starterList.size() - 1)).makeCopy();
@@ -78,7 +78,7 @@ public class IdentityCrisisEvent extends AbstractImageEvent {
                         CardCrawlGame.sound.play("BLUNT_FAST");  // Play a hit sound
                         AbstractDungeon.player.decreaseMaxHealth(healthdamage); // Lose max HP
                         if (CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck.getPurgeableCards()).size() > 0) {
-                            // If you have cards you can remove - remove a card
+                            // If you have archetypes you can remove - remove a card
                             AbstractDungeon.gridSelectScreen.open(
                                     CardGroup.getGroupWithoutBottledCards(
                                             AbstractDungeon.player.masterDeck.getPurgeableCards()),
@@ -135,7 +135,7 @@ public class IdentityCrisisEvent extends AbstractImageEvent {
             AbstractDungeon.topLevelEffects.add(new PurgeCardEffect(c, (float)(Settings.WIDTH / 2), (float)(Settings.HEIGHT / 2))); // Create the card removal effect
             AbstractDungeon.player.masterDeck.removeCard(c); // Remove it from the deck
             AbstractDungeon.gridSelectScreen.selectedCards.clear(); // Or you can .remove(c) instead of clear,
-            // if you want to continue using the other selected cards for something
+            // if you want to continue using the other selected archetypes for something
         }
 
     }

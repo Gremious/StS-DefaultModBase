@@ -53,7 +53,7 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
         tips.add(new PowerTip(name, description));
     }
 
-    // Now, for making Bottled cards we need a small patch - our own custom SpireField
+    // Now, for making Bottled archetypes we need a small patch - our own custom SpireField
     // I've included that already in patches.relics.BottledPlaceholderField
     // The basemod wiki I linked above has comments about onSave and onLoad
 
@@ -96,9 +96,9 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
         }
         AbstractDungeon.getCurrRoom().phase = AbstractRoom.RoomPhase.INCOMPLETE;
         // 4. Set the room to INCOMPLETE - don't allow us to use the map, etc.
-        CardGroup group = CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck); // 5. Get a card group of all currently unbottled cards
+        CardGroup group = CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck); // 5. Get a card group of all currently unbottled archetypes
         AbstractDungeon.gridSelectScreen.open(group, 1, DESCRIPTIONS[3] + name + DESCRIPTIONS[2], false, false, false, false);
-        // 6. Open the grid selection screen with the cards from the CardGroup we specified above. The description reads "Select a card to bottle for" + (relic name) + "."
+        // 6. Open the grid selection screen with the archetypes from the CardGroup we specified above. The description reads "Select a card to bottle for" + (relic name) + "."
     }
 
 
@@ -117,7 +117,7 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
         super.update(); //Do all of the original update() method in AbstractRelic
 
         if (!cardSelected && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-            // If the card hasn't been bottled yet and we have cards selected in the gridSelectScreen (from onEquip)
+            // If the card hasn't been bottled yet and we have archetypes selected in the gridSelectScreen (from onEquip)
             cardSelected = true; //Set the cardSelected boolean to be true - we're about to bottle the card.
             card = AbstractDungeon.gridSelectScreen.selectedCards.get(0); // The custom Savable "card" is going to equal
             // The card from the selection screen (it's only 1, so it's at index 0)
@@ -134,7 +134,7 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
 
     // And finally after all that we can code in the actual relic mechanic
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) { // Whenever we use any card
-        boolean fullHandDialog = false; // Create a boolean (to prevent multiple "My hand is full!" dialogues if we have multiple cards bottled)
+        boolean fullHandDialog = false; // Create a boolean (to prevent multiple "My hand is full!" dialogues if we have multiple archetypes bottled)
 
         for (Iterator<AbstractCard> it = AbstractDungeon.player.drawPile.group.iterator(); it.hasNext(); ) {
             // Create a new Iterator called "it" that checks for all AbstractCards in our draw pile. For each card:
