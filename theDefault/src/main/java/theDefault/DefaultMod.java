@@ -40,14 +40,14 @@ import java.nio.charset.StandardCharsets;
 // Right click the package (Open the project pane on the left. Folder with black dot on it. The name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
 // Scroll down in this file. Change the ID from "theDefault:" to "yourModName:" or whatever your heart desires (don't use spaces). Dw, you'll see it.
 // In the JSON strings (resources>localization>eng>[all them files] make sure they all go "yourModName:" rather than "theDefault". You can ctrl+R to replace in 1 file, or ctrl+shift+r to mass replace in specific files/directories (Be careful.).
-// Start with the DefaultCommon cards - they are the most commented cards since I don't feel it's necessary to put identical comments on every card.
-// After you sorta get the hang of how to make cards, check out the card template which will make your life easier
+// Start with the DefaultCommon archetypes - they are the most commented archetypes since I don't feel it's necessary to put identical comments on every card.
+// After you sorta get the hang of how to make archetypes, check out the card template which will make your life easier
 
 /*
  * With that out of the way:
  * Welcome to this super over-commented Slay the Spire modding base.
  * Use it to make your own mod of any type. - If you want to add any standard in-game content (character,
- * cards, relics), this is a good starting point.
+ * archetypes, relics), this is a good starting point.
  * It features 1 character with a minimal set of things: 1 card of each type, 1 debuff, couple of relics, etc.
  * If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add
  * https://github.com/daviscook477/BaseMod/wiki - work your way through with this base.
@@ -62,7 +62,7 @@ public class DefaultMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber {
-    // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
+    // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing archetypes? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
     private static String modID;
@@ -84,36 +84,36 @@ public class DefaultMod implements
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
 
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = "theDefaultResources/images/512/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY = "theDefaultResources/images/512/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY = "theDefaultResources/images/512/bg_power_default_gray.png";
+    private static final String ATTACK_DEFAULT_GRAY = getModID() + "Resources/images/512/bg_attack_default_gray.png";
+    private static final String SKILL_DEFAULT_GRAY = getModID() + "Resources/images/512/bg_skill_default_gray.png";
+    private static final String POWER_DEFAULT_GRAY = getModID() + "Resources/images/512/bg_power_default_gray.png";
 
-    private static final String ENERGY_ORB_DEFAULT_GRAY = "theDefaultResources/images/512/card_default_gray_orb.png";
-    private static final String CARD_ENERGY_ORB = "theDefaultResources/images/512/card_small_orb.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY = getModID() + "Resources/images/512/card_default_gray_orb.png";
+    private static final String CARD_ENERGY_ORB = getModID() + "Resources/images/512/card_small_orb.png";
 
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_power_default_gray.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/card_default_gray_orb.png";
+    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = getModID() + "Resources/images/1024/bg_attack_default_gray.png";
+    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = getModID() + "Resources/images/1024/bg_skill_default_gray.png";
+    private static final String POWER_DEFAULT_GRAY_PORTRAIT = getModID() + "Resources/images/1024/bg_power_default_gray.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = getModID() + "Resources/images/1024/card_default_gray_orb.png";
 
     // Character assets
-    private static final String THE_DEFAULT_BUTTON = "theDefaultResources/images/charSelect/DefaultCharacterButton.png";
-    private static final String THE_DEFAULT_PORTRAIT = "theDefaultResources/images/charSelect/DefaultCharacterPortraitBG.png";
-    public static final String THE_DEFAULT_SHOULDER_1 = "theDefaultResources/images/char/defaultCharacter/shoulder.png";
-    public static final String THE_DEFAULT_SHOULDER_2 = "theDefaultResources/images/char/defaultCharacter/shoulder2.png";
-    public static final String THE_DEFAULT_CORPSE = "theDefaultResources/images/char/defaultCharacter/corpse.png";
+    private static final String THE_DEFAULT_BUTTON = getModID() + "Resources/images/charSelect/DefaultCharacterButton.png";
+    private static final String THE_DEFAULT_PORTRAIT = getModID() + "Resources/images/charSelect/DefaultCharacterPortraitBG.png";
+    public static final String THE_DEFAULT_SHOULDER_1 = getModID() + "Resources/images/char/defaultCharacter/shoulder.png";
+    public static final String THE_DEFAULT_SHOULDER_2 = getModID() + "Resources/images/char/defaultCharacter/shoulder2.png";
+    public static final String THE_DEFAULT_CORPSE = getModID() + "Resources/images/char/defaultCharacter/corpse.png";
 
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
-    public static final String BADGE_IMAGE = "theDefaultResources/images/Badge.png";
+    public static final String BADGE_IMAGE = getModID() + "Resources/images/Badge.png";
 
     // Atlas and JSON files for the Animations
-    public static final String THE_DEFAULT_SKELETON_ATLAS = "theDefaultResources/images/char/defaultCharacter/skeleton.atlas";
-    public static final String THE_DEFAULT_SKELETON_JSON = "theDefaultResources/images/char/defaultCharacter/skeleton.json";
+    public static final String THE_DEFAULT_SKELETON_ATLAS = getModID() + "Resources/images/char/defaultCharacter/skeleton.atlas";
+    public static final String THE_DEFAULT_SKELETON_JSON = getModID() + "Resources/images/char/defaultCharacter/skeleton.json";
 
     // =============== MAKE IMAGE PATHS =================
 
     public static String makeCardPath(String resourcePath) {
-        return getModID() + "Resources/images/cards/" + resourcePath;
+        return getModID() + "Resources/images/archetypes/" + resourcePath;
     }
 
     public static String makeRelicPath(String resourcePath) {
@@ -160,7 +160,7 @@ public class DefaultMod implements
         // yourModIDResources.
         // Also click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project)
         // replace all instances of theDefault with yourModID.
-        // Because your mod ID isn't the default. Your cards (and everything else) should have Your mod id. Not mine.
+        // Because your mod ID isn't the default. Your archetypes (and everything else) should have Your mod id. Not mine.
 
         logger.info("Done subscribing");
 
@@ -328,9 +328,9 @@ public class DefaultMod implements
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
 
-        logger.info("Adding cards");
-        // Add the cards
-        // Don't comment out/delete these cards (yet). You need 1 of each type and rarity (technically) for your game not to crash
+        logger.info("Adding archetypes");
+        // Add the archetypes
+        // Don't comment out/delete these archetypes (yet). You need 1 of each type and rarity (technically) for your game not to crash
         // when generating card rewards/shop screen items.
 
         BaseMod.addCard(new OrbSkill());
@@ -346,8 +346,8 @@ public class DefaultMod implements
         BaseMod.addCard(new DefaultRareSkill());
         BaseMod.addCard(new DefaultRarePower());
 
-        logger.info("Making sure the cards are unlocked.");
-        // Unlock the cards
+        logger.info("Making sure the archetypes are unlocked.");
+        // Unlock the archetypes
         // This is so that they are all "seen" in the library, for people who like to look at the card list
         // before playing your mod.
         UnlockTracker.unlockCard(OrbSkill.ID);
@@ -363,7 +363,7 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(DefaultRareSkill.ID);
         UnlockTracker.unlockCard(DefaultRarePower.ID);
 
-        logger.info("Done adding cards!");
+        logger.info("Done adding archetypes!");
     }
 
     // There are better ways to do this than listing every single individual card, but I do not want to complicate things
@@ -416,9 +416,9 @@ public class DefaultMod implements
 
     @Override
     public void receiveEditKeywords() {
-        // Keywords on cards are supposed to be Capitalized, while in Keyword-String.json they're lowercase
+        // Keywords on archetypes are supposed to be Capitalized, while in Keyword-String.json they're lowercase
         //
-        // Multiword keywords on cards are done With_Underscores
+        // Multiword keywords on archetypes are done With_Underscores
         //
         // If you're using multiword keywords, the first element in your NAMES array in your keywords-strings.json has to be the same as the PROPER_NAME.
         // That is, in Card-Strings.json you would have #yA_Long_Keyword (#y highlights the keyword in yellow).
@@ -431,7 +431,7 @@ public class DefaultMod implements
         if (keywords != null) {
             for (Keyword keyword : keywords) {
                 BaseMod.addKeyword(getModID().toLowerCase(), keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
-                //  getModID().toLowerCase() makes your keyword mod specific (it won't show up in other cards that use that word)
+                //  getModID().toLowerCase() makes your keyword mod specific (it won't show up in other archetypes that use that word)
             }
         }
     }
