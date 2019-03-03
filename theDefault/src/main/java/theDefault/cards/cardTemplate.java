@@ -17,13 +17,13 @@ import static theDefault.DefaultMod.makeCardPath;
 public class cardTemplate extends AbstractDefaultCard {
 
     /*
-     * "Hey, I wanna make a bunch of archetypes now." - You, probably.
+     * "Hey, I wanna make a bunch of cards now." - You, probably.
      * ok cool my dude no problem here's the most convenient way to do it:
      *
      * Copy all of the code here (Ctrl+A > Ctrl+C)
      * Ctrl+Shift+A and search up "file and code template"
      * Press the + button at the top and name your template whatever it is for - "AttackCard" or "PowerCard" or something up to you.
-     * Read up on the instructions at the bottom. Basically replace anywhere you'd put your archetypes name with ${NAME}
+     * Read up on the instructions at the bottom. Basically replace anywhere you'd put your cards name with ${NAME}
      * And then you can do custom ones like ${DAMAGE} and ${TARGET} if you want.
      * I'll leave some comments on things you might consider replacing with what.
      *

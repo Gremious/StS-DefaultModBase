@@ -87,7 +87,7 @@ public class CommonPower extends AbstractPower implements CloneablePowerInterfac
 
                 /*
                  * 1. It's bad for if somebody likes your mod enough (or if you decide) to translate it.
-                 * Having only the JSON files for translation rather than 15 different instances of "Dexterity" in some random archetypes is A LOT easier.
+                 * Having only the JSON files for translation rather than 15 different instances of "Dexterity" in some random cards is A LOT easier.
                  *
                  * 2. You don't have a centralised file for all strings for easy proof-reading, and if you ever want to change a string
                  * you now have to go through all your files individually.
