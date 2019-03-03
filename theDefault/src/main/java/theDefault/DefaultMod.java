@@ -83,28 +83,34 @@ public class DefaultMod implements
     public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f); // Near White
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f); // Super Dark Red/Brown
 
+    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
+    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
+    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
+    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
+    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
+    // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // Card backgrounds - The actual rectangular card.
-    private static final String ATTACK_DEFAULT_GRAY = getModID() + "Resources/images/512/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY = getModID() + "Resources/images/512/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY = getModID() + "Resources/images/512/bg_power_default_gray.png";
+    private static final String ATTACK_DEFAULT_GRAY = "theDefaultResources/images/512/bg_attack_default_gray.png";
+    private static final String SKILL_DEFAULT_GRAY = "theDefaultResources/images/512/bg_skill_default_gray.png";
+    private static final String POWER_DEFAULT_GRAY = "theDefaultResources/images/512/bg_power_default_gray.png";
 
-    private static final String ENERGY_ORB_DEFAULT_GRAY = getModID() + "Resources/images/512/card_default_gray_orb.png";
-    private static final String CARD_ENERGY_ORB = getModID() + "Resources/images/512/card_small_orb.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY = "theDefaultResources/images/512/card_default_gray_orb.png";
+    private static final String CARD_ENERGY_ORB = "theDefaultResources/images/512/card_small_orb.png";
 
-    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = getModID() + "Resources/images/1024/bg_attack_default_gray.png";
-    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = getModID() + "Resources/images/1024/bg_skill_default_gray.png";
-    private static final String POWER_DEFAULT_GRAY_PORTRAIT = getModID() + "Resources/images/1024/bg_power_default_gray.png";
-    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = getModID() + "Resources/images/1024/card_default_gray_orb.png";
+    private static final String ATTACK_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_attack_default_gray.png";
+    private static final String SKILL_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_skill_default_gray.png";
+    private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_power_default_gray.png";
+    private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/card_default_gray_orb.png";
 
     // Character assets
-    private static final String THE_DEFAULT_BUTTON = getModID() + "Resources/images/charSelect/DefaultCharacterButton.png";
-    private static final String THE_DEFAULT_PORTRAIT = getModID() + "Resources/images/charSelect/DefaultCharacterPortraitBG.png";
-    public static final String THE_DEFAULT_SHOULDER_1 = getModID() + "Resources/images/char/defaultCharacter/shoulder.png";
-    public static final String THE_DEFAULT_SHOULDER_2 = getModID() + "Resources/images/char/defaultCharacter/shoulder2.png";
-    public static final String THE_DEFAULT_CORPSE = getModID() + "Resources/images/char/defaultCharacter/corpse.png";
+    private static final String THE_DEFAULT_BUTTON = "theDefaultResources/images/charSelect/DefaultCharacterButton.png";
+    private static final String THE_DEFAULT_PORTRAIT = "theDefaultResources/images/charSelect/DefaultCharacterPortraitBG.png";
+    public static final String THE_DEFAULT_SHOULDER_1 = "theDefaultResources/images/char/defaultCharacter/shoulder.png";
+    public static final String THE_DEFAULT_SHOULDER_2 = "theDefaultResources/images/char/defaultCharacter/shoulder2.png";
+    public static final String THE_DEFAULT_CORPSE = "theDefaultResources/images/char/defaultCharacter/corpse.png";
 
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
-    public static final String BADGE_IMAGE = getModID() + "Resources/images/Badge.png";
+    public static final String BADGE_IMAGE = "theDefaultResources/images/Badge.png";
 
     // Atlas and JSON files for the Animations
     public static final String THE_DEFAULT_SKELETON_ATLAS = "theDefaultResources/images/char/defaultCharacter/skeleton.atlas";
@@ -155,14 +161,14 @@ public class DefaultMod implements
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        setModID("theDefault");
+        setModID("theDefaultDev");
         // Now go to your resources folder in the project panel, and refactor> rename theDefaultResources to
         // yourModIDResources.
         // Also click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project)
         // replace all instances of theDefault with yourModID.
         // Because your mod ID isn't the default. Your cards (and everything else) should have Your mod id. Not mine.
-        // FINALLY and most importnatly: Scroll up a bit. You may notice that THE_DEFAULT_SKELETON_ATLAS/JSON don't use getModID()
-        // Change their locations to reflect your actual ID rather than theDefault.
+        // FINALLY and most importnatly: Scroll up a bit. You may have noticed the image locations above don't use getModID()
+        // Change their locations to reflect your actual ID rather than theDefault. They get loaded before getID is a thing.
         logger.info("Done subscribing");
 
         logger.info("Creating the color " + TheDefault.Enums.COLOR_GRAY.toString());
