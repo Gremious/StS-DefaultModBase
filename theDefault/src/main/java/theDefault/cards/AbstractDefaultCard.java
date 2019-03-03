@@ -6,10 +6,10 @@ public abstract class AbstractDefaultCard extends CustomCard {
 
     // Custom Abstract Cards can be a bit confusing. While this is a simple base for simply adding a second magic number,
     // if you're new to modding I suggest you skip this file until you know what unique things that aren't provided
-    // by default, that you need in your own archetypes. For now, go check out the other archetypes.
+    // by default, that you need in your own cards. For now, go check out the other cards.
 
     // In this example, we use a custom Abstract Card in order to define a new magic number. From here on out, we can
-    // simply use that in our archetypes, so long as we put "extends AbstractDefaultCard" instead of "extends CustomCard" at the start.
+    // simply use that in our cards, so long as we put "extends AbstractDefaultCard" instead of "extends CustomCard" at the start.
     // In simple terms, it's for things that we don't want to define again and again in every single card we make.
 
     public int defaultSecondMagicNumber;        // Just like magic number, or any number for that matter, we want our regular, modifiable stat

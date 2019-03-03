@@ -68,20 +68,20 @@ public class DefaultCommonAttack extends CustomCard {
 
         baseDamage = DAMAGE;
 
-        this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Shadow form, demon form, echo form, etc.) archetypes so that they function correctly.
+        this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Shadow form, demon form, echo form, etc.) cards so that they function correctly.
         this.tags.add(CardTags.STRIKE);
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        AbstractDungeon.actionManager.addToBottom( // The action managed queues all the archetypeAPI.actions a card should do.
+        AbstractDungeon.actionManager.addToBottom( // The action managed queues all the actions a card should do.
                 // addToTop - first
                 // addToBottom - last
                 // 99.99% of the time you just want to addToBottom all of them.
                 // Please do that unless you need to add to top for some specific reason.
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
-                        // a list of existing archetypeAPI.actions can be found at com.megacrit.cardcrawl.archetypeAPI.actions but
+                        // a list of existing actions can be found at com.megacrit.cardcrawl.actions but
                         // Chances are you'd instead look at "hey my card is similar to this basegame card"
                         // Let's find out what action *it* uses.
                         // I.e. i want energy gain or card draw, lemme check out Adrenaline

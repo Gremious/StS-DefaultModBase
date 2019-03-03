@@ -71,7 +71,7 @@ public class DefaultOrb extends AbstractOrb {
 
         AbstractDungeon.actionManager.addToBottom( // 2.Damage all enemies
                 new DamageAllEnemiesAction(AbstractDungeon.player, DamageInfo.createDamageMatrix(evokeAmount, true, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
-        // The damage matrix is how orb damage all enemies archetypeAPI.actions have to be assigned. For regular archetypes that do damage to everyone, check out cleave or whirlwind - they are a bit simpler.
+        // The damage matrix is how orb damage all enemies actions have to be assigned. For regular cards that do damage to everyone, check out cleave or whirlwind - they are a bit simpler.
 
 
         AbstractDungeon.actionManager.addToBottom(new SFXAction("TINGSHA")); // 3.And play a Jingle Sound.
@@ -84,7 +84,7 @@ public class DefaultOrb extends AbstractOrb {
         AbstractDungeon.actionManager.addToBottom(// 2.This orb will have a flare effect
                 new VFXAction(new OrbFlareEffect(this, OrbFlareEffect.OrbFlareColor.FROST), 0.1f));
 
-        AbstractDungeon.actionManager.addToBottom(// 3. And draw you archetypes.
+        AbstractDungeon.actionManager.addToBottom(// 3. And draw you cards.
                 new DrawCardAction(AbstractDungeon.player, passiveAmount));
     }
 

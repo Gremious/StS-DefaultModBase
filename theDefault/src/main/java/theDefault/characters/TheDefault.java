@@ -216,7 +216,7 @@ public class TheDefault extends CustomPlayer {
         return COLOR_GRAY;
     }
 
-    // Should return a color object to be used to color the trail of moving archetypes
+    // Should return a color object to be used to color the trail of moving cards
     @Override
     public Color getCardTrailColor() {
         return theDefault.DefaultMod.DEFAULT_GRAY;
