@@ -279,13 +279,13 @@ public class DefaultMod implements
            
         // =============== MONSTERS ===============
 
-        // BaseMod.addMonster(BaseMonster.ID, ()-> new BaseMonster(0.0F,25.0F));
+        BaseMod.addMonster(BaseMonster.ID, ()-> new BaseMonster(0.0F,25.0F));
 
         // ============== /MONSTERS/ ==============
 
         // ============== ENCOUNTERS ==============
 
-        // BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(BaseMonster.ID, 5));
+        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(BaseMonster.ID, 5));
 
         // ============== /ENCOUNTERS/ ============
             
