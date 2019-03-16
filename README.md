@@ -23,7 +23,7 @@ If you have any issues or you want to recommend and/or add something to the mod 
 Happy modding!
 
 ***
-Great big thank you to [Kobting](https://github.com/Kobting) for the original version of the following guide:
+Great big thank you to [Kobting](https://github.com/Kobting) and [alexdriedger](https://github.com/alexdriedger) for the original version of the following guide:
 
 ## Setting Up Your Development Environment
 
@@ -90,6 +90,8 @@ BUT WAIT
 If you wanna run it with IntelliJ and get cool clickable line numbers when you get a crash-log that'll instantly direct you to where your error is:
 
 https://imgur.com/a/MO5oNuS
+
+The only ammedment I should mention is that you should put the first directory as your mod the spire workshop one (as it says in the guide) but the second one should be your Slay the Spire install folder (the same place where the mods folder is, but NOT inside the mods folder).
 
 ## Going Further
 
