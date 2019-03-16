@@ -36,15 +36,11 @@ public class cardTemplate extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    // public static final String ID = DefaultMod.makeID(${NAME}.class.getSimpleName()); // Use this one for the template);
-    public static final String ID = DefaultMod.makeID("DefaultCommonAttack");
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-
+    // public static final String ID = DefaultMod.makeID(${NAME}.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String ID = DefaultMod.makeID("DefaultCommonAttack"); // DELETE THIS ONE.
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("${NAME}.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
-    public static final String NAME = cardStrings.NAME;
-    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     // /TEXT DECLARATION/
 
