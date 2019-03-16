@@ -1,5 +1,6 @@
 package theDefault.cards;
 
+import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -14,7 +15,7 @@ import theDefault.characters.TheDefault;
 
 import static theDefault.DefaultMod.makeCardPath;
 
-public class DefaultAttackWithVariable extends AbstractDynamicCard {
+public class DefaultAttackWithVariable extends CustomCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -24,8 +25,13 @@ public class DefaultAttackWithVariable extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(DefaultAttackWithVariable.class.getSimpleName());
+    public static final String ID = DefaultMod.makeID("DefaultAttackWithVariable");
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Attack.png");
+
+    public static final String NAME = cardStrings.NAME;
+    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
+    public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -46,7 +52,7 @@ public class DefaultAttackWithVariable extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public DefaultAttackWithVariable() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
 
         isMultiDamage = true;

@@ -14,7 +14,7 @@ import theDefault.powers.RarePower;
 
 import static theDefault.DefaultMod.makeCardPath;
 
-public class DefaultRarePower extends AbstractDynamicCard {
+public class DefaultRarePower extends CustomCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -24,8 +24,12 @@ public class DefaultRarePower extends AbstractDynamicCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = DefaultMod.makeID(DefaultRarePower.class.getSimpleName());
+    public static final String ID = DefaultMod.makeID("DefaultRarePower");
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String IMG = makeCardPath("Power.png");
+
+    public static final String NAME = cardStrings.NAME;
+    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -47,7 +51,7 @@ public class DefaultRarePower extends AbstractDynamicCard {
 
     public DefaultRarePower() {
 
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
 
         this.tags.add(BaseModCardTags.FORM); //Tag your strike, defend and form cards so that they work correctly.

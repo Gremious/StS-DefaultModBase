@@ -13,7 +13,7 @@ import theDefault.powers.CommonPower;
 
 import static theDefault.DefaultMod.makeCardPath;
 
-public class DefaultCommonPower extends AbstractDynamicCard {
+public class DefaultCommonPower extends CustomCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -24,10 +24,13 @@ public class DefaultCommonPower extends AbstractDynamicCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = DefaultMod.makeID(DefaultCommonPower.class.getSimpleName());
+    public static final String ID = DefaultMod.makeID("DefaultCommonPower");
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+
     public static final String IMG = makeCardPath("Power.png");
 
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final String NAME = cardStrings.NAME;
+    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
     // /TEXT DECLARATION/
@@ -53,7 +56,7 @@ public class DefaultCommonPower extends AbstractDynamicCard {
 
 
     public DefaultCommonPower() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
     }
 

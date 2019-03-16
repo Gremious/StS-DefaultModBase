@@ -14,16 +14,7 @@ import theDefault.DefaultMod;
 import theDefault.characters.TheDefault;
 
 import static theDefault.DefaultMod.makeCardPath;
-// "How come this card extends CustomCard and not DynamicCard like all the rest?"
-// Skip this question until you start figuring out the AbstractDefaultCard/AbstractDynamicCard and just extend DynamicCard
-// for your own ones like all the other cards.
 
-// Well every card, at the end of the day, extends CustomCard.
-// Abstract Default Card extends CustomCard and builds up on it, adding a second magic number. Your card can extend it and
-// bam - you can have a second magic number in that card (Learn Java inheritance if you want to know how that works).
-// Abstract Dynamic Card builds up on Abstract Default Card even more and makes it so that you don't need to add
-// the NAME and the DESCRIPTION into your card - it'll get it automatically. Of course, this functionality could have easily
-// Been added to the default card rather than creating a new Dynamic one, but was done so to deliberately.
 public class DefaultCommonAttack extends CustomCard {
 
     /*
@@ -34,7 +25,7 @@ public class DefaultCommonAttack extends CustomCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(DefaultCommonAttack.class.getSimpleName());
+    public static final String ID = DefaultMod.makeID("DefaultCommonAttack");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Attack.png");
@@ -77,7 +68,7 @@ public class DefaultCommonAttack extends CustomCard {
 
         baseDamage = DAMAGE;
 
-        this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.
+        this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Shadow form, demon form, echo form, etc.) cards so that they function correctly.
         this.tags.add(CardTags.STRIKE);
     }
 

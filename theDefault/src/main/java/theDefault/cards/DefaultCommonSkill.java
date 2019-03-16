@@ -13,7 +13,7 @@ import theDefault.characters.TheDefault;
 
 import static theDefault.DefaultMod.makeCardPath;
 
-public class DefaultCommonSkill extends AbstractDynamicCard {
+public class DefaultCommonSkill extends CustomCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -22,10 +22,15 @@ public class DefaultCommonSkill extends AbstractDynamicCard {
      */
 
 
-    // TEXT DECLARATION
+    // TEXT DECLARATION 
 
-    public static final String ID = DefaultMod.makeID(DefaultCommonSkill.class.getSimpleName());
+    public static final String ID = DefaultMod.makeID("DefaultCommonSkill");
+    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+
     public static final String IMG = makeCardPath("Skill.png");
+
+    public static final String NAME = cardStrings.NAME;
+    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -46,10 +51,10 @@ public class DefaultCommonSkill extends AbstractDynamicCard {
 
 
     public DefaultCommonSkill() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
 
-        this.tags.add(BaseModCardTags.BASIC_DEFEND); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.
+        this.tags.add(BaseModCardTags.BASIC_DEFEND); //Tag your strike, defend and form cards so that they work correctly.
     }
 
     // Actions the card should do.
