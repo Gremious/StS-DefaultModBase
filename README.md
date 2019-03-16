@@ -23,7 +23,7 @@ If you have any issues or you want to recommend and/or add something to the mod 
 Happy modding!
 
 ***
-Great big thank you to [Kobting](https://github.com/Kobting) for the original version of the following guide:
+Great big thank you to [Kobting](https://github.com/Kobting) and [alexdriedger](https://github.com/alexdriedger) for the original version of the following guide:
 
 ## Setting Up Your Development Environment
 
