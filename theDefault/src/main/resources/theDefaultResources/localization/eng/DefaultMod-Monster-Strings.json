@@ -1,0 +1,11 @@
+{
+  "vexMod:BaseMonster": {
+    "NAME": "Base Monster",
+    "MOVES": [
+      "Buff Move"
+    ],
+    "DIALOG": [
+      "Example text."
+    ]
+  }
+}
