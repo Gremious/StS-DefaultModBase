@@ -91,6 +91,8 @@ If you wanna run it with IntelliJ and get cool clickable line numbers when you g
 
 https://imgur.com/a/MO5oNuS
 
+The only ammedment I should mention is that you should put the first directory as your mod the spire workshop one (as it says in the guide) but the second one should be your Slay the Spire install folder (the same place where the mods folder is, but NOT inside the mods folder).
+
 ## Going Further
 
 You made a card/event/relic and wanna test it? Please remember that the console exists:
