@@ -24,7 +24,7 @@ public class DefaultCommonSkill extends CustomCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = DefaultMod.makeID("DefaultCommonSkill");
+    public static final String ID = DefaultMod.makeID(DefaultCommonSkill.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Skill.png");

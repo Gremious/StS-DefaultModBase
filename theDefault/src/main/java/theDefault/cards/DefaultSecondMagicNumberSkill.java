@@ -31,7 +31,7 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID("DefaultSecondMagicNumberSkill");
+    public static final String ID = DefaultMod.makeID(DefaultSecondMagicNumberSkill.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Skill.png");

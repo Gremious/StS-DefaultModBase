@@ -24,7 +24,7 @@ public class DefaultCommonPower extends CustomCard {
 
     // TEXT DECLARATION 
 
-    public static final String ID = DefaultMod.makeID("DefaultCommonPower");
+    public static final String ID = DefaultMod.makeID(DefaultCommonPower.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Power.png");

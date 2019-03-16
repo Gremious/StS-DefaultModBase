@@ -36,7 +36,8 @@ public class cardTemplate extends AbstractDefaultCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID("DefaultCommonAttack"); // DefaultMod.makeID("${NAME}");
+    // public static final String ID = DefaultMod.makeID(${NAME}.class.getSimpleName()); // Use this one for the template);
+    public static final String ID = DefaultMod.makeID("DefaultCommonAttack");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("${NAME}.png");
