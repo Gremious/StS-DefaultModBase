@@ -13,7 +13,7 @@ import theDefault.characters.TheDefault;
 
 import static theDefault.DefaultMod.makeCardPath;
 
-public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
+public class DefaultSecondMagicNumberSkill extends AbstractDynamicCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -31,13 +31,8 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID("DefaultSecondMagicNumberSkill");
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-
+    public static final String ID = DefaultMod.makeID(DefaultSecondMagicNumberSkill.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
-
-    public static final String NAME = cardStrings.NAME;
-    public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
     // /TEXT DECLARATION/
 
@@ -60,7 +55,7 @@ public class DefaultSecondMagicNumberSkill extends AbstractDefaultCard {
     // /STAT DECLARATION/
 
     public DefaultSecondMagicNumberSkill() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
         magicNumber = baseMagicNumber = VULNERABLE;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = POISON;
