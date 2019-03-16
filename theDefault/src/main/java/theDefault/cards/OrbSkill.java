@@ -13,7 +13,7 @@ import theDefault.orbs.DefaultOrb;
 
 import static theDefault.DefaultMod.makeCardPath;
 
-public class OrbSkill extends CustomCard {
+public class OrbSkill extends AbstractDynamicCard {
 
     /*
      * Orb time.
@@ -23,7 +23,7 @@ public class OrbSkill extends CustomCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID("OrbSkill");
+    public static final String ID = DefaultMod.makeID(OrbSkill.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
 
     public static final String IMG = makeCardPath("Skill.png");
@@ -46,7 +46,7 @@ public class OrbSkill extends CustomCard {
     // /STAT DECLARATION/
 
     public OrbSkill() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
     }
 

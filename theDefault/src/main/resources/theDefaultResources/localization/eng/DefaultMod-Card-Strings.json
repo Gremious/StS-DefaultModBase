@@ -5,7 +5,7 @@
   },
   "theDefault:DefaultCommonSkill": {
     "NAME": "Defend",
-    "DESCRIPTION": "Gain !B! Block."
+    "DESCRIPTION": "Gain !B! Block. NL thedefault:Multiword_Keyword."
   },
   "theDefault:DefaultCommonPower": {
     "NAME": "Hold Place",
