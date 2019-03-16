@@ -61,7 +61,7 @@ public class DefaultCommonAttack extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public DefaultCommonAttack() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
         // Aside from baseDamage/MagicNumber/Block there's also a few more.
         // Just type this.base and let intelliJ auto complete for you, or, go read up AbstractCard

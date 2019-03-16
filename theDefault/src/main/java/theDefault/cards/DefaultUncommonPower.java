@@ -47,7 +47,7 @@ public class DefaultUncommonPower extends AbstractDynamicCard {
 
     public DefaultUncommonPower() {
 
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
 
     }

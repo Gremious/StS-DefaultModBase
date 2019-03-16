@@ -52,7 +52,7 @@ public class DefaultRareSkill extends AbstractDynamicCard {
 
     
     public DefaultRareSkill() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseMagicNumber = magicNumber = AMOUNT;
     }
 

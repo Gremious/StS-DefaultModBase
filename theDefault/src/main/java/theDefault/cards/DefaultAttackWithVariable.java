@@ -1,6 +1,5 @@
 package theDefault.cards;
 
-import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -52,7 +51,7 @@ public class DefaultAttackWithVariable extends AbstractDynamicCard {
     // /STAT DECLARATION/
 
     public DefaultAttackWithVariable() {
-        super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
 
         isMultiDamage = true;
