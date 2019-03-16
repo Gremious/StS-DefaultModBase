@@ -13,7 +13,7 @@ import theDefault.powers.CommonPower;
 
 import static theDefault.DefaultMod.makeCardPath;
 
-public class DefaultCommonPower extends AbstractDefaultCard {
+public class DefaultCommonPower extends AbstractDynamicCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards

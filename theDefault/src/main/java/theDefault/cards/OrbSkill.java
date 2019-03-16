@@ -13,7 +13,7 @@ import theDefault.orbs.DefaultOrb;
 
 import static theDefault.DefaultMod.makeCardPath;
 
-public class OrbSkill extends AbstractDefaultCard {
+public class OrbSkill extends AbstractDynamicCard {
 
     /*
      * Orb time.

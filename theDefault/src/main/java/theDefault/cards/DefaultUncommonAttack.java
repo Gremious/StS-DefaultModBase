@@ -14,7 +14,7 @@ import theDefault.characters.TheDefault;
 
 import static theDefault.DefaultMod.makeCardPath;
 
-public class DefaultUncommonAttack extends AbstractDefaultCard {
+public class DefaultUncommonAttack extends AbstractDynamicCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
