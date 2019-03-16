@@ -14,7 +14,7 @@ import theDefault.powers.RarePower;
 
 import static theDefault.DefaultMod.makeCardPath;
 
-public class DefaultRarePower extends CustomCard {
+public class DefaultRarePower extends AbstractDefaultCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
