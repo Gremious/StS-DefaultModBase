@@ -276,19 +276,6 @@ public class DefaultMod implements
         BaseMod.addEvent(IdentityCrisisEvent.ID, IdentityCrisisEvent.class, TheCity.ID);
 
         // =============== /EVENTS/ =================
-           
-        // =============== MONSTERS ===============
-
-        BaseMod.addMonster(BaseMonster.ID, ()-> new BaseMonster(0.0F,25.0F)); // Adds a new Base Monster monster. This one has the X value of 0.0F and the Y value of 25.0F.
-
-        // ============== /MONSTERS/ ==============
-
-        // ============== ENCOUNTERS ==============
-
-        BaseMod.addMonsterEncounter(Exordium.ID, new MonsterInfo(BaseMonster.ID, 5)); // Adds an encounter. This one just has BaseMonster and has an appearance rate of 5.
-
-        // ============== /ENCOUNTERS/ ============
-            
         logger.info("Done loading badge Image and mod options");
 
     }
