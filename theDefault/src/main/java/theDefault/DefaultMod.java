@@ -161,7 +161,7 @@ public class DefaultMod implements
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        setModID("theDefault");
+        setModID("theDefaultDev");
         // Now go to your resources folder in the project panel, and refactor> rename theDefaultResources to
         // yourModIDResources.
         // Also click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project)
