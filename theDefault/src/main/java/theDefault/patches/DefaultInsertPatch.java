@@ -140,14 +140,26 @@ public class DefaultInsertPatch {// Don't worry about the "never used" warning -
             // i.e. the rarest one. In this case, it doesn't really matter as it's 3 of the same matcher, and none of their methods
             // ever appear again anywhere else, so let's just go for the first one:
             // As the documentation says, put the Class type and the method name (as a string) as your parameters:
+            
             Matcher finalMatcher = new Matcher.MethodCallMatcher(RelicLibrary.class, "getRelic");
             
-            // Now we just have to return the line number corresponding to that particular method call. We have 2 options:
-            // 1. findInOrder - Returns the first
-            // 2. findAllInOrder
+            // Now we just have to return the line number corresponding to that particular method call.
+            // We have 2 options:
+            // 1. findInOrder - Returns the first line number that matches the description of the matcher
+            // (i.e. the very first time it finds RelicLibrary.getRelic() in the method we're patching.)
             
+            // 2. findAllInOrder - Returns an array of ints - all of the line numbers matching the description.
+            // (This is, for example, if the method we're patching had used "RelicLibrary.getRelic()" 3 different times,
+            // and we want to insert our code right before a particular one of those)
+            
+            // In our case "RelicLibrary.getRelic()" is called only once, in that particular return statement, so we can just return
+            // it.
             return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
+            
+            // If we wanted to use findAllInOrder instead, we would do it like this:
             // return new int[]{LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher)[0]};
+            // The [0] in this case indicates the index of the line number in the array (in the order they were found)
+            // The first (and for us, only) instance of "RelicLibrary.getRelic()" would be at index 0. The second at index 1, and so on.
         }
     }
 }
