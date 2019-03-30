@@ -2,7 +2,7 @@ package theDefault.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.map.MapRoomNode;
+import com.megacrit.cardcrawl.helpers.RelicLibrary;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import javassist.CtBehavior;
 import org.apache.logging.log4j.LogManager;
@@ -110,11 +110,42 @@ public class DefaultInsertPatch {// Don't worry about the "never used" warning -
         // Incredible.
     }
     
-    
-    private static class Locator extends SpireInsertLocator { // Hey welcome to our SpireInsertLocator class! (We can name it anything btw.)
+    private static class Locator extends SpireInsertLocator { // Hey welcome to our SpireInsertLocator class!
         @Override
-        public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
-            Matcher finalMatcher = new Matcher.MethodCallMatcher(MapRoomNode.class, "getRoom");
+        public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {// All the locator has and needs is an override of the Locate method
+            // In simple terms, the locator works like this:
+            // We give is something to match with, and it returns the line number that it finds the ting on,
+            // inside the method which we specified wayyyy early on in our @SpirePatch annotation.
+            // The Locate method is of type int[] - it returns an array of ints. These ints are actually the matching line numbers.
+            
+            // This is where we open up the https://github.com/kiooeht/ModTheSpire/wiki/Matcher documentation.
+            
+            // The line in the original method, "return !RelicLibrary.getRelic(retVal).canSpawn() ? returnEndRandomRelicKey(tier) : retVal;"
+            // is just a simple ternary operator, check out http://www.cafeaulait.org/course/week2/43.html
+            // or https://stackoverflow.com/questions/8898590/short-form-for-java-if-statement or simply ask google.
+            // if you can't spawn the relic(note the "!"), grab a new relic from the end of the list instead
+            // (call the returnEndRandomRelicKey() method) - otherwise return the relic.
+            
+            // We want to insert our code immediately above it so we'll need to use a matcher against something in that line.
+            // We have a few of options for this 1 particular line. Before you proceed, read the docs and see how many you can personally spot.
+            
+            // 1. RelicLibrary.getRelic - is calling the the getRelic() method of the RelicLibrary class.
+            // (You can also see that by Ctrl+clicking on getRelic)
+            // 2. getRelic(retVal).canSpawn() - is calling the canSpawn() method of the AbstractRelic class.
+            // (get relic() returns an AbstractRelic so we just use canSpawn() directly from it to check if we can spawn it)
+            // 3. returnEndRandomRelicKey(tier) - is calling the returnEndRandomRelicKey method of the AbstractDungeon class.
+            // At the end of the day, all three of these are MethodCallMatchers.
+            
+            // A good way to choose, usually, would be to pick the matcher least likely to appear elsewhere in the code of the method
+            // i.e. the rarest one. In this case, it doesn't really matter as it's 3 of the same matcher, and none of their methods
+            // ever appear again anywhere else, so let's just go for the first one:
+            // As the documentation says, put the Class type and the method name (as a string) as your parameters:
+            Matcher finalMatcher = new Matcher.MethodCallMatcher(RelicLibrary.class, "getRelic");
+            
+            // Now we just have to return the line number corresponding to that particular method call. We have 2 options:
+            // 1. findInOrder - Returns the first
+            // 2. findAllInOrder
+            
             return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
             // return new int[]{LineFinder.findAllInOrder(ctMethodToPatch, finalMatcher)[0]};
         }
