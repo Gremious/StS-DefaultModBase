@@ -3,6 +3,7 @@ package theDefault.patches;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.map.MapRoomNode;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 import javassist.CtBehavior;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -67,18 +68,50 @@ import org.apache.logging.log4j.Logger;
         to this annotation, after the method parameter. (If we wanted to patch the first one, we'd only put "AbstractRelic.RelicTier.class".
         */
 )
-public class DefaultInsertPatch { // "A patch class must be a public static class."
-    private static final Logger logger = LogManager.getLogger(DefaultInsertPatch.class.getName()); // This is our logger. Handy!
+public class DefaultInsertPatch {// Don't worry about the "never used" warning - *You* usually don't use/call them anywhere. Mod The Spire does.
     
-    @SpireInsertPatch(
-            locator = Locator.class,
-            localvars = {}
+    // You can have as many inner classes with patches as you want inside this one - you don't have to separate each patch into it's own file.
+    // So if you need to put 4 patches all for 1 purpose (for example they all make a specific relic effect happen) - you can keep them organized together.
+    // Do keep in mind that "A patch class must be a public static class."
+    
+    private static final Logger logger = LogManager.getLogger(DefaultInsertPatch.class.getName()); // This is our logger! It prints stuff out in the console.
+    // It's like a very fancy System.out.println();
+    
+    @SpireInsertPatch( // This annotation of our patch method specifies the type of patch we will be using. In our case - a Spire Insert Patch
+            
+            locator = Locator.class, // Spire insert patches require a locator - this isn't something you import - this is something we write.
+            // (Or as is usually the case with them - copy paste cause they're always nearly the same thing.
+            // In fact, most insert patches are fairly boiler-plate. You could easily make an insert patch template, if you'd like.)
+            // You can find our Locator class just below, as an inner class, underneath our actual patch method.
+            
+            localvars = {"retVal"} // The method we're patching, returnEndRandomRelicKey() has a local variable that we'd like to access and manipulate -
+            // "String retVal = null;". So, we simply write out it's name here and then add it as a parameter to our patch method.
+            // Keep in mind that localvars can also be used to capture class variables, not just local method ones. This also includes private ones.
     )
-    public static void Insert(/*AbstractDungeon __instance if not static, original parameters, localvars*/) {/*"A patch method must be a public static method."*/
-        logger.info(DefaultInsertPatch.class.getSimpleName() + " triggered");
+    //"A patch method must be a public static method."
+    public static void thisIsOurActualPatchMethod(
+            // 1. "Patch methods are passed all the arguments of the original method,
+            // 2. as well as the instance if original method is not static (instance first, then parameters).
+            // 3. localvars are passed as arguments, appearing the in parameter list after the original method's parameters."
+            
+            // Example: if returnEndRandomRelicKey(RelicTier tier) were NOT static we would write our method parameters as such:
+            // thisIsOurActualPatchMethod(AbstractDungeon __instance, AbstractRelic.RelicTier tier, String retVal)
+            // As it stands, that method is static so it's not tied to a specific instance of AbstractDungeon. (Read up on what "static" means in java
+            // if you don't understand this part)
+            // As such we write our method parameters like this instead:
+            AbstractRelic.RelicTier tier, String retVal) {
+        
+        // Wow time to actually put stuff in the basegame code!!! Everything here will be executed exactly as written, at the line which we specified.
+        // You can put basically any code you want here. You can change retVal to always return the same relic, or return a specific relic if
+        // it passes some check. (for example - if the player has my wacky relic - every elite relic from here on out will be Anchor instead.
+        // You can execute and other static method you have, you can save retVal to your personal public static variable to always be able to
+        // reference the last relic you grabbed - etc. etc. The possibilities are endless. We're gonna do the following:
+        logger.info("Hey our patch triggered. The relic we're about to get is " + retVal);
+        // Incredible.
     }
     
-    private static class Locator extends SpireInsertLocator {
+    
+    private static class Locator extends SpireInsertLocator { // Hey welcome to our SpireInsertLocator class! (We can name it anything btw.)
         @Override
         public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
             Matcher finalMatcher = new Matcher.MethodCallMatcher(MapRoomNode.class, "getRoom");
