@@ -34,7 +34,7 @@ import org.apache.logging.log4j.Logger;
  * We will insert our piece of code above the line "return !RelicLibrary.getRelic(retVal).canSpawn() ? returnEndRandomRelicKey(tier) : retVal;"
  * which is at the very end of the method. (If you read through the official documentation, you will also know that you can simply use a postfix patch to do that.)
  * Have a read through the documentation as to their differences - they all have their pros and cons.
- * For example postfix patches can't use @ByRef and don't have localvars. On the other hand, instead of needing to use SpireReturn they can just
+ * For example postfix patches can't use @ByRef and doesn't have localvars. On the other hand, instead of needing to use SpireReturn they can just
  * put a return value in their patched method, and they can also be passed the original return value of the patched method.
  *
  * *NEVER USE REPLACE PATCHES. DON'T REPLACE GAME FILES EITHER (by putting a file with the same name in the same location as a basegame one).*

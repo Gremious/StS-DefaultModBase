@@ -2,6 +2,7 @@ package theDefault;
 
 import basemod.BaseMod;
 import basemod.ModLabel;
+import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
@@ -10,10 +11,13 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
@@ -34,6 +38,7 @@ import theDefault.variables.DefaultSecondMagicNumber;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Properties;
 
 
 //TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
@@ -66,7 +71,12 @@ public class DefaultMod implements
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
     private static String modID;
-
+    
+    // Mod-settings settings
+    public static Properties theDefaultDefaultSettings = new Properties();
+    public static final String ENABLE_PLACEHOLDER_SETTINGS = "enablePlaceholder";
+    public static boolean enablePlaceholder = true;
+    
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "Default Mod";
     private static final String AUTHOR = "Gremious"; // And pretty soon - You!
@@ -169,6 +179,7 @@ public class DefaultMod implements
         // Because your mod ID isn't the default. Your cards (and everything else) should have Your mod id. Not mine.
         // FINALLY and most importnatly: Scroll up a bit. You may have noticed the image locations above don't use getModID()
         // Change their locations to reflect your actual ID rather than theDefault. They get loaded before getID is a thing.
+        
         logger.info("Done subscribing");
 
         logger.info("Creating the color " + TheDefault.Enums.COLOR_GRAY.toString());
@@ -180,6 +191,19 @@ public class DefaultMod implements
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
 
         logger.info("Done creating the color");
+        
+        logger.info("Adding mod settings"); // The actual mod Button is added below in receivePostInitialize()
+        theDefaultDefaultSettings.setProperty(ENABLE_PLACEHOLDER_SETTINGS, "FALSE"); // the default value.
+        try {
+            SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings);
+            // the "file name" is the name of the file MTS will create where it will save our setting.
+            config.load();
+            enablePlaceholder = config.getBool(ENABLE_PLACEHOLDER_SETTINGS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        logger.info("Done adding mod settings");
+        
     }
 
     // ====== NO EDIT AREA ======
@@ -262,11 +286,24 @@ public class DefaultMod implements
 
         // Create the Mod Menu
         ModPanel settingsPanel = new ModPanel();
-        settingsPanel.addUIElement(new ModLabel("DefaultMod doesn't have any settings! An example of those may come later.", 400.0f, 700.0f,
-                settingsPanel, (me) -> {
-        }));
+        
+        
+        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("This is the text which goes next to the checkbox.",
+                350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                enablePlaceholder, settingsPanel, (label) -> {
+        }, (button) -> {
+            enablePlaceholder = button.enabled;
+            try {
+                SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings);
+                config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
+                config.save();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        settingsPanel.addUIElement(enableNormalsButton);
+        
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
-
         // =============== EVENTS =================
 
         // This event will be exclusive to the City (act 2). If you want an event that's present at any
