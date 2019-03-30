@@ -21,7 +21,7 @@ import org.apache.logging.log4j.Logger;
  * https://github.com/kiooeht/ModTheSpire/wiki/Matcher
  * Comment with quotations are taken from the documentation.
  *
- * This is a good point to ctrl+Click on abstract dungeon and ctrl+f for returnRandomRelicKey() - that is the method that we will be patching.
+ * This is a good point to Ctrl+Click on AbstractDungeon down there and Ctrl+f for returnRandomRelicKey() - that is the method that we will be patching.
  * Have a read through it's code. returnRandomRelicKey() is a method that is passed a rarity (relic tier) and returns the first relic
  * from the appropriate pool of that rarity (which are pre-shuffled), as well as removing it from the relic pool so that you never get it again.
  *
@@ -42,23 +42,33 @@ import org.apache.logging.log4j.Logger;
  * *NEVER USE REPLACE PATCHES. DON'T REPLACE GAME FILES EITHER (by putting a file with the same name in the same location as a basegame one).*
  * *NEVER USE REPLACE PATCHES. DON'T REPLACE GAME FILES EITHER (by putting a file with the same name in the same location as a basegame one).*
  * *NEVER USE REPLACE PATCHES. DON'T REPLACE GAME FILES EITHER (by putting a file with the same name in the same location as a basegame one).*
- * *NEVER USE REPLACE PATCHES. DON'T REPLACE GAME FILES EITHER (by putting a file with the same name in the same location as a basegame one).*
- * *NEVER USE REPLACE PATCHES. DON'T REPLACE GAME FILES EITHER (by putting a file with the same name in the same location as a basegame one).*
- * *NEVER USE REPLACE PATCHES. DON'T REPLACE GAME FILES EITHER (by putting a file with the same name in the same location as a basegame one).*
- * *NEVER USE REPLACE PATCHES. DON'T REPLACE GAME FILES EITHER (by putting a file with the same name in the same location as a basegame one).*
- * )
- * They're also
  *
+ * So:
+ * We will insert our piece of code above the line "return !RelicLibrary.getRelic(retVal).canSpawn() ? returnEndRandomRelicKey(tier) : retVal;"
+ * We will the put in a logger inside that prints out the the value of the local variable "retVal" of that method.
+ * That's about it.
  *
- *
+ * Let's get to it!
  */
 
-@SpirePatch(    // "Use the @SpirePatch annotation on the patch class." (public class DefaultInsertPatch is our patch class)
-        clz = AbstractDungeon.class,
-        method = "getCurrRoom"
+@SpirePatch(    // "Use the @SpirePatch annotation on the patch class."
+        clz = AbstractDungeon.class, // This is the class where the method we will be patching is. In our case - Abstract Dungeon
+        method = "returnRandomRelicKey" // This is the name of the method we will be patching.
+        /*
+        Now let's imagine for a second that there were two methods named returnRandomRelicKey()
+        The one we're patching - "String returnRandomRelicKey(RelicTier tier)" - that grabs a relic of specific tier
+        and a fictional one - "String returnRandomRelicKey(RelicTier tier, LandingSound sound)" - that grabs a relic of a specific tier AND with a specific landing sound.
+        How would we tell the code which of the two methods to put our patch in? We use paramtypez (read the docs too they have a good exmaple!)
+        Let's say we wanted to patch the second fictional one - we would add
+        paramtypez={
+                AbstractRelic.RelicTier.class,
+                AbstractRelic.LandingSound.class
+        }
+        to this annotation, after the method parameter. (If we wanted to patch the first one, we'd only put "AbstractRelic.RelicTier.class".
+        */
 )
-public class DefaultInsertPatch { /*"A patch class must be a public static class."*/
-    protected static final Logger logger = LogManager.getLogger(DefaultInsertPatch.class.getName());
+public class DefaultInsertPatch { // "A patch class must be a public static class."
+    private static final Logger logger = LogManager.getLogger(DefaultInsertPatch.class.getName()); // This is our logger. Handy!
     
     @SpireInsertPatch(
             locator = Locator.class,
