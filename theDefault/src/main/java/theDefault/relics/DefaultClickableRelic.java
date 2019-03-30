@@ -38,7 +38,6 @@ public class DefaultClickableRelic extends CustomRelic implements ClickableRelic
 
         tips.clear();
         tips.add(new PowerTip(name, description));
-
     }
 
 
