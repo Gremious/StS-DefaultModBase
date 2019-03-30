@@ -97,18 +97,41 @@ public class DefaultInsertPatch {// Don't worry about the "never used" warning -
             // Example: if returnEndRandomRelicKey(RelicTier tier) were NOT static we would write our method parameters as such:
             // thisIsOurActualPatchMethod(AbstractDungeon __instance, AbstractRelic.RelicTier tier, String retVal)
             // As it stands, that method is static so it's not tied to a specific instance of AbstractDungeon. (Read up on what "static" means in java
-            // if you don't understand this part)
+            // if you don't understand this part).
             // As such we write our method parameters like this instead:
             AbstractRelic.RelicTier tier, String retVal) {
         
         // Wow time to actually put stuff in the basegame code!!! Everything here will be executed exactly as written, at the line which we specified.
-        // You can put basically any code you want here. You can change retVal (using @byRef - read the documentation)
-        // to always return the same relic, or return a specific relic if it passes some check.
-        // (for example - if the player has my wacky relic - every elite relic from here on out will be Anchor instead.
+        // You can change retVal (using @byRef) to always return the same relic, or return a specific relic if it passes some check.
         // You can execute any other static method you have, you can save retVal to your personal public static variable to always be able to
         // reference the last relic you grabbed - etc. etc. The possibilities are endless. We're gonna do the following:
         logger.info("Hey our patch triggered. The relic we're about to get is " + retVal);
         // Incredible.
+        
+        // Let's talk about @byRef for a bit.
+        // https://github.com/kiooeht/ModTheSpire/wiki/@ByRef - Read the documentation it is really helpful!
+        // If you grabbed retVal right now and did:
+        
+        // retVal = Anchor().relicID
+        // logger.info("Hey our patch triggered. The relic we're about to get is " + retVal);
+        
+        // The logger would correctly print out saying "we're about to get Anchor".
+        // However you wouldn't get anchor. You would get the standard relic roll.
+        // The reason behind that is because by default, in patches, all variables are passed by Value, not by Reference.
+        // (You can google what this means in java if you don't understand).
+        // This means that while we can change retVal within our own method, it won't change in the actual, original basegame method.
+        // If you want to do that, you'll need to use @byRef on the variable you want to change - this makes it get passed by reference.
+        // In our case that would be retVal - so we can annotate it with @byRef in our parameters. Another thing to note is that non-array
+        // objects must be converted to arrays.
+        
+        // So if our current method parameters are:
+        // (AbstractRelic.RelicTier tier, String retVal)
+        // We would instead have:
+        // (AbstractRelic.RelicTier tier, @ByRef String[] retVal)
+        
+        // Then, when we want to use it, can just access the (for us) one and only value in that array of Strings - which would be placed at index 0.
+        // retVal[0] = Anchor().relicID
+        // Then the retVal would actually be changed outside of this method - inside returnRandomRelicKey();
     }
     
     private static class Locator extends SpireInsertLocator { // Hey welcome to our SpireInsertLocator class!
