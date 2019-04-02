@@ -34,6 +34,7 @@ import theDefault.util.IDCheckDontTouchPls;
 import theDefault.util.TextureLoader;
 import theDefault.variables.DefaultCustomVariable;
 import theDefault.variables.DefaultSecondMagicNumber;
+import theDefaultKotlin.KotlinCard;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -171,7 +172,7 @@ public class DefaultMod implements
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!P
         // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        setModID("theDefault");
+        setModID("theDefaultDev");
         // Now go to your resources folder in the project panel, and refactor> rename theDefaultResources to
         // yourModIDResources.
         // Also click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project)
@@ -389,6 +390,7 @@ public class DefaultMod implements
         BaseMod.addCard(new DefaultRareAttack());
         BaseMod.addCard(new DefaultRareSkill());
         BaseMod.addCard(new DefaultRarePower());
+        BaseMod.addCard(new KotlinCard());
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
@@ -406,6 +408,7 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(DefaultRareAttack.ID);
         UnlockTracker.unlockCard(DefaultRareSkill.ID);
         UnlockTracker.unlockCard(DefaultRarePower.ID);
+        UnlockTracker.unlockCard(KotlinCard.Companion.getId());
 
         logger.info("Done adding cards!");
     }
