@@ -36,7 +36,7 @@ public class TextureLoader {
     }
 
     /**
-     * Creates and instance of the texture, applies a linear filter to it, and places it in the HashMap
+     * Creates an instance of the texture, applies a linear filter to it, and places it in the HashMap
      *
      * @param textureString - String path to the texture you want to load relative to resources,
      *                      Example: "img/ui/missingtexture.png"
