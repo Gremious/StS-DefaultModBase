@@ -314,6 +314,14 @@ public class DefaultMod implements
         BaseMod.addEvent(IdentityCrisisEvent.ID, IdentityCrisisEvent.class, TheCity.ID);
 
         // =============== /EVENTS/ =================
+            
+        // =============== MONSTERS ===============
+
+        BaseMod.addMonster(BaseMonster.ID, "Base Monster", () -> new BaseMonster(0.0F, 25.0F));
+        // Example of adding a monster to the game. Provide its ID, a name for the monster, and then an example of it with all parameters.
+
+        // ============== /MONSTERS/ ==============
+
         logger.info("Done loading badge Image and mod options");
 
     }
