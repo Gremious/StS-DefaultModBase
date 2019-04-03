@@ -49,5 +49,9 @@
   "theDefault:OrbSkill": {
     "NAME": "Get Orb",
     "DESCRIPTION": "Channel 1 Default Orb."
+  },
+  "theDefault:KotlinCard": {
+    "NAME": "SCREAM",
+    "DESCRIPTION": "AAAAAAAAAAAAAAAAA !M! AAAA. NL DEAL !D! DAMAGE TO ALL ENEMIES."
   }
 }
