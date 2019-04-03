@@ -4,7 +4,7 @@ import basemod.abstracts.CustomCard;
 
 public abstract class AbstractDefaultCard extends CustomCard {
 
-    // Custom Abstract Cards can be a bit confusing. While this is a simple base for simply adding a second magic number,
+    // Custom Abstract cards can be a bit confusing. While this is a simple base for simply adding a second magic number,
     // if you're new to modding I suggest you skip this file until you know what unique things that aren't provided
     // by default, that you need in your own cards.
 

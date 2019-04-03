@@ -68,7 +68,7 @@
     <!-- This is how your code is packaged into the jar file-->
     <build>
         <!-- Change this to match your mods name -->
-        <finalName>DefaultMod</finalName>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>

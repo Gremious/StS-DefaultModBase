@@ -31,7 +31,7 @@ public class CardTemplate extends AbstractDynamicCard {
      * likely want to replace that new DamageAction with a gain Block one, and add baseBlock instead, or maybe you want a
      * universal template where you delete everything unnecessary - up to you)
      *
-     * You can create templates for anything you ever want to. Cards, relics, powers, orbs, etc. etc. etc.
+     * You can create templates for anything you ever want to. cards, relics, powers, orbs, etc. etc. etc.
      */
 
     // TEXT DECLARATION

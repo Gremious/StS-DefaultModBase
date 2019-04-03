@@ -33,7 +33,7 @@ import theDefault.util.IDCheckDontTouchPls;
 import theDefault.util.TextureLoader;
 import theDefault.variables.DefaultCustomVariable;
 import theDefault.variables.DefaultSecondMagicNumber;
-import theDefaultKotlin.Cards.KotlinCard;
+import theDefaultKotlin.cards.KotlinCard;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -303,7 +303,7 @@ public class DefaultMod implements
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
         // =============== EVENTS =================
         
-        // This event will be exclusive to the City (act 2). If you want an event that's present at any
+        // This event will be exclusive to the City (action 2). If you want an event that's present at any
         // part of the game, simply don't include the dungeon ID
         // If you want to have a character-specific event, look at slimebound (CityRemoveEventPatch).
         // Essentially, you need to patch the game and say "if a player is not playing my character class, remove the event from the pool"
@@ -403,7 +403,7 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(DefaultRareAttack.ID);
         UnlockTracker.unlockCard(DefaultRareSkill.ID);
         UnlockTracker.unlockCard(DefaultRarePower.ID);
-        UnlockTracker.unlockCard(KotlinCard.Companion.getID());
+       // UnlockTracker.unlockCard(KotlinCard.Companion.getID());
         
         logger.info("Done adding cards!");
     }
