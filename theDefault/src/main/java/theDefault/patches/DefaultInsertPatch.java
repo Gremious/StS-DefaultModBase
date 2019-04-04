@@ -176,6 +176,12 @@ public class DefaultInsertPatch {// Don't worry about the "never used" warning -
              *  https://github.com/daviscook477/BaseMod/wiki/Decompiling-Your-Game
              *  Essentially - you would want to use JD-GUI and Luyten *both* to get a precise look.
              *  (You can 100% still totally use the IntelliJ for quick-referencing code, it is still very fast and convenient)
+             *
+             *  On a sidenote, you should enable debug lines in intelliJ both for bugfixing and seeing what thing is *really* on what line
+             *  To do so:
+             * 1. Ctrl+Shift+A
+             * 2. Registry
+             * 3. Scroll down and set decompiler.dump.original.lines to true
              */
             
             // A good way to choose, usually, would be to pick the matcher least likely to appear elsewhere in the code of the method
