@@ -72,7 +72,11 @@ Click the refresh icon to load your dependencies from the pom.xml into your proj
 ## Writing Your First Mod
 
 ### Package the Default Mod
-If you have followed the steps so far, you should be able to package this mod that you downloaded from this repo.
+If you have followed the steps so far, you should be able to package this mod that you downloaded from this repo (though you would not be able to play it yet, as it will crash).
+
+This is a good point in time to go through the comments in the main file (DefaultMod.java). You will need to change the mod ID from mine to yours, and refactor the resources folder to match said ID. All of the information for that is available in the comments. After you do that, come back here.
+
+Assuming you have changed the ID/Resources, it's time to package and play the Default!:
 
 In IntelliJ, open the Maven project tab and select the "Execute maven goal" button.
 
@@ -134,6 +138,6 @@ Things I should add/do next:
 
 * ~~Change all the tabs into spaces so that formatting is ok across all platforms~~
 
-* Patching Exmaples
+* ~~Patching Exmaples~~
 
 * Other things I don't know about yet
