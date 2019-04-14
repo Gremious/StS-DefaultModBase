@@ -54,7 +54,7 @@ This set up should be IDE agnostic (i.e. you can use whatever IDE you like). Her
 
 **IntelliJ**
 
-*File -> Project from Existing Sources -> Select theDefault folder or your own mod that follows the structure of the theDefault -> Select Maven -> Press next until your project is built*.
+*File -> Import -> Select theDefault folder or your own mod that follows the structure of the theDefault -> Select Maven -> Press next until your project is built*.
 
 Click on the Maven Projects tab on the right of the editor (ignoring that this image shows it to the left)
 
