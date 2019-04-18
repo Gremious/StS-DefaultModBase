@@ -163,6 +163,7 @@ public class DefaultMod implements
         logger.info("Subscribe to BaseMod hooks");
         
         BaseMod.subscribe(this);
+        
       /*
            (   ( /(  (     ( /( (            (  `   ( /( )\ )    )\ ))\ )
            )\  )\()) )\    )\()))\ )   (     )\))(  )\()|()/(   (()/(()/(
