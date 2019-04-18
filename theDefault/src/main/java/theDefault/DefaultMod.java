@@ -2,6 +2,7 @@ package theDefault;
 
 import basemod.BaseMod;
 import basemod.ModLabel;
+import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
@@ -10,10 +11,13 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
@@ -34,6 +38,7 @@ import theDefault.variables.DefaultSecondMagicNumber;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Properties;
 
 //TODO: DON'T MASS RENAME/REFACTOR
 //TODO: DON'T MASS RENAME/REFACTOR
@@ -41,7 +46,7 @@ import java.nio.charset.StandardCharsets;
 //TODO: DON'T MASS RENAME/REFACTOR
 // Please don't just mass replace "theDefault" with "yourMod" everywhere.
 // It'll be a bigger pain for you. You only need to replace it in 3 places.
-// I comment those places bellow, under the place where you set your ID.
+// I comment those places below, under the place where you set your ID.
 
 //TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
 // Right click the package (Open the project pane on the left. Folder with black dot on it. The name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
@@ -75,7 +80,12 @@ public class DefaultMod implements
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
     private static String modID;
-    
+
+    // Mod-settings settings. This is if you want an on/off savable button
+    public static Properties theDefaultDefaultSettings = new Properties();
+    public static final String ENABLE_PLACEHOLDER_SETTINGS = "enablePlaceholder";
+    public static boolean enablePlaceholder = true; // The boolean we'll be setting on/off (true/false)
+
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "Default Mod";
     private static final String AUTHOR = "Gremious"; // And pretty soon - You!
@@ -187,6 +197,7 @@ public class DefaultMod implements
         
         // 3. FINALLY and most importantly: Scroll up a bit. You may have noticed the image locations above don't use getModID()
         // Change their locations to reflect your actual ID rather than theDefault. They get loaded before getID is a thing.
+        
         logger.info("Done subscribing");
         
         logger.info("Creating the color " + TheDefault.Enums.COLOR_GRAY.toString());
@@ -198,6 +209,22 @@ public class DefaultMod implements
                 ENERGY_ORB_DEFAULT_GRAY_PORTRAIT, CARD_ENERGY_ORB);
         
         logger.info("Done creating the color");
+        
+        
+        logger.info("Adding mod settings");
+        // This loads the mod settings.
+        // The actual mod Button is added below in receivePostInitialize()
+        theDefaultDefaultSettings.setProperty(ENABLE_PLACEHOLDER_SETTINGS, "FALSE"); // This is the default setting. It's actually set...
+        try {
+            SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings); // ...right here
+            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
+            config.load(); // Load the setting and set the boolean to equal it
+            enablePlaceholder = config.getBool(ENABLE_PLACEHOLDER_SETTINGS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        logger.info("Done adding mod settings");
+        
     }
     
     // ====== NO EDIT AREA ======
@@ -275,15 +302,36 @@ public class DefaultMod implements
     @Override
     public void receivePostInitialize() {
         logger.info("Loading badge image and mod options");
+        
         // Load the Mod Badge
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
         
         // Create the Mod Menu
         ModPanel settingsPanel = new ModPanel();
-        settingsPanel.addUIElement(new ModLabel("DefaultMod doesn't have any settings! An example of those may come later.", 400.0f, 700.0f,
-                settingsPanel, (me) -> {
-        }));
+        
+        // Create the on/off button:
+        ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("This is the text which goes next to the checkbox.",
+                350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
+                enablePlaceholder, // Boolean it uses
+                settingsPanel, // The mod panel in which this button will be in
+                (label) -> {}, // thing??????? idk
+                (button) -> { // The actual button:
+            
+            enablePlaceholder = button.enabled; // The boolean true/false will be whether the button is enabled or not
+            try {
+                // And based on that boolean, set the settings and save them
+                SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings);
+                config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
+                config.save();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        
+        settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
+        
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
+
         
         // =============== EVENTS =================
         
