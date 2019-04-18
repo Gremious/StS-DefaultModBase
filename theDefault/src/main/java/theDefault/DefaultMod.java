@@ -169,7 +169,7 @@ public class DefaultMod implements
          | (__| __ |/ _ \ | .` | (_ | _|  | |\/| | (_) | |) |  | | | |) |
           \___|_||_/_/ \_\|_|\_|\___|___| |_|  |_|\___/|___/  |___||___(_)
       */
-        setModID("theDefaultDev");
+        setModID("theDefault");
         // TODO: NOW READ THIS!!!!!!!!!!!!!!!:
         
         // Now go to your resources folder in the project panel, and refactor> rename theDefaultResources to
