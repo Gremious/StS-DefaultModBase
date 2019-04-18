@@ -21,49 +21,60 @@ import com.megacrit.cardcrawl.helpers.ScreenShake.ShakeDur;
 import com.megacrit.cardcrawl.helpers.ScreenShake.ShakeIntensity;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.monsters.AbstractMonster.Intent;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.BiteEffect;
 import theDefault.DefaultMod;
+    // Hello, welcome to the default monster. For now, It'll show you how to add the Jaw Worm, as it was kindly PR'd to me.
+    // Later on, I might add any additional/unique things, if requested.
 
-public class BaseMonster extends AbstractMonster {
-    public static final String ID = DefaultMod.makeID("BaseMonster"); // Makes the monster ID based on your mod's ID. For example: theDefault:BaseMonster
-    private static final MonsterStrings monsterstrings = CardCrawlGame.languagePack.getMonsterStrings(ID); // Grabs strings from your language pack based on ID>
-    public static final String NAME = monsterstrings.NAME; // Pulls name,
-    public static final String[] MOVES = monsterstrings.MOVES; // move names,
-    public static final String[] DIALOG = monsterstrings.DIALOG; // and dialog text from strings.
-    private static final int HP_MIN = 84; // Always good to back up your health and move values.
-    private static final int HP_MAX = 87;
-    private static final int A_7_HP_MIN = 90; // HP moves up at Ascension 7.
-    private static final int A_7_HP_MAX = 94;
-    private static final float HB_X = 0.0F;
-    private static final float HB_Y = -25.0F;
-    private static final float HB_W = 260.0F;
-    private static final float HB_H = 170.0F;
-    private static final int ATTACK1_DMG = 15;
-    private static final int A_2_ATTACK1_DMG = 20; // Some values change on Ascension 2...
-    private static final int ATTACKBLOCK_DMG = 10;
-    private static final int ATTACKBLOCK_BLOCK = 10;
+public class DefaultMonster extends AbstractMonster {
+    public static final String ID = DefaultMod.makeID("DefaultMonster"); // Monster ID (remember the prefix - yourModID:DefaultMonster)
+    private static final MonsterStrings monsterstrings = CardCrawlGame.languagePack.getMonsterStrings(ID); // Grab the string
+    
+    public static final String NAME = monsterstrings.NAME; // The name of the monster
+    public static final String[] MOVES = monsterstrings.MOVES; // The names of the moves
+    public static final String[] DIALOG = monsterstrings.DIALOG; // The dialogue (if any)
+    
+    private static final int HP_MIN = 84; // 1. The minimum and maximum amount of HP.
+    private static final int HP_MAX = 87; // 2. Every monsters hp is "slightly random", falling between these values.
+    
+    private static final int A7_HP_MIN = 90; // HP moves up at Ascension 7.
+    private static final int A7_HP_MAX = 94;
+    
+    private static final float HB_X = 0.0F;     // The hitbox X coordinate/position (relative to the monster)
+    private static final float HB_Y = -25.0F;   // The Y position
+    private static final float HB_W = 260.0F;   // Hitbox width
+    private static final float HB_H = 170.0F;   // Hitbox Height
+    
+    private static final int ATTACK_1_DMG = 15;     // The damage of "attack 1".
+    private static final int A2_ATTACK_1_DMG = 20;  // The damage of said attack increases past Ascension 2
+    
+    private static final int ATTACKBLOCK_DMG = 10;      // The damage value of the "attack and block" move (think Jaw Worm)
+    private static final int ATTACKBLOCK_BLOCK = 10;    // The block value of the "attack and block" move (think Jaw Worm)
+    
     private static final int BUFF_STR = 5;
     private static final int A_2_BUFF_STR = 5;
     private static final int A_17_BUFF_STR = 10; // and some on Ascension 17.
     private static final int BUFF_BLOCK = 5;
     private static final int A_17_BUFF_BLOCK = 10;
+    
     private int buffBlock; // Defining the movement values before they're initalized depending on difficulty.
     private int attack1Dmg;
     private int attackBlockDmg;
     private int attackBlockBlock;
     private int buffStr;
+    
     private static final byte ATTACK1 = 1; // These bytes are referred to for attacks.
     private static final byte BUFF = 2;
     private static final byte ATTACKBLOCK = 3;
+    
     private boolean firstTurn = true;
 
-    public BaseMonster(float x, float y) {
-        super(NAME, "JawWorm", 44, HB_X, HB_Y, HB_W, HB_H, (String)null, x, y); // Initializes the monster.
+    public DefaultMonster(float x, float y) {
+        super(NAME, "JawWorm", 44, HB_X, HB_Y, HB_W, HB_H, null, x, y); // Initializes the monster.
 
         if (AbstractDungeon.ascensionLevel >= 7) { // Checks if your Ascension is 7 or above...
-            this.setHp(A_7_HP_MIN, A_7_HP_MAX); // and increases HP if so.
+            this.setHp(A7_HP_MIN, A7_HP_MAX); // and increases HP if so.
         } else {
             this.setHp(HP_MIN, HP_MAX); // Provides regular HP values here otherwise.
         }
@@ -71,19 +82,19 @@ public class BaseMonster extends AbstractMonster {
         if (AbstractDungeon.ascensionLevel >= 17) {
             this.buffStr = A_17_BUFF_STR; // Here are where the move values for Ascension 17+ are set.
             this.buffBlock = A_17_BUFF_BLOCK;
-            this.attack1Dmg = A_2_ATTACK1_DMG ;
+            this.attack1Dmg = A2_ATTACK_1_DMG;
             this.attackBlockDmg = ATTACKBLOCK_DMG;
             this.attackBlockBlock = ATTACKBLOCK_BLOCK;
         } else if (AbstractDungeon.ascensionLevel >= 2) {
             this.buffStr = A_2_BUFF_STR; // Here are where the move values for Ascension 2-17 are set.
             this.buffBlock = BUFF_BLOCK;
-            this.attack1Dmg = A_2_ATTACK1_DMG;
+            this.attack1Dmg = A2_ATTACK_1_DMG;
             this.attackBlockDmg = ATTACKBLOCK_DMG;
             this.attackBlockBlock = ATTACKBLOCK_BLOCK;
         } else {
             this.buffStr = BUFF_STR; // Here is where the regular movement values are set.
             this.buffBlock = BUFF_BLOCK;
-            this.attack1Dmg = ATTACK1_DMG;
+            this.attack1Dmg = ATTACK_1_DMG;
             this.attackBlockDmg = ATTACKBLOCK_DMG;
             this.attackBlockBlock = ATTACKBLOCK_BLOCK;
         }
@@ -159,7 +170,6 @@ public class BaseMonster extends AbstractMonster {
             } else {
                 this.setMove(MOVES[0], (byte)2, Intent.DEFEND_BUFF); // If none of the above things were done, sets the intent to the defensive buff.
             }
-
         }
 
     public void die() { // When this monster dies...

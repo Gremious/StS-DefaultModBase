@@ -21,7 +21,7 @@ import org.apache.logging.log4j.Logger;
 import theDefault.cards.*;
 import theDefault.characters.TheDefault;
 import theDefault.events.IdentityCrisisEvent;
-import theDefault.monsters.BaseMonster;
+import theDefault.monsters.DefaultMonster;
 import theDefault.potions.PlaceholderPotion;
 import theDefault.relics.BottledPlaceholderRelic;
 import theDefault.relics.DefaultClickableRelic;
@@ -297,7 +297,7 @@ public class DefaultMod implements
             
         // =============== MONSTERS ===============
 
-        BaseMod.addMonster(BaseMonster.ID, "Base Monster", () -> new BaseMonster(0.0F, 25.0F));
+        BaseMod.addMonster(DefaultMonster.ID, "Base Monster", () -> new DefaultMonster(0.0F, 25.0F));
         // Example of adding a monster to the game. Provide its ID, a name for the monster, and then an example of it with all parameters.
 
         // ============== /MONSTERS/ ==============
@@ -439,6 +439,10 @@ public class DefaultMod implements
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/DefaultMod-Orb-Strings.json");
         
+        // MonsterStrings
+        BaseMod.loadCustomStringsFile(MonsterStrings.class,
+                getModID() + "Resources/localization/eng/DefaultMod-Orb-Strings.json");
+    
         logger.info("Done edittting strings");
     }
     
