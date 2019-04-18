@@ -40,6 +40,13 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
+//TODO: DON'T MASS RENAME/REFACTOR
+//TODO: DON'T MASS RENAME/REFACTOR
+//TODO: DON'T MASS RENAME/REFACTOR
+//TODO: DON'T MASS RENAME/REFACTOR
+// Please don't just mass replace "theDefault" with "yourMod" everywhere.
+// It'll be a bigger pain for you. You only need to replace it in 3 places.
+// I comment those places bellow, under the place where you set your ID.
 
 //TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
 // Right click the package (Open the project pane on the left. Folder with black dot on it. The name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
@@ -57,6 +64,8 @@ import java.util.Properties;
  * If you're new to modding, you basically *need* the BaseMod wiki for whatever you wish to add
  * https://github.com/daviscook477/BaseMod/wiki - work your way through with this base.
  * Feel free to use this in any way you like, of course. MIT licence applies. Happy modding!
+ *
+ * And pls. Read the comments.
  */
 
 @SpireInitializer
@@ -99,6 +108,7 @@ public class DefaultMod implements
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
+  
     // Card backgrounds - The actual rectangular card.
     private static final String ATTACK_DEFAULT_GRAY = "theDefaultResources/images/512/bg_attack_default_gray.png";
     private static final String SKILL_DEFAULT_GRAY = "theDefaultResources/images/512/bg_skill_default_gray.png";
@@ -163,21 +173,28 @@ public class DefaultMod implements
         logger.info("Subscribe to BaseMod hooks");
         
         BaseMod.subscribe(this);
+
+      /*
+           (   ( /(  (     ( /( (            (  `   ( /( )\ )    )\ ))\ )
+           )\  )\()) )\    )\()))\ )   (     )\))(  )\()|()/(   (()/(()/(
+         (((_)((_)((((_)( ((_)\(()/(   )\   ((_)()\((_)\ /(_))   /(_))(_))
+         )\___ _((_)\ _ )\ _((_)/(_))_((_)  (_()((_) ((_|_))_  _(_))(_))_
+        ((/ __| || (_)_\(_) \| |/ __| __| |  \/  |/ _ \|   \  |_ _||   (_)
+         | (__| __ |/ _ \ | .` | (_ | _|  | |\/| | (_) | |) |  | | | |) |
+          \___|_||_/_/ \_\|_|\_|\___|___| |_|  |_|\___/|___/  |___||___(_)
+      */
+      
+        setModID("theDefault");
+        // cool
+        // TODO: NOW READ THIS!!!!!!!!!!!!!!!:
         
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!P
-        // CHANGE YOUR MOD ID HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        setModID("theDefaultDev");
-        // Now go to your resources folder in the project panel, and refactor> rename theDefaultResources to
-        // yourModIDResources.
-        // Also click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project)
+        // 1. Go to your resources folder in the project panel, and refactor> rename theDefaultResources to yourModIDResources.
+        
+        // 2. Click on the localization > eng folder and press ctrl+shift+r, then select "Directory" (rather than in Project)
         // replace all instances of theDefault with yourModID.
         // Because your mod ID isn't the default. Your cards (and everything else) should have Your mod id. Not mine.
-        // FINALLY and most importnatly: Scroll up a bit. You may have noticed the image locations above don't use getModID()
+        
+        // 3. FINALLY and most importantly: Scroll up a bit. You may have noticed the image locations above don't use getModID()
         // Change their locations to reflect your actual ID rather than theDefault. They get loaded before getID is a thing.
         
         logger.info("Done subscribing");
@@ -211,10 +228,10 @@ public class DefaultMod implements
     
     public static void setModID(String ID) { // DON'T EDIT
         Gson coolG = new Gson(); // EY DON'T EDIT THIS
-        //   String IDjson = Gdx.files.internal("IDCheckStrings.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i hate u Gdx.files
-        InputStream in = DefaultMod.class.getResourceAsStream("/IDCheckStrings.json"); // DON'T EDIT THIS ETHER
+        //   String IDjson = Gdx.files.internal("IDCheckStringsDONT-EDIT-AT-ALL.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i hate u Gdx.files
+        InputStream in = DefaultMod.class.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json"); // DON'T EDIT THIS ETHER
         IDCheckDontTouchPls EXCEPTION_STRINGS = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class); // OR THIS, DON'T EDIT IT
-        
+        logger.info("You are attempting to set your mod ID as: " + ID); // NO WHY
         if (ID.equals(EXCEPTION_STRINGS.DEFAULTID)) { // DO *NOT* CHANGE THIS ESPECIALLY, TO EDIT YOUR MOD ID, SCROLL UP JUST A LITTLE, IT'S JUST ABOVE
             throw new RuntimeException(EXCEPTION_STRINGS.EXCEPTION); // THIS ALSO DON'T EDIT
         } else if (ID.equals(EXCEPTION_STRINGS.DEVID)) { // NO
@@ -222,6 +239,7 @@ public class DefaultMod implements
         } else { // NO EDIT AREA
             modID = ID; // DON'T WRITE OR CHANGE THINGS HERE NOT EVEN A LITTLE
         } // NO
+        logger.info("Success! ID is " + modID); // WHY WOULD U WANT IT NOT TO LOG?? DON'T EDIT THIS.
     } // NO
     
     public static String getModID() { // NO
@@ -230,11 +248,10 @@ public class DefaultMod implements
     
     private static void pathCheck() { // ALSO NO
         Gson coolG = new Gson(); // NNOPE DON'T EDIT THIS
-        //   String IDjson = Gdx.files.internal("IDCheckStrings.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i still hate u btw Gdx.files
-        InputStream in = DefaultMod.class.getResourceAsStream("/IDCheckStrings.json"); // DON'T EDIT THISSSSS
+        //   String IDjson = Gdx.files.internal("IDCheckStringsDONT-EDIT-AT-ALL.json").readString(String.valueOf(StandardCharsets.UTF_8)); // i still hate u btw Gdx.files
+        InputStream in = DefaultMod.class.getResourceAsStream("/IDCheckStringsDONT-EDIT-AT-ALL.json"); // DON'T EDIT THISSSSS
         IDCheckDontTouchPls EXCEPTION_STRINGS = coolG.fromJson(new InputStreamReader(in, StandardCharsets.UTF_8), IDCheckDontTouchPls.class); // NAH, NO EDIT
-        
-        String packageName = DefaultMod.class.getPackage().getName(); // STILL NOT EDIT ZONE
+        String packageName = DefaultMod.class.getPackage().getName(); // STILL NO EDIT ZONE
         FileHandle resourcePathExists = Gdx.files.internal(getModID() + "Resources"); // PLEASE DON'T EDIT THINGS HERE, THANKS
         if (!modID.equals(EXCEPTION_STRINGS.DEVID)) { // LEAVE THIS EDIT-LESS
             if (!packageName.equals(getModID())) { // NOT HERE ETHER
@@ -245,8 +262,9 @@ public class DefaultMod implements
             }// NO
         }// NO
     }// NO
-    // ====== YOU CAN EDIT AGAIN ======
     
+    // ====== YOU CAN EDIT AGAIN ======
+
     @SuppressWarnings("unused")
     public static void initialize() {
         logger.info("========================= Initializing Default Mod. Hi. =========================");
@@ -301,9 +319,10 @@ public class DefaultMod implements
         settingsPanel.addUIElement(enableNormalsButton);
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
+        
         // =============== EVENTS =================
         
-        // This event will be exclusive to the City (action 2). If you want an event that's present at any
+        // This event will be exclusive to the City (act 2). If you want an event that's present at any
         // part of the game, simply don't include the dungeon ID
         // If you want to have a character-specific event, look at slimebound (CityRemoveEventPatch).
         // Essentially, you need to patch the game and say "if a player is not playing my character class, remove the event from the pool"
@@ -403,7 +422,7 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(DefaultRareAttack.ID);
         UnlockTracker.unlockCard(DefaultRareSkill.ID);
         UnlockTracker.unlockCard(DefaultRarePower.ID);
-       // UnlockTracker.unlockCard(KotlinCard.Companion.getID());
+       UnlockTracker.unlockCard(KotlinCard.Companion.getID());
         
         logger.info("Done adding cards!");
     }
@@ -419,7 +438,7 @@ public class DefaultMod implements
     
     @Override
     public void receiveEditStrings() {
-        logger.info("Beginning to edit strings");
+        logger.info("Beginning to edit strings for mod with ID: " + getModID());
         
         // CardStrings
         BaseMod.loadCustomStringsFile(CardStrings.class,
