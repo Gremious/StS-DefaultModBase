@@ -1,8 +1,8 @@
 {
-  "modid": "defaultmod",
-  "name": "Default Mod",
+  "modid": "${project.artifactId}",
+  "name": "${project.name}",
   "author_list": ["Gremious"],
-  "description": "A base for Slay the Spire to start your own mod from.",
+  "description": "${project.description}",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
   "mts_version": "${ModTheSpire.version}",
