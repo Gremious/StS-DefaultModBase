@@ -21,6 +21,7 @@ import org.apache.logging.log4j.Logger;
 import theDefault.cards.*;
 import theDefault.characters.TheDefault;
 import theDefault.events.IdentityCrisisEvent;
+import theDefault.monsters.BaseMonster;
 import theDefault.potions.PlaceholderPotion;
 import theDefault.relics.BottledPlaceholderRelic;
 import theDefault.relics.DefaultClickableRelic;
