@@ -46,7 +46,7 @@ import java.util.Properties;
 //TODO: DON'T MASS RENAME/REFACTOR
 // Please don't just mass replace "theDefault" with "yourMod" everywhere.
 // It'll be a bigger pain for you. You only need to replace it in 3 places.
-// I comment those places bellow, under the place where you set your ID.
+// I comment those places below, under the place where you set your ID.
 
 //TODO: FIRST THINGS FIRST: RENAME YOUR PACKAGE AND ID NAMES FIRST-THING!!!
 // Right click the package (Open the project pane on the left. Folder with black dot on it. The name's at the very top) -> Refactor -> Rename, and name it whatever you wanna call your mod.
@@ -81,10 +81,10 @@ public class DefaultMod implements
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
     private static String modID;
 
-    // Mod-settings settings
+    // Mod-settings settings. This is if you want an on/off savable button
     public static Properties theDefaultDefaultSettings = new Properties();
     public static final String ENABLE_PLACEHOLDER_SETTINGS = "enablePlaceholder";
-    public static boolean enablePlaceholder = true;
+    public static boolean enablePlaceholder = true; // The boolean we'll be setting on/off (true/false)
 
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "Default Mod";
@@ -173,6 +173,7 @@ public class DefaultMod implements
         logger.info("Subscribe to BaseMod hooks");
         
         BaseMod.subscribe(this);
+        
       /*
            (   ( /(  (     ( /( (            (  `   ( /( )\ )    )\ ))\ )
            )\  )\()) )\    )\()))\ )   (     )\))(  )\()|()/(   (()/(()/(
@@ -209,12 +210,15 @@ public class DefaultMod implements
         
         logger.info("Done creating the color");
         
-        logger.info("Adding mod settings"); // The actual mod Button is added below in receivePostInitialize()
-        theDefaultDefaultSettings.setProperty(ENABLE_PLACEHOLDER_SETTINGS, "FALSE"); // the default value.
+        
+        logger.info("Adding mod settings");
+        // This loads the mod settings.
+        // The actual mod Button is added below in receivePostInitialize()
+        theDefaultDefaultSettings.setProperty(ENABLE_PLACEHOLDER_SETTINGS, "FALSE"); // This is the default setting. It's actually set...
         try {
-            SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings);
-            // the "file name" is the name of the file MTS will create where it will save our setting.
-            config.load();
+            SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings); // ...right here
+            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
+            config.load(); // Load the setting and set the boolean to equal it
             enablePlaceholder = config.getBool(ENABLE_PLACEHOLDER_SETTINGS);
         } catch (Exception e) {
             e.printStackTrace();
@@ -298,19 +302,24 @@ public class DefaultMod implements
     @Override
     public void receivePostInitialize() {
         logger.info("Loading badge image and mod options");
+        
         // Load the Mod Badge
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
         
         // Create the Mod Menu
         ModPanel settingsPanel = new ModPanel();
         
-        
+        // Create the on/off button:
         ModLabeledToggleButton enableNormalsButton = new ModLabeledToggleButton("This is the text which goes next to the checkbox.",
-                350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
-                enablePlaceholder, settingsPanel, (label) -> {
-        }, (button) -> {
-            enablePlaceholder = button.enabled;
+                350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
+                enablePlaceholder, // Boolean it uses
+                settingsPanel, // The mod panel in which this button will be in
+                (label) -> {}, // thing??????? idk
+                (button) -> { // The actual button:
+            
+            enablePlaceholder = button.enabled; // The boolean true/false will be whether the button is enabled or not
             try {
+                // And based on that boolean, set the settings and save them
                 SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings);
                 config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
                 config.save();
@@ -318,7 +327,8 @@ public class DefaultMod implements
                 e.printStackTrace();
             }
         });
-        settingsPanel.addUIElement(enableNormalsButton);
+        
+        settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
