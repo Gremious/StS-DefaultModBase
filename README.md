@@ -29,21 +29,3 @@ Happy modding!
 https://github.com/Gremious/StS-DefaultModBase/wiki
 
 ---
-
-Things I should add/do next:
-
-* ~~Non-character specific relic~~
-
-* ~~Custom potions~~
-
-* ~~Dynamic Variables~~
-
-* ~~CustomBottleRelic~~
-
-* ~~CustomSavable (?)~~
-
-* ~~Change all the tabs into spaces so that formatting is ok across all platforms~~
-
-* ~~Patching Exmaples~~
-
-* Other things I don't know about yet
