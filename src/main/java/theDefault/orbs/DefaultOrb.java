@@ -25,12 +25,11 @@ import theDefault.util.TextureLoader;
 import static theDefault.DefaultMod.makeOrbPath;
 
 public class DefaultOrb extends AbstractOrb {
-
     
     public static final String ORB_ID = DefaultMod.makeID("DefaultOrb");
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
     public static final String[] DESC = orbString.DESCRIPTION;
-
+    
     private static final Texture IMG = TextureLoader.getTexture(makeOrbPath("default_orb.png"));
     
     private float vfxTimer = 1.0f;
@@ -38,56 +37,53 @@ public class DefaultOrb extends AbstractOrb {
     private float vfxIntervalMax = 0.4f;
     private static final float ORB_WAVY_DIST = 0.04f;
     private static final float PI_4 = 12.566371f;
-
+    
     public DefaultOrb() {
-
+        
         ID = ORB_ID;
         name = orbString.NAME;
         img = IMG;
-
+        
         evokeAmount = baseEvokeAmount = 1;
         passiveAmount = basePassiveAmount = 3;
-
+        
         updateDescription();
-
+        
         angle = MathUtils.random(360.0f);
         channelAnimTimer = 0.5f;
     }
-
+    
     @Override
     public void updateDescription() {
         applyFocus();
         description = DESC[0] + evokeAmount + DESC[1] + passiveAmount + DESC[2];
     }
-
+    
     @Override
     public void applyFocus() {
         passiveAmount = basePassiveAmount;
         evokeAmount = baseEvokeAmount;
     }
-
+    
     @Override
     public void onEvoke() {
-
+        
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAllEnemiesAction(AbstractDungeon.player, DamageInfo.createDamageMatrix(evokeAmount, true, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
         
-
-
-        AbstractDungeon.actionManager.addToBottom(new SFXAction("TINGSHA"));
         
-
+        AbstractDungeon.actionManager.addToBottom(new SFXAction("TINGSHA"));
     }
-
+    
     @Override
     public void onStartOfTurn() {
         AbstractDungeon.actionManager.addToBottom(
                 new VFXAction(new OrbFlareEffect(this, OrbFlareEffect.OrbFlareColor.FROST), 0.1f));
-
+        
         AbstractDungeon.actionManager.addToBottom(
                 new DrawCardAction(AbstractDungeon.player, passiveAmount));
     }
-
+    
     @Override
     public void updateAnimation() {
         
@@ -99,7 +95,6 @@ public class DefaultOrb extends AbstractOrb {
             vfxTimer = MathUtils.random(vfxIntervalMin, vfxIntervalMax);
         }
     }
-
     
     @Override
     public void render(SpriteBatch sb) {
@@ -112,18 +107,17 @@ public class DefaultOrb extends AbstractOrb {
         renderText(sb);
         hb.render(sb);
     }
-
-
+    
     @Override
     public void triggerEvokeAnimation() {
         AbstractDungeon.effectsQueue.add(new DarkOrbActivateEffect(cX, cY));
     }
-
+    
     @Override
     public void playChannelSFX() {
         CardCrawlGame.sound.play("ATTACK_FIRE", 0.1f);
     }
-
+    
     @Override
     public AbstractOrb makeCopy() {
         return new DefaultOrb();

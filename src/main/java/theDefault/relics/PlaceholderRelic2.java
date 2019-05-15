@@ -14,18 +14,14 @@ import static theDefault.DefaultMod.makeRelicPath;
 
 public class PlaceholderRelic2 extends CustomRelic {
     
-
-    
     public static final String ID = DefaultMod.makeID("PlaceholderRelic2");
-
+    
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic2.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic2.png"));
-
+    
     public PlaceholderRelic2() {
         super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.FLAT);
     }
-
-
     
     @Override
     public void atBattleStart() {
@@ -33,12 +29,9 @@ public class PlaceholderRelic2 extends CustomRelic {
         AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, 1), 1));
         AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
     }
-
-
     
     @Override
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0];
     }
-
 }

@@ -19,23 +19,20 @@ import static theDefault.DefaultMod.makeRelicPath;
 
 public class DefaultClickableRelic extends CustomRelic implements ClickableRelic {
     
-
-    
     public static final String ID = DefaultMod.makeID("DefaultClickableRelic");
-
+    
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("default_clickable_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("default_clickable_relic.png"));
-
+    
     private boolean usedThisTurn = false;
-
+    
     public DefaultClickableRelic() {
         super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.CLINK);
-
+        
         tips.clear();
         tips.add(new PowerTip(name, description));
     }
-
-
+    
     @Override
     public void onRightClick() {
         if (!isObtained || usedThisTurn) {
@@ -45,40 +42,34 @@ public class DefaultClickableRelic extends CustomRelic implements ClickableRelic
             usedThisTurn = true;
             flash();
             stopPulse();
-
+            
             AbstractDungeon.actionManager.addToBottom(new TalkAction(true, DESCRIPTIONS[1], 4.0f, 2.0f));
             AbstractDungeon.actionManager.addToBottom(new SFXAction("MONSTER_COLLECTOR_DEBUFF"));
             AbstractDungeon.actionManager.addToBottom(new VFXAction(
                     new CollectorCurseEffect(AbstractDungeon.getRandomMonster().hb.cX, AbstractDungeon.getRandomMonster().hb.cY), 2.0F));
-
+            
             AbstractDungeon.actionManager.addToBottom(new EvokeOrbAction(1));
         }
-        
-        
-
-        
     }
-
+    
     public void atTurnStart() {
         usedThisTurn = false;
         beginLongPulse();
     }
-
+    
     @Override
     public void atPreBattle() {
         usedThisTurn = false;
         beginLongPulse();
     }
-
+    
     @Override
     public void onVictory() {
         stopPulse();
     }
-
     
     @Override
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0];
     }
-
 }

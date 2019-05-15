@@ -70,68 +70,25 @@ import org.apache.logging.log4j.Logger;
 )
 public class DefaultInsertPatch {
     
-    
-    
-    
-    
     private static final Logger logger = LogManager.getLogger(DefaultInsertPatch.class.getName());
-    
     
     @SpireInsertPatch(
             
             locator = Locator.class,
             
             
-            
-            
             localvars = {"retVal"}
-            
-            
+    
+    
     )
     
     public static void thisIsOurActualPatchMethod(
             
             
-            
-            
-            
-            
-            
-            
-            
             AbstractRelic.RelicTier tier, String retVal) {
         
         
-        
-        
-        
         logger.info("Hey our patch triggered. The relic we're about to get is " + retVal);
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
     
     private static class Locator extends SpireInsertLocator {
@@ -185,31 +142,10 @@ public class DefaultInsertPatch {
              */
             
             
-            
-            
-            
-            
             Matcher finalMatcher = new Matcher.MethodCallMatcher(RelicLibrary.class, "getRelic");
             
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
             return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
-            
-            
-            
-            
-            
-            
-            
-            
         }
     }
 }

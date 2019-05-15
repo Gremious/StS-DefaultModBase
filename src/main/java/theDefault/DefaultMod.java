@@ -1,7 +1,6 @@
 package theDefault;
 
 import basemod.BaseMod;
-import basemod.ModLabel;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
@@ -40,23 +39,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @SpireInitializer
 public class DefaultMod implements
         EditCardsSubscriber,
@@ -66,38 +48,22 @@ public class DefaultMod implements
         EditCharactersSubscriber,
         PostInitializeSubscriber {
     
-    
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
     private static String modID;
-
     
     public static Properties theDefaultDefaultSettings = new Properties();
     public static final String ENABLE_PLACEHOLDER_SETTINGS = "enablePlaceholder";
     public static boolean enablePlaceholder = true;
-
     
     private static final String MODNAME = "Default Mod";
     private static final String AUTHOR = "Gremious";
     private static final String DESCRIPTION = "A base for Slay the Spire to start your own mod from, feat. the Default.";
     
-    
-    
-    
-    
     public static final Color DEFAULT_GRAY = CardHelper.getColor(64.0f, 70.0f, 70.0f);
-    
     
     public static final Color PLACEHOLDER_POTION_LIQUID = CardHelper.getColor(209.0f, 53.0f, 18.0f);
     public static final Color PLACEHOLDER_POTION_HYBRID = CardHelper.getColor(255.0f, 230.0f, 230.0f);
     public static final Color PLACEHOLDER_POTION_SPOTS = CardHelper.getColor(100.0f, 25.0f, 10.0f);
-    
-    
-    
-    
-    
-    
-    
-  
     
     private static final String ATTACK_DEFAULT_GRAY = "theDefaultResources/images/512/bg_attack_default_gray.png";
     private static final String SKILL_DEFAULT_GRAY = "theDefaultResources/images/512/bg_skill_default_gray.png";
@@ -111,21 +77,16 @@ public class DefaultMod implements
     private static final String POWER_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/bg_power_default_gray.png";
     private static final String ENERGY_ORB_DEFAULT_GRAY_PORTRAIT = "theDefaultResources/images/1024/card_default_gray_orb.png";
     
-    
     private static final String THE_DEFAULT_BUTTON = "theDefaultResources/images/charSelect/DefaultCharacterButton.png";
     private static final String THE_DEFAULT_PORTRAIT = "theDefaultResources/images/charSelect/DefaultCharacterPortraitBG.png";
     public static final String THE_DEFAULT_SHOULDER_1 = "theDefaultResources/images/char/defaultCharacter/shoulder.png";
     public static final String THE_DEFAULT_SHOULDER_2 = "theDefaultResources/images/char/defaultCharacter/shoulder2.png";
     public static final String THE_DEFAULT_CORPSE = "theDefaultResources/images/char/defaultCharacter/corpse.png";
     
-    
     public static final String BADGE_IMAGE = "theDefaultResources/images/Badge.png";
-    
     
     public static final String THE_DEFAULT_SKELETON_ATLAS = "theDefaultResources/images/char/defaultCharacter/skeleton.atlas";
     public static final String THE_DEFAULT_SKELETON_JSON = "theDefaultResources/images/char/defaultCharacter/skeleton.json";
-    
-    
     
     public static String makeCardPath(String resourcePath) {
         return getModID() + "Resources/images/cards/" + resourcePath;
@@ -151,32 +112,13 @@ public class DefaultMod implements
         return getModID() + "Resources/images/events/" + resourcePath;
     }
     
-    
-    
-    
-    
-    
-    
-    
     public DefaultMod() {
         logger.info("Subscribe to BaseMod hooks");
         
         BaseMod.subscribe(this);
         
-      
-      
+        
         setModID("theDefault");
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         logger.info("Done subscribing");
@@ -205,12 +147,7 @@ public class DefaultMod implements
             e.printStackTrace();
         }
         logger.info("Done adding mod settings");
-        
     }
-    
-    
-    
-    
     
     public static void setModID(String ID) {
         Gson coolG = new Gson();
@@ -249,20 +186,12 @@ public class DefaultMod implements
         }
     }
     
-    
-    
-    
     @SuppressWarnings("unused")
     public static void initialize() {
         logger.info("========================= Initializing Default Mod. Hi. =========================");
         DefaultMod defaultmod = new DefaultMod();
         logger.info("========================= /Default Mod Initialized. Hello World./ =========================");
     }
-    
-    
-    
-    
-    
     
     @Override
     public void receiveEditCharacters() {
@@ -274,11 +203,6 @@ public class DefaultMod implements
         receiveEditPotions();
         logger.info("Added " + TheDefault.Enums.THE_DEFAULT.toString());
     }
-    
-    
-    
-    
-    
     
     @Override
     public void receivePostInitialize() {
@@ -295,29 +219,24 @@ public class DefaultMod implements
                 350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 enablePlaceholder,
                 settingsPanel,
-                (label) -> {},
+                (label) -> {
+                },
                 (button) -> {
-            
-            enablePlaceholder = button.enabled;
-            try {
-                
-                SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings);
-                config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
-                config.save();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+                    
+                    enablePlaceholder = button.enabled;
+                    try {
+                        
+                        SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings);
+                        config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
+                        config.save();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
         
         settingsPanel.addUIElement(enableNormalsButton);
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
-
-        
-        
-        
-        
-        
         
         
         BaseMod.addEvent(IdentityCrisisEvent.ID, IdentityCrisisEvent.class, TheCity.ID);
@@ -326,26 +245,14 @@ public class DefaultMod implements
         logger.info("Done loading badge Image and mod options");
     }
     
-    
-    
-    
-    
-    
     public void receiveEditPotions() {
         logger.info("Beginning to edit potions");
-        
-        
         
         
         BaseMod.addPotion(PlaceholderPotion.class, PLACEHOLDER_POTION_LIQUID, PLACEHOLDER_POTION_HYBRID, PLACEHOLDER_POTION_SPOTS, PlaceholderPotion.POTION_ID, TheDefault.Enums.THE_DEFAULT);
         
         logger.info("Done editing potions");
     }
-    
-    
-    
-    
-    
     
     @Override
     public void receiveEditRelics() {
@@ -364,11 +271,6 @@ public class DefaultMod implements
         logger.info("Done adding relics!");
     }
     
-    
-    
-    
-    
-    
     @Override
     public void receiveEditCards() {
         logger.info("Adding variables");
@@ -381,8 +283,6 @@ public class DefaultMod implements
         BaseMod.addDynamicVariable(new DefaultSecondMagicNumber());
         
         logger.info("Adding cards");
-        
-        
         
         
         BaseMod.addCard(new OrbSkill());
@@ -401,7 +301,6 @@ public class DefaultMod implements
         logger.info("Making sure the cards are unlocked.");
         
         
-        
         UnlockTracker.unlockCard(OrbSkill.ID);
         UnlockTracker.unlockCard(DefaultSecondMagicNumberSkill.ID);
         UnlockTracker.unlockCard(DefaultCommonAttack.ID);
@@ -417,15 +316,6 @@ public class DefaultMod implements
         
         logger.info("Done adding cards!");
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     @Override
     public void receiveEditStrings() {
@@ -463,18 +353,8 @@ public class DefaultMod implements
         logger.info("Done edittting strings");
     }
     
-    
-    
-    
-    
     @Override
     public void receiveEditKeywords() {
-        
-        
-        
-        
-        
-        
         
         
         Gson gson = new Gson();
@@ -484,14 +364,9 @@ public class DefaultMod implements
         if (keywords != null) {
             for (Keyword keyword : keywords) {
                 BaseMod.addKeyword(getModID().toLowerCase(), keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION);
-                
             }
         }
     }
-    
-    
-    
-    
     
     public static String makeID(String idText) {
         return getModID() + ":" + idText;

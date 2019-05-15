@@ -27,37 +27,24 @@ import static theDefault.DefaultMod.makeRelicPath;
 
 public class BottledPlaceholderRelic extends CustomRelic implements CustomBottleRelic, CustomSavable<Integer> {
     
-
-    
-
-    
-    
-
     private static AbstractCard card;
     private boolean cardSelected = true;
-    
-
-
     
     public static final String ID = DefaultMod.makeID("BottledPlaceholderRelic");
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("BottledPlaceholder.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("BottledPlaceholder.png"));
-
+    
     public BottledPlaceholderRelic() {
         super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.CLINK);
         tips.clear();
         tips.add(new PowerTip(name, description));
     }
-
     
-    
-    
-
     @Override
     public Predicate<AbstractCard> isOnCard() {
         return BottledPlaceholderField.inBottledPlaceholderField::get;
     }
-
+    
     @Override
     public Integer onSave() {
         if (card != null) {
@@ -66,7 +53,7 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
             return -1;
         }
     }
-
+    
     @Override
     public void onLoad(Integer cardIndex) {
         if (cardIndex == null) {
@@ -80,8 +67,7 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
             }
         }
     }
-
-
+    
     @Override
     public void onEquip() {
         cardSelected = false;
@@ -94,10 +80,8 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
         
         CardGroup group = CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck);
         AbstractDungeon.gridSelectScreen.open(group, 1, DESCRIPTIONS[3] + name + DESCRIPTIONS[2], false, false, false, false);
-        
     }
-
-
+    
     @Override
     public void onUnequip() {
         if (card != null) {
@@ -107,11 +91,11 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
             }
         }
     }
-
+    
     @Override
     public void update() {
         super.update();
-
+        
         if (!cardSelected && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
             
             cardSelected = true;
@@ -126,30 +110,26 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
             setDescriptionAfterLoading();
         }
     }
-
-
     
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
         boolean fullHandDialog = false;
-
+        
         for (Iterator<AbstractCard> it = AbstractDungeon.player.drawPile.group.iterator(); it.hasNext(); ) {
             
             AbstractCard card = it.next();
             if (BottledPlaceholderField.inBottledPlaceholderField.get(card)) {
                 
-
                 
-
                 this.flash();
                 it.remove();
-
+                
                 if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
                     if (AutoplayField.autoplay.get(card)) {
                         AbstractDungeon.actionManager.addToBottom(new AutoplayCardAction(card, AbstractDungeon.player.hand));
                     }
                     card.triggerWhenDrawn();
                     AbstractDungeon.player.drawPile.moveToHand(card, AbstractDungeon.player.drawPile);
-
+                    
                     for (AbstractRelic r : AbstractDungeon.player.relics) {
                         r.onCardDraw(card);
                     }
@@ -160,11 +140,9 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
                     }
                     AbstractDungeon.player.drawPile.moveToDiscardPile(card);
                 }
-
             }
         }
     }
-
     
     public void setDescriptionAfterLoading() {
         this.description = DESCRIPTIONS[1] + FontHelper.colorString(card.name, "y") + DESCRIPTIONS[2];
@@ -172,7 +150,6 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
         this.tips.add(new PowerTip(this.name, this.description));
         this.initializeTips();
     }
-
     
     @Override
     public String getUpdatedDescription() {
