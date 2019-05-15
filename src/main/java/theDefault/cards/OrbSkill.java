@@ -15,13 +15,9 @@ import static theDefault.DefaultMod.makeCardPath;
 
 public class OrbSkill extends AbstractDynamicCard {
 
-    /*
-     * Orb time.
-     *
-     * Channel 1 Default Orb.
-     */
+    
 
-    // TEXT DECLARATION
+    
 
     public static final String ID = DefaultMod.makeID(OrbSkill.class.getSimpleName());
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
@@ -31,10 +27,10 @@ public class OrbSkill extends AbstractDynamicCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
 
-    // /TEXT DECLARATION/
+    
 
 
-    // STAT DECLARATION
+    
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -43,22 +39,22 @@ public class OrbSkill extends AbstractDynamicCard {
 
     private static final int COST = 1;
 
-    // /STAT DECLARATION/
+    
 
     public OrbSkill() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
 
     }
 
-    // Actions the card should do.
+    
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
 
-        AbstractDungeon.actionManager.addToBottom(new ChannelAction(new DefaultOrb())); // Channel a Default Orb.
+        AbstractDungeon.actionManager.addToBottom(new ChannelAction(new DefaultOrb()));
 
     }
 
-    // Upgraded stats.
+    
     @Override
     public void upgrade() {
         if (!this.upgraded) {

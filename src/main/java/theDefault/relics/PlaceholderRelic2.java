@@ -13,13 +13,9 @@ import static theDefault.DefaultMod.makeRelicOutlinePath;
 import static theDefault.DefaultMod.makeRelicPath;
 
 public class PlaceholderRelic2 extends CustomRelic {
-    /*
-     * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
-     *
-     * At the start of each combat, gain 1 Strength (i.e. Vajra)
-     */
+    
 
-    // ID, images, text.
+    
     public static final String ID = DefaultMod.makeID("PlaceholderRelic2");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic2.png"));
@@ -30,7 +26,7 @@ public class PlaceholderRelic2 extends CustomRelic {
     }
 
 
-    // Gain 1 Strength on on equip.
+    
     @Override
     public void atBattleStart() {
         flash();
@@ -39,7 +35,7 @@ public class PlaceholderRelic2 extends CustomRelic {
     }
 
 
-    // Description
+    
     @Override
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0];

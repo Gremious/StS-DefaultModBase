@@ -17,21 +17,16 @@ import theDefault.util.TextureLoader;
 import static theDefault.DefaultMod.makeRelicOutlinePath;
 import static theDefault.DefaultMod.makeRelicPath;
 
-public class DefaultClickableRelic extends CustomRelic implements ClickableRelic { // You must implement things you want to use from StSlib
-    /*
-     * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
-     * StSLib for Clickable Relics
-     *
-     * At the start of each combat, gain 1 strenght (i.e. Varja)
-     */
+public class DefaultClickableRelic extends CustomRelic implements ClickableRelic {
+    
 
-    // ID, images, text.
+    
     public static final String ID = DefaultMod.makeID("DefaultClickableRelic");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("default_clickable_relic.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("default_clickable_relic.png"));
 
-    private boolean usedThisTurn = false; // You can also have a relic be only usable once per combat. Check out Hubris for more examples, including other StSlib things.
+    private boolean usedThisTurn = false;
 
     public DefaultClickableRelic() {
         super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.CLINK);
@@ -42,54 +37,45 @@ public class DefaultClickableRelic extends CustomRelic implements ClickableRelic
 
 
     @Override
-    public void onRightClick() {// On right click
-        if (!isObtained || usedThisTurn) {// If it has been used this turn, or the player doesn't actually have the relic (i.e. it's on display in the shop room)
-            return; // Don't do anything.
+    public void onRightClick() {
+        if (!isObtained || usedThisTurn) {
+            return;
         }
-        if (AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) { // Only if you're in combat
-            usedThisTurn = true; // Set relic as "Used this turn"
-            flash(); // Flash
-            stopPulse(); // And stop the pulsing animation (which is started in atPreBattle() below)
+        if (AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+            usedThisTurn = true;
+            flash();
+            stopPulse();
 
-            AbstractDungeon.actionManager.addToBottom(new TalkAction(true, DESCRIPTIONS[1], 4.0f, 2.0f)); // Player speech bubble saying "YOU ARE MINE!" (See relic strings)
-            AbstractDungeon.actionManager.addToBottom(new SFXAction("MONSTER_COLLECTOR_DEBUFF")); // Sound Effect Action of The Collector Nails
-            AbstractDungeon.actionManager.addToBottom(new VFXAction( // Visual Effect Action of the nails applies on a random monster's position.
+            AbstractDungeon.actionManager.addToBottom(new TalkAction(true, DESCRIPTIONS[1], 4.0f, 2.0f));
+            AbstractDungeon.actionManager.addToBottom(new SFXAction("MONSTER_COLLECTOR_DEBUFF"));
+            AbstractDungeon.actionManager.addToBottom(new VFXAction(
                     new CollectorCurseEffect(AbstractDungeon.getRandomMonster().hb.cX, AbstractDungeon.getRandomMonster().hb.cY), 2.0F));
 
-            AbstractDungeon.actionManager.addToBottom(new EvokeOrbAction(1)); // Evoke your rightmost orb
+            AbstractDungeon.actionManager.addToBottom(new EvokeOrbAction(1));
         }
-        // See that talk action? It has DESCRIPTIONS[1] instead of just hard-coding "You are mine" inside.
-        // DO NOT HARDCODE YOUR STRINGS ANYWHERE, it's really bad practice to have "Strings" in your code:
+        
+        
 
-        /*
-         * 1. It's bad for if somebody likes your mod enough (or if you decide) to translate it.
-         * Having only the JSON files for translation rather than 15 different instances of "Dexterity" in some random cards is A LOT easier.
-         *
-         * 2. You don't have a centralised file for all strings for easy proof-reading. If you ever want to change a string
-         * you don't have to go through all your files individually/pray that a mass-replace doesn't screw something up.
-         *
-         * 3. Without hardcoded strings, editing a string doesn't require a compile, saving you time (unless you clean+package).
-         *
-         */
+        
     }
 
     public void atTurnStart() {
-        usedThisTurn = false;  // Resets the used this turn. You can remove this whole method to use a relic only once per combat rather than per turn.
-        beginLongPulse(); // Pulse while the player can click on it.
+        usedThisTurn = false;
+        beginLongPulse();
     }
 
     @Override
     public void atPreBattle() {
-        usedThisTurn = false; // Make sure usedThisTurn is set to false at the start of each combat.
-        beginLongPulse();     // Pulse while the player can click on it.
+        usedThisTurn = false;
+        beginLongPulse();
     }
 
     @Override
     public void onVictory() {
-        stopPulse(); // Don't keep pulsing past the victory screen/outside of combat.
+        stopPulse();
     }
 
-    // Description
+    
     @Override
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0];

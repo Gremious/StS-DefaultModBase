@@ -16,21 +16,17 @@ import static theDefault.DefaultMod.makeCardPath;
 
 public class DefaultRarePower extends AbstractDynamicCard {
 
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * In-Progress Form At the start of your turn, play a TOUCH.
-     */
+    
 
-    // TEXT DECLARATION 
+    
 
     public static final String ID = DefaultMod.makeID(DefaultRarePower.class.getSimpleName());
     public static final String IMG = makeCardPath("Power.png");
 
-    // /TEXT DECLARATION/
+    
 
 
-    // STAT DECLARATION 	
+    
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.SELF;
@@ -42,7 +38,7 @@ public class DefaultRarePower extends AbstractDynamicCard {
 
     private static final int MAGIC = 1;
 
-    // /STAT DECLARATION/
+    
 
 
     public DefaultRarePower() {
@@ -50,18 +46,18 @@ public class DefaultRarePower extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
 
-        this.tags.add(BaseModCardTags.FORM); //Tag your strike, defend and form cards so that they work correctly.
+        this.tags.add(BaseModCardTags.FORM);
 
     }
 
-    // Actions the card should do.
+    
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
                 new ApplyPowerAction(p, p, new RarePower(p, p, magicNumber), magicNumber));
     }
 
-    //Upgraded stats.
+    
     @Override
     public void upgrade() {
         if (!upgraded) {

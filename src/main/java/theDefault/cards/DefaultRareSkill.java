@@ -15,13 +15,9 @@ import static theDefault.DefaultMod.makeCardPath;
 
 public class DefaultRareSkill extends AbstractDynamicCard {
 
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * For Each Loop x2" "Apply 1 Vulnerable to all enemies, 2(3) times.
-     */
+    
 
-    // TEXT DECLARATION 
+    
 
     public static final String ID = DefaultMod.makeID(DefaultRareSkill.class.getSimpleName());
     public static final String IMG = makeCardPath("Skill.png");
@@ -29,10 +25,10 @@ public class DefaultRareSkill extends AbstractDynamicCard {
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
 
-    // /TEXT DECLARATION/
+    
 
     
-    // STAT DECLARATION 	
+    
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
@@ -46,7 +42,7 @@ public class DefaultRareSkill extends AbstractDynamicCard {
 
     private int AMOUNT = 1;
 
-    // /STAT DECLARATION/
+    
 
     
     public DefaultRareSkill() {
@@ -54,7 +50,7 @@ public class DefaultRareSkill extends AbstractDynamicCard {
         baseMagicNumber = magicNumber = AMOUNT;
     }
 
-    // Actions the card should do.
+    
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < TIMES; i++) {
@@ -66,7 +62,7 @@ public class DefaultRareSkill extends AbstractDynamicCard {
 
     }
 
-    //Upgraded stats.
+    
     @Override
     public void upgrade() {
         if (!upgraded) {

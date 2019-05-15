@@ -16,21 +16,17 @@ import static theDefault.DefaultMod.makeCardPath;
 
 public class DefaultUncommonAttack extends AbstractDynamicCard {
 
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * Big Slap Deal 10(15)) damage.
-     */
+    
 
-    // TEXT DECLARATION 
+    
 
     public static final String ID = DefaultMod.makeID(DefaultUncommonAttack.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
-    // /TEXT DECLARATION/
+    
 
 
-    // STAT DECLARATION 	
+    
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -41,7 +37,7 @@ public class DefaultUncommonAttack extends AbstractDynamicCard {
     private static final int DAMAGE = 10;
     private static final int UPGRADE_PLUS_DMG = 5;
 
-    // /STAT DECLARATION/
+    
 
 
     public DefaultUncommonAttack() {
@@ -49,7 +45,7 @@ public class DefaultUncommonAttack extends AbstractDynamicCard {
         baseDamage = DAMAGE;
     }
 
-    // Actions the card should do.
+    
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
 
@@ -60,7 +56,7 @@ public class DefaultUncommonAttack extends AbstractDynamicCard {
 
     }
 
-    //Upgraded stats.
+    
     @Override
     public void upgrade() {
         if (!upgraded) {

@@ -16,21 +16,17 @@ import static theDefault.DefaultMod.makeCardPath;
 
 public class DefaultAttackWithVariable extends AbstractDynamicCard {
 
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * Special Strike: Deal 7 (*) damage times the energy you currently have.
-     */
+    
 
-    // TEXT DECLARATION
+    
 
     public static final String ID = DefaultMod.makeID(DefaultAttackWithVariable.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
-    // /TEXT DECLARATION/
+    
 
 
-    // STAT DECLARATION
+    
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -43,7 +39,7 @@ public class DefaultAttackWithVariable extends AbstractDynamicCard {
 
     public int specialDamage;
 
-    // /STAT DECLARATION/
+    
 
     public DefaultAttackWithVariable() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
@@ -52,13 +48,13 @@ public class DefaultAttackWithVariable extends AbstractDynamicCard {
         isMultiDamage = true;
     }
 
-    // Actions the card should do.
+    
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        // Create an int which equals to your current energy.
+        
         int effect = EnergyPanel.totalCount;
 
-        // For each energy, create 1 damage action.
+        
         for (int i = 0; i < effect; i++) {
             AbstractDungeon.actionManager.addToBottom(
                     new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
@@ -66,7 +62,7 @@ public class DefaultAttackWithVariable extends AbstractDynamicCard {
         }
     }
 
-    // Upgraded stats.
+    
     @Override
     public void upgrade() {
         if (!upgraded) {

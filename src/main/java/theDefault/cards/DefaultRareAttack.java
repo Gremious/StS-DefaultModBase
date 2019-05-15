@@ -18,22 +18,18 @@ import static theDefault.DefaultMod.makeCardPath;
 
 public class DefaultRareAttack extends AbstractDynamicCard {
 
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * TOUCH Deal 30(35) damage.
-     */
+    
 
 
-    // TEXT DECLARATION 
+    
 
     public static final String ID = DefaultMod.makeID(DefaultRareAttack.class.getSimpleName());
     public static final String IMG = makeCardPath("Attack.png");
 
-    // /TEXT DECLARATION/
+    
 
 
-    // STAT DECLARATION 	
+    
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.ENEMY;
@@ -45,7 +41,7 @@ public class DefaultRareAttack extends AbstractDynamicCard {
     private static final int DAMAGE = 30;
     private static final int UPGRADE_PLUS_DMG = 5;
 
-    // /STAT DECLARATION/
+    
 
 
     public DefaultRareAttack() {
@@ -54,7 +50,7 @@ public class DefaultRareAttack extends AbstractDynamicCard {
     }
 
 
-    // Actions the card should do.
+    
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         if (m != null) {
@@ -66,7 +62,7 @@ public class DefaultRareAttack extends AbstractDynamicCard {
 
     }
 
-    //Upgraded stats.
+    
     @Override
     public void upgrade() {
         if (!upgraded) {

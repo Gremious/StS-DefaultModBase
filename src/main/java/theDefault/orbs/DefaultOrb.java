@@ -26,13 +26,13 @@ import static theDefault.DefaultMod.makeOrbPath;
 
 public class DefaultOrb extends AbstractOrb {
 
-    // Standard ID/Description
+    
     public static final String ORB_ID = DefaultMod.makeID("DefaultOrb");
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
     public static final String[] DESC = orbString.DESCRIPTION;
 
     private static final Texture IMG = TextureLoader.getTexture(makeOrbPath("default_orb.png"));
-    // Animation Rendering Numbers - You can leave these at default, or play around with them and see what they change.
+    
     private float vfxTimer = 1.0f;
     private float vfxIntervalMin = 0.1f;
     private float vfxIntervalMax = 0.4f;
@@ -50,14 +50,14 @@ public class DefaultOrb extends AbstractOrb {
 
         updateDescription();
 
-        angle = MathUtils.random(360.0f); // More Animation-related Numbers
+        angle = MathUtils.random(360.0f);
         channelAnimTimer = 0.5f;
     }
 
     @Override
-    public void updateDescription() { // Set the on-hover description of the orb
-        applyFocus(); // Apply Focus (Look at the next method)
-        description = DESC[0] + evokeAmount + DESC[1] + passiveAmount + DESC[2]; // Set the description
+    public void updateDescription() {
+        applyFocus();
+        description = DESC[0] + evokeAmount + DESC[1] + passiveAmount + DESC[2];
     }
 
     @Override
@@ -67,40 +67,40 @@ public class DefaultOrb extends AbstractOrb {
     }
 
     @Override
-    public void onEvoke() { // 1.On Orb Evoke
+    public void onEvoke() {
 
-        AbstractDungeon.actionManager.addToBottom( // 2.Damage all enemies
+        AbstractDungeon.actionManager.addToBottom(
                 new DamageAllEnemiesAction(AbstractDungeon.player, DamageInfo.createDamageMatrix(evokeAmount, true, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
-        // The damage matrix is how orb damage all enemies actions have to be assigned. For regular cards that do damage to everyone, check out cleave or whirlwind - they are a bit simpler.
+        
 
 
-        AbstractDungeon.actionManager.addToBottom(new SFXAction("TINGSHA")); // 3.And play a Jingle Sound.
-        // For a list of sound effects you can use, look under com.megacrit.cardcrawl.audio.SoundMaster - you can see the list of keys you can use there. As far as previewing what they sound like, open desktop-1.0.jar with something like 7-Zip and go to audio. Reference the file names provided. (Thanks fiiiiilth)
+        AbstractDungeon.actionManager.addToBottom(new SFXAction("TINGSHA"));
+        
 
     }
 
     @Override
-    public void onStartOfTurn() {// 1.At the start of your turn.
-        AbstractDungeon.actionManager.addToBottom(// 2.This orb will have a flare effect
+    public void onStartOfTurn() {
+        AbstractDungeon.actionManager.addToBottom(
                 new VFXAction(new OrbFlareEffect(this, OrbFlareEffect.OrbFlareColor.FROST), 0.1f));
 
-        AbstractDungeon.actionManager.addToBottom(// 3. And draw you cards.
+        AbstractDungeon.actionManager.addToBottom(
                 new DrawCardAction(AbstractDungeon.player, passiveAmount));
     }
 
     @Override
-    public void updateAnimation() {// You can totally leave this as is.
-        // If you want to create a whole new orb effect - take a look at conspire's Water Orb. It includes a custom sound, too!
+    public void updateAnimation() {
+        
         super.updateAnimation();
         angle += Gdx.graphics.getDeltaTime() * 45.0f;
         vfxTimer -= Gdx.graphics.getDeltaTime();
         if (vfxTimer < 0.0f) {
-            AbstractDungeon.effectList.add(new DarkOrbPassiveEffect(cX, cY)); // This is the purple-sparkles in the orb. You can change this to whatever fits your orb.
+            AbstractDungeon.effectList.add(new DarkOrbPassiveEffect(cX, cY));
             vfxTimer = MathUtils.random(vfxIntervalMin, vfxIntervalMax);
         }
     }
 
-    // Render the orb.
+    
     @Override
     public void render(SpriteBatch sb) {
         sb.setColor(new Color(1.0f, 1.0f, 1.0f, c.a / 2.0f));
@@ -115,12 +115,12 @@ public class DefaultOrb extends AbstractOrb {
 
 
     @Override
-    public void triggerEvokeAnimation() { // The evoke animation of this orb is the dark-orb activation effect.
+    public void triggerEvokeAnimation() {
         AbstractDungeon.effectsQueue.add(new DarkOrbActivateEffect(cX, cY));
     }
 
     @Override
-    public void playChannelSFX() { // When you channel this orb, the ATTACK_FIRE effect plays ("Fwoom").
+    public void playChannelSFX() {
         CardCrawlGame.sound.play("ATTACK_FIRE", 0.1f);
     }
 

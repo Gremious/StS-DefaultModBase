@@ -8,10 +8,10 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 
-// Thank you Blank The Evil!
 
-// Welcome to the utilities package. This package is for small utilities that make our life easier.
-// You honestly don't need to bother with this unless you want to know how we're loading the textures.
+
+
+
 
 
 public class TextureLoader {
