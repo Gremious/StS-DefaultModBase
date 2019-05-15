@@ -95,9 +95,7 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
     @Override
     public void update() {
         super.update();
-        
         if (!cardSelected && !AbstractDungeon.gridSelectScreen.selectedCards.isEmpty()) {
-            
             cardSelected = true;
             card = AbstractDungeon.gridSelectScreen.selectedCards.get(0);
             
@@ -113,16 +111,11 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
     
     public void onUseCard(AbstractCard targetCard, UseCardAction useCardAction) {
         boolean fullHandDialog = false;
-        
         for (Iterator<AbstractCard> it = AbstractDungeon.player.drawPile.group.iterator(); it.hasNext(); ) {
-            
             AbstractCard card = it.next();
             if (BottledPlaceholderField.inBottledPlaceholderField.get(card)) {
-                
-                
                 this.flash();
                 it.remove();
-                
                 if (AbstractDungeon.player.hand.size() < BaseMod.MAX_HAND_SIZE) {
                     if (AutoplayField.autoplay.get(card)) {
                         AbstractDungeon.actionManager.addToBottom(new AutoplayCardAction(card, AbstractDungeon.player.hand));

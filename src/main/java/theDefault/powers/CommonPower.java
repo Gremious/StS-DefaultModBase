@@ -57,8 +57,6 @@ public class CommonPower extends AbstractPower implements CloneablePowerInterfac
     public void atEndOfTurn(final boolean isPlayer) {
         int count = 0;
         for (final AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
-            
-            
             ++count;
         }
         

@@ -27,11 +27,9 @@ public class DefaultRarePower extends AbstractDynamicCard {
     private static final int MAGIC = 1;
     
     public DefaultRarePower() {
-        
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAGIC;
-        
-        this.tags.add(BaseModCardTags.FORM);
+        tags.add(BaseModCardTags.FORM);
     }
     
     @Override

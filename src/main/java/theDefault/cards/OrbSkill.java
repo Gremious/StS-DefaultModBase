@@ -35,7 +35,6 @@ public class OrbSkill extends AbstractDynamicCard {
     
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        
         AbstractDungeon.actionManager.addToBottom(new ChannelAction(new DefaultOrb()));
     }
     

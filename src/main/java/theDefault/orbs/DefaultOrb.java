@@ -39,16 +39,12 @@ public class DefaultOrb extends AbstractOrb {
     private static final float PI_4 = 12.566371f;
     
     public DefaultOrb() {
-        
         ID = ORB_ID;
         name = orbString.NAME;
         img = IMG;
-        
         evokeAmount = baseEvokeAmount = 1;
         passiveAmount = basePassiveAmount = 3;
-        
         updateDescription();
-        
         angle = MathUtils.random(360.0f);
         channelAnimTimer = 0.5f;
     }
@@ -67,10 +63,10 @@ public class DefaultOrb extends AbstractOrb {
     
     @Override
     public void onEvoke() {
-        
         AbstractDungeon.actionManager.addToBottom(
-                new DamageAllEnemiesAction(AbstractDungeon.player, DamageInfo.createDamageMatrix(evokeAmount, true, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
-        
+                new DamageAllEnemiesAction(AbstractDungeon.player,
+                        DamageInfo.createDamageMatrix(evokeAmount, true, true),
+                        DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.NONE));
         
         AbstractDungeon.actionManager.addToBottom(new SFXAction("TINGSHA"));
     }
@@ -79,7 +75,6 @@ public class DefaultOrb extends AbstractOrb {
     public void onStartOfTurn() {
         AbstractDungeon.actionManager.addToBottom(
                 new VFXAction(new OrbFlareEffect(this, OrbFlareEffect.OrbFlareColor.FROST), 0.1f));
-        
         AbstractDungeon.actionManager.addToBottom(
                 new DrawCardAction(AbstractDungeon.player, passiveAmount));
     }

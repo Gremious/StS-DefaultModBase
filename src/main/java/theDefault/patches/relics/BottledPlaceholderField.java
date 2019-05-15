@@ -11,11 +11,7 @@ public class BottledPlaceholderField {
     @SpirePatch(clz = AbstractCard.class, method = "makeStatEquivalentCopy")
     public static class MakeStatEquivalentCopy {
         public static AbstractCard Postfix(AbstractCard result, AbstractCard self) {
-            
-            
             inBottledPlaceholderField.set(result, inBottledPlaceholderField.get(self));
-            
-            
             return result;
         }
     }

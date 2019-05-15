@@ -43,7 +43,6 @@ public class IdentityCrisisEvent extends AbstractImageEvent {
             healthdamage = (int) ((float) AbstractDungeon.player.maxHealth * HEALTH_LOSS_PERCENTAGE_LOW_ASCENSION);
         }
         
-        
         imageEventText.setDialogOption(OPTIONS[0]);
         imageEventText.setDialogOption(OPTIONS[1] + healthdamage + OPTIONS[2]);
         imageEventText.setDialogOption(OPTIONS[3], new Apotheosis());
@@ -60,23 +59,14 @@ public class IdentityCrisisEvent extends AbstractImageEvent {
                         this.imageEventText.updateDialogOption(0, OPTIONS[5]);
                         this.imageEventText.clearRemainingOptions();
                         screenNum = 1;
-                        
-                        
                         AbstractRelic relicToAdd = RelicLibrary.starterList.get(AbstractDungeon.relicRng.random(RelicLibrary.starterList.size() - 1)).makeCopy();
-                        
-                        
                         AbstractDungeon.getCurrRoom().spawnRelicAndObtain((float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2), relicToAdd);
-                        
-                        
                         break;
                     case 1:
-                        
                         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.MED, false);
-                        
                         CardCrawlGame.sound.play("BLUNT_FAST");
                         AbstractDungeon.player.decreaseMaxHealth(healthdamage);
                         if (CardGroup.getGroupWithoutBottledCards(AbstractDungeon.player.masterDeck.getPurgeableCards()).size() > 0) {
-                            
                             AbstractDungeon.gridSelectScreen.open(
                                     CardGroup.getGroupWithoutBottledCards(
                                             AbstractDungeon.player.masterDeck.getPurgeableCards()),
@@ -87,14 +77,10 @@ public class IdentityCrisisEvent extends AbstractImageEvent {
                         this.imageEventText.updateDialogOption(0, OPTIONS[5]);
                         this.imageEventText.clearRemainingOptions();
                         screenNum = 1;
-                        
-                        
                         break;
                     case 2:
-                        
                         AbstractCard c = new Apotheosis().makeCopy();
                         AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(c, (float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2)));
-                        
                         this.imageEventText.updateBodyText(DESCRIPTIONS[3]);
                         this.imageEventText.updateDialogOption(0, OPTIONS[5]);
                         this.imageEventText.clearRemainingOptions();
@@ -102,7 +88,6 @@ public class IdentityCrisisEvent extends AbstractImageEvent {
                         break;
                     case 3:
                         imageEventText.loadImage("theDefaultResources/images/events/IdentityCrisisEvent2.png");
-                        
                         this.imageEventText.updateBodyText(DESCRIPTIONS[4]);
                         this.imageEventText.updateDialogOption(0, OPTIONS[5]);
                         this.imageEventText.clearRemainingOptions();

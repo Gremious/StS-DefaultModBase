@@ -36,10 +36,7 @@ public class DefaultCommonAttack extends CustomCard {
     
     public DefaultCommonAttack() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
-        
-        
         baseDamage = DAMAGE;
-        
         this.tags.add(BaseModCardTags.BASIC_STRIKE);
         this.tags.add(CardTags.STRIKE);
     }
@@ -47,11 +44,7 @@ public class DefaultCommonAttack extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(
-                
-                
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),
-                        
-                        
                         AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
     }
     

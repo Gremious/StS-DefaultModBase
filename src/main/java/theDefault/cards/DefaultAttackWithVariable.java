@@ -31,16 +31,12 @@ public class DefaultAttackWithVariable extends AbstractDynamicCard {
     public DefaultAttackWithVariable() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        
         isMultiDamage = true;
     }
     
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        
         int effect = EnergyPanel.totalCount;
-        
-        
         for (int i = 0; i < effect; i++) {
             AbstractDungeon.actionManager.addToBottom(
                     new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn),

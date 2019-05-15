@@ -31,7 +31,6 @@ public class DefaultSecondMagicNumberSkill extends AbstractDynamicCard {
     
     public DefaultSecondMagicNumberSkill() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        
         magicNumber = baseMagicNumber = VULNERABLE;
         defaultSecondMagicNumber = defaultBaseSecondMagicNumber = POISON;
     }

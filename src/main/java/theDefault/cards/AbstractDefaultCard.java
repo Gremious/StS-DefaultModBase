@@ -20,8 +20,6 @@ public abstract class AbstractDefaultCard extends CustomCard {
                                final CardTarget target) {
         
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
-        
-        
         isCostModified = false;
         isCostModifiedForTurn = false;
         isDamageModified = false;

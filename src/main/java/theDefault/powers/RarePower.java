@@ -37,7 +37,6 @@ public class RarePower extends AbstractPower implements CloneablePowerInterface 
         type = PowerType.DEBUFF;
         isTurnBased = false;
         
-        
         this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
         
@@ -48,13 +47,11 @@ public class RarePower extends AbstractPower implements CloneablePowerInterface 
     public void atStartOfTurn() {
         AbstractCard playCard = new DefaultRareAttack();
         AbstractMonster targetMonster = AbstractDungeon.getRandomMonster();
-        
         playCard.freeToPlayOnce = true;
         
         if (playCard.type != AbstractCard.CardType.POWER) {
             playCard.purgeOnUse = true;
         }
-        
         
         AbstractDungeon.actionManager.addToBottom(new QueueCardAction(playCard, targetMonster));
     }

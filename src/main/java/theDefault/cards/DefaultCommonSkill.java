@@ -27,7 +27,6 @@ public class DefaultCommonSkill extends AbstractDynamicCard {
     public DefaultCommonSkill() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseBlock = BLOCK;
-        
         this.tags.add(BaseModCardTags.BASIC_DEFEND);
     }
     
