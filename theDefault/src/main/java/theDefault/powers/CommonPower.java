@@ -18,7 +18,7 @@ import theDefault.util.TextureLoader;
 
 import static theDefault.DefaultMod.makePowerPath;
 
-//Gain 1 dex for the turn for each card played.
+// Gain 1 dex for the turn for each card played.
 
 public class CommonPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
