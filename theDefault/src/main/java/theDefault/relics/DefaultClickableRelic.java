@@ -22,7 +22,7 @@ public class DefaultClickableRelic extends CustomRelic implements ClickableRelic
      * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
      * StSLib for Clickable Relics
      *
-     * At the start of each combat, gain 1 strenght (i.e. Varja)
+     * Usable once per turn. Right clikc: Evoke your rightmost orb.
      */
 
     // ID, images, text.
