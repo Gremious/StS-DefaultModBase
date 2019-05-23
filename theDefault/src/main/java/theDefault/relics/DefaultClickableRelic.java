@@ -22,7 +22,7 @@ public class DefaultClickableRelic extends CustomRelic implements ClickableRelic
      * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
      * StSLib for Clickable Relics
      *
-     * Usable once per turn. Right clikc: Evoke your rightmost orb.
+     * Usable once per turn. Right click: Evoke your rightmost orb.
      */
 
     // ID, images, text.
