@@ -1,5 +1,11 @@
 # StS-Default Mod Base
 
+***
+
+This branch includes a commented 'Challenge the Spire' challenge implementation. 
+
+***
+
 Welcome to this extremely over-commented Slay the Spire modding base. 
 
 This is a minimal "default clean slate" for creating Slay the spire mods. 
