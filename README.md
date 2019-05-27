@@ -1,7 +1,5 @@
 # StS-Default Mod Base
 
-***
-
 This branch includes a commented 'Challenge the Spire' challenge implementation. 
 
 ***
