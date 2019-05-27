@@ -1,7 +1,6 @@
 package theDefault;
 
 import basemod.BaseMod;
-import basemod.ModLabel;
 import basemod.ModLabeledToggleButton;
 import basemod.ModPanel;
 import basemod.helpers.RelicType;
@@ -14,12 +13,18 @@ import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.cards.CardGroup;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.dungeons.TheCity;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ModHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theDefault.cards.*;
@@ -75,17 +80,18 @@ public class DefaultMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
-        PostInitializeSubscriber {
+        PostInitializeSubscriber,
+        PostCreateStartingDeckSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(DefaultMod.class.getName());
     private static String modID;
-
+    
     // Mod-settings settings. This is if you want an on/off savable button
     public static Properties theDefaultDefaultSettings = new Properties();
     public static final String ENABLE_PLACEHOLDER_SETTINGS = "enablePlaceholder";
     public static boolean enablePlaceholder = true; // The boolean we'll be setting on/off (true/false)
-
+    
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "Default Mod";
     private static final String AUTHOR = "Gremious"; // And pretty soon - You!
@@ -108,7 +114,7 @@ public class DefaultMod implements
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
-  
+    
     // Card backgrounds - The actual rectangular card.
     private static final String ATTACK_DEFAULT_GRAY = "theDefaultResources/images/512/bg_attack_default_gray.png";
     private static final String SKILL_DEFAULT_GRAY = "theDefaultResources/images/512/bg_skill_default_gray.png";
@@ -183,7 +189,7 @@ public class DefaultMod implements
          | (__| __ |/ _ \ | .` | (_ | _|  | |\/| | (_) | |) |  | | | |) |
           \___|_||_/_/ \_\|_|\_|\___|___| |_|  |_|\___/|___/  |___||___(_)
       */
-      
+        
         setModID("theDefault");
         // cool
         // TODO: NOW READ THIS!!!!!!!!!!!!!!!:
@@ -224,7 +230,6 @@ public class DefaultMod implements
             e.printStackTrace();
         }
         logger.info("Done adding mod settings");
-        
     }
     
     // ====== NO EDIT AREA ======
@@ -270,7 +275,6 @@ public class DefaultMod implements
     
     // ====== YOU CAN EDIT AGAIN ======
     
-    
     @SuppressWarnings("unused")
     public static void initialize() {
         logger.info("========================= Initializing Default Mod. Hi. =========================");
@@ -314,24 +318,25 @@ public class DefaultMod implements
                 350.0f, 700.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
                 enablePlaceholder, // Boolean it uses
                 settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
+                (label) -> {
+                }, // thing??????? idk
                 (button) -> { // The actual button:
-            
-            enablePlaceholder = button.enabled; // The boolean true/false will be whether the button is enabled or not
-            try {
-                // And based on that boolean, set the settings and save them
-                SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings);
-                config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
-                config.save();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+                    
+                    enablePlaceholder = button.enabled; // The boolean true/false will be whether the button is enabled or not
+                    try {
+                        // And based on that boolean, set the settings and save them
+                        SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", theDefaultDefaultSettings);
+                        config.setBool(ENABLE_PLACEHOLDER_SETTINGS, enablePlaceholder);
+                        config.save();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
         
         settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
         
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
-
+        
         
         // =============== EVENTS =================
         
@@ -483,6 +488,35 @@ public class DefaultMod implements
     }
     
     // ================ /LOAD THE TEXT/ ===================
+    
+    
+    // ================ LOAD THE CUSTOM CHALLENGES ===================
+    
+    public static boolean isCustomModActive(String ID) { // Checks whether the custom challenge is currently active.
+        return (CardCrawlGame.trial != null && CardCrawlGame.trial.dailyModIDs().contains(ID)) || ModHelper.isModEnabled(ID);
+    }
+    
+    private static void addTouches(int number) { // A method that takes in an number, and add that many TOUCH cards to our deck.
+        for (int i = 0; i < number; i++) {
+            AbstractDungeon.effectsQueue.add(new ShowCardAndObtainEffect(new DefaultRareAttack(), (float) (Settings.WIDTH / 2), (float) (Settings.HEIGHT / 2)));
+        }
+    }
+    
+    @Override
+    public void receivePostCreateStartingDeck(AbstractPlayer.PlayerClass playerClass, CardGroup cardGroup) { // After our starter deck is created
+        if (isCustomModActive("theDefault:placeholderChallenge")) { // If our challenge is active
+            if (isCustomModActive("challengethespire:Bronze Difficulty")) { // On bronze difficulty
+                addTouches(10); // Add 10 touch cards to our master deck.
+            } else if (isCustomModActive("challengethespire:Silver Difficulty")) {// The rest are self-explanatory.
+                addTouches(20);
+            } else if (isCustomModActive("challengethespire:Gold Difficulty") || isCustomModActive("challengethespire:Platinum Difficulty")) {
+                addTouches(30);
+            }
+        }
+    }
+    
+    // ================ /LOAD THE CUSTOM CHALLENGES/ ===================
+    
     
     // ================ LOAD THE KEYWORDS ===================
     
