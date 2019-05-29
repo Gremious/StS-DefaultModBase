@@ -1,7 +1,10 @@
 # StS-Default Mod Base
 
-This branch has an exmaple implemention of the Archtype API for a custom character (the Default). Follow it's [Wiki](https://github.com/Gremious/StS-ArchetypeAPI/wiki) for an in-depth explanation. The locations you are interested in are
-`theDefaultResources/archetypeAPI` and `recievePostInitialise()` in the main `DefaultMod` file.
+This branch has an exmaple implemention of the Archtype API for a custom character (the Default).
+
+Follow it's [Wiki](https://github.com/Gremious/StS-ArchetypeAPI/wiki) for an in-depth explanation.
+
+The locations you are interested in are `theDefaultResources/archetypeAPI` and `recievePostInitialise()` in the main `DefaultMod` file.
 
 ***
 
