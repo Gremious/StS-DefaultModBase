@@ -1,5 +1,9 @@
 # StS-Default Mod Base
 
+This branch has an exmaple implemention of the Archtype API for a custom character (the Default)
+
+***
+
 Welcome to this extremely over-commented Slay the Spire modding base. 
 
 This is a minimal "default clean slate" for creating Slay the spire mods. 
