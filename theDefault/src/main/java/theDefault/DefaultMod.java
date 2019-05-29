@@ -11,6 +11,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
@@ -39,6 +40,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
+
+import static archetypeAPI.ArchetypeAPI.loadArchetypes;
+import static archetypeAPI.ArchetypeAPI.setCharacterDefaultNumOfCards;
 
 //TODO: DON'T MASS RENAME/REFACTOR
 //TODO: DON'T MASS RENAME/REFACTOR
@@ -343,6 +347,17 @@ public class DefaultMod implements
         
         // =============== /EVENTS/ =================
         logger.info("Done loading badge Image and mod options");
+    
+        
+        // =============== ARCHETYPE API =================
+        
+        if (Loader.isModLoaded("archetypeapi")) {
+            // The default has 12 cards, but we select 10 because the starter/special ones don't count.
+            setCharacterDefaultNumOfCards(TheDefault.Enums.THE_DEFAULT, 10);
+            loadArchetypes("theDefaultResources/archetypeAPI/");
+        }
+        
+        // =============== /ARCHETYPE API/ =================
     }
     
     // =============== / POST-INITIALIZE/ =================

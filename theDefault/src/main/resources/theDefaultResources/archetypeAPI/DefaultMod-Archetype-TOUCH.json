@@ -1,0 +1,18 @@
+{
+  "CHARACTER": "THE_DEFAULT",
+  "NAME": "Touch",
+  "ARCHETYPE_NAME": "theDefault:Touch",
+  "CARD_TYPE": "SKILL",
+  "IMG": "green/skill/malaise",
+  "TAGS": [
+    "SINGLE"
+  ],
+  "FEATURES": [
+    "theDefault:DefaultRareAttack"
+  ],
+  "CARD_IDS": [
+    "theDefault:DefaultRareAttack",
+    "theDefault:DefaultRareSkill",
+    "theDefault:DefaultRarePower"
+  ]
+}

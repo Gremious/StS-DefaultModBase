@@ -1,0 +1,21 @@
+{
+  "CHARACTER": "THE_DEFAULT",
+  "NAME": "Keyword",
+  "ARCHETYPE_NAME": "theDefault:Keyword",
+  "CARD_TYPE": "POWER",
+  "IMG": "theDefaultResources/images/cards/Power.png",
+  "TAGS": [
+    "SINGLE"
+  ],
+  "FEATURES": [
+    "theDefault:DefaultCommonPower",
+    "theDefault:DefaultUncommonSkill",
+    "theDefault:DefaultUncommonPower"
+  ],
+  "CARD_IDS": [
+    "theDefault:DefaultCommonSkill",
+    "theDefault:DefaultCommonPower",
+    "theDefault:DefaultUncommonSkill",
+    "theDefault:DefaultUncommonPower"
+  ]
+}

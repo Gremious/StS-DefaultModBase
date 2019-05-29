@@ -51,6 +51,14 @@
             <systemPath>${Steam.path}/workshop/content/646570/1609158507/StSLib.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
         </dependency>
+        <dependency>
+            <groupId>archetypeapi</groupId>
+            <artifactId>ArchetypeAPI</artifactId>
+            <version>2.0.0</version>
+            <scope>system</scope>
+            <systemPath>${Steam.path}/common/SlayTheSpire/mods/ArchetypeAPI.jar</systemPath>
+            <!--<systemPath>${basedir}/../lib/ArchetypeAPI.jar</systemPath>-->
+        </dependency>
     </dependencies>
 
 

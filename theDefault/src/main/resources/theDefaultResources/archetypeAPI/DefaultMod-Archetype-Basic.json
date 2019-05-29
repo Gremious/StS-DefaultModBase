@@ -1,0 +1,23 @@
+{
+  "CHARACTER": "THE_DEFAULT",
+  "NAME": "Basic",
+  "ARCHETYPE_NAME": "theDefault:Basic",
+  "CARD_TYPE": "SKILL",
+  "IMG": "theDefaultResources/images/cards/Skill.png",
+  "TAGS": [
+    "SINGLE",
+    "BASIC"
+  ],
+  "FEATURES": [
+    "theDefault:DefaultUncommonAttack",
+    "theDefault:OrbSkill",
+    "theDefault:DefaultRareSkill"
+  ],
+  "CARD_IDS": [
+    "theDefault:DefaultUncommonAttack",
+    "theDefault:DefaultRareSkill",
+    "theDefault:OrbSkill",
+    "theDefault:DefaultSecondMagicNumberSkill",
+    "theDefault:DefaultAttackWithVariable"
+  ]
+}
