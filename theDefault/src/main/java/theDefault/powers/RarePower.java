@@ -3,7 +3,7 @@ package theDefault.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.utility.QueueCardAction;
+import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -60,7 +60,7 @@ public class RarePower extends AbstractPower implements CloneablePowerInterface 
         // as it's just 1 line directly under. You can remove them, if you want. In fact, you can even put it all on 1 line:
         //  if (playCard.type != AbstractCard.CardType.POWER) playCard.purgeOnUse = true; - works identically
 
-        AbstractDungeon.actionManager.addToBottom(new QueueCardAction(playCard, targetMonster)); // Play the card on the target.
+        AbstractDungeon.actionManager.addToBottom(new NewQueueCardAction(playCard, targetMonster)); // Play the card on the target.
     }
 
     @Override
