@@ -12,7 +12,7 @@ If you're new to modding, you basically *need* the BaseMod wiki for whatever you
 
 https://github.com/daviscook477/BaseMod/wiki
 
-This base itself isn't going to help you code or anything!! Nor does it provide basic Java learning - if you need that go through the codeacademy free java course! While I have been putting comments noting what does what, this is just a nice starting point if you need a place to start learning from that's not an absolute empty canvas, or an overly-complicated, difficult to understand mod. But you still need to learn how the in-game code works and how to piece things together on your own. (i.e. this base will show you where to put the code for double-tap, but not what it is/how to write it. Look up the actual cards and backward-engineer them for that.)
+This base itself isn't going to help you code or anything!! Nor does it provide basic Java learning - if you need that go through the codeacademy free java course! While I have been putting comments about what does what, this is just a nice starting point if you need a place to start learning from that's not an absolute empty canvas, or an overly-complicated, difficult to understand mod. But you still need to learn how the in-game code works and how to piece things together on your own. (i.e. this base will show you where to put the code for double-tap, but not what it is/how to write it. Look up the actual cards and backward-engineer them for that.)
 
 Feel free to use this in any way you like, of course. 
 
