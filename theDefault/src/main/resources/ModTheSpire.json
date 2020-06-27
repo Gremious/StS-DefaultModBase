@@ -2,6 +2,7 @@
   "modid": "${project.artifactId}",
   "name": "${project.name}",
   "author_list": ["Gremious"],
+  "credits": "Basemod, ModTheSpire",
   "description": "${project.description}",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
@@ -9,4 +10,3 @@
   "dependencies": ["basemod", "stslib"],
   "update_json": ""
 }
-
