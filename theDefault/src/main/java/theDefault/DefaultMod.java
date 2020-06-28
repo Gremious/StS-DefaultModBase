@@ -479,7 +479,7 @@ public class DefaultMod implements
         BaseMod.loadCustomStringsFile(OrbStrings.class,
                 getModID() + "Resources/localization/eng/DefaultMod-Orb-Strings.json");
         
-        logger.info("Done editing strings");
+        logger.info("Done edittting strings");
     }
     
     // ================ /LOAD THE TEXT/ ===================
