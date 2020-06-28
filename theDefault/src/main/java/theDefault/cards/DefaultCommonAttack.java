@@ -65,7 +65,7 @@ public class DefaultCommonAttack extends CustomCard {
     // Hey want a second damage/magic/block/unique number??? Great!
     // Go check out DefaultAttackWithVariable and theDefault.variable.DefaultCustomVariable
     // that's how you get your own custom variable that you can use for anything you like.
-    // Feel free to explore other mods to see what variabls they personally have and create your own ones.
+    // Feel free to explore other mods to see what variables they personally have and create your own ones.
 
     // /STAT DECLARATION/
 
@@ -77,7 +77,7 @@ public class DefaultCommonAttack extends CustomCard {
 
         baseDamage = DAMAGE;
 
-        this.tags.add(BaseModCardTags.BASIC_STRIKE); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.
+        this.tags.add(CardTags.STARTER_STRIKE); //Tag your strike, defend and form (Wraith form, Demon form, Echo form, etc.) cards so that they function correctly.
         this.tags.add(CardTags.STRIKE);
     }
 

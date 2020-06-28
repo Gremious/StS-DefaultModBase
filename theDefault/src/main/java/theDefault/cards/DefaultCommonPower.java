@@ -47,7 +47,7 @@ public class DefaultCommonPower extends AbstractDynamicCard {
     // Hey want a second magic/damage/block/unique number??? Great!
     // Go check out DefaultAttackWithVariable and theDefault.variable.DefaultCustomVariable
     // that's how you get your own custom variable that you can use for anything you like.
-    // Feel free to explore other mods to see what variabls they personally have and create your own ones.
+    // Feel free to explore other mods to see what variables they personally have and create your own ones.
 
     // /STAT DECLARATION/
 
