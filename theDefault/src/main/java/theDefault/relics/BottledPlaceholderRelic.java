@@ -31,7 +31,7 @@ public class BottledPlaceholderRelic extends CustomRelic implements CustomBottle
     /*
      * https://github.com/daviscook477/BaseMod/wiki/Custom-Savable
      *
-     * Choose a card. Whenever you take play any card, draw the chosen card.
+     * Choose a card. Whenever you play any card, draw the chosen card.
      */
 
     // BasemodWiki Says: "When you need to store a value on a card or relic between runs that isn't a relic's counter value
