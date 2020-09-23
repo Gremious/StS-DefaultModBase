@@ -1,5 +1,6 @@
 package theDefault.cards;
 
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -14,6 +15,7 @@ import theDefault.characters.TheDefault;
 import static theDefault.DefaultMod.makeCardPath;
 
 // public class ${NAME} extends AbstractDynamicCard
+@AutoAdd.Ignore // Remove this line when you make a template. Refer to https://github.com/daviscook477/BaseMod/wiki/AutoAdd if you want to know what it does.
 public class CardTemplate extends AbstractDynamicCard {
 
     /*

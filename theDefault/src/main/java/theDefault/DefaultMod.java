@@ -1,9 +1,6 @@
 package theDefault;
 
-import basemod.BaseMod;
-import basemod.ModLabel;
-import basemod.ModLabeledToggleButton;
-import basemod.ModPanel;
+import basemod.*;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
@@ -271,7 +268,6 @@ public class DefaultMod implements
     // ====== YOU CAN EDIT AGAIN ======
     
     
-    @SuppressWarnings("unused")
     public static void initialize() {
         logger.info("========================= Initializing Default Mod. Hi. =========================");
         DefaultMod defaultmod = new DefaultMod();
@@ -401,45 +397,27 @@ public class DefaultMod implements
         
         logger.info("Adding cards");
         // Add the cards
-        // Don't comment out/delete these cards (yet). You need 1 of each type and rarity (technically) for your game not to crash
+        // Don't delete these default cards yet. You need 1 of each type and rarity (technically) for your game not to crash
         // when generating card rewards/shop screen items.
-        
-        BaseMod.addCard(new OrbSkill());
-        BaseMod.addCard(new DefaultSecondMagicNumberSkill());
-        BaseMod.addCard(new DefaultCommonAttack());
-        BaseMod.addCard(new DefaultAttackWithVariable());
-        BaseMod.addCard(new DefaultCommonSkill());
-        BaseMod.addCard(new DefaultCommonPower());
-        BaseMod.addCard(new DefaultUncommonSkill());
-        BaseMod.addCard(new DefaultUncommonAttack());
-        BaseMod.addCard(new DefaultUncommonPower());
-        BaseMod.addCard(new DefaultRareAttack());
-        BaseMod.addCard(new DefaultRareSkill());
-        BaseMod.addCard(new DefaultRarePower());
-        
-        logger.info("Making sure the cards are unlocked.");
-        // Unlock the cards
-        // This is so that they are all "seen" in the library, for people who like to look at the card list
-        // before playing your mod.
-        UnlockTracker.unlockCard(OrbSkill.ID);
-        UnlockTracker.unlockCard(DefaultSecondMagicNumberSkill.ID);
-        UnlockTracker.unlockCard(DefaultCommonAttack.ID);
-        UnlockTracker.unlockCard(DefaultAttackWithVariable.ID);
-        UnlockTracker.unlockCard(DefaultCommonSkill.ID);
-        UnlockTracker.unlockCard(DefaultCommonPower.ID);
-        UnlockTracker.unlockCard(DefaultUncommonSkill.ID);
-        UnlockTracker.unlockCard(DefaultUncommonAttack.ID);
-        UnlockTracker.unlockCard(DefaultUncommonPower.ID);
-        UnlockTracker.unlockCard(DefaultRareAttack.ID);
-        UnlockTracker.unlockCard(DefaultRareSkill.ID);
-        UnlockTracker.unlockCard(DefaultRarePower.ID);
-        
+
+        // This method automatically adds any cards inside the cards package, found under yourModName.cards.
+        // For more specific info, including how to exclude classes from being added:
+        // https://github.com/daviscook477/BaseMod/wiki/AutoAdd
+
+        // The ID for this function isn't actually your modid as used for prefixes/by the getModID() method.
+        // It's the mod id you give MTS in ModTheSpire.json - by default your artifact ID in your pom.xml
+
+        new AutoAdd("DefaultMod")
+            .packageFilter("theDefault.cards")
+            .setDefaultSeen(true)
+            .cards();
+
+        // .setDefaultSeen(true) unlocks the cards
+        // This is so that they are all "seen" in the library,
+        // for people who like to look at the card list before playing your mod
+
         logger.info("Done adding cards!");
     }
-    
-    // There are better ways to do this than listing every single individual card, but I do not want to complicate things
-    // in a "tutorial" mod. This will do and it's completely ok to use. If you ever want to clean up and
-    // shorten all the imports, go look take a look at other mods, such as Hubris.
     
     // ================ /ADD CARDS/ ===================
     
