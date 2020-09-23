@@ -2,7 +2,6 @@ package theDefault.cards;
 import basemod.AutoAdd;
 import basemod.abstracts.CustomCard;
 
-@AutoAdd.Ignore
 public abstract class AbstractDefaultCard extends CustomCard {
 
     // Custom Abstract Cards can be a bit confusing. While this is a simple base for simply adding a second magic number,

@@ -2,7 +2,7 @@
   "modid": "YourNameHere:${project.artifactId}",
   "name": "${project.name}",
   "author_list": ["NotGremious"],
-  "credits": "Basemod, ModTheSpire",
+  "credits": "Basemod, ModTheSpire, #modding",
   "description": "${project.description}",
   "version": "${project.version}",
   "sts_version": "${SlayTheSpire.version}",
