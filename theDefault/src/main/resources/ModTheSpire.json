@@ -1,5 +1,5 @@
 {
-  "modid": "${project.artifactId}",
+  "modid": "Gremious:${project.artifactId}",
   "name": "${project.name}",
   "author_list": ["Gremious"],
   "credits": "Basemod, ModTheSpire",
