@@ -414,7 +414,7 @@ public class DefaultMod implements
         // The ID for this function isn't actually your modid as used for prefixes/by the getModID() method.
         // It's the mod id you give MTS in ModTheSpire.json - by default your artifact ID in your pom.xml
 
-        new AutoAdd("Gremious:DefaultMod")
+        new AutoAdd("YourNameHere:DefaultMod")
             .packageFilter("theDefault.cards")
             .setDefaultSeen(true)
             .cards();
