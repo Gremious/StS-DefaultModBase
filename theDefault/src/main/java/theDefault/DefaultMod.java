@@ -365,7 +365,14 @@ public class DefaultMod implements
     @Override
     public void receiveEditRelics() {
         logger.info("Adding relics");
-        
+
+        // Take a look at https://github.com/daviscook477/BaseMod/wiki/AutoAdd
+        // as well as
+        // https://github.com/kiooeht/Bard/blob/e023c4089cc347c60331c78c6415f489d19b6eb9/src/main/java/com/evacipated/cardcrawl/mod/bard/BardMod.java#L319
+        // for reference as to how to turn this into an "Auto-Add" rather than having to list every relic individually.
+        // Of note is that the bard mod uses it's own custom relic class (not dissimilar to our AbstractDefaultCard class for cards) that adds the 'color' field,
+        // in order to automatically differentiate which pool to add the relic too.
+
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
         BaseMod.addRelicToCustomPool(new PlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
         BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), TheDefault.Enums.COLOR_GRAY);
