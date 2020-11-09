@@ -19,19 +19,20 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
+
+import basemod.abstracts.CustomOrb;
 import theDefault.DefaultMod;
 import theDefault.util.TextureLoader;
 
 import static theDefault.DefaultMod.makeOrbPath;
 
-public class DefaultOrb extends AbstractOrb {
+public class DefaultOrb extends CustomOrb {
 
     // Standard ID/Description
     public static final String ORB_ID = DefaultMod.makeID("DefaultOrb");
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
     public static final String[] DESC = orbString.DESCRIPTION;
 
-    private static final Texture IMG = TextureLoader.getTexture(makeOrbPath("default_orb.png"));
     // Animation Rendering Numbers - You can leave these at default, or play around with them and see what they change.
     private float vfxTimer = 1.0f;
     private float vfxIntervalMin = 0.1f;
@@ -40,13 +41,7 @@ public class DefaultOrb extends AbstractOrb {
     private static final float PI_4 = 12.566371f;
 
     public DefaultOrb() {
-
-        ID = ORB_ID;
-        name = orbString.NAME;
-        img = IMG;
-
-        evokeAmount = baseEvokeAmount = 1;
-        passiveAmount = basePassiveAmount = 3;
+        super(ORB_ID, orbString.NAME, 3, 1, "DefaultOrb's evoke", "DefaultOrb's passive", makeOrbPath("default_orb.png"));
 
         updateDescription();
 
