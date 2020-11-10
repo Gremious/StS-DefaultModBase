@@ -1,5 +1,5 @@
 {
-  "modid": "YourNameHere:${project.artifactId}",
+  "modid": "${project.artifactId}",
   "name": "${project.name}",
   "author_list": ["NotGremious"],
   "credits": "Basemod, ModTheSpire, #modding",
