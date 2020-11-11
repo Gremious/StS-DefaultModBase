@@ -1,5 +1,6 @@
 package theDefault.cards;
 
+import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -10,6 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import theDefault.DefaultMod;
 import theDefault.characters.TheDefault;
 
@@ -23,7 +25,7 @@ import static theDefault.DefaultMod.makeCardPath;
 // bam - you can have a second magic number in that card (Learn Java inheritance if you want to know how that works).
 // Abstract Dynamic Card builds up on Abstract Default Card even more and makes it so that you don't need to add
 // the NAME and the DESCRIPTION into your card - it'll get it automatically. Of course, this functionality could have easily
-// Been added to the default card rather than creating a new Dynamic one, but was done so to deliberately.
+// Been added to the default card rather than creating a new Dynamic one, but was done so to deliberately to showcase custom cards/inheritance a bit more.
 public class DefaultCommonAttack extends CustomCard {
 
     /*
@@ -68,6 +70,17 @@ public class DefaultCommonAttack extends CustomCard {
     // Feel free to explore other mods to see what variables they personally have and create your own ones.
 
     // /STAT DECLARATION/
+
+    // IMPORTANT NOTE: If you add parameters to your constructor, you'll crash the auto-add cards with a
+    // `NoSuchMethodException` because it except a constructor with no params.
+    // (If you don't know what a constructor or params are or what not pls google, java questions = java study)
+    // You have two option:
+    // 1. Create a new constructor with empty parameters call your custom one with default params in it
+    // 2. Mark the card with @AutoAdd.NotSeen (https://github.com/daviscook477/BaseMod/wiki/AutoAdd) to prevent it from
+    // being auto-add it, and then load it manually with
+    // BaseMod.addCard(new DefaultCommonAttack());
+    // UnlockTracker.unlockCard(DefaultCommonAttack.ID);
+    // in your main class, in the receiveEditCards() method
 
     public DefaultCommonAttack() {
         super(ID, NAME, IMG, COST, DESCRIPTION, TYPE, COLOR, RARITY, TARGET);
