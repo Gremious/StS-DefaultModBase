@@ -16,7 +16,7 @@
         <ModTheSpire.version>3.8.0</ModTheSpire.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!--CHANGE THIS TO YOUR STEAM INSTALLATION-->
-        <Steam.path>D:\Games\Steam\steamapps</Steam.path>
+        <Steam.path>E:\Games\Steam\steamapps</Steam.path>
     </properties>
 
     <dependencies>

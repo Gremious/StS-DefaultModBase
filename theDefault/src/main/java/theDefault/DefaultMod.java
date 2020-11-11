@@ -181,7 +181,7 @@ public class DefaultMod implements
           \___|_||_/_/ \_\|_|\_|\___|___| |_|  |_|\___/|___/  |___||___(_)
       */
       
-        setModID("theDefault");
+        setModID("theDefaultDev");
         // cool
         // TODO: NOW READ THIS!!!!!!!!!!!!!!!:
         
