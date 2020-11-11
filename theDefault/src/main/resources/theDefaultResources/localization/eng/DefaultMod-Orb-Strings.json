@@ -5,7 +5,8 @@
       "#yPassive: At the start of your turn, draw #b",
       " card.",
       " cards.",
-      "NL #yEvoke: Deal #b damage to all enemies."
+      " NL #yEvoke: Deal #b",
+      " damage to all enemies."
     ]
   }
 }

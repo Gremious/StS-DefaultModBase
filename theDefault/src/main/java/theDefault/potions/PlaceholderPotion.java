@@ -11,8 +11,9 @@ import com.megacrit.cardcrawl.powers.LoseStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
-public class PlaceholderPotion extends AbstractPotion {
+import basemod.abstracts.CustomPotion;
 
+public class PlaceholderPotion extends CustomPotion {
 
     public static final String POTION_ID = theDefault.DefaultMod.makeID("PlaceholderPotion");
     private static final PotionStrings potionStrings = CardCrawlGame.languagePack.getPotionString(POTION_ID);

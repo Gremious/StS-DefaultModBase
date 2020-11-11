@@ -19,19 +19,23 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
+
+import basemod.abstracts.CustomOrb;
 import theDefault.DefaultMod;
 import theDefault.util.TextureLoader;
 
 import static theDefault.DefaultMod.makeOrbPath;
 
-public class DefaultOrb extends AbstractOrb {
+public class DefaultOrb extends CustomOrb {
 
     // Standard ID/Description
     public static final String ORB_ID = DefaultMod.makeID("DefaultOrb");
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
-    public static final String[] DESC = orbString.DESCRIPTION;
+    public static final String[] DESCRIPTIONS = orbString.DESCRIPTION;
 
-    private static final Texture IMG = TextureLoader.getTexture(makeOrbPath("default_orb.png"));
+    private static final int PASSIVE_AMOUNT = 3;
+    private static final int EVOKE_AMOUNT = 1;
+
     // Animation Rendering Numbers - You can leave these at default, or play around with them and see what they change.
     private float vfxTimer = 1.0f;
     private float vfxIntervalMin = 0.1f;
@@ -40,13 +44,12 @@ public class DefaultOrb extends AbstractOrb {
     private static final float PI_4 = 12.566371f;
 
     public DefaultOrb() {
-
-        ID = ORB_ID;
-        name = orbString.NAME;
-        img = IMG;
-
-        evokeAmount = baseEvokeAmount = 1;
-        passiveAmount = basePassiveAmount = 3;
+        // The passive/evoke description we pass in here, specifically, don't matter
+        // You can ctrl+click on CustomOrb from the `extends CustomOrb` above.
+        // You'll see below we override CustomOrb's updateDescription function with our own, and also, that's where the passiveDescription and evokeDescription
+        // parameters are used. If your orb doesn't use any numbers/doesn't change e.g "Evoke: shuffle your draw pile."
+        // then you don't need to override the update description method and can just pass in the parameters here.
+        super(ORB_ID, orbString.NAME, PASSIVE_AMOUNT, EVOKE_AMOUNT, DESCRIPTIONS[1], DESCRIPTIONS[3], makeOrbPath("default_orb.png"));
 
         updateDescription();
 
@@ -57,7 +60,11 @@ public class DefaultOrb extends AbstractOrb {
     @Override
     public void updateDescription() { // Set the on-hover description of the orb
         applyFocus(); // Apply Focus (Look at the next method)
-        description = DESC[0] + evokeAmount + DESC[1] + passiveAmount + DESC[2]; // Set the description
+        if (passiveAmount == 1) {
+            description = DESCRIPTIONS[0] + passiveAmount + DESCRIPTIONS[1] + DESCRIPTIONS[3] + evokeAmount + DESCRIPTIONS[4];
+        } else if (passiveAmount > 1) {
+            description = DESCRIPTIONS[0] + passiveAmount + DESCRIPTIONS[2] + DESCRIPTIONS[3] + evokeAmount + DESCRIPTIONS[4];
+        }
     }
 
     @Override
