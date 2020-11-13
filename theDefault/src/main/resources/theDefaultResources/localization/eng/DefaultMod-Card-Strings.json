@@ -1,7 +1,7 @@
 {
   "theDefault:DefaultCommonAttack": {
     "NAME": "Strike",
-    "DESCRIPTION": "Deal !D! Damage. NL [#0000ff]This[] [#ff0000]Is[] [#ffff00]How[] [#88888]color[] [#ff00ff]works.[]"
+    "DESCRIPTION": "Deal !D! damage. NL [#0000ff]This[] [#ff0000]Is[] [#ffff00]How[] [#88888]color[] [#ff00ff]works.[]"
   },
   "theDefault:DefaultCommonSkill": {
     "NAME": "Defend",
@@ -14,7 +14,7 @@
   },
   "theDefault:DefaultUncommonAttack": {
     "NAME": "Big slap",
-    "DESCRIPTION": "Deal !D! Damage."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "theDefault:DefaultUncommonSkill": {
     "NAME": "A Better Defend",
@@ -27,12 +27,12 @@
   },
   "theDefault:DefaultRareAttack": {
     "NAME": "TOUCH",
-    "DESCRIPTION": "Deal !D! Damage."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "theDefault:DefaultRareSkill": {
     "NAME": "For Each Loop x2",
-    "DESCRIPTION": "Apply !M! vulnerable to all enemies, 2 times.",
-    "UPGRADE_DESCRIPTION": "Apply !M! vulnerable to all enemies, 3 times."
+    "DESCRIPTION": "Apply !M! Vulnerable to all enemies, 2 times.",
+    "UPGRADE_DESCRIPTION": "Apply !M! Vulnerable to all enemies, 3 times."
   },
   "theDefault:DefaultRarePower": {
     "NAME": "In-Progress Form",
@@ -40,11 +40,11 @@
   },
   "theDefault:DefaultAttackWithVariable": {
     "NAME": "Special Strike",
-    "DESCRIPTION": "Deal !D! Damage [E] times. NL (Deal !theDefault:ENERGY_DAMAGE! damage total.)"
+    "DESCRIPTION": "Deal !D! damage [E] times. NL (Deal !theDefault:ENERGY_DAMAGE! damage total.)"
   },
   "theDefault:DefaultSecondMagicNumberSkill": {
     "NAME": "Cool 2 Number Card",
-    "DESCRIPTION": "Apply !M! vulnerable and !theDefault:SecondMagic! poison to an enemy."
+    "DESCRIPTION": "Apply !M! Vulnerable and !theDefault:SecondMagic! poison to an enemy."
   },
   "theDefault:OrbSkill": {
     "NAME": "Get Orb",
