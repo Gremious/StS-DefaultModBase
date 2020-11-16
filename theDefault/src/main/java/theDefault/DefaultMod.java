@@ -418,10 +418,8 @@ public class DefaultMod implements
         // The ID for this function isn't actually your modid as used for prefixes/by the getModID() method.
         // It's the mod id you give MTS in ModTheSpire.json - by default your artifact ID in your pom.xml
 
-        //TODO: Rename the "YourNameHere:DefaultMod" with the modid in your ModTheSpire.json file
+        //TODO: Rename the "DefaultMod" with the modid in your ModTheSpire.json file
         //TODO: The artifact mentioned in ModTheSpire.json is the artifactId in pom.xml you should've edited earlier
-        //TODO: Then change the "theDefault.cards" into "yourPackageName.cards" (with the actual package name instead)
-        //TODO: Your package name should be the same as the mod id if you followed the instructions at the top of the file
         new AutoAdd("DefaultMod") //${project.artifactId}
             .packageFilter(AbstractDefaultCard.class)
             .setDefaultSeen(true)
