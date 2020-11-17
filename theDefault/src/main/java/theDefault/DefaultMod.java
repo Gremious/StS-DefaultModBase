@@ -411,8 +411,8 @@ public class DefaultMod implements
         // Don't delete these default cards yet. You need 1 of each type and rarity (technically) for your game not to crash
         // when generating card rewards/shop screen items.
 
-        // This method automatically adds any cards inside the cards package, found under yourModName.cards.
-        // For more specific info, including how to exclude classes from being added:
+        // This method automatically adds any cards so you don't have to manually load them 1 by 1
+        // For more specific info, including how to exclude cards from being added:
         // https://github.com/daviscook477/BaseMod/wiki/AutoAdd
 
         // The ID for this function isn't actually your modid as used for prefixes/by the getModID() method.
@@ -420,8 +420,8 @@ public class DefaultMod implements
 
         //TODO: Rename the "DefaultMod" with the modid in your ModTheSpire.json file
         //TODO: The artifact mentioned in ModTheSpire.json is the artifactId in pom.xml you should've edited earlier
-        new AutoAdd("DefaultMod") //${project.artifactId}
-            .packageFilter(AbstractDefaultCard.class)
+        new AutoAdd("DefaultMod") // ${project.artifactId}
+            .packageFilter(AbstractDefaultCard.class) // filters to any class in the same package as AbstractDefaultCard, nested packages included
             .setDefaultSeen(true)
             .cards();
 
