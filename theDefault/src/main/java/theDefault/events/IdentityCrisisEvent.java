@@ -71,7 +71,7 @@ public class IdentityCrisisEvent extends AbstractImageEvent {
 
 
                         break; // Onto screen 1 we go.
-                    case 1: // If you press button the second button (Button at index 1), in this case: Deinal
+                    case 1: // If you press button the second button (Button at index 1), in this case: Denial
 
                         CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.MED, ScreenShake.ShakeDur.MED, false);
                         // Shake the screen
