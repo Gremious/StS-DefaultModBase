@@ -53,9 +53,6 @@ public class DefaultUncommonPower extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(final AbstractPlayer p, final AbstractMonster m) {
-        if (energyOnUse < EnergyPanel.totalCount) {
-            energyOnUse = EnergyPanel.totalCount;
-        }
         AbstractDungeon.actionManager.addToBottom(new UncommonPowerAction(p, m, magicNumber,
                 upgraded, damageTypeForTurn, freeToPlayOnce, energyOnUse));
     }
