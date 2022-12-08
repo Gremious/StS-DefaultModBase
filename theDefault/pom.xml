@@ -3,11 +3,11 @@
 
     <!--Hello! You'll basically should only need to change these names and the steam path (just below)-->
     <!--The author name(s) as they appear in MTS and any other comments are in your ModTheSpire.json-->
-    <groupId>defaultmod</groupId>
-    <artifactId>DefaultMod</artifactId>
-    <name>Default Mod</name>
+    <groupId>autobattlerrelicmod</groupId>
+    <artifactId>AutobattlerRelicMod</artifactId>
+    <name>Another Autobattler But This One is a Relic</name>
     <version>0.0.1</version>
-    <description>A default base to start your own mod from.</description>
+    <description>Adds a boss relic that you can optionally start with, or disable, that puts the game into an autobattler mode, with 0 draw at start of turn by default and 5 Mayhem + 1 per max energy increase.</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -15,7 +15,7 @@
         <SlayTheSpire.version>01-23-2019</SlayTheSpire.version>
         <ModTheSpire.version>3.8.0</ModTheSpire.version>
         <!--CHANGE THIS TO YOUR STEAM INSTALLATION-->
-        <Steam.path>C:/My Stuff/Games/Steam/steamapps</Steam.path>
+        <Steam.path>D:/SteamLibrary/steamapps</Steam.path>
     </properties>
 
     <dependencies>

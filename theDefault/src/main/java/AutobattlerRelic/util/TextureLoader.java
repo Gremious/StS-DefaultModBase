@@ -1,4 +1,4 @@
-package theDefault.util;
+package AutobattlerRelic.util;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
@@ -29,7 +29,7 @@ public class TextureLoader {
                 loadTexture(textureString);
             } catch (GdxRuntimeException e) {
                 logger.error("Could not find texture: " + textureString);
-                return getTexture("theDefaultResources/images/ui/missing_texture.png");
+                return getTexture("AutobattlerRelicResources/images/ui/missing_texture.png");
             }
         }
         return textures.get(textureString);

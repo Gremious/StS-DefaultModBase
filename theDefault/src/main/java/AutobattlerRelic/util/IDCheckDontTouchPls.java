@@ -1,4 +1,4 @@
-package theDefault.util;
+package AutobattlerRelic.util;
 
 public class IDCheckDontTouchPls {
     public String DEFAULTID;

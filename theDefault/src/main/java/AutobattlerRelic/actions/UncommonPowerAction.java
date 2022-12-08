@@ -1,4 +1,4 @@
-package theDefault.actions;
+package AutobattlerRelic.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import theDefault.powers.CommonPower;
+import AutobattlerRelic.powers.CommonPower;
 
 public class UncommonPowerAction extends AbstractGameAction {
     private boolean freeToPlayOnce;

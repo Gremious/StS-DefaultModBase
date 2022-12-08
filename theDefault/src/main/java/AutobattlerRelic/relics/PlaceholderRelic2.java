@@ -1,4 +1,4 @@
-package theDefault.relics;
+package AutobattlerRelic.relics;
 
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
@@ -6,11 +6,12 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import theDefault.DefaultMod;
-import theDefault.util.TextureLoader;
+import AutobattlerRelic.AutobattlerRelicMod;
+import AutobattlerRelic.util.TextureLoader;
+import AutobattlerRelic.AutobattlerRelicMod;
 
-import static theDefault.DefaultMod.makeRelicOutlinePath;
-import static theDefault.DefaultMod.makeRelicPath;
+import static AutobattlerRelic.AutobattlerRelicMod.makeRelicOutlinePath;
+import static AutobattlerRelic.AutobattlerRelicMod.makeRelicPath;
 
 public class PlaceholderRelic2 extends CustomRelic {
     /*
@@ -20,13 +21,13 @@ public class PlaceholderRelic2 extends CustomRelic {
      */
 
     // ID, images, text.
-    public static final String ID = DefaultMod.makeID("PlaceholderRelic2");
+    public static final String ID = AutobattlerRelicMod.makeID("Autobattling Mode");
 
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic2.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic2.png"));
 
     public PlaceholderRelic2() {
-        super(ID, IMG, OUTLINE, RelicTier.COMMON, LandingSound.FLAT);
+        super(ID, IMG, OUTLINE, RelicTier.BOSS, LandingSound.MAGICAL);
     }
 
 

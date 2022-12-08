@@ -1,4 +1,4 @@
-package theDefault.patches;
+package AutobattlerRelic.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;

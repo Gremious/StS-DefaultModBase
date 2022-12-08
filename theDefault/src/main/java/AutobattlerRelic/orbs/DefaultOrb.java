@@ -1,4 +1,4 @@
-package theDefault.orbs;
+package AutobattlerRelic.orbs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -19,15 +19,15 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
-import theDefault.DefaultMod;
-import theDefault.util.TextureLoader;
+import AutobattlerRelic.AutobattlerRelicMod;
+import AutobattlerRelic.util.TextureLoader;
 
-import static theDefault.DefaultMod.makeOrbPath;
+import static AutobattlerRelic.AutobattlerRelicMod.makeOrbPath;
 
 public class DefaultOrb extends AbstractOrb {
 
     // Standard ID/Description
-    public static final String ORB_ID = DefaultMod.makeID("DefaultOrb");
+    public static final String ORB_ID = AutobattlerRelicMod.makeID("DefaultOrb");
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
     public static final String[] DESC = orbString.DESCRIPTION;
 

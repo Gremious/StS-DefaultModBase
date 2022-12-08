@@ -1,4 +1,4 @@
-package theDefault.powers;
+package AutobattlerRelic.powers;
 
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,17 +13,17 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
-import theDefault.DefaultMod;
-import theDefault.util.TextureLoader;
+import AutobattlerRelic.AutobattlerRelicMod;
+import AutobattlerRelic.util.TextureLoader;
 
-import static theDefault.DefaultMod.makePowerPath;
+import static AutobattlerRelic.AutobattlerRelicMod.makePowerPath;
 
 // Gain 1 dex for the turn for each card played.
 
 public class CommonPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = DefaultMod.makeID("CommonPower");
+    public static final String POWER_ID = AutobattlerRelicMod.makeID("CommonPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
