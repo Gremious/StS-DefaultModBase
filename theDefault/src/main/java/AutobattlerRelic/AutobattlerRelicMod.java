@@ -12,19 +12,14 @@ import com.evacipated.cardcrawl.mod.stslib.Keyword;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import AutobattlerRelic.relics.BottledPlaceholderRelic;
-import AutobattlerRelic.relics.DefaultClickableRelic;
-import AutobattlerRelic.relics.PlaceholderRelic;
-import AutobattlerRelic.relics.PlaceholderRelic2;
+import AutobattlerRelic.relics.AutobattlingModeRelic;
 import AutobattlerRelic.util.IDCheckDontTouchPls;
 import AutobattlerRelic.util.TextureLoader;
 
@@ -80,6 +75,8 @@ public class AutobattlerRelicMod implements
     public static Properties AutobattlerRelicDefaultSettings = new Properties();
     public static final String ENABLE_RELIC_START_SETTINGS = "enableRelicStart";
     public static boolean enableRelicStart = true; // The boolean we'll be setting on/off (true/false)
+    public static final String REMOVE_FROM_POOL = "removeFromPool";
+    public static boolean removeFromPool = false;
 
     //This is for the in-game mod settings panel.
     private static final String MODNAME = "Default Mod";
@@ -208,9 +205,9 @@ public class AutobattlerRelicMod implements
 
     @SuppressWarnings("unused")
     public static void initialize() {
-        logger.info("========================= Initializing Default Mod. Hi. =========================");
+        logger.info("========================= Initializing AutoBattler Mod. Hi. =========================");
         AutobattlerRelicMod defaultmod = new AutobattlerRelicMod();
-        logger.info("========================= /Default Mod Initialized. Hello World./ =========================");
+        logger.info("========================= /Autobattle Initialized. Let it rip./ =========================");
     }
 
     // ============== /SUBSCRIBE, INITIALIZE/ =================
@@ -246,12 +243,31 @@ public class AutobattlerRelicMod implements
                         e.printStackTrace();
                     }
                 });
+        ModLabeledToggleButton enablePoolButton = new ModLabeledToggleButton("Enable starting with the relic, and thereby in Autobattle Mode?",
+                350.0f, 600.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
+                removeFromPool, // Boolean it uses
+                settingsPanel, // The mod panel in which this button will be in
+                (label) -> {
+                }, // thing??????? idk
+                (button) -> { // The actual button:
+
+                    removeFromPool = button.enabled; // The boolean true/false will be whether the button is enabled or not
+                    try {
+                        // And based on that boolean, set the settings and save them
+                        SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", AutobattlerRelicDefaultSettings);
+                        config.setBool(REMOVE_FROM_POOL, removeFromPool);
+                        config.save();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
 
         settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
 
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
-        if (removeFromPool = true) {
-            BaseMod.removeRelic(AbstractRelic);//???
+
+        if (removeFromPool = true) { //set this button later
+            BaseMod.removeRelic(new AutobattlingModeRelic());//???
         }
 
         logger.info("Done loading badge Image and mod options");
@@ -264,20 +280,10 @@ public class AutobattlerRelicMod implements
     @Override
     public void receiveEditRelics() {
         logger.info("Adding relics");
-        // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new PlaceholderRelic(), AbstractCard.CardColor.GREEN);
-        BaseMod.addRelicToCustomPool(new BottledPlaceholderRelic(), AbstractCard.CardColor.RED);
-        BaseMod.addRelicToCustomPool(new DefaultClickableRelic(), AbstractCard.CardColor.BLUE);
+
         
         // This adds a relic to the Shared pool. Every character can find this relic.
-        BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
-        if (removeFromPool = true) {
-            BaseMod.removeRelic(new PlaceholderRelic2());
-        }
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic.ID);
-        UnlockTracker.markRelicAsSeen(BottledPlaceholderRelic.ID);
-        UnlockTracker.markRelicAsSeen(DefaultClickableRelic.ID);
-        UnlockTracker.markRelicAsSeen(PlaceholderRelic2.ID);
+        BaseMod.addRelic(new AutobattlingModeRelic(), RelicType.SHARED);
         logger.info("Done adding relics!");
     }
     public void receivePostCreateStartingRelics(AbstractPlayer.PlayerClass playerClass, ArrayList<String> relicsToAdd) {

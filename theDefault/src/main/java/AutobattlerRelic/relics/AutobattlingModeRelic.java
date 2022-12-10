@@ -4,16 +4,17 @@ import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.MayhemPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import AutobattlerRelic.AutobattlerRelicMod;
 import AutobattlerRelic.util.TextureLoader;
-import AutobattlerRelic.AutobattlerRelicMod;
 
 import static AutobattlerRelic.AutobattlerRelicMod.makeRelicOutlinePath;
 import static AutobattlerRelic.AutobattlerRelicMod.makeRelicPath;
 
-public class PlaceholderRelic2 extends CustomRelic {
+public class AutobattlingModeRelic extends CustomRelic {
     /*
      * https://github.com/daviscook477/BaseMod/wiki/Custom-Relics
      *
@@ -26,17 +27,20 @@ public class PlaceholderRelic2 extends CustomRelic {
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("placeholder_relic2.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("placeholder_relic2.png"));
 
-    public PlaceholderRelic2() {
+    public AutobattlingModeRelic() {
         super(ID, IMG, OUTLINE, RelicTier.BOSS, LandingSound.MAGICAL);
     }
+    int autoplay = 5 + (AbstractDungeon.player.energy.energyMaster - 3); // Autoplay is default 5 + any extra energy from relics.
 
 
-    // Gain 1 Strength on on equip.
+
+    public void onEquip() {
+        AbstractDungeon.player.masterHandSize = 0; // This makes it by default that you will never draw a hand. External draws are allowed.
+    }
     @Override
     public void atBattleStart() {
         flash();
-        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, 1), 1));
-        AbstractDungeon.actionManager.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new MayhemPower(AbstractDungeon.player, autoplay)));
     }
 
 

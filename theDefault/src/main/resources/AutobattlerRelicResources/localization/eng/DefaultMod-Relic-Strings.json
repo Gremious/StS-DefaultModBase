@@ -6,11 +6,11 @@
       "Gain #b1 [E] ."
     ]
   },
-  "AutobattlerRelic:PlaceholderRelic2": {
-    "NAME": "Placeholder Relic 2",
-    "FLAVOR": "You feel stronger.",
+  "AutobattlerRelic:AutobattlingMode": {
+    "NAME": "Autobattling Mode",
+    "FLAVOR": "RNGesus take the wheel.",
     "DESCRIPTIONS": [
-      "At the start of each combat, gain #b1 #yStrength."
+      "At the start of each turn, play the top 5 cards of your deck, plus 1 more for each master energy over 3.\nBy default you draw no cards at turn start."
     ]
   },
   "AutobattlerRelic:DefaultClickableRelic": {
