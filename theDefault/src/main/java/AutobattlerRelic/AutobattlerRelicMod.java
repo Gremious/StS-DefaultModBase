@@ -254,7 +254,7 @@ public class AutobattlerRelicMod implements
                     removeFromPool = button.enabled; // The boolean true/false will be whether the button is enabled or not
                     try {
                         // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("AutobattleMod", "AutobattleConfig", AutobattlerRelicDefaultSettings);
+                        SpireConfig config = new SpireConfig("defaultMod", "theDefaultConfig", AutobattlerRelicDefaultSettings);
                         config.setBool(REMOVE_FROM_POOL, removeFromPool);
                         config.save();
                     } catch (Exception e) {
@@ -262,8 +262,7 @@ public class AutobattlerRelicMod implements
                     }
                 });
 
-        settingsPanel.addUIElement(enableNormalsButton);// Add the button to the settings panel. Button is a go.
-        settingsPanel.addUIElement(enablePoolButton);
+        settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
 
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
 
@@ -273,7 +272,7 @@ public class AutobattlerRelicMod implements
 
         logger.info("Done loading badge Image and mod options");
     }
-
+    
     // =============== / POST-INITIALIZE/ =================
     
     // ================ ADD RELICS ===================
@@ -289,7 +288,7 @@ public class AutobattlerRelicMod implements
     }
     public void receivePostCreateStartingRelics(AbstractPlayer.PlayerClass playerClass, ArrayList<String> relicsToAdd) {
         if (enableRelicStart = true) {
-            BaseMod.addRelic(new AutobattlingModeRelic(), RelicType.SHARED);
+            relicsToAdd.add("Autobattling Mode");
             UnlockTracker.markRelicAsSeen("Autobattling Mode");
         }
     }
@@ -314,9 +313,16 @@ public class AutobattlerRelicMod implements
         // RelicStrings
         BaseMod.loadCustomStringsFile(RelicStrings.class,
                 getModID() + "Resources/localization/eng/DefaultMod-Relic-Strings.json");
-
         
-        logger.info("Done editing strings");
+        // PotionStrings
+        BaseMod.loadCustomStringsFile(PotionStrings.class,
+                getModID() + "Resources/localization/eng/DefaultMod-Potion-Strings.json");
+        
+        // OrbStrings
+        BaseMod.loadCustomStringsFile(OrbStrings.class,
+                getModID() + "Resources/localization/eng/DefaultMod-Orb-Strings.json");
+        
+        logger.info("Done edittting strings");
     }
     
     // ================ /LOAD THE TEXT/ ===================

@@ -6,7 +6,7 @@
     <groupId>autobattlerrelicmod</groupId>
     <artifactId>AutobattlerRelicMod</artifactId>
     <name>Another Autobattler But This One is a Relic</name>
-    <version>0.0.2</version>
+    <version>0.0.1</version>
     <description>Adds a boss relic that you can optionally start with, or disable, that puts the game into an autobattler mode, with 0 draw at start of turn by default and 5 Mayhem + 1 per max energy increase.</description>
 
     <properties>
