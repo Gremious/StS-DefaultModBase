@@ -1,19 +1,19 @@
 {
-  "AutobattlerRelic:PlaceholderRelic": {
+  "AutobattlerRelicMod:PlaceholderRelic": {
     "NAME": "Placeholder Energy Relic",
     "FLAVOR": "The snake is a friend.",
     "DESCRIPTIONS": [
       "Gain #b1 [E] ."
     ]
   },
-  "AutobattlerRelic:AutobattlingMode": {
+  "AutobattlerRelicMod:AutobattlingMode": {
     "NAME": "Autobattling Mode",
     "FLAVOR": "RNGesus take the wheel.",
     "DESCRIPTIONS": [
       "At the start of each turn, play the top 5 cards of your deck, plus 1 more for each master energy over 3.\nBy default you draw no cards at turn start."
     ]
   },
-  "AutobattlerRelic:DefaultClickableRelic": {
+  "AutobattlerRelicMod:DefaultClickableRelic": {
     "NAME": "Right-Clicky Relic",
     "FLAVOR": "The more you right-click it, the more orbs you've evoked in your lifetime.",
     "DESCRIPTIONS": [
@@ -21,7 +21,7 @@
       "YOU ARE MINE!"
     ]
   },
-  "AutobattlerRelic:BottledPlaceholderRelic": {
+  "AutobattlerRelicMod:BottledPlaceholderRelic": {
     "NAME": "Bottled Placeholder",
     "FLAVOR": "What is this?",
     "DESCRIPTIONS": [

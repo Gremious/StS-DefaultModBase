@@ -87,7 +87,6 @@ public class AutobattlerRelicMod implements
 
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "AutobattlerRelicResources/images/Badge.png";
-    private Object PlaceholderRelic2;
 
     // =============== MAKE IMAGE PATHS =================
 
@@ -99,9 +98,6 @@ public class AutobattlerRelicMod implements
         return getModID() + "Resources/images/relics/outline/" + resourcePath;
     }
 
-    public static String makeOrbPath(String resourcePath) {
-        return getModID() + "Resources/orbs/" + resourcePath;
-    }
 
     public static String makePowerPath(String resourcePath) {
         return getModID() + "Resources/images/powers/" + resourcePath;
@@ -243,7 +239,7 @@ public class AutobattlerRelicMod implements
                         e.printStackTrace();
                     }
                 });
-        ModLabeledToggleButton enablePoolButton = new ModLabeledToggleButton("Enable starting with the relic, and thereby in Autobattle Mode?",
+        ModLabeledToggleButton enablePoolButton = new ModLabeledToggleButton("Enable starting with the relic, and thereby in Autobattle Mode?", //This will be used eventually I swear
                 350.0f, 600.0f, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
                 removeFromPool, // Boolean it uses
                 settingsPanel, // The mod panel in which this button will be in
@@ -262,14 +258,15 @@ public class AutobattlerRelicMod implements
                     }
                 });
 
-        settingsPanel.addUIElement(enableNormalsButton); // Add the button to the settings panel. Button is a go.
+        settingsPanel.addUIElement(enableNormalsButton);
+        settingsPanel.addUIElement(enablePoolButton);// Add the button to the settings panel. Button is a go.
 
         BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
-
-        if (removeFromPool = true) { //set this button later
-            BaseMod.removeRelic(new AutobattlingModeRelic());//???
+/*      // Set this later once I've figured out buttons, preliminary debug.
+        if (removeFromPool = true) {
+            BaseMod.removeRelic(new AutobattlingModeRelic());
         }
-
+*/
         logger.info("Done loading badge Image and mod options");
     }
     
@@ -287,10 +284,10 @@ public class AutobattlerRelicMod implements
         logger.info("Done adding relics!");
     }
     public void receivePostCreateStartingRelics(AbstractPlayer.PlayerClass playerClass, ArrayList<String> relicsToAdd) {
-        if (enableRelicStart = true) {
+//        if (enableRelicStart = true) {    // Again, figuring out buttons, for now the if and {} will be commented out.
             relicsToAdd.add("Autobattling Mode");
             UnlockTracker.markRelicAsSeen("Autobattling Mode");
-        }
+            //       }
     }
 
 

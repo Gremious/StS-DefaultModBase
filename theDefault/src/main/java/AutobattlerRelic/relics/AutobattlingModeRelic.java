@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.MayhemPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import AutobattlerRelic.AutobattlerRelicMod;
@@ -41,6 +42,12 @@ public class AutobattlingModeRelic extends CustomRelic {
     public void atBattleStart() {
         flash();
         AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new MayhemPower(AbstractDungeon.player, autoplay)));
+        // At the beginning of each act I want STR and DEX to decrease by 1 for each act number, to make the mod slightly more challenging.
+        // Eventually I want this behavior to be optional/toggleable, but I need to understand the config menu and buttons first.
+        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
+                new StrengthPower(AbstractDungeon.player, -AbstractDungeon.actNum)));
+        AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player,
+                new DexterityPower(AbstractDungeon.player, -AbstractDungeon.actNum)));
     }
 
 
