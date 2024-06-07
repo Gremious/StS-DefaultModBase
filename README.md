@@ -1,3 +1,20 @@
+## The Default Mod is now out of date.
+
+(rest in peace, soldier)
+
+### Please use the following instead:
+
+https://github.com/Alchyr/BasicMod#basic-mod -- Has a complete guide on how to setup a character and walks you throuigh the basics
+
+https://github.com/DarkVexon/ProTemplate -- As extra features and QoL for people familiar with modding StS
+
+https://github.com/nightbug/LaunchPad -- Minimalist template for mods that arent characters
+
+It's a good game. Have fun :)
+
+---
+
+
 # StS-Default Mod Base
 
 Welcome to this extremely over-commented Slay the Spire modding base. 
